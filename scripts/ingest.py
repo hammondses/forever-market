@@ -30,6 +30,9 @@ def b32(s: str) -> int:
 def connect() -> sqlite3.Connection:
     db = sqlite3.connect(DB)
     db.execute("CREATE TABLE IF NOT EXISTS files(name TEXT PRIMARY KEY, scope TEXT, tag TEXT, ts INTEGER)")
+    cols = [r[1] for r in db.execute("PRAGMA table_info(auctiondb_non_commodity_data)")]
+    if cols and "numUnits" not in cols:  # units listed, Blizzard snapshots from 19 Nov 2026 on
+        db.execute("ALTER TABLE auctiondb_non_commodity_data ADD COLUMN numUnits INTEGER")
     return db
 
 

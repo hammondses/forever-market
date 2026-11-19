@@ -56,16 +56,17 @@ def fetch(url: str, tok: str) -> tuple[int, bytes]:
 
 
 def book(listings: list[dict], price_key: str, out: dict[int, list[int]]) -> None:
-    """Fold listings into {item: [cheapest per unit, listings]}."""
+    """Fold listings into {item: [cheapest per unit, listings, units]}."""
     for a in listings:
         p = a.get(price_key)
         if not p:  # bid-only auctions have no buyout
             continue
         if price_key == "buyout":
             p //= a["quantity"]
-        cur = out.setdefault(a["item"]["id"], [p, 0])
+        cur = out.setdefault(a["item"]["id"], [p, 0, 0])
         cur[0] = min(cur[0], p)
         cur[1] += 1
+        cur[2] += a.get("quantity", 1)
 
 
 def main() -> None:
@@ -87,8 +88,8 @@ def main() -> None:
     (OUT / f"{name}.json.gz").write_bytes(gzip.compress(raw_r))
     (OUT / f"{name}-commodities.json.gz").write_bytes(gzip.compress(raw_c))
     db.executemany("INSERT OR REPLACE INTO auctiondb_non_commodity_data"
-                   "(scope, ts, item, minBuyout, numAuctions, marketValueRecent) VALUES (?,?,?,?,?,NULL)",
-                   [(SCOPE, ts, str(i), p, n) for i, (p, n) in items.items()])
+                   "(scope, ts, item, minBuyout, numAuctions, marketValueRecent, numUnits) VALUES (?,?,?,?,?,NULL,?)",
+                   [(SCOPE, ts, str(i), p, n, u) for i, (p, n, u) in items.items()])
     db.execute("INSERT OR REPLACE INTO files VALUES (?,?,?,?)", (name, SCOPE, "BLIZZARD", ts))
     db.commit()
     print(f"blizzard snapshot {ts}: {len(items)} items")
