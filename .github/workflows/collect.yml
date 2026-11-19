@@ -3,7 +3,8 @@
 # market.db and the item catalog persist between runs as assets on the "state" release.
 name: collect
 on:
-  schedule: [{ cron: "*/10 * * * *" }]
+  schedule:
+    - cron: "*/10 * * * *"
   workflow_dispatch:
     inputs: { force: { description: Rebuild and publish even if the snapshot is not new, type: boolean, default: false } }
 permissions: { contents: write }
