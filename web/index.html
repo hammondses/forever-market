@@ -1025,13 +1025,35 @@ function ladderSvg(r) {
   const steps = r.ladder, W = 340, H = 140, L = 4, R = 50, T = 8, B = 18;
   const maxU = steps.reduce((a, [, q]) => a + q, 0), maxP = Math.max(r.target * 1.15, steps[steps.length - 1][0]);
   const X = (u) => L + (u / maxU) * (W - L - R), Y = (p) => T + (1 - p / maxP) * (H - T - B);
-  let u = 0; const bars = steps.map(([p, q]) => { const x = X(u); u += q;
-    return `<rect class="${p < r.target * rs.data.buyBelow ? "buy" : "keep"}" x="${x.toFixed(1)}" y="${Y(p).toFixed(1)}" width="${Math.max(0.6, X(u) - x - 0.3).toFixed(1)}" height="${(H - B - Y(p)).toFixed(1)}"/>`; }).join("");
-  return `<svg class="ladder" width="${W}" height="${H}">${bars}
+  let u = 0, cost = 0; const bars = steps.map(([p, q]) => { const x = X(u); u += q; cost += p * q;
+    return `<rect class="${p < r.target * rs.data.buyBelow ? "buy" : "keep"}" data-p="${p}" data-q="${q}" data-u="${u}" data-c="${cost}" x="${x.toFixed(1)}" y="${Y(p).toFixed(1)}" width="${Math.max(0.6, X(u) - x - 0.3).toFixed(1)}" height="${(H - B - Y(p)).toFixed(1)}"/>`; }).join("");
+  return `<div class="chartbox"><svg class="ladder" width="${W}" height="${H}">${bars}
     <line x1="${L}" x2="${W - R}" y1="${Y(r.target)}" y2="${Y(r.target)}" stroke="#c9a85c" stroke-dasharray="3 3"/>
     <text x="${W - R + 3}" y="${Y(r.target) + 4}" fill="#c9a85c">resell</text>
-    <text x="${L}" y="${H - 3}">cheapest first</text><text x="${W - R - 2}" y="${H - 3}" text-anchor="end">${maxU.toLocaleString()} units${u < r.units ? " (first 40 prices)" : ""}</text></svg>`;
+    <text x="${L}" y="${H - 3}">cheapest first</text><text x="${W - R - 2}" y="${H - 3}" text-anchor="end">${maxU.toLocaleString()} units${u < r.units ? " (first 40 prices)" : ""}</text>
+    <rect class="hit" x="${L}" y="0" width="${W - L - R}" height="${H}" fill="transparent"/></svg><div class="tip" hidden></div></div>`;
 }
+
+// ladder hover: the price step under the pointer and what buying up to it costs
+function ladderHover(e) {
+  const svg = e.target.closest?.("svg.ladder"); if (!svg) return;
+  const x = e.clientX - svg.getBoundingClientRect().left;
+  const steps = [...svg.querySelectorAll("rect[data-p]")];
+  const st = steps.find((b) => x <= +b.getAttribute("x") + +b.getAttribute("width") + 0.3) || steps[steps.length - 1];
+  for (const b of steps) b.style.opacity = b === st ? 1 : .55;
+  const tip = svg.parentNode.querySelector(".tip"), d = st.dataset;
+  tip.innerHTML = `<b>${money(+d.p)} each</b><div>${(+d.q).toLocaleString()} at this price</div>
+    <div>Buying up to here: ${(+d.u).toLocaleString()} units for ${money(+d.c)}</div>`;
+  tip.hidden = false;
+  const bx = +st.getAttribute("x") + +st.getAttribute("width") / 2, w = svg.getBoundingClientRect().width;
+  tip.style.left = Math.min(Math.max(bx - tip.offsetWidth / 2, 0), w - tip.offsetWidth) + "px";
+}
+document.addEventListener("pointermove", ladderHover);
+document.addEventListener("pointerout", (e) => {
+  const svg = e.target.closest?.("svg.ladder"); if (!svg || !e.target.classList?.contains("hit")) return;
+  svg.parentNode.querySelector(".tip").hidden = true;
+  for (const b of svg.querySelectorAll("rect[data-p]")) b.style.opacity = "";
+});
 
 async function rsSelect(id) {
   const r = rs.data.items.find((x) => x.id === id); if (!r) return;
