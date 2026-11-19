@@ -1010,15 +1010,15 @@ function renderResets() {
   rows.sort((a, b) => { const x = key(a), y = key(b); return (x < y ? -1 : x > y ? 1 : 0) * rs.dir; });
   $("rsCount").textContent = `${rows.length} of ${d.items.length} materials`;
   const trendCell = (t) => t ? `<span class="${pctCls(t.supply)}">${pctTxt(t.supply)}</span><small>price ${pctTxt(t.price)}</small>` : `<span class="flat">–</span>`;
-  const C = [["name", "Item"], ["ilvl", "Item level", "hm"], ["price", "Cheapest", "hm"], ["target", "Median", "hm"], ["line", "Reset to"], ["units", "For sale", "hm"],
+  const C = [["name", "Item"], ["price", "Cheapest", "hm"], ["target", "Median", "hm"], ["line", "Reset to"], ["units", "For sale", "hm"],
     ["s24", "Supply 24h"], ["s72", "Supply 3 days", "hm"], ["cost", "Cost to reset"], ["profit", "Profit"],
     ["roi", "Return", "hm"], ["sold", "Sold a day", "hm"]];
   const shown = rows.slice(0, 200);
   $("rsWrap").innerHTML = rows.length ? `<table id="ahTable" class="rsTable"><thead><tr>${C.map(([c, l, m]) =>
     `<th data-s="${c}" class="${rs.sort === c ? "on" : ""} ${m || ""}">${l}${rs.sort === c ? (rs.dir > 0 ? " ▲" : " ▼") : ""}</th>`).join("")}</tr></thead><tbody>${
     shown.map((r) => `<tr data-id="${r.id}"${r.id === rs.sel ? ' class="on"' : ""}><td><div class="it">${img(r.id)}<div style="min-width:0">
-      <div class="nm q-${QUAL[r.q] || "COMMON"}">${esc(r.name)}${r.ripe ? '<span class="badge ripe">Ripe</span>' : ""}</div></div></div></td>
-      <td class="hm">${r.ilvl ?? "–"}</td><td class="hm">${money(r.price)}</td><td class="hm">${money(r.target)}</td><td>${money(r.line)}<small>${r.vsMedian == null ? "" : `${pctTxt(r.vsMedian)} vs median`}</small></td>
+      <div class="nm q-${QUAL[r.q] || "COMMON"}">${esc(r.name)}${r.ripe ? '<span class="badge ripe">Ripe</span>' : ""}</div><small>item level ${r.ilvl ?? "?"}</small></div></div></td>
+      <td class="hm">${money(r.price)}</td><td class="hm">${money(r.target)}</td><td>${money(r.line)}<small>${r.vsMedian == null ? "" : `${pctTxt(r.vsMedian)} vs median`}</small></td>
       <td class="hm">${r.units.toLocaleString()}</td><td>${trendCell(r.trend[24])}</td>
       <td class="hm">${trendCell(r.trend[72])}</td>
       <td>${money(r.cost)}<small>${r.buyUnits.toLocaleString()} units</small></td>
