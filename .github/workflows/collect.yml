@@ -5,6 +5,7 @@ name: collect
 on:
   schedule: [{ cron: "*/10 * * * *" }]
   workflow_dispatch:
+    inputs: { force: { description: Rebuild and publish even if the snapshot is not new, type: boolean, default: false } }
 permissions: { contents: write }
 concurrency: { group: collect, cancel-in-progress: false }
 jobs:
@@ -27,8 +28,8 @@ jobs:
         id: snap
         run: |
           set +e; python3 scripts/blizzard_collect.py --new-or-3; rc=$?; set -e
-          if [ $rc = 3 ]; then echo "new=false" >> "$GITHUB_OUTPUT"; exit 0; fi
-          [ $rc = 0 ] && echo "new=true" >> "$GITHUB_OUTPUT"; exit $rc
+          if [ $rc = 3 ] && [ "${{ inputs.force }}" != true ]; then echo "new=false" >> "$GITHUB_OUTPUT"; exit 0; fi
+          [ $rc = 0 ] || [ $rc = 3 ] && echo "new=true" >> "$GITHUB_OUTPUT" && exit 0; exit $rc
       - name: Catalog, TSM CSVs, guide materials
         if: steps.snap.outputs.new == 'true'
         run: |
