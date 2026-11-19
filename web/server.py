@@ -13,6 +13,7 @@ Run: .venv/bin/python web/server.py [port]   (systemd user unit wow-market-web)
 
 from __future__ import annotations
 
+import gzip
 import json
 import re
 import sqlite3
@@ -152,6 +153,102 @@ def item_history(item: str) -> dict:
     }
 
 
+RESET_WINDOWS = (3, 24, 72)
+RESET_BUY_BELOW = 0.9   # a reset buys every listing under 90% of the resale price
+RESET_FLAT = 15         # price "holding" means within +/-15% of the earlier snapshot
+RESET_DRAIN = -15       # supply "draining" means units (or listings) down 15% or more
+AH_CUT = 0.05
+
+
+def latest_ladders() -> dict[str, list[list[int]]]:
+    """{item: [[unit price, units], ...] cheapest first} from the newest Blizzard commodities file."""
+    from blizzard_collect import OUT
+    files = sorted(OUT.glob("blizzard-113-*-commodities.json.gz"))
+    if not files:
+        return {}
+    steps: dict[str, dict[int, int]] = {}
+    for a in json.loads(gzip.decompress(files[-1].read_bytes())).get("auctions", []):
+        if a.get("unit_price"):
+            d = steps.setdefault(str(a["item"]["id"]), {})
+            d[a["unit_price"]] = d.get(a["unit_price"], 0) + a["quantity"]
+    return {i: sorted([p, q] for p, q in d.items()) for i, d in steps.items()}
+
+
+def resets() -> dict:
+    """Materials ranked for a market reset.
+
+    For each commodity on our AH: what buying every listing under RESET_BUY_BELOW x the
+    resale price costs and returns, and how supply (units, else listings) and the cheapest
+    price moved over RESET_WINDOWS. "Ripe" = supply draining while the price holds: the
+    population has levelled past the item, so a reset sticks.
+    """
+    m = open_market()
+    ladders = latest_ladders()
+    catalog = item_names()
+    hist = {i: h for i, h in m.db.execute(
+        "SELECT item, historical FROM auctiondb_non_commodity_historical WHERE scope=? AND ts="
+        "(SELECT max(ts) FROM auctiondb_non_commodity_historical WHERE scope=?)", (SCOPE, SCOPE))}
+    region = {i: v for i, v in m.db.execute(
+        "SELECT item, regionMarketValue FROM auctiondb_region_stat WHERE ts="
+        "(SELECT max(ts) FROM auctiondb_region_stat)")}
+
+    def supply(ts: int | None) -> dict[str, tuple]:
+        if ts is None:
+            return {}
+        return {i: (b, n, u) for i, b, n, u in m.db.execute(
+            "SELECT item, minBuyout, numAuctions, numUnits FROM auctiondb_non_commodity_data "
+            "WHERE scope=? AND ts=?", (SCOPE, ts))}
+
+    # compare Blizzard snapshots only: the TSM CSV ones carry no counts
+    snaps = [t for (t,) in m.db.execute("SELECT ts FROM files WHERE tag='BLIZZARD' ORDER BY ts")]
+    latest = snaps[-1] if snaps else m.now
+
+    def ago(w: int) -> int | None:
+        older = [t for t in snaps if t <= latest - w * 3600 * 0.75]
+        return older[-1] if older else None
+
+    now = supply(latest)
+    then = {w: supply(ago(w)) for w in RESET_WINDOWS}
+    rows = []
+    for i, ladder in ladders.items():
+        cur = now.get(i)
+        # TSM's realm average runs high early in a launch; take the lower of realm and region
+        target = min(v for v in (hist.get(i), region.get(i)) if v) if (hist.get(i) or region.get(i)) else None
+        if not cur or not target:
+            continue
+        units = sum(q for _, q in ladder)
+        buy = [(p, q) for p, q in ladder if p < target * RESET_BUY_BELOW]
+        cost = sum(p * q for p, q in buy)
+        got = sum(q for _, q in buy)
+        trend = {}
+        for w in RESET_WINDOWS:
+            old = then[w].get(i)
+            if not old:
+                continue
+            ob, on, ou = old
+            if ou and cur[2] is not None:
+                sup, basis = (cur[2] / ou - 1) * 100, "units"
+            elif on and cur[1] is not None:
+                sup, basis = (cur[1] / on - 1) * 100, "listings"
+            else:
+                continue
+            trend[w] = {"hours": round((latest - ago(w)) / 3600), "supply": round(sup, 1), "basis": basis,
+                        "price": round((cur[0] / ob - 1) * 100, 1) if ob else None}
+        row = catalog.get(i) or [m.name(i)]
+        ilvl = row[2] if len(row) > 2 and row[2] else None
+        rows.append({
+            "id": i, "name": row[0] or m.name(i), "q": row[1] if len(row) > 1 else 1, "ilvl": ilvl,
+            "price": cur[0], "target": target, "units": units, "listings": cur[1],
+            "cost": cost, "buyUnits": got, "profit": round(got * target * (1 - AH_CUT) - cost),
+            "sold": round(m.sold.get(i, 0)), "vendor": m.vendor(i), "trend": trend,
+            "ripe": any(t["supply"] <= RESET_DRAIN and t["price"] is not None and abs(t["price"]) <= RESET_FLAT
+                        for w, t in trend.items() if w >= 24),  # a 3h dip is noise
+            "ladder": ladder[:40],
+        })
+    return {"latest": latest, "windows": RESET_WINDOWS, "buyBelow": RESET_BUY_BELOW, "flat": RESET_FLAT,
+            "drain": RESET_DRAIN, "items": rows}
+
+
 HIST_BUCKETS = 64
 HIST_DAYS = 14
 
@@ -223,6 +320,8 @@ class Handler(BaseHTTPRequestHandler):
                 if w != "hist" and not re.fullmatch(r"\d+(\.\d+)?", w):
                     raise ValueError("bad window")
                 self._send(200, json.dumps(market_map(w)).encode(), "application/json")
+            elif url.path == "/api/resets":
+                self._send(200, json.dumps(resets()).encode(), "application/json")
             elif url.path == "/api/token":
                 self._send(200, json.dumps(blizzard_token()).encode(), "application/json")
             elif url.path == "/api/names":

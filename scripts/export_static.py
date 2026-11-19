@@ -15,7 +15,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "web"))
 
-from server import PAGE, ah_book, hist_buckets, item_history, item_names, market_map
+from server import PAGE, ah_book, resets, hist_buckets, item_history, item_names, market_map
 
 WINDOWS = ["1", "6", "24", "72", "168", "hist"]
 
@@ -30,6 +30,7 @@ for w in WINDOWS:
     ids.update(r["id"] for r in m["items"])
     (tmp / "data" / f"map-{w}.json").write_text(json.dumps(m))
 (tmp / "data" / "ah.json").write_text(json.dumps(ah_book()))
+(tmp / "data" / "resets.json").write_text(json.dumps(resets(), separators=(",", ":")))
 (tmp / "data" / "names.json").write_text(json.dumps(item_names()))
 (tmp / "data" / "hist").mkdir()
 for n, b in enumerate(hist_buckets()):

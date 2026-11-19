@@ -123,8 +123,8 @@ svg text { font: 12px var(--ui); fill: var(--dim); }
 
 .tabs { display: inline-flex; gap: 0; align-self: flex-end; margin-bottom: -12px; }
 .tabs .btn { border-radius: 4px 4px 0 0; padding: 6px 16px 7px; font: 16px var(--serif); border-bottom: 0; }
-body.tab-ah #app { grid-template-rows: auto 1fr; }
-body.tab-ah .mk, body:not(.tab-ah) #ahv { display: none !important; }
+body.tab-ah #app, body.tab-rs #app { grid-template-rows: auto 1fr; }
+body.tab-ah .mk, body.tab-rs .mk, body:not(.tab-ah) #ahv, body:not(.tab-rs) #rsv { display: none !important; }
 #ahv { display: grid; grid-template-columns: 220px 1fr 360px; grid-template-rows: auto 1fr; min-height: 0; }
 .filters { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: center; padding: 8px 16px;
   border-bottom: 1px solid var(--line); color: var(--dim); font-size: 14px; background: #24211d; }
@@ -170,6 +170,24 @@ body.tab-ah .mk, body:not(.tab-ah) #ahv { display: none !important; }
 .q-POOR { color: #9d9d9d; } .q-COMMON { color: #fff; } .q-UNCOMMON { color: #1eff00; } .q-RARE { color: #3d8fff; }
 .q-EPIC { color: #b45cf5; } .q-LEGENDARY { color: #ff8000; } .q-ARTIFACT { color: #e6cc80; }
 
+#rsv { display: grid; grid-template-columns: 1fr 380px; grid-template-rows: auto auto 1fr; min-height: 0; }
+#rsBands { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(7, 1fr); border-bottom: 1px solid var(--line); }
+.band { padding: 7px 12px 8px; border-right: 1px solid var(--line); cursor: pointer; background: var(--panel); }
+.band:last-child { border-right: 0; }
+.band:hover { background: var(--panel2); } .band.on { background: #3d3320; }
+.band b { font: 16px var(--serif); color: #e9c86a; display: block; }
+.band .bar { height: 5px; background: #14120f; margin: 6px 0 4px; position: relative; }
+.band .bar i { position: absolute; top: 0; bottom: 0; }
+.band span { font-size: 13px; color: var(--dim); } .band .mo { display: none; }
+#rsWrap { overflow: auto; min-height: 0; }
+#rsDetail { border-left: 1px solid var(--line); background: var(--panel); overflow-y: auto; min-height: 0; grid-row: 3; grid-column: 2; }
+.rsTable td small { display: block; font-size: 12px; color: var(--dim); line-height: 1.1; }
+.rsTable td { padding-top: 4px; padding-bottom: 4px; }
+.rsTable .it .nm { max-width: 200px; }
+.rsTable td, .rsTable th { padding-left: 8px !important; padding-right: 8px !important; }
+.badge.ripe { background: #2f6b2a; color: #e6f5d0; }
+.ladder rect.buy { fill: #6b8f3a; } .ladder rect.keep { fill: #3b4060; }
+
 @media (max-width: 900px) {
   html, body { height: auto; overflow: auto; }
   #app { height: auto; display: block; }
@@ -197,6 +215,9 @@ body.tab-ah .mk, body:not(.tab-ah) #ahv { display: none !important; }
   .it .nm { max-width: 170px; white-space: normal; } .it .st { display: none; }
   #ahTable td, #ahTable th { padding: 3px 6px; }
   #ahDetail { border-left: 0; border-top: 1px solid var(--line); }
+  #rsv { display: block; } #rsBands { grid-template-columns: repeat(4, 1fr); } .band { border-bottom: 1px solid var(--line); }
+  #rsWrap { max-height: 75vh; } #rsDetail { border-left: 0; border-top: 1px solid var(--line); }
+  .rsTable .hm, .band .hm { display: none; } .band .mo { display: inline; } .band b span { font: inherit; color: inherit; }
 }
 </style>
 </head>
@@ -204,7 +225,7 @@ body.tab-ah .mk, body:not(.tab-ah) #ahv { display: none !important; }
 <div id="app">
   <header>
     <div class="logo">Azeroth Exchange<small>The Horde auction house on Forever</small></div>
-    <nav class="tabs"><button class="btn on" data-tab="market">Market</button><button class="btn" data-tab="ah">Auction house</button></nav>
+    <nav class="tabs"><button class="btn on" data-tab="market">Market</button><button class="btn" data-tab="ah">Auction house</button><button class="btn" data-tab="rs">Resets</button></nav>
     <div class="live" id="live"><i></i><span id="ago">connecting…</span></div>
     <div class="spacer"></div>
     <div class="sbox"><input id="search" placeholder="Find an item  ( / )" autocomplete="off">
@@ -245,6 +266,18 @@ body.tab-ah .mk, body:not(.tab-ah) #ahv { display: none !important; }
     <div id="ahCats"></div>
     <div id="ahWrap"><div class="note pad">Loading the live auction house…</div></div>
     <div id="ahDetail"><div class="box"><h3>Selected</h3><div class="note">Pick a category or search, then click an item.</div></div></div>
+  </section>
+  <section id="rsv">
+    <div class="filters">
+      <input id="rsq" placeholder="Item name" autocomplete="off">
+      <label>budget <input type="number" id="rsBudget" min="0" step="any" placeholder="any"> g</label>
+      <label>sells <input type="number" id="rsSold" min="0" value="20"> a day or more (region)</label>
+      <label><input type="checkbox" id="rsRipe"> ripe only</label>
+      <span id="rsCount"></span>
+    </div>
+    <div id="rsBands"></div>
+    <div id="rsWrap"><div class="note pad">Loading…</div></div>
+    <div id="rsDetail"><div class="box"><h3>How this works</h3><div class="note" id="rsHow"></div></div></div>
   </section>
 </div>
 <div id="tip"></div>
@@ -723,9 +756,10 @@ addEventListener("keydown", (e) => {
 // ---- tabs ----
 function setTab(t) {
   document.body.classList.toggle("tab-ah", t === "ah");
+  document.body.classList.toggle("tab-rs", t === "rs");
   for (const b of document.querySelectorAll("[data-tab]")) b.classList.toggle("on", b.dataset.tab === t);
   localStorage.tab = t;
-  if (t === "ah") openAh(); else render();
+  if (t === "ah") openAh(); else if (t === "rs") openResets(); else render();
 }
 for (const b of document.querySelectorAll("[data-tab]")) b.onclick = () => setTab(b.dataset.tab);
 
@@ -907,11 +941,127 @@ $("ahReset").onclick = () => {
   ah.path = []; ah.page = 0; renderAh(); };
 setInterval(() => { if (document.body.classList.contains("tab-ah") && Date.now() - live.at > 10 * 60e3) openAh(); }, 60e3);
 
+// ---- resets: materials where buying out the cheap listings should pay, and level bands draining of supply ----
+const rs = { data: null, sort: "score", dir: -1, band: null, sel: null };
+const BANDS = [[0, 10, "1–9"], [10, 20, "10–19"], [20, 30, "20–29"], [30, 40, "30–39"], [40, 50, "40–49"], [50, 60, "50–59"], [60, 99, "60"]];
+const bandOf = (r) => r.ilvl == null ? null : BANDS.findIndex(([a, b]) => r.ilvl >= a && r.ilvl < b);
+const pctTxt = (v) => v == null ? "–" : `${v > 0 ? "+" : ""}${Math.round(v)}%`;
+const pctCls = (v) => v == null || Math.abs(v) < 3 ? "flat" : v > 0 ? "up" : "down";
+// the longest window we have: 72h, else 24h, else 3h
+const bestTrend = (r) => r.trend[72] || r.trend[24] || r.trend[3] || null;
+// ripeness: how hard supply is falling, discounted when the price is moving too
+const score = (r) => { const t = bestTrend(r); if (!t || t.price == null) return -999;
+  return -t.supply - Math.max(0, Math.abs(t.price) - rs.data.flat) * 1.5; };
+
+async function openResets() {
+  if (!rs.data || Date.now() - rs.at > 5 * 60e3) {
+    try {
+      const [d, icons] = await Promise.all([
+        fetch(window.STATIC ? "data/resets.json" : "/api/resets", { cache: "no-cache" }).then((r) => r.json()),
+        Object.keys(ah.icons).length ? ah.icons : fetch(window.STATIC ? "data/icons.json" : "/api/icons").then((r) => r.json())]);
+      rs.data = d; rs.at = Date.now(); ah.icons = icons;
+    } catch { $("rsWrap").innerHTML = `<div class="note pad">Couldn't load reset data. Try again in a moment.</div>`; return; }
+  }
+  const d = rs.data;
+  $("rsHow").innerHTML = `<p>A reset buys every listing under ${Math.round(d.buyBelow * 100)}% of the resale price, then relists at that price.
+    The resale price is the lower of TSM's realm and region averages. Profit is after the 5% auction house cut and assumes it all sells.</p>
+    <p><span class="badge ripe" style="margin:0">Ripe</span> means supply fell ${-d.drain}% or more over 24 hours or 3 days while the cheapest price stayed within ±${d.flat}%.
+    That's what happens when players level past an item: fewer farmers, steady buyers. Supply counts units for sale where recorded, else listings.</p>
+    <p>The bands above show the median supply change per item level, so you can see which level range is drying up.</p>
+    <p>Click a row for its price ladder and history.</p>`;
+  renderBands(); renderResets();
+}
+
+function renderBands() {
+  const per = BANDS.map(() => []);
+  for (const r of rs.data.items) { const b = bandOf(r), t = bestTrend(r); if (b >= 0 && t && r.sold >= 20) per[b].push(r); }
+  $("rsBands").innerHTML = BANDS.map(([, , l], i) => {
+    const xs = per[i].map((r) => bestTrend(r).supply).sort((a, b) => a - b);
+    const med = xs.length ? xs[xs.length >> 1] : null, ripe = per[i].filter((r) => r.ripe).length;
+    const w = med == null ? 0 : Math.min(50, Math.abs(med)), col = med < 0 ? "var(--down)" : "var(--up)";
+    return `<div class="band ${rs.band === i ? "on" : ""}" data-b="${i}"><b><span class="hm">Item level </span><span class="mo">Lv </span>${l}</b>
+      <div class="bar"><i style="left:${med < 0 ? 50 - w : 50}%;width:${w}%;background:${col}"></i><i style="left:50%;width:1px;background:var(--dim)"></i></div>
+      <span>${med == null ? "no trend yet" : `supply ${pctTxt(med)}`}, ${ripe} ripe</span></div>`;
+  }).join("");
+  for (const el of $("rsBands").children) el.onclick = () => { rs.band = rs.band === +el.dataset.b ? null : +el.dataset.b; renderBands(); renderResets(); };
+}
+
+function renderResets() {
+  const d = rs.data, q = $("rsq").value.trim().toLowerCase(), budget = parseFloat($("rsBudget").value) * 10000 || Infinity;
+  const minSold = +$("rsSold").value || 0, ripeOnly = $("rsRipe").checked;
+  let rows = d.items.filter((r) => r.sold >= minSold && r.cost <= budget && (!ripeOnly || r.ripe)
+    && (rs.band == null || bandOf(r) === rs.band) && (!q || r.name.toLowerCase().includes(q)));
+  const key = { score, name: (r) => r.name, ilvl: (r) => r.ilvl ?? -1, price: (r) => r.price, target: (r) => r.target,
+    units: (r) => r.units, s3: (r) => r.trend[3]?.supply ?? 999, s24: (r) => r.trend[24]?.supply ?? 999,
+    s72: (r) => r.trend[72]?.supply ?? 999, cost: (r) => r.cost, profit: (r) => r.profit,
+    roi: (r) => r.cost ? r.profit / r.cost : -1, sold: (r) => r.sold }[rs.sort];
+  rows.sort((a, b) => { const x = key(a), y = key(b); return (x < y ? -1 : x > y ? 1 : 0) * rs.dir; });
+  $("rsCount").textContent = `${rows.length} of ${d.items.length} materials`;
+  const trendCell = (t) => t ? `<span class="${pctCls(t.supply)}">${pctTxt(t.supply)}</span><small>price ${pctTxt(t.price)}</small>` : `<span class="flat">–</span>`;
+  const C = [["name", "Item"], ["ilvl", "Item level", "hm"], ["price", "Cheapest", "hm"], ["target", "Resell at", "hm"], ["units", "For sale", "hm"],
+    ["s24", "Supply 24h"], ["s72", "Supply 3 days", "hm"], ["cost", "Cost to reset"], ["profit", "Profit"],
+    ["roi", "Return", "hm"], ["sold", "Sold a day", "hm"]];
+  const shown = rows.slice(0, 200);
+  $("rsWrap").innerHTML = rows.length ? `<table id="ahTable" class="rsTable"><thead><tr>${C.map(([c, l, m]) =>
+    `<th data-s="${c}" class="${rs.sort === c ? "on" : ""} ${m || ""}">${l}${rs.sort === c ? (rs.dir > 0 ? " ▲" : " ▼") : ""}</th>`).join("")}</tr></thead><tbody>${
+    shown.map((r) => `<tr data-id="${r.id}"${r.id === rs.sel ? ' class="on"' : ""}><td><div class="it">${img(r.id)}<div style="min-width:0">
+      <div class="nm q-${QUAL[r.q] || "COMMON"}">${esc(r.name)}${r.ripe ? '<span class="badge ripe">Ripe</span>' : ""}</div></div></div></td>
+      <td class="hm">${r.ilvl ?? "–"}</td><td class="hm">${money(r.price)}</td><td class="hm">${money(r.target)}</td>
+      <td class="hm">${r.units.toLocaleString()}</td><td>${trendCell(r.trend[24])}</td>
+      <td class="hm">${trendCell(r.trend[72])}</td>
+      <td>${r.buyUnits ? money(r.cost) + `<small>${r.buyUnits.toLocaleString()} units</small>` : '<span class="flat" title="nothing listed under the buy line">–</span>'}</td>
+      <td class="${r.profit > 0 ? "up" : "flat"}">${r.buyUnits ? money(r.profit) : "–"}</td>
+      <td class="hm">${r.cost ? Math.round(r.profit / r.cost * 100) + "%" : "–"}</td><td class="hm">${r.sold.toLocaleString()}</td></tr>`).join("")}</tbody></table>
+    ${rows.length > shown.length ? `<div class="pager">Showing the first 200. Narrow it with the filters.</div>` : ""}`
+    : `<div class="note pad">Nothing matches. Raise the budget or lower the sales minimum.</div>`;
+  for (const th of $("rsWrap").querySelectorAll("th")) th.onclick = () => {
+    rs.dir = rs.sort === th.dataset.s ? -rs.dir : (th.dataset.s === "name" || th.dataset.s.startsWith("s") ? 1 : -1);
+    rs.sort = th.dataset.s; renderResets(); };
+  for (const tr of $("rsWrap").querySelectorAll("tbody tr")) tr.onclick = () => { rs.sel = tr.dataset.id; renderResets(); rsSelect(rs.sel); };
+}
+
+// cumulative units against unit price: the wall you'd buy through, with the resale line
+function ladderSvg(r) {
+  const steps = r.ladder, W = 340, H = 140, L = 4, R = 50, T = 8, B = 18;
+  const maxU = steps.reduce((a, [, q]) => a + q, 0), maxP = Math.max(r.target * 1.15, steps[steps.length - 1][0]);
+  const X = (u) => L + (u / maxU) * (W - L - R), Y = (p) => T + (1 - p / maxP) * (H - T - B);
+  let u = 0; const bars = steps.map(([p, q]) => { const x = X(u); u += q;
+    return `<rect class="${p < r.target * rs.data.buyBelow ? "buy" : "keep"}" x="${x.toFixed(1)}" y="${Y(p).toFixed(1)}" width="${Math.max(0.6, X(u) - x - 0.3).toFixed(1)}" height="${(H - B - Y(p)).toFixed(1)}"/>`; }).join("");
+  return `<svg class="ladder" width="${W}" height="${H}">${bars}
+    <line x1="${L}" x2="${W - R}" y1="${Y(r.target)}" y2="${Y(r.target)}" stroke="#c9a85c" stroke-dasharray="3 3"/>
+    <text x="${W - R + 3}" y="${Y(r.target) + 4}" fill="#c9a85c">resell</text>
+    <text x="${L}" y="${H - 3}">cheapest first</text><text x="${W - R - 2}" y="${H - 3}" text-anchor="end">${maxU.toLocaleString()} units${u < r.units ? " (first 40 prices)" : ""}</text></svg>`;
+}
+
+async function rsSelect(id) {
+  const r = rs.data.items.find((x) => x.id === id); if (!r) return;
+  const tr = (w) => r.trend[w] ? `<tr><td>${w === 72 ? "3 days" : w + "h"}</td><td class="${pctCls(r.trend[w].supply)}">${pctTxt(r.trend[w].supply)} ${r.trend[w].basis}</td><td class="${pctCls(r.trend[w].price)}">${pctTxt(r.trend[w].price)}</td></tr>` : "";
+  $("rsDetail").innerHTML = `<div class="box"><div class="dhead">${img(r.id, 'class="ico"')}<div>
+      <div class="name q-${QUAL[r.q] || "COMMON"}">${esc(r.name)}</div><div class="note">item level ${r.ilvl ?? "unknown"}${r.ripe ? '<span class="badge ripe">Ripe</span>' : ""}</div></div></div>
+    <h3 style="margin-top:14px">Buyout ladder</h3>
+    <div class="note">${r.buyUnits ? `Buying the green part (${r.buyUnits.toLocaleString()} units) costs ${money(r.cost)}. Relisting at ${money(r.target)} returns ${money(r.profit)} after the auction house cut.`
+      : `Nothing is listed under ${Math.round(rs.data.buyBelow * 100)}% of ${money(r.target)}, so there's no reset here right now.`}</div>
+    ${ladderSvg(r)}
+    <h3 style="margin-top:14px">Supply and price</h3>
+    ${Object.keys(r.trend).length ? `<table class="kv" style="width:100%;font-size:14px"><tr><td></td><td>supply</td><td>cheapest</td></tr>${tr(3)}${tr(24)}${tr(72)}</table>` : `<div class="note">No trend yet. It needs a few hours of snapshots.</div>`}
+    <div id="rsChart" class="note">loading history…</div>
+    <div class="note" style="margin-top:8px">Sells ${r.sold.toLocaleString()} a day across the region.${r.vendor ? ` Vendors buy it for ${money(r.vendor)}.` : ""}</div></div>`;
+  try {
+    const b = +id % 64;
+    ah.hist[b] ??= fetch(window.STATIC ? `data/hist/${b}.json` : `/api/hist/${b}`).then((x) => x.json());
+    const s = (await ah.hist[b])[id] || [];
+    if (rs.sel !== id || !$("rsChart")) return;
+    mountChart($("rsChart"), { vendor: r.vendor, series: s.map(([ts, price, auctions, units]) => ({ ts, price, auctions, units })) });
+  } catch { if ($("rsChart")) $("rsChart").textContent = "No history yet."; }
+}
+for (const id of ["rsq", "rsBudget", "rsSold"]) $(id).oninput = () => rs.data && renderResets();
+$("rsRipe").onchange = () => rs.data && renderResets();
+
 let rt; addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(render, 120); });
 setInterval(updateAgo, 30000);
 setInterval(() => (window.STATIC ? checkVersion() : refresh()), 2 * 60000);
 load();
-if (localStorage.tab === "ah") setTab("ah");
+if (localStorage.tab === "ah" || localStorage.tab === "rs") setTab(localStorage.tab);
 </script>
 </body>
 </html>
