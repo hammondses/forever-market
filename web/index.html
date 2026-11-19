@@ -106,6 +106,11 @@ aside { border-left: 1px solid var(--line); background: var(--panel); overflow-y
 .badge { display: inline-block; font: 700 12px var(--ui); padding: 1px 6px; border-radius: 2px; margin-left: 6px; vertical-align: middle; }
 .badge.turn { background: #e8b923; color: #000; } .badge.maybe { border: 1px solid #e8b923; color: #e8b923; }
 svg text { font: 12px var(--ui); fill: var(--dim); }
+.chartbox { position: relative; width: max-content; }
+.chartbox .hit { cursor: crosshair; touch-action: pan-y; }
+.chartbox .tip { position: absolute; top: -6px; transform: translateY(-100%); pointer-events: none; white-space: nowrap;
+  background: #0b1226; border: 1px solid #8c7341; padding: 5px 8px; font-size: 13px; line-height: 1.35; color: var(--text, #e6dac2); z-index: 5; }
+.chartbox .tip b { font-weight: 600; }
 .note { color: var(--dim); font-size: 13.5px; margin-top: 6px; }
 .up { color: var(--up); } .down { color: var(--down); } .flat { color: var(--dim); }
 
@@ -579,7 +584,7 @@ async function select(id, scroll = true) {
   if (!res.ok) { $("chart").textContent = "Price history is kept for the map's materials only."; return; }
   const h = await res.json();
   if (state.sel !== id) return;
-  $("chart").outerHTML = chart(h);
+  mountChart($("chart"), h);
 }
 
 function chart(h) {
@@ -598,14 +603,49 @@ function chart(h) {
   const bw = Math.max(1, (W - L - R) / s.length - 1);
   const bars = s.filter((p) => p.auctions != null).map((p) => `<rect x="${(X(p.ts) - bw / 2).toFixed(1)}" y="${(H - (p.auctions / amax) * BH).toFixed(1)}" width="${bw.toFixed(1)}" height="${((p.auctions / amax) * BH).toFixed(1)}" fill="#3b4060"/>`).join("");
   const vend = h.vendor ? `<line x1="${L}" x2="${W - R}" y1="${Y(h.vendor)}" y2="${Y(h.vendor)}" stroke="#c9a85c" stroke-dasharray="3 3" opacity=".7"/><text x="${W - R + 3}" y="${Y(h.vendor) + 3}" fill="#c9a85c">vendor</text>` : "";
-  return `<svg width="${W}" height="${H}" style="margin-top:8px">
+  const pts = s.map((p) => [X(p.ts), Y(p.price)].map((v) => +v.toFixed(1)).join(",")).join(" ");
+  return `<div class="chartbox"><svg width="${W}" height="${H}" style="margin-top:8px" data-pts="${pts}">
     <defs><linearGradient id="g" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="${col}" stop-opacity=".35"/><stop offset="1" stop-color="${col}" stop-opacity="0"/></linearGradient></defs>
     ${bars}<path d="${area}" fill="url(#g)"/><path d="${line}" fill="none" stroke="${col}" stroke-width="2" style="filter:drop-shadow(0 0 4px ${col})"/>${vend}
     <text x="${W - R + 3}" y="${Y(hi) + 4}">${moneyText(hi)}</text><text x="${W - R + 3}" y="${Y(lo)}">${moneyText(lo)}</text>
     <text x="${W - R + 3}" y="${H - 2}">${amax} listed</text>
     <text x="${L}" y="${H - BH - 2}">${new Date(t0 * 1000).toLocaleString([], { month: "short", day: "numeric", hour: "2-digit" })}</text>
-  </svg>`;
+    <g class="hov" visibility="hidden"><line y1="${T}" y2="${H}" stroke="#e6dac2" stroke-opacity=".35"/><circle r="3.5" fill="#e6dac2"/></g>
+    <rect class="hit" x="${L}" y="0" width="${W - L - R}" height="${H}" fill="transparent"/>
+  </svg><div class="tip" hidden></div></div>`;
 }
+
+// chart hover: nearest snapshot's time, cheapest price, listings and units
+function chartHover(e) {
+  const svg = e.target.closest?.("svg[data-pts]"); if (!svg) return;
+  const box = svg.parentNode, tip = box.querySelector(".tip"), hov = svg.querySelector(".hov");
+  const s = chartData.get(svg); if (!s) return;
+  const r = svg.getBoundingClientRect(), x = (e.touches ? e.touches[0].clientX : e.clientX) - r.left;
+  const xy = svg.dataset.pts.split(" ").map((p) => p.split(",").map(Number));
+  let i = 0; for (let k = 1; k < xy.length; k++) if (Math.abs(xy[k][0] - x) < Math.abs(xy[i][0] - x)) i = k;
+  const p = s[i], [px, py] = xy[i];
+  hov.setAttribute("visibility", "visible");
+  hov.querySelector("line").setAttribute("x1", px); hov.querySelector("line").setAttribute("x2", px);
+  hov.querySelector("circle").setAttribute("cx", px); hov.querySelector("circle").setAttribute("cy", py);
+  tip.innerHTML = `<b>${new Date(p.ts * 1000).toLocaleString([], { weekday: "short", month: "short", day: "numeric", hour: "numeric", minute: "2-digit" })}</b>
+    <div>${money(p.price)}</div>
+    <div>${p.units != null ? `${p.units.toLocaleString()} for sale in ` : ""}${p.auctions != null ? `${p.auctions.toLocaleString()} listing${p.auctions === 1 ? "" : "s"}` : "listing count not recorded"}</div>`;
+  tip.hidden = false;
+  tip.style.left = Math.min(Math.max(px - tip.offsetWidth / 2, 0), r.width - tip.offsetWidth) + "px";
+}
+const chartData = new WeakMap();
+function chartLeave(e) {
+  const svg = e.target.closest?.("svg[data-pts]"); if (!svg) return;
+  svg.querySelector(".hov").setAttribute("visibility", "hidden"); svg.parentNode.querySelector(".tip").hidden = true;
+}
+// remember each chart's series once it lands in the page
+function mountChart(el, h) {
+  el.outerHTML = chart(h);
+  const svgs = document.querySelectorAll("svg[data-pts]");
+  for (const svg of svgs) if (!chartData.has(svg)) chartData.set(svg, h.series.filter((p) => p.price));
+}
+document.addEventListener("pointermove", chartHover);
+document.addEventListener("pointerout", (e) => { if (e.target.classList?.contains("hit")) chartLeave(e); });
 
 function renderWindows() {
   const d = state.data;
@@ -854,7 +894,7 @@ async function ahSelect(id, scroll) {
   try {
     const s = await ahHistory(id);
     if (!$("ahChart")) return;
-    $("ahChart").outerHTML = chart({ vendor: r.vendor, series: s.map(([ts, price, auctions]) => ({ ts, price, auctions })) });
+    mountChart($("ahChart"), { vendor: r.vendor, series: s.map(([ts, price, auctions, units]) => ({ ts, price, auctions, units })) });
   } catch { $("ahChart").textContent = "No history yet."; }
 }
 let ahT;

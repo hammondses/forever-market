@@ -142,13 +142,13 @@ def market_map(window: str) -> dict:
 def item_history(item: str) -> dict:
     m = open_market()
     rows = m.db.execute(
-        "SELECT ts, minBuyout, numAuctions, marketValueRecent FROM auctiondb_non_commodity_data "
+        "SELECT ts, minBuyout, numAuctions, marketValueRecent, numUnits FROM auctiondb_non_commodity_data "
         "WHERE scope=? AND item=? ORDER BY ts", (SCOPE, item)).fetchall()
     useful = m.db.execute("SELECT per_player, professions FROM useful WHERE id=?", (item,)).fetchone()
     return {
         "id": item, "name": m.name(item), "vendor": m.vendor(item), "sold": m.sold.get(item),
         "perPlayer": useful[0] if useful else 0, "usedBy": useful[1] if useful else "",
-        "series": [{"ts": t, "price": b, "auctions": n, "mv": mv} for t, b, n, mv in rows],
+        "series": [{"ts": t, "price": b, "auctions": n, "mv": mv, "units": u} for t, b, n, mv, u in rows],
     }
 
 
@@ -159,16 +159,16 @@ HIST_DAYS = 14
 def hist_buckets() -> list[dict]:
     """Price history for every item, split into HIST_BUCKETS files by int(id) % HIST_BUCKETS.
 
-    {id: [[ts, cheapest, auctions], ...]} over the last HIST_DAYS; the AH tab charts these.
+    {id: [[ts, cheapest, auctions, units], ...]} over the last HIST_DAYS; the AH tab charts these.
     """
     out: list[dict] = [{} for _ in range(HIST_BUCKETS)]
     rows = open_market().db.execute(
-        "SELECT item, ts, minBuyout, numAuctions FROM auctiondb_non_commodity_data "
+        "SELECT item, ts, minBuyout, numAuctions, numUnits FROM auctiondb_non_commodity_data "
         "WHERE scope=? AND ts>=? AND minBuyout>0 ORDER BY ts", (SCOPE, time.time() - HIST_DAYS * 86400))
-    for i, t, b, n in rows:
+    for i, t, b, n, u in rows:
         if not i.isdigit():
             continue  # TSM variant keys like i:285282::i1
-        out[int(i) % HIST_BUCKETS].setdefault(i, []).append([t, b, n])
+        out[int(i) % HIST_BUCKETS].setdefault(i, []).append([t, b, n, u])
     return out
 
 
