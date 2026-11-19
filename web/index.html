@@ -1085,16 +1085,12 @@ async function rsSelect(id) {
       Relisting it all at ${money(r.line)} makes ${money(r.profit)} after the auction house cut, if it sells.
       ${r.vsMedian > 25 ? `That's ${Math.round(r.vsMedian)}% over the 7-day median of ${money(r.target)}, so it may not stick.` : `The 7-day median is ${money(r.target)}.`}</div>
     ${ladderSvg(r)}
-    <h3 style="margin-top:14px">Listings</h3>
-    <div class="rsList"><table><thead><tr><th>Price each</th><th>For sale</th><th>Running total</th><th>Running cost</th></tr></thead><tbody>${
-      (() => { let u = 0, c = 0; return r.ladder.map(([p, q]) => { u += q; c += p * q;
-        return `<tr class="${p < r.line ? "buy" : ""}"><td>${money(p)}</td><td>${q.toLocaleString()}</td><td>${u.toLocaleString()}</td><td>${money(c)}</td></tr>`; }).join(""); })()
-    }</tbody></table></div>
-    ${r.ladder.reduce((a, [, q]) => a + q, 0) < r.units ? `<div class="note">Showing prices up to 4× the cheapest.</div>` : ""}
+    <h3 style="margin-top:14px">On the auction house</h3><div id="rsListings">${live.book ? listings(r.id) : `<div class="note">loading…</div>`}</div>
     <h3 style="margin-top:14px">Supply and price</h3>
     ${Object.keys(r.trend).length ? `<table class="kv" style="width:100%;font-size:14px"><tr><td></td><td>supply</td><td>cheapest</td></tr>${tr(3)}${tr(24)}${tr(72)}</table>` : `<div class="note">No trend yet. It needs a few hours of snapshots.</div>`}
     <div id="rsChart" class="note">loading history…</div>
     <div class="note" style="margin-top:8px">Sells ${r.sold.toLocaleString()} a day across the region.${r.vendor ? ` Vendors buy it for ${money(r.vendor)}.` : ""}</div></div>`;
+  if (!live.book) liveHouse().then(() => { if (String(rs.sel) === String(r.id)) $("rsListings").innerHTML = listings(r.id); }).catch(() => {});
   try {
     const b = +id % 64;
     ah.hist[b] ??= fetch(window.STATIC ? `data/hist/${b}.json` : `/api/hist/${b}`).then((x) => x.json());
