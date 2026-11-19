@@ -272,7 +272,7 @@ body.tab-ah .mk, body.tab-rs .mk, body:not(.tab-ah) #ahv, body:not(.tab-rs) #rsv
       <input id="rsq" placeholder="Item name" autocomplete="off">
       <label>budget <input type="number" id="rsBudget" min="0" step="any" placeholder="any"> g</label>
       <label>sells <input type="number" id="rsSold" min="0" value="20"> a day or more (region)</label>
-      <label>buy up to <select id="rsLine"><option value="0.9">90%</option><option value="1" selected>100%</option><option value="1.1">110%</option><option value="1.25">125%</option></select> of the median</label>
+      <label>reset to <select id="rsLine"><option value="1.25">+25%</option><option value="1.5" selected>+50%</option><option value="2">+100%</option><option value="3">+200%</option></select> over the cheapest</label>
       <label><input type="checkbox" id="rsRipe"> ripe only</label>
       <span id="rsCount"></span>
     </div>
@@ -964,8 +964,8 @@ async function openResets() {
     } catch { $("rsWrap").innerHTML = `<div class="note pad">Couldn't load reset data. Try again in a moment.</div>`; return; }
   }
   const d = rs.data;
-  $("rsHow").innerHTML = `<p>A reset buys every listing up to the buy line you pick (at least the cheapest price), then relists at the median.
-    The resale price is the median cheapest price over the last ${d.medianDays} days (TSM's average until an item has 3 snapshots). Profit is after the 5% auction house cut and assumes it all sells.</p>
+  $("rsHow").innerHTML = `<p>A reset buys every listing under the reset price (the cheapest listing plus the markup you pick), then relists it all at the reset price.
+    Profit is after the 5% auction house cut and assumes it all sells at that price. The median is the middle cheapest price over the last ${d.medianDays} days: a reset far above it is less likely to hold.</p>
     <p><span class="badge ripe" style="margin:0">Ripe</span> means supply fell ${-d.drain}% or more over 24 hours or 3 days while the cheapest price stayed within ±${d.flat}%.
     That's what happens when players level past an item: fewer farmers, steady buyers. Supply counts units for sale where recorded, else listings.</p>
     <p>The bands above show the median supply change per item level, so you can see which level range is drying up.</p>
@@ -987,16 +987,14 @@ function renderBands() {
   for (const el of $("rsBands").children) el.onclick = () => { rs.band = rs.band === +el.dataset.b ? null : +el.dataset.b; renderBands(); renderResets(); };
 }
 
-// a reset buys every listing up to the buy line (always at least the cheapest price step)
-// and relists at the median; profit can be negative
+// a reset: buy every listing under the reset price (cheapest + markup), relist it all at the reset price
 function plan(r) {
-  const line = r.target * (+$("rsLine").value || 1);
-  let buy = r.ladder.filter(([p]) => p <= line);
-  if (!buy.length) buy = r.ladder.slice(0, 1);
+  r.line = Math.round(r.price * (+$("rsLine").value || 1.5));
+  const buy = r.ladder.filter(([p]) => p < r.line);
   r.buyUnits = buy.reduce((a, [, q]) => a + q, 0);
   r.cost = buy.reduce((a, [p, q]) => a + p * q, 0);
-  r.profit = Math.round(r.buyUnits * r.target * 0.95 - r.cost);
-  r.line = Math.max(line, buy[buy.length - 1][0]);
+  r.profit = Math.round(r.buyUnits * r.line * 0.95 - r.cost);
+  r.vsMedian = r.target ? (r.line / r.target - 1) * 100 : null;
 }
 
 function renderResets() {
@@ -1005,14 +1003,14 @@ function renderResets() {
   const minSold = +$("rsSold").value || 0, ripeOnly = $("rsRipe").checked;
   let rows = d.items.filter((r) => r.sold >= minSold && r.cost <= budget && (!ripeOnly || r.ripe)
     && (rs.band == null || bandOf(r) === rs.band) && (!q || r.name.toLowerCase().includes(q)));
-  const key = { score, name: (r) => r.name, ilvl: (r) => r.ilvl ?? -1, price: (r) => r.price, target: (r) => r.target,
+  const key = { score, name: (r) => r.name, ilvl: (r) => r.ilvl ?? -1, price: (r) => r.price, target: (r) => r.target, line: (r) => r.line,
     units: (r) => r.units, s3: (r) => r.trend[3]?.supply ?? 999, s24: (r) => r.trend[24]?.supply ?? 999,
     s72: (r) => r.trend[72]?.supply ?? 999, cost: (r) => r.cost, profit: (r) => r.profit,
     roi: (r) => r.cost ? r.profit / r.cost : -1, sold: (r) => r.sold }[rs.sort];
   rows.sort((a, b) => { const x = key(a), y = key(b); return (x < y ? -1 : x > y ? 1 : 0) * rs.dir; });
   $("rsCount").textContent = `${rows.length} of ${d.items.length} materials`;
   const trendCell = (t) => t ? `<span class="${pctCls(t.supply)}">${pctTxt(t.supply)}</span><small>price ${pctTxt(t.price)}</small>` : `<span class="flat">–</span>`;
-  const C = [["name", "Item"], ["ilvl", "Item level", "hm"], ["price", "Cheapest", "hm"], ["target", "Resell at", "hm"], ["units", "For sale", "hm"],
+  const C = [["name", "Item"], ["ilvl", "Item level", "hm"], ["price", "Cheapest", "hm"], ["target", "Median", "hm"], ["line", "Reset to"], ["units", "For sale", "hm"],
     ["s24", "Supply 24h"], ["s72", "Supply 3 days", "hm"], ["cost", "Cost to reset"], ["profit", "Profit"],
     ["roi", "Return", "hm"], ["sold", "Sold a day", "hm"]];
   const shown = rows.slice(0, 200);
@@ -1020,7 +1018,7 @@ function renderResets() {
     `<th data-s="${c}" class="${rs.sort === c ? "on" : ""} ${m || ""}">${l}${rs.sort === c ? (rs.dir > 0 ? " ▲" : " ▼") : ""}</th>`).join("")}</tr></thead><tbody>${
     shown.map((r) => `<tr data-id="${r.id}"${r.id === rs.sel ? ' class="on"' : ""}><td><div class="it">${img(r.id)}<div style="min-width:0">
       <div class="nm q-${QUAL[r.q] || "COMMON"}">${esc(r.name)}${r.ripe ? '<span class="badge ripe">Ripe</span>' : ""}</div></div></div></td>
-      <td class="hm">${r.ilvl ?? "–"}</td><td class="hm">${money(r.price)}</td><td class="hm">${money(r.target)}</td>
+      <td class="hm">${r.ilvl ?? "–"}</td><td class="hm">${money(r.price)}</td><td class="hm">${money(r.target)}</td><td>${money(r.line)}<small>${r.vsMedian == null ? "" : `${pctTxt(r.vsMedian)} vs median`}</small></td>
       <td class="hm">${r.units.toLocaleString()}</td><td>${trendCell(r.trend[24])}</td>
       <td class="hm">${trendCell(r.trend[72])}</td>
       <td>${money(r.cost)}<small>${r.buyUnits.toLocaleString()} units</small></td>
@@ -1037,14 +1035,16 @@ function renderResets() {
 // cumulative units against unit price: the wall you'd buy through, with the resale line
 function ladderSvg(r) {
   const steps = r.ladder, W = 340, H = 140, L = 4, R = 50, T = 8, B = 18;
-  const maxU = steps.reduce((a, [, q]) => a + q, 0), maxP = Math.max(r.target * 1.15, steps[steps.length - 1][0]);
+  const maxU = steps.reduce((a, [, q]) => a + q, 0), maxP = Math.max(r.line, r.target) * 1.1;
   const X = (u) => L + (u / maxU) * (W - L - R), Y = (p) => T + (1 - p / maxP) * (H - T - B);
   let u = 0, cost = 0; const bars = steps.map(([p, q]) => { const x = X(u); u += q; cost += p * q;
-    return `<rect class="${p <= r.line ? "buy" : "keep"}" data-p="${p}" data-q="${q}" data-u="${u}" data-c="${cost}" x="${x.toFixed(1)}" y="${Y(p).toFixed(1)}" width="${Math.max(0.6, X(u) - x - 0.3).toFixed(1)}" height="${(H - B - Y(p)).toFixed(1)}"/>`; }).join("");
+    return `<rect class="${p < r.line ? "buy" : "keep"}" data-p="${p}" data-q="${q}" data-u="${u}" data-c="${cost}" x="${x.toFixed(1)}" y="${Y(p).toFixed(1)}" width="${Math.max(0.6, X(u) - x - 0.3).toFixed(1)}" height="${(H - B - Y(p)).toFixed(1)}"/>`; }).join("");
   return `<div class="chartbox"><svg class="ladder" width="${W}" height="${H}">${bars}
-    <line x1="${L}" x2="${W - R}" y1="${Y(r.target)}" y2="${Y(r.target)}" stroke="#c9a85c" stroke-dasharray="3 3"/>
-    <text x="${W - R + 3}" y="${Y(r.target) + 4}" fill="#c9a85c">resell</text>
-    <text x="${L}" y="${H - 3}">cheapest first</text><text x="${W - R - 2}" y="${H - 3}" text-anchor="end">${maxU.toLocaleString()} units${u < r.units ? " (first 40 prices)" : ""}</text>
+    <line x1="${L}" x2="${W - R}" y1="${Y(r.line)}" y2="${Y(r.line)}" stroke="#c9a85c" stroke-dasharray="3 3"/>
+    <text x="${W - R + 3}" y="${Y(r.line) + 4}" fill="#c9a85c">reset</text>
+    <line x1="${L}" x2="${W - R}" y1="${Y(r.target)}" y2="${Y(r.target)}" stroke="#9a8f7a" stroke-dasharray="1 3"/>
+    <text x="${W - R + 3}" y="${Y(r.target) + 4}">median</text>
+    <text x="${L}" y="${H - 3}">cheapest first</text><text x="${W - R - 2}" y="${H - 3}" text-anchor="end">${maxU.toLocaleString()} of ${r.units.toLocaleString()} units</text>
     <rect class="hit" x="${L}" y="0" width="${W - L - R}" height="${H}" fill="transparent"/></svg><div class="tip" hidden></div></div>`;
 }
 
@@ -1075,8 +1075,9 @@ async function rsSelect(id) {
   $("rsDetail").innerHTML = `<div class="box"><div class="dhead">${img(r.id, 'class="ico"')}<div>
       <div class="name q-${QUAL[r.q] || "COMMON"}">${esc(r.name)}</div><div class="note">item level ${r.ilvl ?? "unknown"}${r.ripe ? '<span class="badge ripe">Ripe</span>' : ""}</div></div></div>
     <h3 style="margin-top:14px">Buyout ladder</h3>
-    <div class="note">Buying the green part (${r.buyUnits.toLocaleString()} units) costs ${money(r.cost)}. Relisting at the median ${money(r.target)}
-      ${r.profit >= 0 ? `makes ${money(r.profit)}` : `loses ${money(-r.profit)}`} after the auction house cut.</div>
+    <div class="note">Buying everything under ${money(r.line)} (the green part, ${r.buyUnits.toLocaleString()} units) costs ${money(r.cost)}.
+      Relisting it all at ${money(r.line)} makes ${money(r.profit)} after the auction house cut, if it sells.
+      ${r.vsMedian > 25 ? `That's ${Math.round(r.vsMedian)}% over the 7-day median of ${money(r.target)}, so it may not stick.` : `The 7-day median is ${money(r.target)}.`}</div>
     ${ladderSvg(r)}
     <h3 style="margin-top:14px">Supply and price</h3>
     ${Object.keys(r.trend).length ? `<table class="kv" style="width:100%;font-size:14px"><tr><td></td><td>supply</td><td>cheapest</td></tr>${tr(3)}${tr(24)}${tr(72)}</table>` : `<div class="note">No trend yet. It needs a few hours of snapshots.</div>`}
