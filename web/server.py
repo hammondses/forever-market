@@ -158,6 +158,7 @@ RESET_BUY_BELOW = 0.9   # a reset buys every listing under 90% of the resale pri
 RESET_FLAT = 15         # price "holding" means within +/-15% of the earlier snapshot
 RESET_DRAIN = -15       # supply "draining" means units (or listings) down 15% or more
 AH_CUT = 0.05
+RESET_MEDIAN_DAYS = 7
 
 
 def latest_ladders() -> dict[str, list[list[int]]]:
@@ -192,6 +193,14 @@ def resets() -> dict:
         "SELECT item, regionMarketValue FROM auctiondb_region_stat WHERE ts="
         "(SELECT max(ts) FROM auctiondb_region_stat)")}
 
+    # resale price: median cheapest listing over the last RESET_MEDIAN_DAYS, not a peak or TSM average
+    series: dict[str, list[int]] = {}
+    for i, b in m.db.execute(
+            "SELECT item, minBuyout FROM auctiondb_non_commodity_data WHERE scope=? AND ts>=? AND minBuyout>0",
+            (SCOPE, time.time() - RESET_MEDIAN_DAYS * 86400)):
+        series.setdefault(i, []).append(b)
+    median = {i: sorted(v)[len(v) // 2] for i, v in series.items() if len(v) >= 3}
+
     def supply(ts: int | None) -> dict[str, tuple]:
         if ts is None:
             return {}
@@ -212,8 +221,8 @@ def resets() -> dict:
     rows = []
     for i, ladder in ladders.items():
         cur = now.get(i)
-        # TSM's realm average runs high early in a launch; take the lower of realm and region
-        target = min(v for v in (hist.get(i), region.get(i)) if v) if (hist.get(i) or region.get(i)) else None
+        # median of our own history; TSM's lower realm/region average until there are 3 snapshots
+        target = median.get(i) or (min(v for v in (hist.get(i), region.get(i)) if v) if (hist.get(i) or region.get(i)) else None)
         if not cur or not target:
             continue
         units = sum(q for _, q in ladder)
@@ -246,7 +255,7 @@ def resets() -> dict:
             "ladder": ladder[:40],
         })
     return {"latest": latest, "windows": RESET_WINDOWS, "buyBelow": RESET_BUY_BELOW, "flat": RESET_FLAT,
-            "drain": RESET_DRAIN, "items": rows}
+            "drain": RESET_DRAIN, "medianDays": RESET_MEDIAN_DAYS, "items": rows}
 
 
 HIST_BUCKETS = 64

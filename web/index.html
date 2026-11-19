@@ -964,7 +964,7 @@ async function openResets() {
   }
   const d = rs.data;
   $("rsHow").innerHTML = `<p>A reset buys every listing under ${Math.round(d.buyBelow * 100)}% of the resale price, then relists at that price.
-    The resale price is the lower of TSM's realm and region averages. Profit is after the 5% auction house cut and assumes it all sells.</p>
+    The resale price is the median cheapest price over the last ${d.medianDays} days (TSM's average until an item has 3 snapshots). Profit is after the 5% auction house cut and assumes it all sells.</p>
     <p><span class="badge ripe" style="margin:0">Ripe</span> means supply fell ${-d.drain}% or more over 24 hours or 3 days while the cheapest price stayed within ±${d.flat}%.
     That's what happens when players level past an item: fewer farmers, steady buyers. Supply counts units for sale where recorded, else listings.</p>
     <p>The bands above show the median supply change per item level, so you can see which level range is drying up.</p>
