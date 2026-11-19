@@ -6,6 +6,7 @@ Run: .venv/bin/python scripts/export_static.py [outdir]   (default data/site)
 
 from __future__ import annotations
 
+import hashlib
 import json
 import shutil
 import sys
@@ -37,9 +38,15 @@ icons = ROOT / "data" / "catalog" / "icons.json"
 (tmp / "data" / "icons.json").write_text(icons.read_text() if icons.exists() else "{}")
 for i in ids:
     (tmp / "data" / "item" / f"{i}.json").write_text(json.dumps(item_history(i)))
-html = PAGE.read_text().replace("<script>", "<script>window.STATIC = true;</script>\n<script>", 1)
+page = PAGE.read_text()
+build = hashlib.sha1(page.encode()).hexdigest()[:12]
+html = page.replace("<script>", f"<script>window.STATIC = true; window.BUILD = '{build}';</script>\n<script>", 1)
 (tmp / "index.html").write_text(html)
-(tmp / "_headers").write_text("/data/*\n  Cache-Control: public, max-age=300\n")
+# the page polls version.json on focus and swaps in newer prices (or reloads for a new build)
+latest = max(json.loads((tmp / "data" / f"map-{w}.json").read_text())["latest"] for w in WINDOWS)
+(tmp / "version.json").write_text(json.dumps({"latest": latest, "build": build}))
+(tmp / "_headers").write_text("/data/*\n  Cache-Control: public, max-age=300\n"
+                              "/version.json\n  Cache-Control: no-store\n")
 shutil.rmtree(out, ignore_errors=True)
 tmp.rename(out)
 print(f"{len(ids)} items -> {out}")

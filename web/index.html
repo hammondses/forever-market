@@ -640,6 +640,26 @@ async function load() {
 }
 async function refresh() { state.data = null; await load(); }
 
+// Newer prices: version.json is never cached. When it reports a later snapshot, fetch
+// the map past the browser cache and re-render; when the page itself was redeployed, reload.
+let checking = false;
+async function checkVersion() {
+  if (!window.STATIC || checking || document.hidden) return;
+  checking = true;
+  try {
+    const v = await (await fetch("version.json", { cache: "no-store" })).json();
+    if (v.build !== window.BUILD) { location.reload(); return; }
+    if (state.data && v.latest > state.data.latest) {
+      state.data = await (await fetch(api(state.window) + "?v=" + v.latest, { cache: "reload" })).json();
+      for (const k of Object.keys(ah.hist)) delete ah.hist[k];
+      renderWindows(); renderTape(); render(); updateAgo();
+      if (state.sel) select(state.sel, false);
+    }
+  } catch { /* offline: try again next time */ } finally { checking = false; }
+}
+addEventListener("focus", checkVersion);
+document.addEventListener("visibilitychange", checkVersion);
+
 for (const b of document.querySelectorAll("[data-color]")) b.onclick = () => {
   state.color = b.dataset.color;
   document.querySelectorAll("[data-color]").forEach((x) => x.classList.toggle("on", x === b));
@@ -849,7 +869,7 @@ setInterval(() => { if (document.body.classList.contains("tab-ah") && Date.now()
 
 let rt; addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(render, 120); });
 setInterval(updateAgo, 30000);
-setInterval(refresh, 5 * 60000);
+setInterval(() => (window.STATIC ? checkVersion() : refresh()), 2 * 60000);
 load();
 if (localStorage.tab === "ah") setTab("ah");
 </script>
