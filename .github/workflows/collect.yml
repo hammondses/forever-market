@@ -1,0 +1,61 @@
+# Every 10 minutes: ask Blizzard for the auction house; when the snapshot is new,
+# collect, rebuild and publish https://forever.miles.games.
+# market.db and the item catalog persist between runs as assets on the "state" release.
+name: collect
+on:
+  schedule: [{ cron: "*/10 * * * *" }]
+  workflow_dispatch:
+permissions: { contents: write }
+concurrency: { group: collect, cancel-in-progress: false }
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      GH_TOKEN: ${{ github.token }}
+      BLIZZARD_CLIENT_ID: ${{ secrets.BLIZZARD_CLIENT_ID }}
+      BLIZZARD_CLIENT_SECRET: ${{ secrets.BLIZZARD_CLIENT_SECRET }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Restore state
+        run: |
+          latest=$(gh release view state --json assets -q '[.assets[].name | select(startswith("state-"))] | sort | last')
+          gh release download state -p "$latest"
+          tar xzf "$latest" && rm "$latest"
+          echo "restored $latest"
+      - name: Blizzard snapshot
+        id: snap
+        run: |
+          set +e; python3 scripts/blizzard_collect.py --new-or-3; rc=$?; set -e
+          if [ $rc = 3 ]; then echo "new=false" >> "$GITHUB_OUTPUT"; exit 0; fi
+          [ $rc = 0 ] && echo "new=true" >> "$GITHUB_OUTPUT"; exit $rc
+      - name: Catalog, TSM CSVs, guide materials
+        if: steps.snap.outputs.new == 'true'
+        run: |
+          python3 scripts/item_catalog.py || echo "item catalog failed"
+          timeout 300 python3 scripts/public_collect.py || echo "TSM public CSV failed"
+          python3 scripts/ingest.py
+          python3 scripts/useful.py > /dev/null
+      - name: Save state
+        if: steps.snap.outputs.new == 'true'
+        run: |
+          name=state-$(date -u +%Y%m%d%H%M%S).tar.gz
+          raw=$(ls data/raw/blizzard/blizzard-113-*.json.gz | sort | tail -2)
+          tar czf "$name" data/market.db data/catalog $raw
+          gh release upload state "$name"
+          # keep the newest three
+          gh release view state --json assets -q '[.assets[].name | select(startswith("state-"))] | sort | .[:-3][]' |
+            xargs -r -n1 gh release delete-asset state -y
+      - uses: actions/setup-node@v4
+        if: steps.snap.outputs.new == 'true'
+        with: { node-version: 22 }
+      - name: Publish
+        if: steps.snap.outputs.new == 'true'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          PY: python3
+        run: |
+          npm i -g wrangler@4 > /dev/null
+          set -o pipefail
+          scripts/publish.sh | tee /dev/stderr | grep -q "Deployment complete"

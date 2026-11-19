@@ -1,0 +1,19 @@
+# secrets and local-only notes (LAN addresses, setup details)
+.secrets/
+.env
+*.token
+AGENTS.md
+CLAUDE.md
+# runtime state: lives in the "state" release on GitHub, see .github/workflows/collect.yml
+data/*
+!data/catalog/
+data/catalog/*
+!data/catalog/guides/
+!data/catalog/trade_goods_vendor.txt
+!data/research/
+# tooling
+vendor/
+.venv/
+.wrangler/
+.ruff_cache/
+__pycache__/

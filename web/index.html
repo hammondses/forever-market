@@ -1,0 +1,857 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Azeroth Exchange</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;600;700&family=Marcellus&display=swap" rel="stylesheet">
+<style>
+:root {
+  --stone: #1f1d1a; --panel: #2a2622; --panel2: #332e28; --line: #46402f; --trim: #8c7341; --trim2: #c9a85c;
+  --text: #e6dac2; --dim: #9a8f7a; --red: #6b1a12; --navy: #0b1226;
+  --up: #3fbf5a; --down: #e0493b; --flat: #6d6658;
+  --serif: "Marcellus", "Palatino Linotype", Georgia, serif;
+  --ui: "Barlow Semi Condensed", "Arial Narrow", system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; background: var(--stone); color: var(--text);
+  font: 15px/1.35 var(--ui); font-variant-numeric: tabular-nums; overflow: hidden; }
+#app { display: grid; grid-template-rows: auto auto auto 1fr; height: 100%; }
+button, input, select { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--trim2); outline-offset: 1px; }
+
+header { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; padding: 10px 16px;
+  background: var(--panel); border-bottom: 2px solid var(--trim); }
+.logo { font: 26px/1 var(--serif); color: var(--trim2); white-space: nowrap; }
+.logo small { display: block; font: 13px var(--ui); color: var(--dim); margin-top: 3px; }
+.live { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; color: var(--dim); white-space: nowrap; }
+.live i { width: 7px; height: 7px; border-radius: 50%; background: var(--up); }
+.live.stale i { background: var(--down); }
+@keyframes pulse { 50% { opacity: .35; } }
+.spacer { flex: 1; }
+.ctl { display: flex; gap: 4px; align-items: center; white-space: nowrap; }
+.ctl label { color: var(--dim); font-size: 14px; margin-right: 4px; }
+/* in-game red button with brass edge */
+.btn { background: linear-gradient(#7d2116, var(--red)); color: #f3d98a; border: 1px solid #a0813f;
+  padding: 4px 11px; border-radius: 3px; cursor: pointer; font-size: 14px; font-weight: 600; box-shadow: inset 0 1px 0 rgba(255,220,150,.18); }
+.btn:hover:not(:disabled) { background: linear-gradient(#992a1c, #7a1e14); }
+.btn.on { background: linear-gradient(#e2c06a, #a88637); color: #2a1a06; border-color: #f1d98e; }
+.btn:disabled { opacity: .35; cursor: not-allowed; }
+#search { background: #14120f; border: 1px solid var(--line); border-radius: 3px; width: 100%; padding: 7px 11px; font-size: 15px; }
+#search:focus { border-color: var(--trim2); outline: none; }
+.sbox { position: relative; flex: 0 1 360px; min-width: 160px; }
+#windows { display: inline-flex; gap: 4px; }
+#results { position: absolute; left: 0; top: calc(100% + 4px); width: 100%; min-width: 340px; max-width: calc(100vw - 20px); z-index: 120;
+  background: var(--navy); border: 1px solid #5d6a8a; border-radius: 4px; padding: 4px; max-height: 70vh; overflow-y: auto;
+  box-shadow: 0 8px 30px rgba(0,0,0,.6); }
+#results .row { padding: 6px 8px; }
+#results .row.on, #results .row:hover { background: #1b2440; }
+#results .none { opacity: .5; }
+#results .note { padding: 4px 8px; margin: 0; }
+#seeAll .n { color: var(--trim2); }
+.lst { display: grid; grid-template-columns: 1fr auto auto; gap: 2px 14px; margin-top: 6px; font-size: 14px; }
+.lst span:nth-child(3n+2), .lst span:nth-child(3n) { text-align: right; }
+
+/* coins */
+.m { white-space: nowrap; }
+.m b { font-weight: 600; }
+.m i { display: inline-block; width: .62em; height: .62em; border-radius: 50%; margin: 0 .3em 0 .12em; vertical-align: .02em;
+  box-shadow: inset -1px -1px 0 rgba(0,0,0,.35), inset 1px 1px 0 rgba(255,255,255,.35); }
+.m i.g { background: #e8b923; } .m i.s { background: #b9bec7; } .m i.c { background: #b8683a; }
+
+.tape { overflow: hidden; white-space: nowrap; border-bottom: 1px solid var(--line); background: #191714;
+  height: 28px; font-size: 14px; }
+/* scrolls like a trading-floor ticker: the owner wants it */
+.tape-inner { display: inline-block; padding: 5px 0; animation: tape 120s linear infinite; }
+.tape:hover .tape-inner { animation-play-state: paused; }
+@keyframes tape { to { transform: translateX(-50%); } }
+/* kept moving under reduced motion too: the owner's machine has it set and wants the ticker */
+.tk { margin: 0 16px; cursor: pointer; }
+.tk b { font-weight: 600; margin-right: 6px; }
+.tk .p { color: var(--dim); margin-right: 6px; }
+
+.sectors { display: flex; gap: 6px; padding: 7px 16px; border-bottom: 1px solid var(--line); overflow-x: auto; scrollbar-width: none; }
+.chip { flex: 0 0 auto; padding: 3px 10px; border-radius: 3px; font-size: 14px; border: 1px solid var(--line); background: var(--panel); cursor: pointer; }
+.chip span { margin-left: 6px; }
+.chip.on { border-color: var(--trim2); background: var(--panel2); }
+
+main { display: grid; grid-template-columns: 1fr 340px; min-height: 0; }
+#map { position: relative; margin: 8px; min-height: 0; overflow: hidden; }
+.sec { position: absolute; border: 1px solid #0d0c0a; }
+.sec-h { position: absolute; left: 0; right: 0; top: 0; height: 17px; padding: 0 6px; font: 600 13px/17px var(--ui);
+  color: #d9cba9; background: #2c2721; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tile { position: absolute; border: 1px solid #0d0c0a; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  overflow: hidden; cursor: pointer; text-align: center; color: #fff; text-shadow: 0 1px 1px rgba(0,0,0,.55); }
+.tile:hover { filter: brightness(1.25); z-index: 5; outline: 2px solid #f2e3b8; outline-offset: -2px; }
+.tile .t { font-family: var(--ui); font-weight: 700; line-height: 1.02; }
+.tile .c { font-weight: 600; line-height: 1.1; }
+.tile .pr { opacity: .8; line-height: 1.1; }
+.tile.turn::after { content: "turn"; position: absolute; top: 2px; right: 3px; font: 700 10px var(--ui);
+  background: #e8b923; color: #000; padding: 0 3px; border-radius: 2px; }
+.tile.turn { box-shadow: inset 0 0 0 2px #e8b923; z-index: 3; }
+.tile.maybe { box-shadow: inset 0 0 0 1px rgba(232,185,35,.6); }
+
+aside { border-left: 1px solid var(--line); background: var(--panel); overflow-y: auto; min-height: 0; }
+.box { padding: 12px 14px; border-bottom: 1px solid var(--line); }
+.box h3 { margin: 0 0 8px; font: 17px var(--serif); color: var(--trim2); }
+.row { display: flex; justify-content: space-between; gap: 8px; padding: 3px 4px; cursor: pointer; border-radius: 2px; font-size: 14px; }
+.row:hover { background: var(--panel2); }
+.row .n { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.row .v { white-space: nowrap; font-weight: 600; }
+.big { font-size: 24px; font-weight: 600; color: #fff; }
+.name { font: 19px/1.2 var(--serif); color: var(--trim2); }
+.kv { display: grid; grid-template-columns: auto 1fr; gap: 2px 12px; margin-top: 8px; font-size: 14px; }
+.kv dt { color: var(--dim); } .kv dd { margin: 0; text-align: right; }
+.badge { display: inline-block; font: 700 12px var(--ui); padding: 1px 6px; border-radius: 2px; margin-left: 6px; vertical-align: middle; }
+.badge.turn { background: #e8b923; color: #000; } .badge.maybe { border: 1px solid #e8b923; color: #e8b923; }
+svg text { font: 12px var(--ui); fill: var(--dim); }
+.note { color: var(--dim); font-size: 13.5px; margin-top: 6px; }
+.up { color: var(--up); } .down { color: var(--down); } .flat { color: var(--dim); }
+
+/* the game's own tooltip: navy glass, blue-grey edge */
+#tip { position: fixed; z-index: 100; pointer-events: none; min-width: 230px; max-width: 320px; display: none;
+  background: rgba(11,18,38,.95); border: 1px solid #5d6a8a; border-radius: 4px; padding: 9px 11px; box-shadow: 0 6px 24px rgba(0,0,0,.6); }
+#tip .kv { margin-top: 6px; }
+.legend { display: flex; font-size: 12px; color: var(--dim); }
+.legend span { width: 30px; height: 14px; display: inline-block; text-align: center; line-height: 14px; color: #fff; }
+
+.tabs { display: inline-flex; gap: 0; align-self: flex-end; margin-bottom: -12px; }
+.tabs .btn { border-radius: 4px 4px 0 0; padding: 6px 16px 7px; font: 16px var(--serif); border-bottom: 0; }
+body.tab-ah #app { grid-template-rows: auto 1fr; }
+body.tab-ah .mk, body:not(.tab-ah) #ahv { display: none !important; }
+#ahv { display: grid; grid-template-columns: 220px 1fr 360px; grid-template-rows: auto 1fr; min-height: 0; }
+.filters { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: center; padding: 8px 16px;
+  border-bottom: 1px solid var(--line); color: var(--dim); font-size: 14px; background: #24211d; }
+.filters input, .filters select { background: #14120f; border: 1px solid var(--line); border-radius: 3px; padding: 4px 7px; font-size: 14px; }
+.filters input[type=number] { width: 56px; }
+.filters label { display: inline-flex; gap: 5px; align-items: center; white-space: nowrap; }
+#ahq { width: 220px; } #ahStat { width: 150px; }
+#ahCatSel { display: none; }
+#ahCats { overflow-y: auto; min-height: 0; border-right: 1px solid var(--line); background: var(--panel); padding: 6px 0; }
+.cat { display: flex; justify-content: space-between; gap: 6px; padding: 3px 12px; cursor: pointer; font-size: 15px; color: #e9c86a; }
+.cat:hover { background: var(--panel2); }
+.cat.on { background: #4a3d22; color: #fff1c4; }
+.cat i { font-style: normal; color: var(--dim); font-size: 13px; }
+.cat.l1 { padding-left: 24px; color: var(--text); }
+.cat.l2 { padding-left: 38px; color: #c9bea6; font-size: 14px; }
+#ahWrap { overflow: auto; min-height: 0; }
+#ahTable { width: 100%; border-collapse: collapse; font-size: 15px; }
+#ahTable th { position: sticky; top: 0; background: var(--panel2); color: var(--dim); text-align: right; font-weight: 600;
+  font-size: 14px; padding: 6px 10px; cursor: pointer; white-space: nowrap; user-select: none; z-index: 1; border-bottom: 1px solid var(--line); }
+#ahTable th:first-child, #ahTable td:first-child { text-align: left; }
+#ahTable th.on { color: var(--trim2); }
+#ahTable td { padding: 3px 10px; border-bottom: 1px solid #2c2823; text-align: right; white-space: nowrap; }
+#ahTable tr { cursor: pointer; }
+#ahTable tbody tr:hover { background: #2b2620; }
+#ahTable tr.on { background: #3d3320; }
+.it { display: flex; align-items: center; gap: 9px; min-width: 0; }
+.it img, .ico { width: 32px; height: 32px; border-radius: 3px; border: 1px solid #6b5a35; flex: 0 0 auto; background: #000; }
+.it .nm { font-size: 16px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; max-width: 320px; }
+.it .st { font-size: 13px; color: #1eff00; opacity: .8; overflow: hidden; text-overflow: ellipsis; max-width: 320px; }
+.pager { display: flex; gap: 10px; align-items: center; padding: 10px 16px; color: var(--dim); }
+.landing { padding: 20px; display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 8px; align-content: start; }
+.landing .tile2 { display: flex; gap: 10px; align-items: center; padding: 8px 10px; border: 1px solid var(--line); border-radius: 3px;
+  background: var(--panel); cursor: pointer; font: 17px var(--serif); color: #e9c86a; }
+.landing .tile2:hover { border-color: var(--trim); background: var(--panel2); }
+.landing .tile2 i { display: block; font: 13px var(--ui); color: var(--dim); font-style: normal; }
+#ahv .note.pad { padding: 12px 16px; font-size: 15px; }
+#ahDetail { border-left: 1px solid var(--line); background: var(--panel); overflow-y: auto; min-height: 0; }
+.ttip { background: rgba(11,18,38,.95); border: 1px solid #5d6a8a; border-radius: 4px; padding: 9px 11px; margin-top: 10px; font-size: 15px; }
+.ttip div { margin: 1px 0; } .ttip .g { color: #1eff00; } .ttip .d { color: #a9a9a9; }
+.ttip .two { display: flex; justify-content: space-between; }
+.dhead { display: flex; gap: 10px; align-items: center; } .dhead .ico { width: 46px; height: 46px; }
+.dhead .name { font-size: 21px; }
+.q-POOR { color: #9d9d9d; } .q-COMMON { color: #fff; } .q-UNCOMMON { color: #1eff00; } .q-RARE { color: #3d8fff; }
+.q-EPIC { color: #b45cf5; } .q-LEGENDARY { color: #ff8000; } .q-ARTIFACT { color: #e6cc80; }
+
+@media (max-width: 900px) {
+  html, body { height: auto; overflow: auto; }
+  #app { height: auto; display: block; }
+  header { gap: 8px 10px; padding: 10px; }
+  .logo { font-size: 21px; }
+  .spacer { display: none; }
+  .live { order: 1; flex-basis: 100%; }
+  .ctl label { display: none; }
+  .ctl { flex-wrap: wrap; }
+  .btn { padding: 6px 10px; }
+  .sbox { order: -1; flex: 1 1 100%; }
+  #results { min-width: 0; }
+  #search { font-size: 16px; padding: 9px 11px; }
+  .sectors { padding: 7px 10px; }
+  main { display: block; }
+  #map { height: 150vh; min-height: 900px; margin: 6px; }
+  aside { border-left: 0; border-top: 1px solid var(--line); overflow: visible; }
+  #tip { display: none !important; }
+  .tabs { order: 2; flex: 1 1 100%; margin-bottom: -10px; } .tabs .btn { flex: 1; }
+  #ahv { display: block; }
+  .filters { padding: 8px 10px; } #ahq, #ahCatSel { width: 100%; } #ahCatSel { display: block; }
+  #ahCats { display: none; }
+  #ahWrap { max-height: 75vh; }
+  #ahTable .hm { display: none; }
+  .it .nm { max-width: 170px; white-space: normal; } .it .st { display: none; }
+  #ahTable td, #ahTable th { padding: 3px 6px; }
+  #ahDetail { border-left: 0; border-top: 1px solid var(--line); }
+}
+</style>
+</head>
+<body>
+<div id="app">
+  <header>
+    <div class="logo">Azeroth Exchange<small>The Horde auction house on Forever</small></div>
+    <nav class="tabs"><button class="btn on" data-tab="market">Market</button><button class="btn" data-tab="ah">Auction house</button></nav>
+    <div class="live" id="live"><i></i><span id="ago">connecting…</span></div>
+    <div class="spacer"></div>
+    <div class="sbox"><input id="search" placeholder="Find an item  ( / )" autocomplete="off">
+      <div id="results" hidden></div></div>
+    <div class="spacer"></div>
+    <div class="ctl mk"><label>Compare with</label><span id="windows"></span></div>
+    <div class="ctl mk"><label>Colour by</label>
+      <button class="btn on" data-color="chg">Price change</button>
+      <button class="btn" data-color="xv">Vs vendor</button>
+    </div>
+    <div class="ctl mk"><button class="btn" id="guideOnly" title="Only materials the levelling guides use">Levelling mats only</button></div>
+  </header>
+  <div class="tape mk"><div class="tape-inner" id="tape"></div></div>
+  <div class="sectors mk" id="sectors"></div>
+  <main class="mk">
+    <div id="map"></div>
+    <aside>
+      <div class="box" id="detail"><h3>Selected</h3><div class="note">Click a tile.</div></div>
+      <div class="box"><h3>Top gainers</h3><div id="gainers"></div></div>
+      <div class="box"><h3>Top losers</h3><div id="losers"></div></div>
+      <div class="box"><h3>Legend</h3><div class="legend" id="legend"></div>
+        <div class="note">Tile size = region sales × price. Change compares the cheapest listing now with the
+          chosen window (or TSM's historical price). Gold border = turn signal: supply tightening (auctions falling, or market value rising where counts are missing) while the
+          cheapest listing rises.</div></div>
+    </aside>
+  </main>
+  <section id="ahv">
+    <div class="filters">
+      <select id="ahCatSel"></select>
+      <input id="ahq" placeholder="Item name" autocomplete="off">
+      <label>level <input type="number" id="ahLvMin" min="0" max="60" placeholder="1">–<input type="number" id="ahLvMax" min="0" max="60" placeholder="60"></label>
+      <select id="ahQual"></select>
+      <input id="ahStat" placeholder="Has stat, e.g. agility" autocomplete="off">
+      <label>gold <input type="number" id="ahPMin" min="0" step="any" placeholder="min">–<input type="number" id="ahPMax" min="0" step="any" placeholder="max"></label>
+      <button class="btn" id="ahReset">Clear filters</button>
+      <span id="ahCount"></span>
+    </div>
+    <div id="ahCats"></div>
+    <div id="ahWrap"><div class="note pad">Loading the live auction house…</div></div>
+    <div id="ahDetail"><div class="box"><h3>Selected</h3><div class="note">Pick a category or search, then click an item.</div></div></div>
+  </section>
+</div>
+<div id="tip"></div>
+<script>
+"use strict";
+// export_static.py sets window.STATIC: same data, pre-rendered as files
+const api = (w) => window.STATIC ? `data/map-${w}.json` : `/api/map?w=${w}`;
+const apiItem = (id) => window.STATIC ? `data/item/${id}.json` : `/api/item/${id}`;
+const WINDOWS = [[1, "1h"], [6, "6h"], [24, "24h"], [72, "3 days"], [168, "7 days"], ["hist", "TSM average"]];
+const state = { window: null, color: "chg", sector: null, guideOnly: false, q: "", data: null, sel: null };
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+// prices as the game shows them: 70 gold coin 50 silver coin
+function money(c) {
+  if (c == null) return "–";
+  c = Math.round(c);
+  const g = Math.floor(c / 10000), s = Math.floor(c / 100) % 100, cc = c % 100, coin = (n, k) => `<b>${n}</b><i class="${k}"></i>`;
+  return `<span class="m">${g ? coin(g.toLocaleString(), "g") + (s ? coin(s, "s") : "") : s ? coin(s, "s") + (cc ? coin(cc, "c") : "") : coin(cc, "c")}</span>`;
+}
+function moneyText(c) {
+  if (c == null) return "–";
+  c = Math.round(c);
+  const g = Math.floor(c / 10000), s = Math.floor(c / 100) % 100, cc = c % 100;
+  if (g) return `${g}g${String(s).padStart(2, "0")}s`;
+  if (s) return `${s}s${String(cc).padStart(2, "0")}`;
+  return `${cc}c`;
+}
+const pct = (x) => (x == null ? "–" : `${x > 0 ? "+" : ""}${x.toFixed(Math.abs(x) < 10 ? 2 : 1)}%`);
+const cls = (x) => (x == null || Math.abs(x) < 0.005 ? "flat" : x > 0 ? "up" : "down");
+const arrow = (x) => (x == null ? "" : x > 0 ? "▲" : x < 0 ? "▼" : "■");
+
+// finviz-ish diverging scale
+const STOPS = [[-1, [246, 53, 56]], [-0.66, [191, 64, 69]], [-0.33, [139, 68, 78]], [0, [65, 69, 84]],
+               [0.33, [53, 118, 78]], [0.66, [47, 158, 79]], [1, [48, 204, 90]]];
+function ramp(t) {
+  t = Math.max(-1, Math.min(1, t));
+  for (let i = 1; i < STOPS.length; i++) {
+    const [a, ca] = STOPS[i - 1], [b, cb] = STOPS[i];
+    if (t <= b) {
+      const f = (t - a) / (b - a);
+      return `rgb(${ca.map((v, k) => Math.round(v + (cb[k] - v) * f)).join(",")})`;
+    }
+  }
+}
+function scaleFor() { return state.window === "hist" ? 30 : state.window >= 72 ? 15 : state.window >= 24 ? 10 : 5; }
+function tileColor(it) {
+  if (state.color === "xv") {
+    if (!it.vendor) return "#2a2d3a";
+    // 1x vendor = deep green (buy), 3x+ = red
+    return ramp(1 - Math.log(it.price / it.vendor) / Math.log(3) * 2);
+  }
+  if (it.chg == null) return "#2a2d3a";
+  return ramp(it.chg / scaleFor());
+}
+
+// ---- squarified treemap ----
+function worst(row, side) {
+  let s = 0, mx = -Infinity, mn = Infinity;
+  for (const a of row) { s += a; if (a > mx) mx = a; if (a < mn) mn = a; }
+  return Math.max((side * side * mx) / (s * s), (s * s) / (side * side * mn));
+}
+function squarify(nodes, x, y, w, h) {
+  const total = nodes.reduce((s, n) => s + n.weight, 0);
+  if (!total || w <= 0 || h <= 0) return;
+  const k = (w * h) / total, areas = nodes.map((n) => n.weight * k);
+  let i = 0;
+  while (i < nodes.length) {
+    const side = Math.min(w, h);
+    const row = [areas[i]];
+    let best = worst(row, side), j = i + 1;
+    while (j < nodes.length) {
+      row.push(areas[j]);
+      const ws = worst(row, side);
+      if (ws > best) { row.pop(); break; }
+      best = ws; j++;
+    }
+    const sum = row.reduce((a, b) => a + b, 0);
+    if (w >= h) {
+      const cw = sum / h; let yy = y;
+      for (let m = i; m < j; m++) { const hh = areas[m] / cw; Object.assign(nodes[m], { x, y: yy, w: cw, h: hh }); yy += hh; }
+      x += cw; w -= cw;
+    } else {
+      const rh = sum / w; let xx = x;
+      for (let m = i; m < j; m++) { const ww = areas[m] / rh; Object.assign(nodes[m], { x: xx, y, w: ww, h: rh }); xx += ww; }
+      y += rh; h -= rh;
+    }
+    i = j;
+  }
+}
+
+// sectors as tidy rows of equal height: balance total weight across rows, then
+// split each row's width by weight (items inside still use squarify)
+function stripRows(secs, W, H) {
+  if (!secs.length) return;
+  const n = Math.max(1, Math.min(secs.length, Math.round(Math.sqrt(secs.length * H / W))));
+  const rows = Array.from({ length: n }, () => ({ secs: [], weight: 0 }));
+  for (const s of [...secs].sort((a, b) => b.weight - a.weight)) {
+    const r = rows.reduce((a, b) => (b.weight < a.weight ? b : a));
+    r.secs.push(s); r.weight += s.weight;
+  }
+  const rh = H / n;
+  rows.forEach((r, i) => {
+    let x = 0;
+    for (const s of r.secs) { const w = (s.weight / r.weight) * W; Object.assign(s, { x, y: i * rh, w, h: rh }); x += w; }
+  });
+}
+
+function visibleItems() {
+  const d = state.data; if (!d) return [];
+  return d.items.filter((it) => (!state.guideOnly || it.perPlayer > 0) && (!state.sector || it.sector === state.sector));
+}
+// one thinly traded item at +3000% shouldn't move a whole sector
+const clampChg = (x) => Math.max(-50, Math.min(50, x));
+// "Mithril Ore" -> ["Mithril", "Ore"]: material big, form underneath
+function splitName(name) {
+  const w = name.split(" ");
+  return w.length > 1 ? [w.slice(0, -1).join(" "), w[w.length - 1]] : [name, ""];
+}
+
+function sectorStats(items) {
+  const by = {};
+  for (const it of items) {
+    const s = (by[it.sector] ??= { name: it.sector, items: [], vol: 0, wsum: 0, wchg: 0 });
+    s.items.push(it); s.vol += it.volume;
+    if (it.chg != null) { s.wsum += it.volume; s.wchg += it.volume * clampChg(it.chg); }
+  }
+  for (const s of Object.values(by)) s.chg = s.wsum ? s.wchg / s.wsum : null;
+  return Object.values(by).sort((a, b) => b.vol - a.vol);
+}
+
+function render() {
+  const d = state.data; if (!d) return;
+  const items = visibleItems();
+  const map = $("map"); map.innerHTML = "";
+  const W = map.clientWidth, H = map.clientHeight;
+  const secs = sectorStats(items);
+  secs.forEach((s) => (s.weight = s.items.reduce((a, it) => a + Math.pow(Math.max(it.volume, 1), 0.7), 0)));
+  stripRows(secs, W, H);
+  const frag = document.createDocumentFragment();
+  for (const s of secs) {
+    const el = document.createElement("div");
+    el.className = "sec";
+    Object.assign(el.style, { left: s.x + "px", top: s.y + "px", width: s.w + "px", height: s.h + "px" });
+    el.innerHTML = `<div class="sec-h">${esc(s.name)} <span class="${cls(s.chg)}">${pct(s.chg)}</span></div>`;
+    frag.appendChild(el);
+    const kids = s.items.map((it) => ({ it, weight: Math.pow(Math.max(it.volume, 1), 0.7) })).sort((a, b) => b.weight - a.weight);
+    const top = s.h > 40 ? 16 : 0;
+    squarify(kids, 0, top, s.w - 2, s.h - top - 2);
+    for (const k of kids) {
+      const it = k.it, t = document.createElement("div");
+      t.className = "tile" + (it.signal === "TURN" ? " turn" : it.signal ? " maybe" : "");
+      Object.assign(t.style, { left: k.x + "px", top: k.y + "px", width: k.w + "px", height: k.h + "px", background: tileColor(it) });
+      const m = Math.min(k.w, k.h);
+      if (m > 18 && k.w > 26) {
+        const [head, sub] = splitName(it.name);
+        // fit the longest word across and every wrapped line down; skip the label if it can't be read
+        const words = head.split(" "), longest = Math.max(...words.map((w) => w.length));
+        const fs = Math.min(30, Math.sqrt(k.w * k.h) / 4.2, (k.w - 6) / (longest * 0.62), (k.h - 4) / (words.length * 1.1));
+        if (fs < 8) { t.title = it.name; }
+        else {
+        const val = state.color === "xv" ? (it.vendor ? (it.price / it.vendor).toFixed(2) + "×" : "–") : pct(it.chg);
+        t.innerHTML = `<div class="t" style="font-size:${fs}px">${esc(head)}</div>` +
+          (sub && k.h > fs * (words.length * 1.1 + 0.7) ? `<div class="t" style="font-size:${Math.max(9, fs * 0.62)}px">${esc(sub)}</div>` : "") +
+          (k.h > fs * (words.length * 1.1 + 1.3) ? `<div class="c" style="font-size:${Math.max(8, fs * 0.55)}px">${val}</div>` : "") +
+          (k.h > fs * (words.length * 1.1 + 2) && k.w > 60 ? `<div class="pr" style="font-size:${Math.max(8, fs * 0.45)}px">${money(it.price)}</div>` : "");
+        }
+      }
+      t.onmousemove = (e) => showTip(e, it);
+      t.onmouseleave = hideTip;
+      t.onclick = () => select(it.id);
+      el.appendChild(t);
+    }
+  }
+  map.appendChild(frag);
+  renderSide(items);
+  renderChips();
+}
+
+function renderChips() {
+  const all = state.data.items.filter((it) => !state.guideOnly || it.perPlayer > 0);
+  const secs = sectorStats(all);
+  const vol = all.reduce((a, it) => a + (it.chg != null ? it.volume : 0), 0);
+  const idx = vol ? all.reduce((a, it) => a + (it.chg != null ? it.volume * clampChg(it.chg) : 0), 0) / vol : null;
+  $("sectors").innerHTML =
+    `<div class="chip ${state.sector ? "" : "on"}" data-s="">Everything<span class="${cls(idx)}">${arrow(idx)} ${pct(idx)}</span></div>` +
+    secs.map((s) => `<div class="chip ${state.sector === s.name ? "on" : ""}" data-s="${esc(s.name)}" style="background:${s.chg == null ? "" : ramp(s.chg / scaleFor())}22">
+      ${esc(s.name)}<span class="${cls(s.chg)}">${arrow(s.chg)} ${pct(s.chg)}</span></div>`).join("");
+  for (const c of $("sectors").children) c.onclick = () => { state.sector = c.dataset.s || null; render(); };
+}
+
+function renderSide(items) {
+  const withChg = items.filter((it) => it.chg != null && it.sold >= 50);
+  const row = (it) => `<div class="row" data-id="${it.id}"><span class="n">${esc(it.name)}</span>
+    <span class="v ${cls(it.chg)}">${money(it.price)} ${pct(it.chg)}</span></div>`;
+  const up = [...withChg].sort((a, b) => b.chg - a.chg).filter((it) => it.chg > 0).slice(0, 10);
+  const dn = [...withChg].sort((a, b) => a.chg - b.chg).filter((it) => it.chg < 0).slice(0, 10);
+  $("gainers").innerHTML = up.map(row).join("") || `<div class="note">No data for this window yet.</div>`;
+  $("losers").innerHTML = dn.map(row).join("") || `<div class="note">No data for this window yet.</div>`;
+  for (const r of document.querySelectorAll("aside .row")) r.onclick = () => select(r.dataset.id);
+  const s = scaleFor();
+  $("legend").innerHTML = [-1, -0.66, -0.33, 0, 0.33, 0.66, 1]
+    .map((t) => `<span style="background:${ramp(t)}">${state.color === "xv" ? ["3×", "", "", "1.7×", "", "", "1×"][(t + 1) * 3 | 0] ?? "" : (t * s).toFixed(0)}</span>`).join("");
+}
+
+function renderTape() {
+  const top = [...state.data.items].sort((a, b) => b.volume - a.volume).slice(0, 40);
+  const html = top.map((it) => `<span class="tk" data-id="${it.id}"><b>${esc(it.name)}</b><span class="p">${money(it.price)}</span>` +
+    `<span class="${cls(it.chg)}">${arrow(it.chg)} ${pct(it.chg)}</span></span>`).join("");
+  $("tape").innerHTML = html + html;
+  for (const t of $("tape").children) t.onclick = () => select(t.dataset.id);
+}
+
+function kv(it) {
+  const xv = it.vendor ? (it.price / it.vendor).toFixed(2) + "×" : "–";
+  return `<dl class="kv">
+    <dt>Cheapest</dt><dd>${money(it.price)}</dd>
+    <dt>${state.window === "hist" ? "TSM historical" : "Then"}</dt><dd>${money(it.prev)}</dd>
+    <dt>Change</dt><dd class="${cls(it.chg)}">${arrow(it.chg)} ${pct(it.chg)}</dd>
+    <dt>Auctions</dt><dd>${it.auctions ?? "–"}${it.auctionsPrev != null ? ` <span class="flat">(was ${it.auctionsPrev})</span>` : ""}</dd>
+    <dt>Region sold/day</dt><dd>${it.sold.toLocaleString()}</dd>
+    <dt>Vendor</dt><dd>${money(it.vendor)} <span class="flat">${xv}</span></dd>
+    ${it.perPlayer ? `<dt>Per levelling player</dt><dd>${it.perPlayer}</dd>` : ""}
+  </dl>${it.usedBy ? `<div class="note">Guides: ${esc(it.usedBy)}</div>` : ""}`;
+}
+function badge(sig) { return sig === "TURN" ? `<span class="badge turn">turning</span>` : sig ? `<span class="badge maybe">turn?</span>` : ""; }
+
+function showTip(e, it) {
+  const tip = $("tip");
+  tip.innerHTML = `<div class="name">${esc(it.name)}${badge(it.signal)}</div>
+    <div class="note" style="margin-top:2px">${esc(it.sector)}</div>${kv(it)}`;
+  tip.style.display = "block";
+  const r = tip.getBoundingClientRect();
+  let x = e.clientX + 16, y = e.clientY + 16;
+  if (x + r.width > innerWidth - 8) x = e.clientX - r.width - 16;
+  if (y + r.height > innerHeight - 8) y = innerHeight - r.height - 8;
+  tip.style.left = x + "px"; tip.style.top = y + "px";
+}
+function hideTip() { $("tip").style.display = "none"; }
+
+// live auction house: the browser reads Blizzard directly with a token from /api/token
+// (a Pages Function on the public site, server.py locally). Names come from TSM's item list.
+const HOUSE = "https://us.api.blizzard.com/data/wow/ruleset/1/auctions/113", NS = "?namespace=dynamic-forever-us";
+const live = { names: null, book: null, at: 0, loading: null };
+function liveHouse() {
+  if (live.book && Date.now() - live.at < 10 * 60e3) return Promise.resolve(live.book);
+  return live.loading ??= (async () => {
+    try {
+      const [{ token }, names] = await Promise.all([
+        fetch("/api/token").then((r) => r.json()),
+        live.names ?? fetch(window.STATIC ? "data/names.json" : "/api/names").then((r) => r.json())]);
+      live.names = names;
+      const get = (u) => fetch(u, { headers: { Authorization: `Bearer ${token}` } }).then((r) => r.json());
+      const [reg, com] = await Promise.all([get(HOUSE + NS), get(HOUSE + "/commodities" + NS)]);
+      const book = new Map();
+      const add = (a, unit) => {
+        if (!unit) return;  // bid-only
+        const id = String(a.item.id);
+        (book.get(id) ?? book.set(id, []).get(id)).push({ unit, qty: a.quantity, left: a.time_left });
+      };
+      for (const a of reg.auctions ?? []) add(a, a.buyout && Math.floor(a.buyout / a.quantity));
+      for (const a of com.auctions ?? []) add(a, a.unit_price);
+      for (const l of book.values()) l.sort((x, y) => x.unit - y.unit);
+      live.book = book; live.at = Date.now();
+      return book;
+    } finally { live.loading = null; }
+  })();
+}
+
+// every word must appear; exact, then prefix, then listed-before-unlisted, then shortest
+function liveMatches(q) {
+  const ql = q.toLowerCase(), words = ql.split(/\s+/).filter(Boolean), out = [];
+  for (const [id, [name]] of Object.entries(live.names)) {
+    const n = name.toLowerCase();
+    if (!words.every((w) => n.includes(w))) continue;
+    const ls = live.book.get(id);
+    out.push({ id, name, ls, score: (n === ql ? 0 : n.startsWith(ql) ? 1 : 2) + (ls ? 0 : 10) + n.length / 1000 });
+  }
+  return out.sort((a, b) => a.score - b.score);
+}
+
+const units = (ls) => ls.reduce((n, l) => n + l.qty, 0);
+let hits = [], active = 0;
+async function searchAh() {
+  const q = state.q, box = $("results");
+  if (q.length < 2) { box.hidden = true; return; }
+  box.hidden = false;
+  if (!live.book) box.innerHTML = `<div class="note">Loading the live auction house…</div>`;
+  try { await liveHouse(); } catch { box.innerHTML = `<div class="note">Couldn't reach Blizzard. Try again in a moment.</div>`; return; }
+  if (state.q !== q) return;
+  hits = liveMatches(q).slice(0, 15); active = 0;
+  box.innerHTML = hits.length ? hits.map((h, i) => `<div class="row${h.ls ? "" : " none"}${i ? "" : " on"}" data-i="${i}">
+      <span class="n">${esc(h.name)}</span><span class="v">${h.ls ? `${money(h.ls[0].unit)} <span class="note">${h.ls.length} listed</span>` : `<span class="note">none listed</span>`}</span></div>`).join("") +
+      `<div class="note">Cheapest buyout each, live from Blizzard</div>`
+    : `<div class="note">No item called “${esc(q)}”.</div>`;
+  box.innerHTML += `<div class="row" id="seeAll"><span class="n" style="color:var(--trim2)">Show all results in the auction house</span></div>`;
+  $("seeAll").onmousedown = (e) => { e.preventDefault(); browseAll(q); };
+  for (const r of box.querySelectorAll(".row")) r.onmousedown = (e) => { e.preventDefault(); pick(+r.dataset.i); };
+}
+function pick(i) {
+  const h = hits[i]; if (!h) return;
+  $("results").hidden = true; $("search").blur();
+  if (document.body.classList.contains("tab-ah")) { ah.sel = h.id; ahSelect(h.id); renderAh(); }
+  else select(h.id);
+}
+function browseAll(q) {
+  $("results").hidden = true; $("search").blur();
+  $("ahq").value = q; setTab("ah");
+}
+
+function listings(id) {
+  const ls = live.book?.get(id);
+  if (!ls) return `<div class="note">Nothing listed right now.</div>`;
+  const groups = [];
+  for (const l of ls) { const g = groups[groups.length - 1]; g && g.unit === l.unit ? (g.qty += l.qty, g.n++) : groups.push({ unit: l.unit, qty: l.qty, n: 1 }); }
+  return `<div class="note">${units(ls)} for sale across ${ls.length} auction${ls.length === 1 ? "" : "s"}</div><div class="lst">` +
+    `<span class="note">price each</span><span class="note">units</span><span class="note">auctions</span>` +
+    groups.slice(0, 20).map((g) => `<span>${money(g.unit)}</span><span>${g.qty}</span><span>${g.n}</span>`).join("") + `</div>` +
+    (groups.length > 20 ? `<div class="note">+${groups.length - 20} higher prices</div>` : "");
+}
+
+async function select(id, scroll = true) {
+  state.sel = id;
+  history.replaceState(null, "", "#" + id);
+  if (scroll && matchMedia("(max-width: 900px)").matches) $("detail").scrollIntoView({ behavior: "smooth", block: "start" });
+  const it = state.data.items.find((x) => x.id === id);
+  const ls = live.book?.get(id), nm = live.names?.[id]?.[0];
+  const det = $("detail");
+  det.innerHTML = `<h3>Selected</h3><div class="name">${esc(it ? it.name : nm ?? id)}${badge(it?.signal)}</div>
+    ${it ? `<div class="big ${cls(it.chg)}">${money(it.price)} <span style="font-size:13px">${arrow(it.chg)} ${pct(it.chg)}</span></div>` : ""}
+    ${!it && ls ? `<div class="big">${money(ls[0].unit)}</div>` : ""}
+    <div id="chart" class="note">loading…</div>${it ? kv(it) : ""}
+    <h3 style="margin-top:12px">On the auction house</h3><div id="listings">${live.book ? listings(id) : `<div class="note">loading…</div>`}</div>`;
+  if (!live.book) liveHouse().then(() => { if (state.sel === id) $("listings").innerHTML = listings(id); }).catch(() => {});
+  const res = await fetch(apiItem(id));
+  if (state.sel !== id) return;
+  if (!res.ok) { $("chart").textContent = "Price history is kept for the map's materials only."; return; }
+  const h = await res.json();
+  if (state.sel !== id) return;
+  $("chart").outerHTML = chart(h);
+}
+
+function chart(h) {
+  const s = h.series.filter((p) => p.price);
+  if (s.length < 2) return `<div class="note">${s.length} snapshot so far. The chart fills in as hourly scans arrive.</div>`;
+  const W = 310, H = 150, BH = 34, L = 4, R = 44, T = 8;
+  const t0 = s[0].ts, t1 = s[s.length - 1].ts;
+  const ps = s.map((p) => p.price).concat(h.vendor ? [h.vendor] : []);
+  let lo = Math.min(...ps), hi = Math.max(...ps); if (hi === lo) { hi *= 1.05; lo *= 0.95; }
+  const X = (t) => L + ((t - t0) / (t1 - t0 || 1)) * (W - L - R);
+  const Y = (v) => T + (1 - (v - lo) / (hi - lo)) * (H - T - BH - 14);
+  const amax = Math.max(...s.map((p) => p.auctions || 0), 1);
+  const line = s.map((p, i) => `${i ? "L" : "M"}${X(p.ts).toFixed(1)},${Y(p.price).toFixed(1)}`).join("");
+  const up = s[s.length - 1].price >= s[0].price, col = up ? "#30cc5a" : "#f63538";
+  const area = `${line}L${X(t1)},${H - BH - 14}L${X(t0)},${H - BH - 14}Z`;
+  const bw = Math.max(1, (W - L - R) / s.length - 1);
+  const bars = s.filter((p) => p.auctions != null).map((p) => `<rect x="${(X(p.ts) - bw / 2).toFixed(1)}" y="${(H - (p.auctions / amax) * BH).toFixed(1)}" width="${bw.toFixed(1)}" height="${((p.auctions / amax) * BH).toFixed(1)}" fill="#3b4060"/>`).join("");
+  const vend = h.vendor ? `<line x1="${L}" x2="${W - R}" y1="${Y(h.vendor)}" y2="${Y(h.vendor)}" stroke="#c9a85c" stroke-dasharray="3 3" opacity=".7"/><text x="${W - R + 3}" y="${Y(h.vendor) + 3}" fill="#c9a85c">vendor</text>` : "";
+  return `<svg width="${W}" height="${H}" style="margin-top:8px">
+    <defs><linearGradient id="g" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="${col}" stop-opacity=".35"/><stop offset="1" stop-color="${col}" stop-opacity="0"/></linearGradient></defs>
+    ${bars}<path d="${area}" fill="url(#g)"/><path d="${line}" fill="none" stroke="${col}" stroke-width="2" style="filter:drop-shadow(0 0 4px ${col})"/>${vend}
+    <text x="${W - R + 3}" y="${Y(hi) + 4}">${moneyText(hi)}</text><text x="${W - R + 3}" y="${Y(lo)}">${moneyText(lo)}</text>
+    <text x="${W - R + 3}" y="${H - 2}">${amax} listed</text>
+    <text x="${L}" y="${H - BH - 2}">${new Date(t0 * 1000).toLocaleString([], { month: "short", day: "numeric", hour: "2-digit" })}</text>
+  </svg>`;
+}
+
+function renderWindows() {
+  const d = state.data;
+  const span = d ? (d.latest - d.first) / 3600 : 0;
+  $("windows").innerHTML = WINDOWS.map(([w, l]) =>
+    `<button class="btn ${state.window === w ? "on" : ""}" data-w="${w}" ${w !== "hist" && w > span * 1.25 + 0.01 ? "disabled title='not enough history yet'" : ""}>${l}</button>`).join(" ");
+  for (const b of $("windows").children) b.onclick = () => { state.window = b.dataset.w === "hist" ? "hist" : +b.dataset.w; load(); };
+}
+
+function updateAgo() {
+  const d = state.data; if (!d) return;
+  const mins = Math.round((Date.now() / 1000 - d.latest) / 60);
+  $("ago").textContent = `Prices updated ${mins < 2 ? "just now" : mins < 60 ? mins + " min ago" : (mins / 60).toFixed(1) + " hours ago"}`;
+  $("ago").title = `${d.snapshots} hourly snapshots, ${d.items.length} materials on the map`;
+  $("live").classList.toggle("stale", mins > 150);
+}
+
+async function load() {
+  if (state.window == null) {
+    const probe = await (await fetch(api("hist"))).json();
+    const span = (probe.latest - probe.first) / 3600;
+    const ok = WINDOWS.filter(([w]) => w !== "hist" && w <= span * 1.25 + 0.01);
+    state.window = ok.length ? ok[ok.length - 1][0] : "hist";
+    if (state.window === "hist") state.data = probe;
+  }
+  if (!state.data || state.data.window !== String(state.window)) {
+    state.data = await (await fetch(api(state.window))).json();
+  }
+  renderWindows(); renderTape(); render(); updateAgo();
+  const want = state.sel || location.hash.slice(1);
+  if (want && state.data.items.some((x) => x.id === want)) select(want, false);
+}
+async function refresh() { state.data = null; await load(); }
+
+for (const b of document.querySelectorAll("[data-color]")) b.onclick = () => {
+  state.color = b.dataset.color;
+  document.querySelectorAll("[data-color]").forEach((x) => x.classList.toggle("on", x === b));
+  render();
+};
+$("guideOnly").onclick = (e) => { state.guideOnly = !state.guideOnly; e.target.classList.toggle("on", state.guideOnly); render(); };
+$("search").oninput = (e) => { state.q = e.target.value.trim(); searchAh(); };
+$("search").onfocus = () => { if (state.q.length >= 2) searchAh(); };
+$("search").onblur = () => setTimeout(() => { $("results").hidden = true; }, 150);
+$("search").onkeydown = (e) => {
+  if (e.key === "Enter") { pick(active); return; }
+  if (e.key !== "ArrowDown" && e.key !== "ArrowUp") return;
+  e.preventDefault();
+  active = Math.max(0, Math.min(hits.length - 1, active + (e.key === "ArrowDown" ? 1 : -1)));
+  $("results").querySelectorAll(".row").forEach((r, i) => r.classList.toggle("on", i === active));
+};
+addEventListener("keydown", (e) => {
+  if (e.key === "/" && document.activeElement !== $("search")) { e.preventDefault(); $("search").focus(); }
+  if (e.key === "Escape") { $("search").value = ""; state.q = ""; searchAh(); }
+});
+// ---- tabs ----
+function setTab(t) {
+  document.body.classList.toggle("tab-ah", t === "ah");
+  for (const b of document.querySelectorAll("[data-tab]")) b.classList.toggle("on", b.dataset.tab === t);
+  localStorage.tab = t;
+  if (t === "ah") openAh(); else render();
+}
+for (const b of document.querySelectorAll("[data-tab]")) b.onclick = () => setTab(b.dataset.tab);
+
+// ---- auction house view: in-game style. Pick a category (or search), filter, sort, click for chart + listings ----
+const QUAL = ["POOR", "COMMON", "UNCOMMON", "RARE", "EPIC", "LEGENDARY", "ARTIFACT"];
+const ICON_CDN = "https://render.worldofwarcraft.com/";
+const WEAPON = { 0: "One-Handed Axes", 1: "Two-Handed Axes", 2: "Bows", 3: "Guns", 4: "One-Handed Maces", 5: "Two-Handed Maces",
+  6: "Polearms", 7: "One-Handed Swords", 8: "Two-Handed Swords", 10: "Staves", 13: "Fist Weapons", 14: "Miscellaneous",
+  15: "Daggers", 16: "Thrown", 18: "Crossbows", 19: "Wands", 20: "Fishing Poles" };
+const TOP = { 2: "Weapons", 4: "Armor", 1: "Bags", 0: "Consumables", 7: "Trade Goods", 6: "Projectiles", 11: "Quivers",
+  9: "Recipes", 5: "Reagents", 15: "Miscellaneous", 12: "Quest Items", 13: "Keys" };
+const TOP_ORDER = ["Weapons", "Armor", "Bags", "Consumables", "Trade Goods", "Projectiles", "Quivers", "Recipes",
+                   "Miscellaneous", "Quest Items", "Keys", "Other"];
+const ah = { rows: null, sort: "price", dir: 1, sel: null, at: 0, path: [], page: 0, icons: {}, hist: {} };
+const iconUrl = (id) => ah.icons[id] ? ICON_CDN + ah.icons[id] + ".jpg" : "";
+const img = (id, cls = "") => `<img ${cls} loading="lazy" src="${iconUrl(id) || "data:,"}" alt="">`;
+
+function catPath(r) {
+  const top = TOP[r.classId] ?? "Other";
+  if (r.classId === 5) return ["Trade Goods", "Reagent"];
+  if (r.classId === 2) return [top, WEAPON[r.subId] ?? r.sub ?? "Other"];
+  if (r.classId === 4) return [top, r.sub === "Shield" ? "Shields" : r.sub ?? "Other", ...(r.slot && r.sub !== "Shield" ? [r.slot] : [])];
+  return r.sub && r.sub !== top ? [top, r.sub] : [top];
+}
+
+async function openAh() {
+  if (ah.rows && live.at === ah.at) return renderAh();
+  try {
+    const [, icons] = await Promise.all([liveHouse(),
+      Object.keys(ah.icons).length ? ah.icons : fetch(window.STATIC ? "data/icons.json" : "/api/icons").then((r) => r.json())]);
+    ah.icons = icons;
+  } catch { $("ahWrap").innerHTML = `<div class="note pad">Couldn't reach Blizzard. Try again in a moment.</div>`; return; }
+  ah.at = live.at;
+  ah.rows = [...live.book].map(([id, ls]) => {
+    const [name = `item ${id}`, qual, ilvl, req, klass, sub, slot, vendor, classId, subId, dps, speed, armor, stats] = live.names[id] ?? [];
+    const r = { id, name, qual, ilvl, req: req ?? 0, klass, sub, slot, vendor, classId, subId, dps, speed, armor, stats,
+      price: ls[0].unit, units: units(ls), n: ls.length };
+    r.path = catPath(r); r.lname = name.toLowerCase(); r.lstats = (stats ?? "").toLowerCase();
+    return r;
+  });
+  // category tree with counts
+  const tree = new Map();
+  for (const r of ah.rows) {
+    let node = tree;
+    for (const p of r.path) {
+      const k = node.get(p) ?? { n: 0, kids: new Map() };
+      node.set(p, k); k.n++; node = k.kids;
+    }
+  }
+  ah.tree = tree;
+  $("ahQual").innerHTML = `<option value="">any quality</option>` + QUAL.slice(0, 6).map((q) =>
+    `<option value="${q}">${q[0] + q.slice(1).toLowerCase()}${q === "LEGENDARY" ? "" : " +"}</option>`).join("");
+  renderAh();
+}
+
+const sortedKids = (m, top) => [...m].sort(top ? (a, b) => TOP_ORDER.indexOf(a[0]) - TOP_ORDER.indexOf(b[0]) : (a, b) => a[0].localeCompare(b[0]));
+function renderCats() {
+  const out = [], sel = [`<option value="">— all categories —</option>`];
+  const walk = (m, depth, prefix) => {
+    for (const [name, k] of sortedKids(m, depth === 0)) {
+      const path = [...prefix, name], key = path.join("/");
+      const on = ah.path.join("/") === key, open = ah.path.slice(0, path.length).join("/") === key;
+      out.push(`<div class="cat l${depth}${on ? " on" : ""}" data-p="${esc(key)}"><span>${esc(name)}</span><i>${k.n}</i></div>`);
+      sel.push(`<option value="${esc(key)}"${on ? " selected" : ""}>${"  ".repeat(depth * 2)}${esc(name)} (${k.n})</option>`);
+      if (open && k.kids.size) walk(k.kids, depth + 1, path);
+    }
+  };
+  walk(ah.tree, 0, []);
+  $("ahCats").innerHTML = out.join("");
+  $("ahCatSel").innerHTML = sel.join("");
+  for (const c of $("ahCats").children) c.onclick = () => setPath(c.dataset.p);
+}
+function setPath(key) {
+  const p = key ? key.split("/") : [];
+  ah.path = ah.path.join("/") === key && p.length ? p.slice(0, -1) : p;  // clicking the open category closes it
+  ah.page = 0;
+  // pick a sensible default sort for the category
+  ah.sort = ah.path[0] === "Weapons" ? "dps" : ah.path[0] === "Armor" ? "req" : "price";
+  ah.dir = ah.sort === "price" ? 1 : -1;
+  renderAh();
+}
+
+function cols() {
+  const c = [["name", "Item"], ["req", "Level"]];
+  if (ah.path[0] === "Weapons") c.push(["dps", "DPS"], ["speed", "Speed", "hm"]);
+  if (ah.path[0] === "Armor") c.push(["armor", "Armor", "hm"]);
+  if (ah.path[0] === "Weapons" || ah.path[0] === "Armor") c.push(["ilvl", "Item level", "hm"]);
+  c.push(["price", "Buyout each"], ["units", "Available"]);
+  return c;
+}
+function renderAh() {
+  if (!ah.rows) return;
+  renderCats();
+  const q = $("ahq").value.toLowerCase().trim(), words = q.split(/\s+/).filter(Boolean);
+  const stat = $("ahStat").value.toLowerCase().trim();
+  if (!ah.path.length && q.length < 2 && !stat) {
+    $("ahCount").textContent = `${ah.rows.length.toLocaleString()} items for sale right now`;
+    const pick = (top) => ah.rows.find((r) => r.path[0] === top && ah.icons[r.id] && r.qual !== "POOR")?.id;
+    $("ahWrap").innerHTML = `<div class="landing">` + sortedKids(ah.tree, true).map(([name, k]) =>
+      `<div class="tile2" data-p="${esc(name)}">${pick(name) ? img(pick(name), 'class="ico"') : ""}<span>${esc(name)}<i>${k.n} items</i></span></div>`).join("") + `</div>`;
+    for (const t of $("ahWrap").querySelectorAll(".tile2")) t.onclick = () => setPath(t.dataset.p);
+    return;
+  }
+  const ql = QUAL.indexOf($("ahQual").value);
+  const num = (id) => $(id).value === "" ? null : +$(id).value;
+  const lv0 = num("ahLvMin"), lv1 = num("ahLvMax"), p0 = num("ahPMin"), p1 = num("ahPMax");
+  const rows = ah.rows.filter((r) => ah.path.every((p, i) => r.path[i] === p) &&
+    words.every((w) => r.lname.includes(w)) && (!stat || r.lstats.includes(stat)) &&
+    (ql < 0 || QUAL.indexOf(r.qual) >= ql) && (lv0 == null || r.req >= lv0) && (lv1 == null || r.req <= lv1) &&
+    (p0 == null || r.price >= p0 * 1e4) && (p1 == null || r.price <= p1 * 1e4));
+  const key = ah.sort, d = ah.dir;
+  rows.sort((a, b) => { const x = a[key] ?? -1, y = b[key] ?? -1; return (typeof x === "string" ? x.localeCompare(y) : x - y) * d || a.price - b.price; });
+  const PER = 50, pages = Math.max(1, Math.ceil(rows.length / PER));
+  ah.page = Math.min(ah.page, pages - 1);
+  const shown = rows.slice(ah.page * PER, ah.page * PER + PER), C = cols();
+  $("ahCount").textContent = `${rows.length.toLocaleString()} result${rows.length === 1 ? "" : "s"}${ah.path.length ? " in " + ah.path.join(" › ") : ""}`;
+  const cell = (r, c) => c === "dps" ? r.dps ?? "" : c === "speed" ? (r.speed ? r.speed.toFixed(2) : "") : c === "armor" ? r.armor ?? "" :
+    c === "ilvl" ? r.ilvl ?? "" : c === "req" ? r.req || "" : c === "price" ? money(r.price) : r.units.toLocaleString();
+  $("ahWrap").innerHTML = rows.length ? `<table id="ahTable"><thead><tr>${C.map(([c, l, m]) =>
+      `<th data-c="${c}" class="${m ?? ""}${c === key ? " on" : ""}">${l}${c === key ? (d > 0 ? " ▲" : " ▼") : ""}</th>`).join("")}</tr></thead><tbody>` +
+    shown.map((r) => `<tr data-id="${r.id}"${r.id === ah.sel ? ' class="on"' : ""}><td><div class="it">${img(r.id)}<div style="min-width:0">
+        <div class="nm q-${r.qual ?? "COMMON"}">${esc(r.name)}</div>${r.stats ? `<div class="st">${esc(r.stats)}</div>` : ""}</div></div></td>` +
+      C.slice(1).map(([c, , m]) => `<td class="${m ?? ""}">${cell(r, c)}</td>`).join("") + `</tr>`).join("") + `</tbody></table>` +
+    (pages > 1 ? `<div class="pager"><button class="btn" id="pgPrev" ${ah.page ? "" : "disabled"}>◀ PREV</button>
+      page ${ah.page + 1} of ${pages}<button class="btn" id="pgNext" ${ah.page < pages - 1 ? "" : "disabled"}>NEXT ▶</button></div>` : "")
+    : `<div class="note pad">Nothing listed matches. Try widening the level range or clearing filters.</div>`;
+  if (pages > 1) {
+    $("pgPrev").onclick = () => { ah.page--; renderAh(); $("ahWrap").scrollTop = 0; };
+    $("pgNext").onclick = () => { ah.page++; renderAh(); $("ahWrap").scrollTop = 0; };
+  }
+  for (const th of $("ahWrap").querySelectorAll("th")) th.onclick = () => {
+    const c = th.dataset.c; ah.dir = ah.sort === c ? -ah.dir : (c === "name" || c === "price" ? 1 : -1); ah.sort = c; renderAh(); };
+  for (const tr of $("ahWrap").querySelectorAll("tbody tr")) tr.onclick = () => {
+    ah.sel = tr.dataset.id; $("ahWrap").querySelectorAll("tr.on").forEach((x) => x.classList.remove("on")); tr.classList.add("on");
+    ahSelect(tr.dataset.id, true); };
+}
+
+async function ahHistory(id) {
+  const b = +id % 64;
+  ah.hist[b] ??= fetch(window.STATIC ? `data/hist/${b}.json` : `/api/hist/${b}`).then((r) => r.json());
+  return (await ah.hist[b])[id] ?? [];
+}
+async function ahSelect(id, scroll) {
+  const r = ah.rows?.find((x) => x.id === id) ?? { id, name: live.names?.[id]?.[0] ?? id };
+  const onMap = state.data?.items.some((x) => x.id === id);
+  const L = (cls, t) => `<div class="${cls}">${t}</div>`;
+  const tip = [
+    r.slot || r.sub ? `<div class="two"><span>${esc(r.slot ?? "")}</span><span>${esc(r.classId === 2 || r.classId === 4 ? r.sub ?? "" : "")}</span></div>` : "",
+    r.speed ? `<div class="two"><span></span><span>Speed ${r.speed.toFixed(2)}</span></div>` : "",
+    r.dps ? L("", `(${r.dps} damage per second)`) : "",
+    r.armor ? L("", `${r.armor} Armor`) : "",
+    ...(r.stats ? r.stats.split(", ").map((x) => L("g", esc(x))) : []),
+    r.req ? L("", `Requires Level ${r.req}`) : "",
+    r.ilvl ? L("d", `Item Level ${r.ilvl}`) : "",
+    r.vendor ? L("d", `Sells to vendor for ${money(r.vendor)}`) : "",
+  ].join("");
+  $("ahDetail").innerHTML = `<div class="box"><div class="dhead">${iconUrl(id) ? img(id, 'class="ico"') : ""}
+      <div class="name q-${r.qual ?? "COMMON"}">${esc(r.name)}</div></div>
+    ${tip ? `<div class="ttip">${tip}</div>` : ""}
+    ${r.price ? `<div class="big" style="margin-top:10px">${money(r.price)} <span class="note">cheapest now</span></div>` : ""}
+    <div id="ahChart" class="note">loading history…</div>
+    ${onMap ? `<div class="note"><a href="#${id}" id="toMap" style="color:var(--trim2)">Show on the market map</a></div>` : ""}
+    <h3 style="margin-top:12px">On the auction house</h3>${listings(id)}</div>`;
+  if (onMap) $("toMap").onclick = (e) => { e.preventDefault(); setTab("market"); select(id); };
+  if (scroll && matchMedia("(max-width: 900px)").matches) $("ahDetail").scrollIntoView({ behavior: "smooth", block: "start" });
+  try {
+    const s = await ahHistory(id);
+    if (!$("ahChart")) return;
+    $("ahChart").outerHTML = chart({ vendor: r.vendor, series: s.map(([ts, price, auctions]) => ({ ts, price, auctions })) });
+  } catch { $("ahChart").textContent = "No history yet."; }
+}
+let ahT;
+for (const id of ["ahq", "ahStat", "ahLvMin", "ahLvMax", "ahPMin", "ahPMax"])
+  $(id).oninput = () => { clearTimeout(ahT); ahT = setTimeout(() => { ah.page = 0; renderAh(); }, 120); };
+$("ahQual").onchange = () => { ah.page = 0; renderAh(); };
+$("ahCatSel").onchange = (e) => { ah.path = []; setPath(e.target.value); };
+$("ahReset").onclick = () => {
+  for (const id of ["ahq", "ahStat", "ahLvMin", "ahLvMax", "ahPMin", "ahPMax", "ahQual"]) $(id).value = "";
+  ah.path = []; ah.page = 0; renderAh(); };
+setInterval(() => { if (document.body.classList.contains("tab-ah") && Date.now() - live.at > 10 * 60e3) openAh(); }, 60e3);
+
+let rt; addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(render, 120); });
+setInterval(updateAgo, 30000);
+setInterval(refresh, 5 * 60000);
+load();
+if (localStorage.tab === "ah") setTab("ah");
+</script>
+</body>
+</html>

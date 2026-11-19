@@ -1,0 +1,704 @@
+{
+ "blacksmithing": [
+  {
+   "guide": "https://metabot.gg/en/wow-forever/professions/blacksmithing",
+   "forever_specific": true,
+   "materials": [
+    {
+     "name": "Rough Stone",
+     "qty": 286,
+     "bracket": "1-83"
+    },
+    {
+     "name": "Dark Iron Bar",
+     "qty": 272,
+     "bracket": "256-295"
+    },
+    {
+     "name": "Steel Bar",
+     "qty": 268,
+     "bracket": "183-210"
+    },
+    {
+     "name": "Bronze Bar",
+     "qty": 245,
+     "bracket": "127-155"
+    },
+    {
+     "name": "Coarse Grinding Stone",
+     "qty": 74,
+     "bracket": "127-155"
+    },
+    {
+     "name": "Heavy Grinding Stone",
+     "qty": 40,
+     "bracket": "183-198"
+    },
+    {
+     "name": "Heart of Fire",
+     "qty": 40,
+     "bracket": "256-288"
+    },
+    {
+     "name": "Heavy Stone",
+     "qty": 36,
+     "bracket": "83-111"
+    },
+    {
+     "name": "Solid Stone",
+     "qty": 35,
+     "bracket": "155-183"
+    },
+    {
+     "name": "Dense Stone",
+     "qty": 32,
+     "bracket": "210-235"
+    },
+    {
+     "name": "Small Obsidian Shard",
+     "qty": 25,
+     "bracket": "295-300"
+    },
+    {
+     "name": "Silver Bar",
+     "qty": 24,
+     "bracket": "137-154"
+    },
+    {
+     "name": "Arcanite Bar",
+     "qty": 24,
+     "bracket": "235-256"
+    },
+    {
+     "name": "Dense Grinding Stone",
+     "qty": 24,
+     "bracket": "235-256"
+    },
+    {
+     "name": "Iron Bar",
+     "qty": 17,
+     "bracket": "111-127"
+    },
+    {
+     "name": "Fiery Core",
+     "qty": 16,
+     "bracket": "288-295"
+    },
+    {
+     "name": "Lava Core",
+     "qty": 16,
+     "bracket": "288-295"
+    },
+    {
+     "name": "Solid Grinding Stone",
+     "qty": 12,
+     "bracket": "198-210"
+    },
+    {
+     "name": "Strong Flux",
+     "qty": 1,
+     "bracket": "154-155"
+    },
+    {
+     "name": "Medium Leather",
+     "qty": 1,
+     "bracket": "154-155"
+    }
+   ]
+  },
+  {
+   "guide": "https://www.wow-professions.com/forever/blacksmithing-leveling-guide",
+   "forever_specific": true,
+   "materials": [
+    {
+     "name": "Thorium Bar",
+     "qty": 1910,
+     "bracket": "240-300"
+    },
+    {
+     "name": "Mithril Bar",
+     "qty": 660,
+     "bracket": "195-240"
+    },
+    {
+     "name": "Bronze Bar",
+     "qty": 290,
+     "bracket": "95-150"
+    },
+    {
+     "name": "Iron Bar",
+     "qty": 180,
+     "bracket": "150-175"
+    },
+    {
+     "name": "Copper Bar",
+     "qty": 180,
+     "bracket": "80-95"
+    },
+    {
+     "name": "Heavy Stone",
+     "qty": 120,
+     "bracket": "100-112"
+    },
+    {
+     "name": "Steel Bar",
+     "qty": 100,
+     "bracket": "180-195"
+    },
+    {
+     "name": "Weak Flux",
+     "qty": 96,
+     "bracket": "125-140"
+    },
+    {
+     "name": "Rough Stone",
+     "qty": 90,
+     "bracket": "1-50"
+    },
+    {
+     "name": "Coarse Stone",
+     "qty": 72,
+     "bracket": "50-75"
+    },
+    {
+     "name": "Star Ruby",
+     "qty": 67,
+     "bracket": "245-300"
+    },
+    {
+     "name": "Thick Leather",
+     "qty": 64,
+     "bracket": "230-240"
+    },
+    {
+     "name": "Medium Leather",
+     "qty": 58,
+     "bracket": "125-150"
+    },
+    {
+     "name": "Solid Stone",
+     "qty": 32,
+     "bracket": "175-180"
+    },
+    {
+     "name": "Green Dye",
+     "qty": 30,
+     "bracket": "150-175"
+    },
+    {
+     "name": "Rugged Leather",
+     "qty": 30,
+     "bracket": "240-245"
+    },
+    {
+     "name": "Aquamarine",
+     "qty": 25,
+     "bracket": "240-290"
+    },
+    {
+     "name": "Heavy Leather",
+     "qty": 24,
+     "bracket": "210-215"
+    },
+    {
+     "name": "Citrine",
+     "qty": 12,
+     "bracket": "210-215"
+    },
+    {
+     "name": "Strong Flux",
+     "qty": 10,
+     "bracket": "140-150"
+    },
+    {
+     "name": "Silver Bar",
+     "qty": 5,
+     "bracket": "75-80"
+    },
+    {
+     "name": "Dense Stone",
+     "qty": 5,
+     "bracket": "225-230"
+    }
+   ]
+  },
+  {
+   "guide": "https://www.wowhead.com/forever/profession-leveling-guides/blacksmithing",
+   "forever_specific": true,
+   "materials": [
+    {
+     "name": "Mithril Bar",
+     "qty": 1154,
+     "bracket": "183-257"
+    },
+    {
+     "name": "Thorium Bar",
+     "qty": 950,
+     "bracket": "270-300"
+    },
+    {
+     "name": "Iron Bar",
+     "qty": 336,
+     "bracket": "125-183"
+    },
+    {
+     "name": "Bronze Bar",
+     "qty": 323,
+     "bracket": "80-147"
+    },
+    {
+     "name": "Copper Bar",
+     "qty": 290,
+     "bracket": "65-110"
+    },
+    {
+     "name": "Azerothium Bar",
+     "qty": 290,
+     "bracket": "270-300"
+    },
+    {
+     "name": "Rough Stone",
+     "qty": 116,
+     "bracket": "1-65"
+    },
+    {
+     "name": "Essence of Air",
+     "qty": 116,
+     "bracket": "270-300"
+    },
+    {
+     "name": "Thick Leather",
+     "qty": 132,
+     "bracket": "240-270"
+    },
+    {
+     "name": "Rugged Leather",
+     "qty": 132,
+     "bracket": "270-300"
+    },
+    {
+     "name": "Mageweave Cloth",
+     "qty": 168,
+     "bracket": "183-240"
+    },
+    {
+     "name": "Truesilver Bar",
+     "qty": 120,
+     "bracket": "257-270"
+    },
+    {
+     "name": "Steel Bar",
+     "qty": 80,
+     "bracket": "190-200"
+    },
+    {
+     "name": "Green Dye",
+     "qty": 51,
+     "bracket": "147-183"
+    },
+    {
+     "name": "Heavy Grinding Stone",
+     "qty": 44,
+     "bracket": "155-200"
+    },
+    {
+     "name": "Shadowgem",
+     "qty": 48,
+     "bracket": "246-250"
+    },
+    {
+     "name": "Coarse Grinding Stone",
+     "qty": 34,
+     "bracket": "140-147"
+    },
+    {
+     "name": "Solid Grinding Stone",
+     "qty": 32,
+     "bracket": "246-270"
+    },
+    {
+     "name": "Star Ruby",
+     "qty": 40,
+     "bracket": "257-270"
+    },
+    {
+     "name": "Dense Stone",
+     "qty": 15,
+     "bracket": "225-235"
+    },
+    {
+     "name": "Dense Grinding Stone",
+     "qty": 18,
+     "bracket": "250-279"
+    },
+    {
+     "name": "Strong Flux",
+     "qty": 11,
+     "bracket": "129-140"
+    },
+    {
+     "name": "Medium Leather",
+     "qty": 11,
+     "bracket": "129-140"
+    },
+    {
+     "name": "Black Pearl",
+     "qty": 12,
+     "bracket": "246-250"
+    },
+    {
+     "name": "Arcanite Bar",
+     "qty": 10,
+     "bracket": "250-257"
+    },
+    {
+     "name": "Silver Bar",
+     "qty": 5,
+     "bracket": "75-80"
+    },
+    {
+     "name": "Heavy Stone",
+     "qty": 5,
+     "bracket": "100-105"
+    },
+    {
+     "name": "Large Opal",
+     "qty": 8,
+     "bracket": "275-279"
+    }
+   ]
+  }
+ ],
+ "engineering": [
+  {
+   "guide": "https://metabot.gg/en/wow-forever/professions/engineering",
+   "forever_specific": true,
+   "materials": [
+    {
+     "name": "Mithril Bar",
+     "qty": 147,
+     "bracket": "205-275"
+    },
+    {
+     "name": "Solid Blasting Powder",
+     "qty": 147,
+     "bracket": "205-275"
+    },
+    {
+     "name": "Steel Bar",
+     "qty": 128,
+     "bracket": "181-200"
+    },
+    {
+     "name": "Copper Bar",
+     "qty": 118,
+     "bracket": "38-107"
+    },
+    {
+     "name": "Bronze Bar",
+     "qty": 96,
+     "bracket": "111-170"
+    },
+    {
+     "name": "Handful of Copper Bolts",
+     "qty": 65,
+     "bracket": "57-120"
+    },
+    {
+     "name": "Rough Stone",
+     "qty": 61,
+     "bracket": "1-38"
+    },
+    {
+     "name": "Linen Cloth",
+     "qty": 47,
+     "bracket": "57-107"
+    },
+    {
+     "name": "Thorium Bar",
+     "qty": 42,
+     "bracket": "282-300"
+    },
+    {
+     "name": "Dense Stone",
+     "qty": 40,
+     "bracket": "245-258"
+    },
+    {
+     "name": "Rough Blasting Powder",
+     "qty": 29,
+     "bracket": "38-68"
+    },
+    {
+     "name": "Heavy Stone",
+     "qty": 28,
+     "bracket": "120-139"
+    },
+    {
+     "name": "Dense Blasting Powder",
+     "qty": 26,
+     "bracket": "275-300"
+    },
+    {
+     "name": "Coarse Blasting Powder",
+     "qty": 25,
+     "bracket": "93-160"
+    },
+    {
+     "name": "Wool Cloth",
+     "qty": 24,
+     "bracket": "139-170"
+    },
+    {
+     "name": "Solid Stone",
+     "qty": 24,
+     "bracket": "170-181"
+    },
+    {
+     "name": "Medium Leather",
+     "qty": 22,
+     "bracket": "140-170"
+    },
+    {
+     "name": "Coarse Stone",
+     "qty": 20,
+     "bracket": "80-93"
+    },
+    {
+     "name": "Nightcrawlers",
+     "qty": 19,
+     "bracket": "145-160"
+    },
+    {
+     "name": "Weak Flux",
+     "qty": 15,
+     "bracket": "75-120"
+    },
+    {
+     "name": "Rugged Leather",
+     "qty": 11,
+     "bracket": "275-282"
+    },
+    {
+     "name": "Blank Parchment",
+     "qty": 5,
+     "bracket": "200-205"
+    },
+    {
+     "name": "Engineer's Ink",
+     "qty": 5,
+     "bracket": "200-205"
+    },
+    {
+     "name": "Silver Bar",
+     "qty": 4,
+     "bracket": "107-111"
+    },
+    {
+     "name": "Runecloth",
+     "qty": 4,
+     "bracket": "282-285"
+    }
+   ]
+  },
+  {
+   "guide": "https://www.wow-professions.com/forever/engineering-leveling-guide",
+   "forever_specific": true,
+   "materials": [
+    {
+     "name": "Thorium Bar",
+     "qty": 225,
+     "bracket": "260-300"
+    },
+    {
+     "name": "Mithril Bar",
+     "qty": 158,
+     "bracket": "195-238"
+    },
+    {
+     "name": "Solid Stone",
+     "qty": 120,
+     "bracket": "175-194"
+    },
+    {
+     "name": "Bronze Bar",
+     "qty": 110,
+     "bracket": "105-160"
+    },
+    {
+     "name": "Copper Bar",
+     "qty": 66,
+     "bracket": "30-75"
+    },
+    {
+     "name": "Rough Stone",
+     "qty": 60,
+     "bracket": "1-30"
+    },
+    {
+     "name": "Coarse Stone",
+     "qty": 60,
+     "bracket": "75-90"
+    },
+    {
+     "name": "Dense Stone",
+     "qty": 60,
+     "bracket": "250-260"
+    },
+    {
+     "name": "Wool Cloth",
+     "qty": 60,
+     "bracket": "135-175"
+    },
+    {
+     "name": "Linen Cloth",
+     "qty": 50,
+     "bracket": "51-100"
+    },
+    {
+     "name": "Runecloth",
+     "qty": 35,
+     "bracket": "260-285"
+    },
+    {
+     "name": "Heavy Stone",
+     "qty": 30,
+     "bracket": "135-150"
+    },
+    {
+     "name": "Weak Flux",
+     "qty": 25,
+     "bracket": "105-125"
+    },
+    {
+     "name": "Mageweave Cloth",
+     "qty": 20,
+     "bracket": "200-215"
+    },
+    {
+     "name": "Medium Leather",
+     "qty": 15,
+     "bracket": "150-160"
+    },
+    {
+     "name": "Moss Agate",
+     "qty": 10,
+     "bracket": "125-135"
+    },
+    {
+     "name": "Silver Bar",
+     "qty": 5,
+     "bracket": "100-105"
+    },
+    {
+     "name": "Steel Bar",
+     "qty": 4,
+     "bracket": "194-195"
+    }
+   ]
+  },
+  {
+   "guide": "https://www.wowhead.com/forever/profession-leveling-guides/engineering",
+   "forever_specific": true,
+   "materials": [
+    {
+     "name": "Thorium Bar",
+     "qty": 165,
+     "bracket": "260-300"
+    },
+    {
+     "name": "Mithril Bar",
+     "qty": 132,
+     "bracket": "195-250"
+    },
+    {
+     "name": "Bronze Bar",
+     "qty": 120,
+     "bracket": "105-160"
+    },
+    {
+     "name": "Solid Stone",
+     "qty": 102,
+     "bracket": "175-194"
+    },
+    {
+     "name": "Wool Cloth",
+     "qty": 65,
+     "bracket": "135-175"
+    },
+    {
+     "name": "Copper Bar",
+     "qty": 55,
+     "bracket": "30-75"
+    },
+    {
+     "name": "Dense Stone",
+     "qty": 54,
+     "bracket": "250-260"
+    },
+    {
+     "name": "Linen Cloth",
+     "qty": 44,
+     "bracket": "51-100"
+    },
+    {
+     "name": "Rough Stone",
+     "qty": 32,
+     "bracket": "1-30"
+    },
+    {
+     "name": "Heavy Blasting Powder",
+     "qty": 30,
+     "bracket": "160-175"
+    },
+    {
+     "name": "Runecloth",
+     "qty": 25,
+     "bracket": "260-285"
+    },
+    {
+     "name": "Weak Flux",
+     "qty": 25,
+     "bracket": "105-125"
+    },
+    {
+     "name": "Coarse Stone",
+     "qty": 16,
+     "bracket": "75-90"
+    },
+    {
+     "name": "Mageweave Cloth",
+     "qty": 18,
+     "bracket": "200-250"
+    },
+    {
+     "name": "Moss Agate",
+     "qty": 10,
+     "bracket": "125-135"
+    },
+    {
+     "name": "Medium Leather",
+     "qty": 12,
+     "bracket": "150-160"
+    },
+    {
+     "name": "Silver Bar",
+     "qty": 5,
+     "bracket": "100-105"
+    },
+    {
+     "name": "Steel Bar",
+     "qty": 4,
+     "bracket": "194-195"
+    }
+   ]
+  }
+ ],
+ "mining": [
+  {
+   "guide": "n/a (not researched in detail)",
+   "forever_specific": false,
+   "materials": []
+  }
+ ]
+}

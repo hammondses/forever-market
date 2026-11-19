@@ -1,0 +1,1007 @@
+{
+ "alchemy": [
+  {
+   "guide": "https://www.wow-professions.com/forever/alchemy-leveling-guide",
+   "forever_specific": true,
+   "notes": "Totals summed from step table; route Minor Force/Minor Defense/Minor Fortitude/Wisdom/Lesser Mana/Fire Oil/Mana/Nature Prot/Greater Intellect/Stonescale Oil/Greater Defense. Not stated which recipes Forever-only. Nature Protection Potion recipe is vendor BoP.",
+   "materials": [
+    {
+     "name": "Silverleaf",
+     "qty": 54,
+     "bracket": "1-55",
+     "vendor": false
+    },
+    {
+     "name": "Peacebloom",
+     "qty": 82,
+     "bracket": "10-90",
+     "vendor": false
+    },
+    {
+     "name": "Mageroyal",
+     "qty": 50,
+     "bracket": "55-130",
+     "vendor": false
+    },
+    {
+     "name": "Earthroot",
+     "qty": 54,
+     "bracket": "65-90",
+     "vendor": false
+    },
+    {
+     "name": "Briarthorn",
+     "qty": 60,
+     "bracket": "90-120",
+     "vendor": false
+    },
+    {
+     "name": "Stranglekelp",
+     "qty": 108,
+     "bracket": "120-235",
+     "vendor": false
+    },
+    {
+     "name": "Firefin Snapper",
+     "qty": 40,
+     "bracket": "130-150",
+     "vendor": false
+    },
+    {
+     "name": "Kingsblood",
+     "qty": 51,
+     "bracket": "150-195",
+     "vendor": false
+    },
+    {
+     "name": "Liferoot",
+     "qty": 62,
+     "bracket": "195-235",
+     "vendor": false
+    },
+    {
+     "name": "Stonescale Eel",
+     "qty": 47,
+     "bracket": "250-260",
+     "vendor": false
+    },
+    {
+     "name": "Blindweed",
+     "qty": 25,
+     "bracket": "235-265",
+     "vendor": false
+    },
+    {
+     "name": "Khadgar's Whisker",
+     "qty": 25,
+     "bracket": "235-265",
+     "vendor": false
+    },
+    {
+     "name": "Sungrass",
+     "qty": 47,
+     "bracket": "265-300",
+     "vendor": false
+    },
+    {
+     "name": "Empty Vial",
+     "qty": 151,
+     "bracket": "1-150",
+     "vendor": true
+    },
+    {
+     "name": "Leaded Vial",
+     "qty": 160,
+     "bracket": "150-260",
+     "vendor": true
+    },
+    {
+     "name": "Crystal Vial",
+     "qty": 72,
+     "bracket": "235-300",
+     "vendor": true
+    }
+   ]
+  },
+  {
+   "guide": "https://www.gfinityesports.com/article/world-of-warcraft-forever-alchemy-guide-1-300-leveling-trainers",
+   "forever_specific": true,
+   "notes": "Quantities summed from its step list (its own totals table is inconsistent). Healing-potion based route.",
+   "materials": [
+    {
+     "name": "Peacebloom",
+     "qty": 60,
+     "bracket": "1-60",
+     "vendor": false
+    },
+    {
+     "name": "Silverleaf",
+     "qty": 60,
+     "bracket": "1-60",
+     "vendor": false
+    },
+    {
+     "name": "Mageroyal",
+     "qty": 65,
+     "bracket": "75-150",
+     "vendor": false
+    },
+    {
+     "name": "Briarthorn",
+     "qty": 60,
+     "bracket": "60-120",
+     "vendor": false
+    },
+    {
+     "name": "Bruiseweed",
+     "qty": 10,
+     "bracket": "110-120",
+     "vendor": false
+    },
+    {
+     "name": "Stranglekelp",
+     "qty": 60,
+     "bracket": "120-205",
+     "vendor": false
+    },
+    {
+     "name": "Liferoot",
+     "qty": 25,
+     "bracket": "150-175",
+     "vendor": false
+    },
+    {
+     "name": "Kingsblood",
+     "qty": 25,
+     "bracket": "150-175",
+     "vendor": false
+    },
+    {
+     "name": "Goldthorn",
+     "qty": 45,
+     "bracket": "185-265",
+     "vendor": false
+    },
+    {
+     "name": "Wild Steelbloom",
+     "qty": 20,
+     "bracket": "175-215",
+     "vendor": false
+    },
+    {
+     "name": "Sungrass",
+     "qty": 70,
+     "bracket": "215-285",
+     "vendor": false
+    },
+    {
+     "name": "Khadgar's Whisker",
+     "qty": 15,
+     "bracket": "215-230",
+     "vendor": false
+    },
+    {
+     "name": "Blindweed",
+     "qty": 40,
+     "bracket": "265-285",
+     "vendor": false
+    },
+    {
+     "name": "Golden Sansam",
+     "qty": 30,
+     "bracket": "285-300",
+     "vendor": false
+    },
+    {
+     "name": "Mountain Silversage",
+     "qty": 15,
+     "bracket": "285-300",
+     "vendor": false
+    },
+    {
+     "name": "Arthas' Tears",
+     "qty": 20,
+     "bracket": "230-250",
+     "vendor": false
+    },
+    {
+     "name": "Empty Vial",
+     "qty": 125,
+     "bracket": "1-150",
+     "vendor": true
+    },
+    {
+     "name": "Leaded Vial",
+     "qty": 75,
+     "bracket": "110-215",
+     "vendor": true
+    },
+    {
+     "name": "Crystal Vial",
+     "qty": 85,
+     "bracket": "215-300",
+     "vendor": true
+    }
+   ]
+  },
+  {
+   "guide": "https://www.wowhead.com/forever/profession-leveling-guides/alchemy",
+   "forever_specific": true,
+   "notes": "Totals summed by me from route table (page has no total list). Uses Forever-style 270-300 Major Discolored Healing Potion special questline (Plaguebloom + Murloc Eye) and Philosopher's Stone step; Forever-specific route.",
+   "materials": [
+    {
+     "name": "Silverleaf",
+     "qty": 54,
+     "bracket": "1-55",
+     "vendor": false
+    },
+    {
+     "name": "Peacebloom",
+     "qty": 79,
+     "bracket": "12-90",
+     "vendor": false
+    },
+    {
+     "name": "Mageroyal",
+     "qty": 83,
+     "bracket": "55-160",
+     "vendor": false
+    },
+    {
+     "name": "Earthroot",
+     "qty": 52,
+     "bracket": "65-90",
+     "vendor": false
+    },
+    {
+     "name": "Briarthorn",
+     "qty": 60,
+     "bracket": "90-120",
+     "vendor": false
+    },
+    {
+     "name": "Stranglekelp",
+     "qty": 91,
+     "bracket": "120-205",
+     "vendor": false
+    },
+    {
+     "name": "Kingsblood",
+     "qty": 38,
+     "bracket": "160-195",
+     "vendor": false
+    },
+    {
+     "name": "Goldthorn",
+     "qty": 50,
+     "bracket": "195-240",
+     "vendor": false
+    },
+    {
+     "name": "Khadgar's Whisker",
+     "qty": 40,
+     "bracket": "205-240",
+     "vendor": false
+    },
+    {
+     "name": "Arthas' Tears",
+     "qty": 23,
+     "bracket": "240-260",
+     "vendor": false
+    },
+    {
+     "name": "Sungrass",
+     "qty": 20,
+     "bracket": "260-270",
+     "vendor": false
+    },
+    {
+     "name": "Blindweed",
+     "qty": 20,
+     "bracket": "260-270",
+     "vendor": false
+    },
+    {
+     "name": "Plaguebloom",
+     "qty": 31,
+     "bracket": "270-300",
+     "vendor": false
+    },
+    {
+     "name": "Murloc Eye",
+     "qty": 31,
+     "bracket": "270-300",
+     "vendor": false
+    },
+    {
+     "name": "Iron Bar",
+     "qty": 4,
+     "bracket": "225-226",
+     "vendor": false
+    },
+    {
+     "name": "Purple Lotus",
+     "qty": 4,
+     "bracket": "225-226",
+     "vendor": false
+    },
+    {
+     "name": "Firebloom",
+     "qty": 4,
+     "bracket": "225-226",
+     "vendor": false
+    },
+    {
+     "name": "Black Vitriol",
+     "qty": 1,
+     "bracket": "225-226",
+     "vendor": false
+    },
+    {
+     "name": "Empty Vial",
+     "qty": 163,
+     "bracket": "1-160",
+     "vendor": true
+    },
+    {
+     "name": "Leaded Vial",
+     "qty": 88,
+     "bracket": "160-240",
+     "vendor": true
+    },
+    {
+     "name": "Crystal Vial",
+     "qty": 64,
+     "bracket": "240-300",
+     "vendor": true
+    }
+   ]
+  }
+ ],
+ "enchanting": [
+  {
+   "guide": "https://www.wow-professions.com/forever/enchanting-leveling-guide",
+   "forever_specific": true,
+   "notes": "Primary Strange Dust path (alt Lesser Magic Essence path: 293 LME + 23 Simple Wood instead of 265 Strange Dust). Rods: Copper from vendor, Silver/Golden/Truesilver/Arcanite are blacksmith-made, buy on AH; then enchant into Runed versions. Disenchant not mentioned for levelling. Method says Forever added new low-level recipes making first 70 skill cheaper.",
+   "materials": [
+    {
+     "name": "Mote of Magic",
+     "qty": 19,
+     "bracket": "1-20",
+     "vendor": true
+    },
+    {
+     "name": "Copper Rod",
+     "qty": 1,
+     "bracket": "1-2",
+     "vendor": true
+    },
+    {
+     "name": "Strange Dust",
+     "qty": 268,
+     "bracket": "20-150",
+     "vendor": false
+    },
+    {
+     "name": "Lesser Magic Essence (Runed Silver Rod)",
+     "qty": 4,
+     "bracket": "109-110",
+     "vendor": false
+    },
+    {
+     "name": "Silver Rod (buy AH)",
+     "qty": 1,
+     "bracket": "109-110",
+     "vendor": false
+    },
+    {
+     "name": "Shadowgem",
+     "qty": 1,
+     "bracket": "109-110",
+     "vendor": false
+    },
+    {
+     "name": "Soul Dust",
+     "qty": 64,
+     "bracket": "150-200",
+     "vendor": false
+    },
+    {
+     "name": "Vision Dust",
+     "qty": 68,
+     "bracket": "200-250",
+     "vendor": false
+    },
+    {
+     "name": "Golden Rod (buy AH)",
+     "qty": 1,
+     "bracket": "150-151",
+     "vendor": false
+    },
+    {
+     "name": "Iridescent Pearl",
+     "qty": 1,
+     "bracket": "150-151",
+     "vendor": false
+    },
+    {
+     "name": "Greater Astral Essence",
+     "qty": 1,
+     "bracket": "150-151",
+     "vendor": false
+    },
+    {
+     "name": "Maple Seed",
+     "qty": 32,
+     "bracket": "151-165",
+     "vendor": true
+    },
+    {
+     "name": "Leaded Vial",
+     "qty": 41,
+     "bracket": "151-220",
+     "vendor": true
+    },
+    {
+     "name": "Stranglethorn Seed",
+     "qty": 50,
+     "bracket": "201-220",
+     "vendor": true
+    },
+    {
+     "name": "Truesilver Rod (buy AH)",
+     "qty": 1,
+     "bracket": "200-201",
+     "vendor": false
+    },
+    {
+     "name": "Black Pearl",
+     "qty": 1,
+     "bracket": "200-201",
+     "vendor": false
+    },
+    {
+     "name": "Greater Mystic Essence",
+     "qty": 1,
+     "bracket": "200-201",
+     "vendor": false
+    },
+    {
+     "name": "Dream Dust",
+     "qty": 260,
+     "bracket": "250-299",
+     "vendor": false
+    },
+    {
+     "name": "Purple Lotus",
+     "qty": 20,
+     "bracket": "250-265",
+     "vendor": false
+    },
+    {
+     "name": "Crystal Vial",
+     "qty": 20,
+     "bracket": "250-265",
+     "vendor": true
+    },
+    {
+     "name": "Arcanite Rod (buy AH)",
+     "qty": 1,
+     "bracket": "299-300",
+     "vendor": false
+    },
+    {
+     "name": "Golden Pearl",
+     "qty": 1,
+     "bracket": "299-300",
+     "vendor": false
+    },
+    {
+     "name": "Illusion Dust",
+     "qty": 10,
+     "bracket": "299-300",
+     "vendor": false
+    },
+    {
+     "name": "Greater Eternal Essence",
+     "qty": 4,
+     "bracket": "299-300",
+     "vendor": false
+    },
+    {
+     "name": "Small Brilliant Shard",
+     "qty": 4,
+     "bracket": "299-300",
+     "vendor": false
+    },
+    {
+     "name": "Large Brilliant Shard",
+     "qty": 2,
+     "bracket": "299-300",
+     "vendor": false
+    }
+   ]
+  },
+  {
+   "guide": "https://www.method.gg/wow-forever/enchanting-in-wow-forever-1-300-leveling-guide-and-trainers",
+   "forever_specific": true,
+   "notes": "Totals from page; Strange Dust is approximate. Ends at 270-300 Shield Greater Stamina (no Arcanite rod). No vendor/DE advice. Rods: Copper, Silver, Golden, Truesilver.",
+   "materials": [
+    {
+     "name": "Mote of Magic",
+     "qty": 19,
+     "bracket": "1-20",
+     "vendor": true
+    },
+    {
+     "name": "Copper Rod",
+     "qty": 1,
+     "bracket": "1-2",
+     "vendor": true
+    },
+    {
+     "name": "Strange Dust",
+     "qty": 145,
+     "bracket": "20-130",
+     "vendor": false
+    },
+    {
+     "name": "Lesser Magic Essence",
+     "qty": 4,
+     "bracket": "104-105",
+     "vendor": false
+    },
+    {
+     "name": "Silver Rod (buy AH)",
+     "qty": 1,
+     "bracket": "104-105",
+     "vendor": false
+    },
+    {
+     "name": "Shadowgem",
+     "qty": 1,
+     "bracket": "104-105",
+     "vendor": false
+    },
+    {
+     "name": "Lesser Astral Essence",
+     "qty": 25,
+     "bracket": "105-130",
+     "vendor": false
+    },
+    {
+     "name": "Soul Dust",
+     "qty": 46,
+     "bracket": "130-180",
+     "vendor": false
+    },
+    {
+     "name": "Golden Rod (buy AH)",
+     "qty": 1,
+     "bracket": "155-156",
+     "vendor": false
+    },
+    {
+     "name": "Iridescent Pearl",
+     "qty": 1,
+     "bracket": "155-156",
+     "vendor": false
+    },
+    {
+     "name": "Greater Astral Essence",
+     "qty": 1,
+     "bracket": "155-156",
+     "vendor": false
+    },
+    {
+     "name": "Lesser Mystic Essence",
+     "qty": 8,
+     "bracket": "156-205",
+     "vendor": false
+    },
+    {
+     "name": "Vision Dust",
+     "qty": 76,
+     "bracket": "180-250",
+     "vendor": false
+    },
+    {
+     "name": "Truesilver Rod (buy AH)",
+     "qty": 1,
+     "bracket": "200-201",
+     "vendor": false
+    },
+    {
+     "name": "Black Pearl",
+     "qty": 1,
+     "bracket": "200-201",
+     "vendor": false
+    },
+    {
+     "name": "Greater Mystic Essence",
+     "qty": 1,
+     "bracket": "200-201",
+     "vendor": false
+    },
+    {
+     "name": "Dream Dust",
+     "qty": 235,
+     "bracket": "250-300",
+     "vendor": false
+    },
+    {
+     "name": "Purple Lotus",
+     "qty": 25,
+     "bracket": "250-270",
+     "vendor": false
+    },
+    {
+     "name": "Crystal Vial",
+     "qty": 25,
+     "bracket": "250-270",
+     "vendor": true
+    }
+   ]
+  },
+  {
+   "guide": "https://www.wowhead.com/forever/profession-leveling-guides/enchanting",
+   "forever_specific": true,
+   "notes": "Totals summed by me from route table. 2-20 is Disenchant green+ items (unquantified, not counted). Uses wands (Lesser/Greater Magic Wand) with Simple Wood. Rods: Copper, Silver, Golden, Truesilver, Arcanite (buy base rods from blacksmiths).",
+   "materials": [
+    {
+     "name": "Copper Rod",
+     "qty": 1,
+     "bracket": "1-2",
+     "vendor": true
+    },
+    {
+     "name": "Mote of Magic",
+     "qty": 1,
+     "bracket": "1-2",
+     "vendor": true
+    },
+    {
+     "name": "Simple Wood",
+     "qty": 68,
+     "bracket": "20-110",
+     "vendor": true
+    },
+    {
+     "name": "Lesser Magic Essence",
+     "qty": 92,
+     "bracket": "20-110",
+     "vendor": false
+    },
+    {
+     "name": "Strange Dust",
+     "qty": 23,
+     "bracket": "90-101",
+     "vendor": false
+    },
+    {
+     "name": "Silver Rod (buy AH)",
+     "qty": 1,
+     "bracket": "100-101",
+     "vendor": false
+    },
+    {
+     "name": "Shadowgem",
+     "qty": 1,
+     "bracket": "100-101",
+     "vendor": false
+    },
+    {
+     "name": "Lesser Astral Essence",
+     "qty": 25,
+     "bracket": "110-135",
+     "vendor": false
+    },
+    {
+     "name": "Soul Dust",
+     "qty": 57,
+     "bracket": "135-185",
+     "vendor": false
+    },
+    {
+     "name": "Golden Rod (buy AH)",
+     "qty": 1,
+     "bracket": "155-156",
+     "vendor": false
+    },
+    {
+     "name": "Iridescent Pearl",
+     "qty": 1,
+     "bracket": "155-156",
+     "vendor": false
+    },
+    {
+     "name": "Greater Astral Essence",
+     "qty": 1,
+     "bracket": "155-156",
+     "vendor": false
+    },
+    {
+     "name": "Vision Dust",
+     "qty": 110,
+     "bracket": "185-250",
+     "vendor": false
+    },
+    {
+     "name": "Truesilver Rod (buy AH)",
+     "qty": 1,
+     "bracket": "200-201",
+     "vendor": false
+    },
+    {
+     "name": "Black Pearl",
+     "qty": 1,
+     "bracket": "200-201",
+     "vendor": false
+    },
+    {
+     "name": "Greater Mystic Essence",
+     "qty": 1,
+     "bracket": "200-201",
+     "vendor": false
+    },
+    {
+     "name": "Dream Dust",
+     "qty": 195,
+     "bracket": "250-294",
+     "vendor": false
+    },
+    {
+     "name": "Purple Lotus",
+     "qty": 15,
+     "bracket": "250-265",
+     "vendor": false
+    },
+    {
+     "name": "Crystal Vial",
+     "qty": 15,
+     "bracket": "250-265",
+     "vendor": true
+    },
+    {
+     "name": "Arcanite Rod (buy AH)",
+     "qty": 1,
+     "bracket": "294-295",
+     "vendor": false
+    },
+    {
+     "name": "Golden Pearl",
+     "qty": 1,
+     "bracket": "294-295",
+     "vendor": false
+    },
+    {
+     "name": "Illusion Dust",
+     "qty": 50,
+     "bracket": "294-300",
+     "vendor": false
+    },
+    {
+     "name": "Greater Eternal Essence",
+     "qty": 4,
+     "bracket": "294-295",
+     "vendor": false
+    },
+    {
+     "name": "Small Brilliant Shard",
+     "qty": 4,
+     "bracket": "294-295",
+     "vendor": false
+    },
+    {
+     "name": "Large Brilliant Shard",
+     "qty": 2,
+     "bracket": "294-295",
+     "vendor": false
+    }
+   ]
+  }
+ ],
+ "cooking": [
+  {
+   "guide": "https://www.wowhead.com/forever/profession-leveling-guides/cooking",
+   "forever_specific": true,
+   "notes": "Fish-only route (fishing); totals from page. Spices vendor.",
+   "materials": [
+    {
+     "name": "Raw Brilliant Smallfish",
+     "qty": 49,
+     "bracket": "1-50",
+     "vendor": false
+    },
+    {
+     "name": "Raw Longjaw Mud Snapper",
+     "qty": 51,
+     "bracket": "50-100",
+     "vendor": false
+    },
+    {
+     "name": "Raw Bristle Whisker Catfish",
+     "qty": 120,
+     "bracket": "100-175",
+     "vendor": false
+    },
+    {
+     "name": "Raw Mithril Head Trout",
+     "qty": 51,
+     "bracket": "175-225",
+     "vendor": false
+    },
+    {
+     "name": "Raw Spotted Yellowtail",
+     "qty": 51,
+     "bracket": "225-275",
+     "vendor": false
+    },
+    {
+     "name": "Large Raw Mightfish",
+     "qty": 25,
+     "bracket": "275-300",
+     "vendor": false
+    },
+    {
+     "name": "Hot Spices",
+     "qty": 25,
+     "bracket": "275-300",
+     "vendor": true
+    },
+    {
+     "name": "Soothing Spices",
+     "qty": 25,
+     "bracket": "275-300",
+     "vendor": true
+    }
+   ]
+  },
+  {
+   "guide": "https://www.wow-professions.com/forever/cooking-leveling-guide",
+   "forever_specific": true,
+   "notes": "Page lists many alternatives per bracket; primary fish path recorded (alts: Roast Raptor 55 Raptor Flesh+55 Hot Spices, Soothing Turtle Bisque, Redgill instead of Yellowtail). Row pairing of its shopping list ambiguous; 'Rainbow Fin Albacore 55' is an alt for 50-100. Hot Spices counted only for Omelet+Deviled Clams 150-175. Beta-based, Apprentice untested.",
+   "materials": [
+    {
+     "name": "Raw Brilliant Smallfish",
+     "qty": 55,
+     "bracket": "1-50",
+     "vendor": false
+    },
+    {
+     "name": "Raw Longjaw Mud Snapper",
+     "qty": 55,
+     "bracket": "50-100",
+     "vendor": false
+    },
+    {
+     "name": "Raw Bristle Whisker Catfish",
+     "qty": 55,
+     "bracket": "100-150",
+     "vendor": false
+    },
+    {
+     "name": "Raptor Egg",
+     "qty": 30,
+     "bracket": "150-175",
+     "vendor": false
+    },
+    {
+     "name": "Tangy Clam Meat",
+     "qty": 30,
+     "bracket": "150-175",
+     "vendor": false
+    },
+    {
+     "name": "Hot Spices",
+     "qty": 60,
+     "bracket": "150-175",
+     "vendor": true
+    },
+    {
+     "name": "Raw Mithril Head Trout",
+     "qty": 55,
+     "bracket": "175-225",
+     "vendor": false
+    },
+    {
+     "name": "Raw Spotted Yellowtail",
+     "qty": 140,
+     "bracket": "225-300",
+     "vendor": false
+    },
+    {
+     "name": "Giant Egg",
+     "qty": 12,
+     "bracket": "225 quest",
+     "vendor": false
+    },
+    {
+     "name": "Zesty Clam Meat",
+     "qty": 10,
+     "bracket": "225 quest",
+     "vendor": false
+    },
+    {
+     "name": "Alterac Swiss",
+     "qty": 20,
+     "bracket": "225 quest",
+     "vendor": true
+    }
+   ]
+  },
+  {
+   "guide": "https://www.warcrafttavern.com/forever/guides/cooking-leveling/",
+   "forever_specific": true,
+   "notes": "Totals from page. Includes Artisan quest items.",
+   "materials": [
+    {
+     "name": "Raw Brilliant Smallfish",
+     "qty": 55,
+     "bracket": "1-50",
+     "vendor": false
+    },
+    {
+     "name": "Raw Longjaw Mud Snapper",
+     "qty": 60,
+     "bracket": "50-100",
+     "vendor": false
+    },
+    {
+     "name": "Raw Bristle Whisker Catfish",
+     "qty": 60,
+     "bracket": "100-150",
+     "vendor": false
+    },
+    {
+     "name": "Raptor Egg",
+     "qty": 30,
+     "bracket": "150-175",
+     "vendor": false
+    },
+    {
+     "name": "Hot Spices",
+     "qty": 30,
+     "bracket": "150-175",
+     "vendor": true
+    },
+    {
+     "name": "Raw Mithril Head Trout",
+     "qty": 60,
+     "bracket": "175-225",
+     "vendor": false
+    },
+    {
+     "name": "Raw Redgill",
+     "qty": 25,
+     "bracket": "225-250",
+     "vendor": false
+    },
+    {
+     "name": "Raw Sunscale Salmon",
+     "qty": 60,
+     "bracket": "250-300",
+     "vendor": false
+    },
+    {
+     "name": "Giant Egg",
+     "qty": 12,
+     "bracket": "225 quest",
+     "vendor": false
+    },
+    {
+     "name": "Zesty Clam Meat",
+     "qty": 10,
+     "bracket": "225 quest",
+     "vendor": false
+    },
+    {
+     "name": "Alterac Swiss",
+     "qty": 20,
+     "bracket": "225 quest",
+     "vendor": true
+    }
+   ]
+  }
+ ]
+}

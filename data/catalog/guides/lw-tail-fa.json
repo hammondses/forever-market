@@ -1,0 +1,1044 @@
+{
+ "leatherworking": [
+  {
+   "guide": "https://www.wow-professions.com/forever/leatherworking-leveling-guide",
+   "forever_specific": true,
+   "note": "Forever beta route; shopping list + step sums",
+   "materials": [
+    {
+     "name": "Ruined Leather Scraps",
+     "qty": 105,
+     "bracket": "1-30",
+     "vendor": false
+    },
+    {
+     "name": "Light Leather",
+     "qty": 414,
+     "bracket": "1-125",
+     "vendor": false
+    },
+    {
+     "name": "Light Hide",
+     "qty": 27,
+     "bracket": "30-55",
+     "vendor": false
+    },
+    {
+     "name": "Medium Leather",
+     "qty": 265,
+     "bracket": "75-155",
+     "vendor": false
+    },
+    {
+     "name": "Medium Hide",
+     "qty": 10,
+     "bracket": "80-90",
+     "vendor": false
+    },
+    {
+     "name": "Heavy Hide",
+     "qty": 30,
+     "bracket": "130-165",
+     "vendor": false
+    },
+    {
+     "name": "Heavy Leather",
+     "qty": 377,
+     "bracket": "155-195",
+     "vendor": false
+    },
+    {
+     "name": "Iron Buckle",
+     "qty": 16,
+     "bracket": "185-195",
+     "vendor": false
+    },
+    {
+     "name": "Thick Leather",
+     "qty": 564,
+     "bracket": "195-235",
+     "vendor": false
+    },
+    {
+     "name": "Rugged Leather",
+     "qty": 1030,
+     "bracket": "235-300",
+     "vendor": false
+    },
+    {
+     "name": "Runecloth",
+     "qty": 530,
+     "bracket": "265-300",
+     "vendor": false
+    },
+    {
+     "name": "Salt",
+     "qty": 127,
+     "bracket": "30-165",
+     "vendor": true
+    },
+    {
+     "name": "Coarse Thread",
+     "qty": 80,
+     "bracket": "55-100",
+     "vendor": true
+    },
+    {
+     "name": "Fine Thread",
+     "qty": 164,
+     "bracket": "100-195",
+     "vendor": true
+    },
+    {
+     "name": "Silken Thread",
+     "qty": 188,
+     "bracket": "165-235",
+     "vendor": true
+    },
+    {
+     "name": "Rune Thread",
+     "qty": 125,
+     "bracket": "235-300",
+     "vendor": true
+    },
+    {
+     "name": "Gray Dye",
+     "qty": 10,
+     "bracket": "115-125",
+     "vendor": true
+    },
+    {
+     "name": "Black Dye",
+     "qty": 36,
+     "bracket": "235-265",
+     "vendor": true
+    }
+   ]
+  },
+  {
+   "guide": "https://www.wowhead.com/forever/profession-leveling-guides/leatherworking",
+   "forever_specific": true,
+   "note": "Summed from step table; crafted cured hides separated; route uses Gem-studded Belt, Heavy Scorpid Helm (Classic-era recipes)",
+   "materials": [
+    {
+     "name": "Ruined Leather Scraps",
+     "qty": 96,
+     "bracket": "1-30",
+     "vendor": false
+    },
+    {
+     "name": "Light Leather",
+     "qty": 245,
+     "bracket": "30-100",
+     "vendor": false
+    },
+    {
+     "name": "Light Hide",
+     "qty": 10,
+     "bracket": "45-55",
+     "vendor": false
+    },
+    {
+     "name": "Salt",
+     "qty": 76,
+     "bracket": "45-145",
+     "vendor": true
+    },
+    {
+     "name": "Coarse Thread",
+     "qty": 110,
+     "bracket": "55-100",
+     "vendor": true
+    },
+    {
+     "name": "Medium Leather",
+     "qty": 308,
+     "bracket": "100-155",
+     "vendor": false
+    },
+    {
+     "name": "Gray Dye",
+     "qty": 47,
+     "bracket": "100-143",
+     "vendor": true
+    },
+    {
+     "name": "Fine Thread",
+     "qty": 190,
+     "bracket": "100-190",
+     "vendor": true
+    },
+    {
+     "name": "Heavy Hide",
+     "qty": 22,
+     "bracket": "125-145",
+     "vendor": false
+    },
+    {
+     "name": "Elixir of Lesser Defense",
+     "qty": 50,
+     "bracket": "145-155",
+     "vendor": false
+    },
+    {
+     "name": "Spider's Silk",
+     "qty": 50,
+     "bracket": "145-155",
+     "vendor": false
+    },
+    {
+     "name": "Heavy Leather",
+     "qty": 216,
+     "bracket": "155-200",
+     "vendor": false
+    },
+    {
+     "name": "Iridescent Pearl",
+     "qty": 54,
+     "bracket": "160-190",
+     "vendor": false
+    },
+    {
+     "name": "Jade",
+     "qty": 54,
+     "bracket": "160-190",
+     "vendor": false
+    },
+    {
+     "name": "Citrine",
+     "qty": 27,
+     "bracket": "160-190",
+     "vendor": false
+    },
+    {
+     "name": "Silken Thread",
+     "qty": 180,
+     "bracket": "190-240",
+     "vendor": true
+    },
+    {
+     "name": "Thick Leather",
+     "qty": 590,
+     "bracket": "200-240",
+     "vendor": false
+    },
+    {
+     "name": "Rugged Hide",
+     "qty": 39,
+     "bracket": "225-300",
+     "vendor": false
+    },
+    {
+     "name": "Refined Deeprock Salt",
+     "qty": 6,
+     "bracket": "225-230",
+     "vendor": true
+    },
+    {
+     "name": "Rugged Leather",
+     "qty": 568,
+     "bracket": "240-300",
+     "vendor": false
+    },
+    {
+     "name": "Black Dye",
+     "qty": 35,
+     "bracket": "240-270",
+     "vendor": true
+    },
+    {
+     "name": "Rune Thread",
+     "qty": 74,
+     "bracket": "240-300",
+     "vendor": true
+    },
+    {
+     "name": "Heavy Scorpid Scale",
+     "qty": 420,
+     "bracket": "255-300",
+     "vendor": false
+    },
+    {
+     "name": "Cured Medium Hide (pre-cured; or Medium Hide + Salt)",
+     "qty": 75,
+     "bracket": "118-155",
+     "vendor": false
+    },
+    {
+     "name": "Cured Heavy Hide (123 beyond the 22 crafted in-route)",
+     "qty": 123,
+     "bracket": "145-200",
+     "vendor": false
+    }
+   ]
+  },
+  {
+   "guide": "https://metabot.gg/en/wow-forever/professions/leatherworking",
+   "forever_specific": true,
+   "note": "Calculated cheapest route, estimated trainer skills; uses Turtle Scale Breastplate, Gordok Ogre Suit, Masterwork Volcanic",
+   "materials": [
+    {
+     "name": "Light Leather",
+     "qty": 377,
+     "bracket": "1-115",
+     "vendor": false
+    },
+    {
+     "name": "Rugged Leather",
+     "qty": 355,
+     "bracket": "205-300",
+     "vendor": false
+    },
+    {
+     "name": "Turtle Scale",
+     "qty": 336,
+     "bracket": "233-246",
+     "vendor": false
+    },
+    {
+     "name": "Thick Leather",
+     "qty": 203,
+     "bracket": "155-246",
+     "vendor": false
+    },
+    {
+     "name": "Medium Leather",
+     "qty": 148,
+     "bracket": "105-155",
+     "vendor": false
+    },
+    {
+     "name": "Coarse Thread",
+     "qty": 142,
+     "bracket": "52-105",
+     "vendor": true
+    },
+    {
+     "name": "Heavy Leather",
+     "qty": 135,
+     "bracket": "142-200",
+     "vendor": false
+    },
+    {
+     "name": "Salt",
+     "qty": 93,
+     "bracket": "115-142",
+     "vendor": true
+    },
+    {
+     "name": "Bolt of Runecloth",
+     "qty": 58,
+     "bracket": "265-294",
+     "vendor": false
+    },
+    {
+     "name": "Rune Thread",
+     "qty": 43,
+     "bracket": "246-300",
+     "vendor": true
+    },
+    {
+     "name": "Fine Thread",
+     "qty": 37,
+     "bracket": "142-176",
+     "vendor": true
+    },
+    {
+     "name": "Heavy Hide",
+     "qty": 31,
+     "bracket": "115-142",
+     "vendor": false
+    },
+    {
+     "name": "Silken Thread",
+     "qty": 31,
+     "bracket": "176-200",
+     "vendor": true
+    },
+    {
+     "name": "Irradiated Leather Scraps",
+     "qty": 30,
+     "bracket": "200-205",
+     "vendor": false
+    },
+    {
+     "name": "Rugged Hide",
+     "qty": 29,
+     "bracket": "205-231",
+     "vendor": false
+    },
+    {
+     "name": "Refined Deeprock Salt",
+     "qty": 29,
+     "bracket": "205-231",
+     "vendor": true
+    },
+    {
+     "name": "Ogre Tannin",
+     "qty": 29,
+     "bracket": "265-294",
+     "vendor": false
+    },
+    {
+     "name": "Heavy Silken Thread",
+     "qty": 28,
+     "bracket": "233-246",
+     "vendor": true
+    },
+    {
+     "name": "Thick Hide",
+     "qty": 20,
+     "bracket": "155-175",
+     "vendor": false
+    },
+    {
+     "name": "Deeprock Salt",
+     "qty": 20,
+     "bracket": "155-175",
+     "vendor": true
+    },
+    {
+     "name": "Essence of Fire",
+     "qty": 14,
+     "bracket": "246-300",
+     "vendor": false
+    },
+    {
+     "name": "Core of Earth",
+     "qty": 8,
+     "bracket": "246-294",
+     "vendor": false
+    },
+    {
+     "name": "Essence of Earth",
+     "qty": 6,
+     "bracket": "294-300",
+     "vendor": false
+    },
+    {
+     "name": "Green Dye",
+     "qty": 2,
+     "bracket": "153-155",
+     "vendor": true
+    },
+    {
+     "name": "Iron Buckle",
+     "qty": 2,
+     "bracket": "153-155",
+     "vendor": false
+    }
+   ]
+  }
+ ],
+ "tailoring": [
+  {
+   "guide": "https://www.wow-professions.com/forever/tailoring-leveling-guide",
+   "forever_specific": true,
+   "note": "Raw cloth equivalents; 280-300 not in its shopping list (optional alt recipes need ~348-406 more Runecloth bolts)",
+   "materials": [
+    {
+     "name": "Linen Cloth",
+     "qty": 60,
+     "bracket": "1-30",
+     "vendor": false
+    },
+    {
+     "name": "Wool Cloth",
+     "qty": 459,
+     "bracket": "55-140",
+     "vendor": false
+    },
+    {
+     "name": "Elixir of Wisdom",
+     "qty": 29,
+     "bracket": "120-140",
+     "vendor": false
+    },
+    {
+     "name": "Silk Cloth",
+     "qty": 736,
+     "bracket": "100-190",
+     "vendor": false
+    },
+    {
+     "name": "Mageweave Cloth",
+     "qty": 785,
+     "bracket": "140-225",
+     "vendor": false
+    },
+    {
+     "name": "Runecloth",
+     "qty": 1555,
+     "bracket": "205-280",
+     "vendor": false
+    },
+    {
+     "name": "Rugged Leather",
+     "qty": 44,
+     "bracket": "240-250",
+     "vendor": false
+    },
+    {
+     "name": "Ironweb Spider Silk",
+     "qty": 39,
+     "bracket": "250-280",
+     "vendor": false
+    },
+    {
+     "name": "Coarse Thread",
+     "qty": 28,
+     "bracket": "30-55",
+     "vendor": true
+    },
+    {
+     "name": "Fine Thread",
+     "qty": 159,
+     "bracket": "80-170",
+     "vendor": true
+    },
+    {
+     "name": "Silken Thread",
+     "qty": 161,
+     "bracket": "170-225",
+     "vendor": true
+    },
+    {
+     "name": "Heavy Silken Thread",
+     "qty": 10,
+     "bracket": "200-205",
+     "vendor": true
+    },
+    {
+     "name": "Rune Thread",
+     "qty": 74,
+     "bracket": "225-280",
+     "vendor": true
+    },
+    {
+     "name": "Red Dye",
+     "qty": 92,
+     "bracket": "150-190",
+     "vendor": true
+    }
+   ]
+  },
+  {
+   "guide": "https://www.wowhead.com/forever/profession-leveling-guides/tailoring",
+   "forever_specific": true,
+   "note": "Summed from step table, bolts converted to raw cloth",
+   "materials": [
+    {
+     "name": "Linen Cloth",
+     "qty": 108,
+     "bracket": "1-75",
+     "vendor": false
+    },
+    {
+     "name": "Coarse Thread",
+     "qty": 56,
+     "bracket": "1-75",
+     "vendor": true
+    },
+    {
+     "name": "Wool Cloth",
+     "qty": 252,
+     "bracket": "75-125",
+     "vendor": false
+    },
+    {
+     "name": "Fine Thread",
+     "qty": 111,
+     "bracket": "75-160",
+     "vendor": true
+    },
+    {
+     "name": "Silk Cloth",
+     "qty": 264,
+     "bracket": "100-160",
+     "vendor": false
+    },
+    {
+     "name": "Blue Dye",
+     "qty": 14,
+     "bracket": "125-140",
+     "vendor": true
+    },
+    {
+     "name": "Spider's Silk",
+     "qty": 16,
+     "bracket": "125-140",
+     "vendor": false
+    },
+    {
+     "name": "Bleach",
+     "qty": 2,
+     "bracket": "125-140",
+     "vendor": true
+    },
+    {
+     "name": "Mageweave Cloth",
+     "qty": 425,
+     "bracket": "140-205",
+     "vendor": false
+    },
+    {
+     "name": "Elemental Earth",
+     "qty": 11,
+     "bracket": "149-170",
+     "vendor": false
+    },
+    {
+     "name": "Elemental Water",
+     "qty": 20,
+     "bracket": "149-170",
+     "vendor": false
+    },
+    {
+     "name": "Elemental Fire",
+     "qty": 20,
+     "bracket": "149-170",
+     "vendor": false
+    },
+    {
+     "name": "Elemental Air",
+     "qty": 20,
+     "bracket": "149-170",
+     "vendor": false
+    },
+    {
+     "name": "Silken Thread",
+     "qty": 50,
+     "bracket": "149-205",
+     "vendor": true
+    },
+    {
+     "name": "Orange Dye",
+     "qty": 11,
+     "bracket": "170-205",
+     "vendor": true
+    },
+    {
+     "name": "Heavy Silken Thread",
+     "qty": 45,
+     "bracket": "170-205",
+     "vendor": true
+    },
+    {
+     "name": "Runecloth",
+     "qty": 2370,
+     "bracket": "205-300",
+     "vendor": false
+    },
+    {
+     "name": "Rune Thread",
+     "qty": 196,
+     "bracket": "214-300",
+     "vendor": true
+    },
+    {
+     "name": "Ironweb Spider Silk",
+     "qty": 83,
+     "bracket": "214-300",
+     "vendor": false
+    },
+    {
+     "name": "Rugged Leather",
+     "qty": 48,
+     "bracket": "250-280",
+     "vendor": false
+    },
+    {
+     "name": "Essence of Earth",
+     "qty": 24,
+     "bracket": "280-300",
+     "vendor": false
+    },
+    {
+     "name": "Living Essence",
+     "qty": 24,
+     "bracket": "280-300",
+     "vendor": false
+    },
+    {
+     "name": "Small Brilliant Shard",
+     "qty": 20,
+     "bracket": "280-300",
+     "vendor": false
+    },
+    {
+     "name": "Essence of Air",
+     "qty": 60,
+     "bracket": "280-300",
+     "vendor": false
+    }
+   ]
+  },
+  {
+   "guide": "https://metabot.gg/en/wow-forever/professions/tailoring",
+   "forever_specific": true,
+   "note": "Bolts converted to raw cloth; route uses Mooncloth (Felcloth) and Gordok Ogre Suit",
+   "materials": [
+    {
+     "name": "Wool Cloth",
+     "qty": 666,
+     "bracket": "74-142",
+     "vendor": false
+    },
+    {
+     "name": "Silk Cloth",
+     "qty": 456,
+     "bracket": "147-195",
+     "vendor": false
+    },
+    {
+     "name": "Mageweave Cloth",
+     "qty": 600,
+     "bracket": "142-243",
+     "vendor": false
+    },
+    {
+     "name": "Runecloth",
+     "qty": 650,
+     "bracket": "195-300",
+     "vendor": false
+    },
+    {
+     "name": "Linen Cloth",
+     "qty": 112,
+     "bracket": "1-74",
+     "vendor": false
+    },
+    {
+     "name": "Fine Thread",
+     "qty": 227,
+     "bracket": "74-195",
+     "vendor": true
+    },
+    {
+     "name": "Silken Thread",
+     "qty": 159,
+     "bracket": "147-243",
+     "vendor": true
+    },
+    {
+     "name": "Rugged Leather",
+     "qty": 140,
+     "bracket": "270-294",
+     "vendor": false
+    },
+    {
+     "name": "Coarse Thread",
+     "qty": 56,
+     "bracket": "34-74",
+     "vendor": true
+    },
+    {
+     "name": "Felcloth",
+     "qty": 54,
+     "bracket": "243-270",
+     "vendor": true
+    },
+    {
+     "name": "Rune Thread",
+     "qty": 45,
+     "bracket": "270-300",
+     "vendor": true
+    },
+    {
+     "name": "Red Dye",
+     "qty": 36,
+     "bracket": "147-170",
+     "vendor": true
+    },
+    {
+     "name": "Ogre Tannin",
+     "qty": 35,
+     "bracket": "270-294",
+     "vendor": false
+    },
+    {
+     "name": "Elixir of Wisdom",
+     "qty": 26,
+     "bracket": "124-142",
+     "vendor": false
+    },
+    {
+     "name": "Black Pearl",
+     "qty": 20,
+     "bracket": "294-300",
+     "vendor": false
+    },
+    {
+     "name": "Orange Dye",
+     "qty": 18,
+     "bracket": "170-187",
+     "vendor": true
+    },
+    {
+     "name": "Heavy Silken Thread",
+     "qty": 18,
+     "bracket": "170-187",
+     "vendor": true
+    },
+    {
+     "name": "Elemental Earth",
+     "qty": 16,
+     "bracket": "152-195",
+     "vendor": false
+    }
+   ]
+  }
+ ],
+ "first_aid": [
+  {
+   "guide": "https://www.wow-professions.com/forever/first-aid-leveling-guide",
+   "forever_specific": true,
+   "note": "Bandage route; alt for 1-75 is Minor Healing Potion (81 Peacebloom/Mild Spices/Empty Vial)",
+   "materials": [
+    {
+     "name": "Linen Cloth",
+     "qty": 154,
+     "bracket": "1-80",
+     "vendor": false
+    },
+    {
+     "name": "Wool Cloth",
+     "qty": 150,
+     "bracket": "80-150",
+     "vendor": false
+    },
+    {
+     "name": "Silk Cloth",
+     "qty": 134,
+     "bracket": "150-210",
+     "vendor": false
+    },
+    {
+     "name": "Mageweave Cloth",
+     "qty": 108,
+     "bracket": "210-260",
+     "vendor": false
+    },
+    {
+     "name": "Runecloth",
+     "qty": 20,
+     "bracket": "260-275",
+     "vendor": false
+    },
+    {
+     "name": "Golden Sansam",
+     "qty": 30,
+     "bracket": "275-300",
+     "vendor": false
+    },
+    {
+     "name": "Soothing Spices",
+     "qty": 90,
+     "bracket": "275-300",
+     "vendor": true
+    },
+    {
+     "name": "Crystal Vial",
+     "qty": 30,
+     "bracket": "275-300",
+     "vendor": true
+    }
+   ]
+  },
+  {
+   "guide": "https://www.wowhead.com/forever/profession-leveling-guides/first-aid",
+   "forever_specific": true,
+   "note": "Bandage-only route from step table",
+   "materials": [
+    {
+     "name": "Linen Cloth",
+     "qty": 151,
+     "bracket": "1-80",
+     "vendor": false
+    },
+    {
+     "name": "Wool Cloth",
+     "qty": 144,
+     "bracket": "80-150",
+     "vendor": false
+    },
+    {
+     "name": "Silk Cloth",
+     "qty": 123,
+     "bracket": "150-210",
+     "vendor": false
+    },
+    {
+     "name": "Mageweave Cloth",
+     "qty": 89,
+     "bracket": "210-260",
+     "vendor": false
+    },
+    {
+     "name": "Runecloth",
+     "qty": 62,
+     "bracket": "260-300",
+     "vendor": false
+    }
+   ]
+  },
+  {
+   "guide": "https://www.method.gg/wow-forever/first-aid-in-wow-forever-1-300-leveling-guide-and-trainers",
+   "forever_specific": true,
+   "note": "Shopping list; 1-75 uses Minor Healing Potion",
+   "materials": [
+    {
+     "name": "Linen Cloth",
+     "qty": 70,
+     "bracket": "1-150",
+     "vendor": false
+    },
+    {
+     "name": "Wool Cloth",
+     "qty": 165,
+     "bracket": "75-150",
+     "vendor": false
+    },
+    {
+     "name": "Silk Cloth",
+     "qty": 129,
+     "bracket": "150-225",
+     "vendor": false
+    },
+    {
+     "name": "Mageweave Cloth",
+     "qty": 98,
+     "bracket": "150-300",
+     "vendor": false
+    },
+    {
+     "name": "Runecloth",
+     "qty": 60,
+     "bracket": "225-300",
+     "vendor": false
+    },
+    {
+     "name": "Empty Vial",
+     "qty": 38,
+     "bracket": "45-75",
+     "vendor": true
+    },
+    {
+     "name": "Mild Spices",
+     "qty": 38,
+     "bracket": "45-75",
+     "vendor": true
+    },
+    {
+     "name": "Peacebloom",
+     "qty": 38,
+     "bracket": "45-75",
+     "vendor": false
+    }
+   ]
+  },
+  {
+   "guide": "https://metabot.gg/en/wow-forever/professions/first-aid",
+   "forever_specific": true,
+   "note": "Cheapest-by-vendor-value route using Poultices/Potions",
+   "materials": [
+    {
+     "name": "Mild Spices",
+     "qty": 130,
+     "bracket": "40-135",
+     "vendor": true
+    },
+    {
+     "name": "Spider Ichor",
+     "qty": 87,
+     "bracket": "75-135",
+     "vendor": false
+    },
+    {
+     "name": "Bottle of Dalaran Noir",
+     "qty": 87,
+     "bracket": "75-135",
+     "vendor": false
+    },
+    {
+     "name": "Runecloth",
+     "qty": 79,
+     "bracket": "245-300",
+     "vendor": false
+    },
+    {
+     "name": "Silk Cloth",
+     "qty": 74,
+     "bracket": "158-195",
+     "vendor": false
+    },
+    {
+     "name": "Mageweave Cloth",
+     "qty": 60,
+     "bracket": "210-245",
+     "vendor": false
+    },
+    {
+     "name": "Murloc Fin",
+     "qty": 54,
+     "bracket": "195-210",
+     "vendor": false
+    },
+    {
+     "name": "Soothing Spices",
+     "qty": 54,
+     "bracket": "195-210",
+     "vendor": true
+    },
+    {
+     "name": "Thunder Ale",
+     "qty": 54,
+     "bracket": "195-210",
+     "vendor": true
+    },
+    {
+     "name": "Empty Vial",
+     "qty": 43,
+     "bracket": "40-75",
+     "vendor": true
+    },
+    {
+     "name": "Peacebloom",
+     "qty": 43,
+     "bracket": "40-75",
+     "vendor": false
+    },
+    {
+     "name": "Linen Cloth",
+     "qty": 41,
+     "bracket": "1-40",
+     "vendor": false
+    },
+    {
+     "name": "Wool Cloth",
+     "qty": 36,
+     "bracket": "150-158",
+     "vendor": false
+    },
+    {
+     "name": "Leaded Vial",
+     "qty": 19,
+     "bracket": "135-150",
+     "vendor": true
+    },
+    {
+     "name": "Hot Spices",
+     "qty": 19,
+     "bracket": "135-150",
+     "vendor": true
+    },
+    {
+     "name": "Bruiseweed",
+     "qty": 19,
+     "bracket": "135-150",
+     "vendor": false
+    }
+   ]
+  }
+ ]
+}
