@@ -252,7 +252,7 @@ def resets() -> dict:
             "sold": round(m.sold.get(i, 0)), "vendor": m.vendor(i), "trend": trend,
             "ripe": any(t["supply"] <= RESET_DRAIN and t["price"] is not None and abs(t["price"]) <= RESET_FLAT
                         for w, t in trend.items() if w >= 24),  # a 3h dip is noise
-            "ladder": ladder[:40],
+            "ladder": ladder[:80],
         })
     return {"latest": latest, "windows": RESET_WINDOWS, "buyBelow": RESET_BUY_BELOW, "flat": RESET_FLAT,
             "drain": RESET_DRAIN, "medianDays": RESET_MEDIAN_DAYS, "items": rows}
