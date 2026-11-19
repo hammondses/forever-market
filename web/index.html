@@ -186,7 +186,13 @@ body.tab-ah .mk, body.tab-rs .mk, body:not(.tab-ah) #ahv, body:not(.tab-rs) #rsv
 .rsTable .it .nm { max-width: 200px; }
 .rsTable td, .rsTable th { padding-left: 8px !important; padding-right: 8px !important; }
 .badge.ripe { background: #2f6b2a; color: #e6f5d0; }
-.ladder rect.buy { fill: #6b8f3a; } .ladder rect.keep { fill: #3b4060; }
+.ladder rect.buy { fill: #6b8f3a; }
+.rsList { max-height: 260px; overflow-y: auto; border: 1px solid var(--line); margin-top: 6px; }
+.rsList table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.rsList th { position: sticky; top: 0; background: var(--panel2); color: var(--dim); font-weight: 600; text-align: right; padding: 4px 8px; }
+.rsList td { text-align: right; padding: 2px 8px; border-top: 1px solid #2c2823; white-space: nowrap; }
+.rsList th:first-child, .rsList td:first-child { text-align: left; }
+.rsList tr.buy td { background: rgba(107,143,58,.18); } .ladder rect.keep { fill: #3b4060; }
 
 @media (max-width: 900px) {
   html, body { height: auto; overflow: auto; }
@@ -1079,6 +1085,12 @@ async function rsSelect(id) {
       Relisting it all at ${money(r.line)} makes ${money(r.profit)} after the auction house cut, if it sells.
       ${r.vsMedian > 25 ? `That's ${Math.round(r.vsMedian)}% over the 7-day median of ${money(r.target)}, so it may not stick.` : `The 7-day median is ${money(r.target)}.`}</div>
     ${ladderSvg(r)}
+    <h3 style="margin-top:14px">Listings</h3>
+    <div class="rsList"><table><thead><tr><th>Price each</th><th>For sale</th><th>Running total</th><th>Running cost</th></tr></thead><tbody>${
+      (() => { let u = 0, c = 0; return r.ladder.map(([p, q]) => { u += q; c += p * q;
+        return `<tr class="${p < r.line ? "buy" : ""}"><td>${money(p)}</td><td>${q.toLocaleString()}</td><td>${u.toLocaleString()}</td><td>${money(c)}</td></tr>`; }).join(""); })()
+    }</tbody></table></div>
+    ${r.ladder.reduce((a, [, q]) => a + q, 0) < r.units ? `<div class="note">Showing prices up to 4× the cheapest.</div>` : ""}
     <h3 style="margin-top:14px">Supply and price</h3>
     ${Object.keys(r.trend).length ? `<table class="kv" style="width:100%;font-size:14px"><tr><td></td><td>supply</td><td>cheapest</td></tr>${tr(3)}${tr(24)}${tr(72)}</table>` : `<div class="note">No trend yet. It needs a few hours of snapshots.</div>`}
     <div id="rsChart" class="note">loading history…</div>
