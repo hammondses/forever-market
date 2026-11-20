@@ -1219,8 +1219,8 @@ function renderCrafting() {
   $("crWrap").innerHTML = rows.length ? `<table id="ahTable" class="rsTable"><thead><tr>${C.map(([c, l, m]) =>
     `<th data-s="${c}" class="${cr.sort === c ? "on" : ""} ${m || ""}">${l}${cr.sort === c ? (cr.dir > 0 ? " ▲" : " ▼") : ""}</th>`).join("")}</tr></thead><tbody>${
     rows.map(({ w, c }) => `<tr data-id="${w.itemId}"${String(w.itemId) === cr.sel ? ' class="on"' : ""}><td><div class="it">${img(String(w.itemId))}<div style="min-width:0">
-      <div class="nm">${esc(w.name)}<span class="tier ${w.writTier}">${w.writTier} · ${w.writRep} rep</span></div>
-      <small class="src-${w.recipeSource}">${SRC[w.recipeSource] || "Recipe source unknown"}</small></div></div></td>
+      <div class="nm">${esc(w.name)}</div>
+      <small><span class="src-${w.recipeSource}">${SRC[w.recipeSource] || "Recipe source unknown"}</span><span class="tier ${w.writTier}">${w.writTier} · ${w.writRep} rep</span></small></div></div></td>
       <td class="hm">${w.skillRequired ?? "?"}</td>
       <td>${c.sell == null ? `<span class="flat">none listed</span>` : money(c.sell)}</td>
       <td>${c.missing ? `<span class="flat">–</span><small>materials not listed</small>` : money(Math.round(c.mats))}</td>
@@ -1238,8 +1238,8 @@ function crSelect(id) {
   const w = cr.data.writs.find((x) => String(x.itemId) === id); if (!w) return;
   const c = craftCost(w), mode = $("crMats").value;
   const mats = w.reagents.map((rg) => { const e = reagentEach(rg, mode);
-    return `<tr><td><div class="it">${img(String(rg.itemId))}<span>${esc(rg.name)}</span></div></td><td>${rg.qty}</td>
-      <td>${e.each == null ? "–" : money(e.each)}</td><td class="note">${e.src}</td><td>${e.each == null ? "–" : money(e.each * rg.qty)}</td></tr>`; }).join("");
+    return `<tr><td><div class="it">${img(String(rg.itemId))}<div>${esc(rg.name)}<div class="note">${e.src}</div></div></div></td><td>${rg.qty}</td>
+      <td>${e.each == null ? "–" : money(e.each)}</td><td>${e.each == null ? "–" : money(e.each * rg.qty)}</td></tr>`; }).join("");
   const recipes = (w.recipeItems || []).map((r) => { const p = cp(r.itemId)[0];
     return `${esc(r.name)}${p ? `, on the auction house for ${money(p)}` : ""}`; }).join("; ");
   $("crDetail").innerHTML = `<div class="box"><div class="dhead">${img(id, 'class="ico"')}<div>
@@ -1253,7 +1253,7 @@ function crSelect(id) {
       <tr><td>Profit</td><td class="${c.profit > 0 ? "up" : "down"}">${signed(c.profit)}</td></tr>
       <tr><td>Writ scroll</td><td>${c.scroll ? money(c.scroll) : "none listed"}</td></tr></table>
     <h3 style="margin-top:14px">Materials</h3>
-    <div class="rsList"><table><thead><tr><th>Item</th><th>Qty</th><th>Each</th><th>From</th><th>Total</th></tr></thead><tbody>${mats}</tbody></table></div>
+    <div class="rsList"><table><thead><tr><th>Item</th><th>Qty</th><th>Each</th><th>Total</th></tr></thead><tbody>${mats}</tbody></table></div>
     <h3 style="margin-top:14px">On the auction house</h3><div id="crListings">${live.book ? listings(id) : `<div class="note">loading…</div>`}</div></div>`;
   if (!live.book) liveHouse().then(() => { if (cr.sel === id) $("crListings").innerHTML = listings(id); }).catch(() => {});
 }
