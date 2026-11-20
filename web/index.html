@@ -212,7 +212,8 @@ body:not(.tab-cr) #crv, body:not(.tab-mc) #mcv { display: none !important; }
 .rsList table { width: 100%; border-collapse: collapse; font-size: 14px; }
 .rsList th { position: sticky; top: 0; background: var(--panel2); color: var(--dim); font-weight: 600; text-align: right; padding: 4px 8px; }
 .rsList td { text-align: right; padding: 2px 8px; border-top: 1px solid #2c2823; white-space: nowrap; }
-.rsList th:first-child, .rsList td:first-child { text-align: left; }
+.rsList th:first-child, .rsList td:first-child { text-align: left; white-space: normal; }
+.rsList .it img { width: 22px; height: 22px; }
 .rsList tr.buy td { background: rgba(107,143,58,.18); } .ladder rect.keep { fill: #3b4060; }
 
 @media (max-width: 900px) {
@@ -309,11 +310,14 @@ body:not(.tab-cr) #crv, body:not(.tab-mc) #mcv { display: none !important; }
   </section>
   <section id="crv">
     <div class="filters">
+      <select id="crView"><option value="recipes">Recipes to buy</option><option value="writs">Writ items</option></select>
       <input id="crq" placeholder="Item name" autocomplete="off">
       <label>my skill <input type="number" id="crSkill" min="0" max="300" placeholder="any"></label>
       <label>materials at <select id="crMats"><option value="now">cheapest now</option><option value="median">7-day median</option></select></label>
       <label>sell at <select id="crSell"><option value="now">cheapest now</option><option value="median">7-day median</option></select></label>
       <label><input type="checkbox" id="crPos"> profitable only</label>
+      <label class="crR"><input type="checkbox" id="crListed" checked> recipe for sale</label>
+      <label class="crR"><input type="checkbox" id="crBop"> include bind-on-pickup</label>
       <span id="crCount"></span>
     </div>
     <div id="crProfs"></div>
@@ -969,7 +973,10 @@ async function ahSelect(id, scroll) {
     ${r.price ? `<div class="big" style="margin-top:10px">${money(r.price)} <span class="note">cheapest now</span></div>` : ""}
     <div id="ahChart" class="note">loading history…</div>
     ${onMap ? `<div class="note"><a href="#${id}" id="toMap" style="color:var(--trim2)">Show on the market map</a></div>` : ""}
+    <div id="ahRecipe"></div>
     <h3 style="margin-top:12px">On the auction house</h3>${listings(id)}</div>`;
+  loadCrafting().then((ok) => { const rs = ok && cr.data.recipes.filter((x) => String(x.scroll) === String(id));
+    if (rs?.length && $("ahRecipe")) $("ahRecipe").innerHTML = rs.map((x) => `<h3 style="margin-top:12px">Is it worth buying?</h3>${recipeBlock(x)}`).join(""); });
   if (onMap) $("toMap").onclick = (e) => { e.preventDefault(); setTab("market"); select(id); };
   if (scroll && matchMedia("(max-width: 900px)").matches) $("ahDetail").scrollIntoView({ behavior: "smooth", block: "start" });
   try {
@@ -1149,6 +1156,8 @@ setInterval(() => (window.STATIC ? checkVersion() : refresh()), 2 * 60000);
 load();
 // ---- crafting: Craftsman's Writ gear. Players turn one of each in per day for Commerce Authority rep, so it sells steadily ----
 const cr = { data: null, prof: localStorage.crProf || "tailoring", sort: "profit", dir: -1, sel: null };
+const RPROFS = [["blacksmithing", "Blacksmithing"], ["leatherworking", "Leatherworking"], ["tailoring", "Tailoring"], ["engineering", "Engineering"],
+  ["alchemy", "Alchemy"], ["enchanting", "Enchanting"], ["cooking", "Cooking"], ["first aid", "First Aid"]];
 const PROFS = [["tailoring", "Tailoring"], ["leatherworking", "Leatherworking"], ["blacksmithing", "Blacksmithing"], ["engineering", "Engineering"], ["alchemy", "Alchemy"]];
 const SRC = { trainer: "Trainer", vendor: "Vendor recipe", drop: "Drop recipe", quest: "Quest recipe", rep: "Reputation recipe" };
 const AH_CUT = 0.95;
@@ -1200,6 +1209,9 @@ async function openCrafting() {
 }
 
 function renderCrafting() {
+  const rv = $("crView").value === "recipes";
+  for (const el of document.querySelectorAll(".crR")) el.style.display = rv ? "" : "none";
+  if (rv) return renderRecipes();
   const d = cr.data, q = $("crq").value.trim().toLowerCase(), skill = +$("crSkill").value || 999, pos = $("crPos").checked;
   const all = d.writs.map((w) => ({ w, c: craftCost(w) }));
   $("crProfs").innerHTML = PROFS.map(([k, l]) => {
@@ -1257,7 +1269,100 @@ function crSelect(id) {
     <h3 style="margin-top:14px">On the auction house</h3><div id="crListings">${live.book ? listings(id) : `<div class="note">loading…</div>`}</div></div>`;
   if (!live.book) liveHouse().then(() => { if (cr.sel === id) $("crListings").innerHTML = listings(id); }).catch(() => {});
 }
-for (const i of ["crq", "crSkill", "crMats", "crSell", "crPos"]) $(i).addEventListener("input", () => { if (cr.data) { renderCrafting(); if (cr.sel) crSelect(cr.sel); } });
+for (const i of ["crView", "crq", "crSkill", "crMats", "crSell", "crPos", "crListed", "crBop"]) $(i).addEventListener("input", () => { if (cr.data) { if (i === "crView") cr.sel = null; renderCrafting(); if (cr.sel) ($("crView").value === "recipes" ? rcSelect : crSelect)(cr.sel); } });
+
+
+// ---- recipes to buy: what a recipe item teaches, what that sells for, and how many crafts pay it back ----
+const rc = { sort: "days", dir: 1 };
+const nm = (id) => cr.data.names[String(id)] || live.names?.[String(id)]?.[0] || `item ${id}`;
+// a material: the auction house, or a vendor (the addon's vendor prices, then the writ data's unlimited vendors)
+function matEach(id, mode) {
+  const a = ahPrice(id, mode), v = cr.data.vendorPrices[String(id)];
+  if (v != null && (a == null || v <= a)) return { each: v, src: "vendor" };
+  return a != null ? { each: a, src: "AH" } : { each: null, src: "none listed" };
+}
+function recipeCalc(r, matMode = $("crMats").value, sellMode = $("crSell").value) {
+  let mats = 0, missing = false;
+  for (const [id, q] of r.reagents) { const e = matEach(id, matMode); e.each == null ? (missing = true) : (mats += e.each * q); }
+  const made = r.out[1] || 1, sell = ahPrice(r.out[0], sellMode), p = cp(r.out[0]);
+  const each = mats / made, profit = sell == null || missing || r.bop ? null : sell * AH_CUT - each;
+  const sp = r.scroll ? cp(r.scroll) : [];
+  const recipe = sp[0] ?? r.scrollPrice ?? null, recipeFrom = sp[0] != null ? "AH" : r.scrollPrice != null ? "vendor" : null;
+  const payback = profit > 0 && recipe != null ? Math.ceil(recipe / profit) : null;
+  return { mats: each, missing, sell, profit, listings: p[1] || 0, sold: p[4] || 0, recipe, recipeFrom, recipeListed: sp[1] || 0,
+    payback, days: payback && p[4] ? payback / p[4] : null };
+}
+const SCROLL = { blacksmithing: "Plans", leatherworking: "Pattern", tailoring: "Pattern", engineering: "Schematic", alchemy: "Recipe",
+  enchanting: "Formula", cooking: "Recipe", "first aid": "Manual" };
+const scrollName = (r) => { const n = cr.data.names[String(r.scroll)]; return n && !/^\d+$/.test(n) && !n.startsWith("item ") ? n : `${SCROLL[r.profession]}: ${r.name}`; };
+const learnTxt = (r) => r.favor ? `${r.favor} Merchant's Favor` : r.fee != null ? "trainer" : r.basic ? "known from the start" : r.scroll ? "recipe item" : "trainer";
+
+function renderRecipes() {
+  const q = $("crq").value.trim().toLowerCase(), skill = +$("crSkill").value || 999, pos = $("crPos").checked;
+  const listed = $("crListed").checked, bop = $("crBop").checked;
+  if (!RPROFS.some(([k]) => k === cr.prof)) cr.prof = "blacksmithing";
+  const all = cr.data.recipes.filter((r) => r.scroll).map((r) => ({ r, c: recipeCalc(r) }));
+  $("crProfs").innerHTML = RPROFS.map(([k, l]) => {
+    const xs = all.filter((x) => x.r.profession === k && x.c.recipe != null), good = xs.filter((x) => x.c.profit > 0).length;
+    return `<button data-p="${k}" class="${cr.prof === k ? "on" : ""}">${l}<small>${good} of ${xs.length} buyable recipes pay</small></button>`;
+  }).join("");
+  for (const b of $("crProfs").children) b.onclick = () => { cr.prof = localStorage.crProf = b.dataset.p; cr.sel = null; renderCrafting(); };
+  const rows = all.filter(({ r, c }) => r.profession === cr.prof && (r.train ?? 0) <= skill && (!pos || c.profit > 0)
+    && (!listed || c.recipe != null) && (bop || !r.bop) && (!q || r.name.toLowerCase().includes(q)));
+  const key = { name: (x) => x.r.name, skill: (x) => x.r.train ?? 0, recipe: (x) => x.c.recipe ?? 1e12, sell: (x) => x.c.sell ?? -1,
+    mats: (x) => x.c.mats, profit: (x) => x.c.profit ?? -1e12, payback: (x) => x.c.payback ?? 1e9, days: (x) => x.c.days ?? (x.c.payback ? 1e8 + x.c.payback : 1e9),
+    sold: (x) => x.c.sold }[rc.sort];
+  rows.sort((a, b) => { const x = key(a), y = key(b); return (x < y ? -1 : x > y ? 1 : 0) * rc.dir; });
+  $("crCount").textContent = `${rows.length} recipes`;
+  const C = [["name", "Recipe"], ["skill", "Skill", "hm"], ["recipe", "Recipe costs"], ["sell", "Product sells"], ["mats", "Materials"],
+    ["profit", "Profit each"], ["payback", "Pays back after"], ["sold", "Sold a day", "hm"], ["days", "Days to pay back", "hm"]];
+  const shown = rows.slice(0, 300);
+  $("crWrap").innerHTML = rows.length ? `<table id="ahTable" class="rsTable"><thead><tr>${C.map(([c, l, m]) =>
+    `<th data-s="${c}" class="${rc.sort === c ? "on" : ""} ${m || ""}">${l}${rc.sort === c ? (rc.dir > 0 ? " ▲" : " ▼") : ""}</th>`).join("")}</tr></thead><tbody>${
+    shown.map(({ r, c }) => `<tr data-id="${r.spell}"${String(r.spell) === cr.sel ? ' class="on"' : ""}><td><div class="it">${img(String(r.out[0]))}<div style="min-width:0">
+      <div class="nm">${esc(r.name)}${r.out[1] > 1 ? ` ×${r.out[1]}` : ""}</div>
+      <small>${esc(scrollName(r))}${r.bop ? ` · <span class="down">binds on pickup</span>` : ""}${r.faction ? ` · ${r.faction}` : ""}</small></div></div></td>
+      <td class="hm">${r.train ?? "?"}</td>
+      <td>${c.recipe == null ? `<span class="flat">not for sale</span>` : money(c.recipe)}<small>${c.recipeFrom === "AH" ? `${c.recipeListed} on the AH` : c.recipeFrom === "vendor" ? "from a vendor" : learnTxt(r)}</small></td>
+      <td>${c.sell == null ? `<span class="flat">none listed</span>` : money(c.sell)}<small>${c.listings} listed</small></td>
+      <td>${c.missing ? `<span class="flat">–</span><small>not all listed</small>` : money(Math.round(c.mats))}</td>
+      <td class="${c.profit > 0 ? "up" : "down"}">${signed(c.profit)}</td>
+      <td>${c.payback ? `${c.payback.toLocaleString()} craft${c.payback === 1 ? "" : "s"}` : c.profit > 0 ? "free recipe" : "never"}</td>
+      <td class="hm">${c.sold}</td><td class="hm">${c.days == null ? "–" : c.days < 1 ? "under a day" : Math.round(c.days).toLocaleString()}</td></tr>`).join("")}</tbody></table>
+    ${rows.length > shown.length ? `<div class="pager">Showing the first 300. Narrow it with the filters.</div>` : ""}`
+    : `<div class="note pad">Nothing matches. Untick "recipe for sale" or "profitable only".</div>`;
+  for (const th of $("crWrap").querySelectorAll("th")) th.onclick = () => {
+    rc.dir = rc.sort === th.dataset.s ? -rc.dir : (["name", "skill", "recipe", "payback", "days"].includes(th.dataset.s) ? 1 : -1);
+    rc.sort = th.dataset.s; renderCrafting(); };
+  for (const tr of $("crWrap").querySelectorAll("tbody tr")) tr.onclick = () => { cr.sel = tr.dataset.id; renderCrafting(); rcSelect(cr.sel); };
+}
+
+// the payback block, shared by the Crafting tab and the auction house detail panel
+function recipeBlock(r) {
+  const c = recipeCalc(r), mode = $("crMats").value;
+  const mats = r.reagents.map(([id, q]) => { const e = matEach(id, mode);
+    return `<tr><td><div class="it">${img(String(id))}<div>${esc(nm(id))}<div class="note">${e.src}</div></div></div></td><td>${q}</td>
+      <td>${e.each == null ? "–" : money(e.each)}</td><td>${e.each == null ? "–" : money(e.each * q)}</td></tr>`; }).join("");
+  return `<table class="kv" style="width:100%;margin-top:8px">
+      <tr><td>Recipe</td><td>${c.recipe == null ? learnTxt(r) : `${money(c.recipe)} ${c.recipeFrom === "AH" ? "on the AH" : "from a vendor"}`}</td></tr>
+      <tr><td>Learn at</td><td>${r.train ?? "?"} ${r.profession}${r.rep ? `, needs ${["", "", "", "", "", "Friendly", "Honored", "Revered", "Exalted"][r.rep[1]]}` : ""}</td></tr>
+      <tr><td>Makes</td><td>${esc(nm(r.out[0]))}${r.out[1] > 1 ? ` ×${r.out[1]}` : ""}</td></tr>
+      <tr><td>Sells for</td><td>${r.bop ? "binds on pickup" : c.sell == null ? "none listed" : `${money(c.sell)} (${c.listings} listed, ${c.sold} sold a day)`}</td></tr>
+      <tr><td>Materials each</td><td>${c.missing ? "not all listed" : money(Math.round(c.mats))}</td></tr>
+      <tr><td>Profit each</td><td class="${c.profit > 0 ? "up" : "down"}">${signed(c.profit)}</td></tr>
+      <tr><td>Pays back after</td><td>${c.payback ? `${c.payback.toLocaleString()} craft${c.payback === 1 ? "" : "s"}${c.days != null ? `, about ${c.days < 1 ? "under a day" : Math.round(c.days) + " days"} of region sales` : ""}` : c.profit > 0 ? "free recipe" : "never at today's prices"}</td></tr></table>
+    <div class="rsList"><table><thead><tr><th>Material</th><th>Qty</th><th>Each</th><th>Total</th></tr></thead><tbody>${mats}</tbody></table></div>`;
+}
+
+function rcSelect(spell) {
+  const r = cr.data.recipes.find((x) => String(x.spell) === spell); if (!r) return;
+  const id = String(r.out[0]);
+  $("crDetail").innerHTML = `<div class="box"><div class="dhead">${img(id, 'class="ico"')}<div>
+      <div class="name">${esc(r.name)}</div><div class="note">${esc(scrollName(r))}</div></div></div>
+    ${recipeBlock(r)}
+    <h3 style="margin-top:14px">Product on the auction house</h3><div id="crListings">${live.book ? listings(id) : `<div class="note">loading…</div>`}</div></div>`;
+  if (!live.book) liveHouse().then(() => { if (cr.sel === spell) $("crListings").innerHTML = listings(id); }).catch(() => {});
+}
 
 // ---- merchant: the cheapest way to Commerce Authority reputation, from writs, crates and receipts ----
 const mc = { have: localStorage.mcHave === "1" };

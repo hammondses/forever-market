@@ -327,6 +327,10 @@ def crafting() -> dict:
     for c in waylaid.get("crates", []):
         ids |= {str(c["crateId"])} | {str(r["itemId"]) for r in c.get("inputs", [])}
     ids |= {str(g["itemId"]) for g in waylaid.get("genericCrates", [])}
+    rdata = json.loads((research / "recipes.json").read_text())
+    recipes = [r for r in rdata["recipes"] if r["out"]]
+    for r in recipes:
+        ids |= {str(r["out"][0])} | {str(i) for i, _ in r["reagents"]} | ({str(r["scroll"])} if r["scroll"] else set())
     series: dict[str, list[int]] = {}
     for i, b in m.db.execute(
             "SELECT item, minBuyout FROM auctiondb_non_commodity_data WHERE scope=? AND ts>=? AND minBuyout>0",
@@ -343,7 +347,8 @@ def crafting() -> dict:
         cur = now.get(i, (None, 0, None))
         prices[i] = [cur[0], cur[1], cur[2], sorted(v)[len(v) // 2] if v else None,
                      round(m.sold.get(i, 0), 1), m.vendor(i)]
-    return {"latest": m.now, "writs": writs, "waylaid": waylaid, "prices": prices}
+    return {"latest": m.now, "writs": writs, "waylaid": waylaid, "prices": prices, "recipes": recipes,
+            "vendorPrices": rdata["vendorPrices"], "names": {i: rdata["names"].get(i) or m.name(i) for i in ids}}
 
 
 class Handler(BaseHTTPRequestHandler):
