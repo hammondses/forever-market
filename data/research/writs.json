@@ -1,0 +1,7706 @@
+{
+ "source": [
+  "https://conquestcapped.com/guides/wow-forever/wow-forever-craftsmans-writs/",
+  "https://www.wowhead.com/classic (item xml & spell pages)",
+  "https://metaforge.app/wow-forever/database/recipes/recipe-distilled-firewater",
+  "https://mobalytics.gg/wow-forever/guides/alchemy-profession-guide",
+  "~/wow-market/data/catalog/items.json (writ item ids 264011-264160)"
+ ],
+ "notes": "150 Craftsman's Writ items (264011-264045 Journeyman... by id range: 264011-264055 journeyman, 264056-264115 expert, 264116-264160 artisan). Writ names/ids come from items.json; tier/rep from id range + guide (75/125/200). Recipe data from Wowhead classic (reagents, skill, trainer/recipe source). Classic recipes assumed unchanged in Forever except where noted. Vendor reagent prices come from Wowhead sold-by lists (min price, unlimited-stock vendor preferred); they may reflect Forever pricing; vendor:false means no vendor listed. No enchanting, cooking or first aid writs exist. Writ-to-item mapping of \"Mithril Spurs\" and \"Soul Pouch\" are only listed in the conquestcapped guide. skillRequired is the Wowhead classic recipe requirement; writGuideSkill (where present) is the number printed by conquestcapped, which often differs (guide values appear to be skill-up/yellow thresholds, not requirement) - verify in game.",
+ "items": [
+  {
+   "itemId": 3391,
+   "name": "Elixir of Ogre's Strength",
+   "profession": "alchemy",
+   "skillRequired": 150,
+   "writItemId": 264011,
+   "writName": "Craftsman's Writ: Elixir of Ogre's Strength",
+   "writTier": "journeyman",
+   "writRep": 75,
+   "countMade": 1,
+   "craftSpellId": 3188,
+   "reagents": [
+    {
+     "itemId": 2449,
+     "name": "Earthroot",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 71,
+     "vendorNpc": "Hula'mahi",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 9
+    },
+    {
+     "itemId": 3356,
+     "name": "Kingsblood",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 112,
+     "vendorNpc": "Maria Lumere",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 7
+    },
+    {
+     "itemId": 3372,
+     "name": "Leaded Vial",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 177,
+     "vendorNpc": "Thultazor",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 94
+    }
+   ],
+   "recipeSource": "drop",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 6211,
+     "name": "Recipe: Elixir of Ogre's Strength",
+     "source": [
+      "drop"
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": []
+    }
+   ]
+  },
+  {
+   "itemId": 3383,
+   "name": "Elixir of Wisdom",
+   "profession": "alchemy",
+   "skillRequired": 90,
+   "writItemId": 264012,
+   "writName": "Craftsman's Writ: Elixir of Wisdom",
+   "writTier": "journeyman",
+   "writRep": 75,
+   "countMade": 1,
+   "writGuideSkill": 120,
+   "craftSpellId": 3171,
+   "reagents": [
+    {
+     "itemId": 785,
+     "name": "Mageroyal",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 75,
+     "vendorNpc": "Bernard Gump",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 9
+    },
+    {
+     "itemId": 2450,
+     "name": "Briarthorn",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 3371,
+     "name": "Empty Vial",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 17,
+     "vendorNpc": "Thultazor",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 106
+    }
+   ],
+   "recipeSource": "trainer",
+   "trainerCostCopper": 500,
+   "recipeItems": []
+  },
+  {
+   "itemId": 3385,
+   "name": "Lesser Mana Potion",
+   "profession": "alchemy",
+   "skillRequired": 120,
+   "writItemId": 264013,
+   "writName": "Craftsman's Writ: Lesser Mana Potion",
+   "writTier": "journeyman",
+   "writRep": 75,
+   "countMade": 1,
+   "writGuideSkill": 145,
+   "craftSpellId": 3173,
+   "reagents": [
+    {
+     "itemId": 785,
+     "name": "Mageroyal",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 75,
+     "vendorNpc": "Bernard Gump",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 9
+    },
+    {
+     "itemId": 3820,
+     "name": "Stranglekelp",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 3371,
+     "name": "Empty Vial",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 17,
+     "vendorNpc": "Thultazor",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 106
+    }
+   ],
+   "recipeSource": "trainer",
+   "trainerCostCopper": 1500,
+   "recipeItems": []
+  },
+  {
+   "itemId": 6048,
+   "name": "Shadow Protection Potion",
+   "profession": "alchemy",
+   "skillRequired": 135,
+   "writItemId": 264014,
+   "writName": "Craftsman's Writ: Shadow Protection Potion",
+   "writTier": "journeyman",
+   "writRep": 75,
+   "countMade": 1,
+   "writGuideSkill": 160,
+   "craftSpellId": 7256,
+   "reagents": [
+    {
+     "itemId": 3369,
+     "name": "Grave Moss",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 3356,
+     "name": "Kingsblood",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 112,
+     "vendorNpc": "Maria Lumere",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 7
+    },
+    {
+     "itemId": 3372,
+     "name": "Leaded Vial",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 177,
+     "vendorNpc": "Thultazor",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 94
+    }
+   ],
+   "recipeSource": "vendor",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 6054,
+     "name": "Recipe: Shadow Protection Potion",
+     "source": [
+      "vendor"
+     ],
+     "buyPriceCopper": 900,
+     "sourceDetail": []
+    }
+   ]
+  },
+  {
+   "itemId": 5634,
+   "name": "Free Action Potion",
+   "profession": "alchemy",
+   "skillRequired": 150,
+   "writItemId": 264015,
+   "writName": "Craftsman's Writ: Free Action Potion",
+   "writTier": "journeyman",
+   "writRep": 75,
+   "countMade": 1,
+   "writGuideSkill": 175,
+   "craftSpellId": 6624,
+   "reagents": [
+    {
+     "itemId": 6370,
+     "name": "Blackmouth Oil",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 3820,
+     "name": "Stranglekelp",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 3372,
+     "name": "Leaded Vial",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 177,
+     "vendorNpc": "Thultazor",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 94
+    }
+   ],
+   "recipeSource": "vendor",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 5642,
+     "name": "Recipe: Free Action Potion",
+     "source": [
+      "vendor"
+     ],
+     "buyPriceCopper": 1800,
+     "sourceDetail": []
+    }
+   ]
+  },
+  {
+   "itemId": 3390,
+   "name": "Elixir of Lesser Agility",
+   "profession": "alchemy",
+   "skillRequired": 140,
+   "writItemId": 264016,
+   "writName": "Craftsman's Writ: Elixir of Lesser Agility",
+   "writTier": "journeyman",
+   "writRep": 75,
+   "countMade": 1,
+   "writGuideSkill": 165,
+   "craftSpellId": 2333,
+   "reagents": [
+    {
+     "itemId": 3355,
+     "name": "Wild Steelbloom",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 200,
+     "vendorNpc": "Antonio Perelli",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 7
+    },
+    {
+     "itemId": 2452,
+     "name": "Swiftthistle",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 3372,
+     "name": "Leaded Vial",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 177,
+     "vendorNpc": "Thultazor",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 94
+    }
+   ],
+   "recipeSource": "drop",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 3396,
+     "name": "Recipe: Elixir of Lesser Agility",
+     "source": [
+      "drop",
+      16
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": []
+    }
+   ]
+  },
+  {
+   "itemId": 3388,
+   "name": "Lesser Troll's Blood Elixir",
+   "profession": "alchemy",
+   "skillRequired": 125,
+   "writItemId": 264017,
+   "writName": "Craftsman's Writ: Lesser Troll's Blood Elixir",
+   "writTier": "journeyman",
+   "writRep": 75,
+   "countMade": 1,
+   "writGuideSkill": 150,
+   "craftSpellId": 3176,
+   "reagents": [
+    {
+     "itemId": 2453,
+     "name": "Bruiseweed",
+     "qty": 2,
+     "vendor": true,
+     "vendorPriceCopper": 100,
+     "vendorNpc": "Montarr",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 9
+    },
+    {
+     "itemId": 2450,
+     "name": "Briarthorn",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 3372,
+     "name": "Leaded Vial",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 177,
+     "vendorNpc": "Thultazor",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 94
+    }
+   ],
+   "recipeSource": "trainer",
+   "trainerCostCopper": 1500,
+   "recipeItems": []
+  },
+  {
+   "itemId": 8951,
+   "name": "Elixir of Defense",
+   "profession": "alchemy",
+   "skillRequired": 195,
+   "writItemId": 264018,
+   "writName": "Craftsman's Writ: Elixir of Defense",
+   "writTier": "journeyman",
+   "writRep": 75,
+   "countMade": 1,
+   "writGuideSkill": 215,
+   "craftSpellId": 11450,
+   "reagents": [
+    {
+     "itemId": 3355,
+     "name": "Wild Steelbloom",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 200,
+     "vendorNpc": "Antonio Perelli",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 7
+    },
+    {
+     "itemId": 3821,
+     "name": "Goldthorn",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 3372,
+     "name": "Leaded Vial",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 177,
+     "vendorNpc": "Thultazor",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 94
+    }
+   ],
+   "recipeSource": "trainer",
+   "trainerCostCopper": 6750,
+   "recipeItems": []
+  },
+  {
+   "itemId": 5996,
+   "name": "Draught of Water Breathing",
+   "profession": "alchemy",
+   "skillRequired": 90,
+   "writItemId": 264019,
+   "writName": "Craftsman's Writ: Draught of Water Breathing",
+   "writTier": "journeyman",
+   "writRep": 75,
+   "countMade": 1,
+   "writGuideSkill": 120,
+   "craftSpellId": 7179,
+   "reagents": [
+    {
+     "itemId": 3820,
+     "name": "Stranglekelp",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 6370,
+     "name": "Blackmouth Oil",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 3371,
+     "name": "Empty Vial",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 17,
+     "vendorNpc": "Thultazor",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 106
+    }
+   ],
+   "recipeSource": "trainer",
+   "trainerCostCopper": 450,
+   "recipeItems": []
+  },
+  {
+   "itemId": 5540,
+   "name": "Pearl-Handled Dagger",
+   "profession": "blacksmithing",
+   "skillRequired": 110,
+   "writItemId": 264020,
+   "writName": "Craftsman's Writ: Pearl-Handled Dagger",
+   "writTier": "journeyman",
+   "writRep": 75,
+   "countMade": 1,
+   "writGuideSkill": 115,
+   "craftSpellId": 6517,
+   "reagents": [
+    {
+     "itemId": 2841,
+     "name": "Bronze Bar",
+     "qty": 6,
+     "vendor": false
+    },
+    {
+     "itemId": 3466,
+     "name": "Strong Flux",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 1777,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 95
+    },
+    {
+     "itemId": 5498,
+     "name": "Small Lustrous Pearl",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 3478,
+     "name": "Coarse Grinding Stone",
+     "qty": 2,
+     "vendor": false
+    }
+   ],
+   "recipeSource": "trainer",
+   "trainerCostCopper": 800,
+   "recipeItems": []
+  },
+  {
+   "itemId": 11128,
+   "name": "Golden Rod",
+   "profession": "blacksmithing",
+   "skillRequired": 150,
+   "writItemId": 264021,
+   "writName": "Craftsman's Writ: Golden Rod",
+   "writTier": "journeyman",
+   "writRep": 75,
+   "countMade": 1,
+   "writGuideSkill": 130,
+   "craftSpellId": 14379,
+   "reagents": [
+    {
+     "itemId": 3577,
+     "name": "Gold Bar",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 3478,
+     "name": "Coarse Grinding Stone",
+     "qty": 2,
+     "vendor": false
+    }
+   ],
+   "recipeSource": "trainer",
+   "trainerCostCopper": 250,
+   "recipeItems": []
+  },
+  {
+   "itemId": 5541,
+   "name": "Iridescent Hammer",
+   "profession": "blacksmithing",
+   "skillRequired": 140,
+   "writItemId": 264022,
+   "writName": "Craftsman's Writ: Iridescent Hammer",
+   "writTier": "journeyman",
+   "writRep": 75,
+   "countMade": 1,
+   "writGuideSkill": 145,
+   "craftSpellId": 6518,
+   "reagents": [
+    {
+     "itemId": 2841,
+     "name": "Bronze Bar",
+     "qty": 10,
+     "vendor": false
+    },
+    {
+     "itemId": 3466,
+     "name": "Strong Flux",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 1777,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 95
+    },
+    {
+     "itemId": 5500,
+     "name": "Iridescent Pearl",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 3478,
+     "name": "Coarse Grinding Stone",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 2319,
+     "name": "Medium Leather",
+     "qty": 2,
+     "vendor": true,
+     "vendorPriceCopper": 210,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    }
+   ],
+   "recipeSource": "drop",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 5543,
+     "name": "Plans: Iridescent Hammer",
+     "source": [
+      "drop"
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": []
+    }
+   ]
+  },
+  {
+   "itemId": 15869,
+   "name": "Silver Skeleton Key",
+   "profession": "blacksmithing",
+   "skillRequired": 100,
+   "writItemId": 264023,
+   "writName": "Craftsman's Writ: Silver Skeleton Key",
+   "writTier": "journeyman",
+   "writRep": 75,
+   "countMade": 1,
+   "writGuideSkill": 75,
+   "craftSpellId": 19666,
+   "reagents": [
+    {
+     "itemId": 2842,
+     "name": "Silver Bar",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 3470,
+     "name": "Rough Grinding Stone",
+     "qty": 1,
+     "vendor": false
+    }
+   ],
+   "recipeSource": "trainer",
+   "trainerCostCopper": 100,
+   "recipeItems": []
+  },
+  {
+   "itemId": 3491,
+   "name": "Heavy Bronze Mace",
+   "profession": "blacksmithing",
+   "skillRequired": 130,
+   "writItemId": 264024,
+   "writName": "Craftsman's Writ: Heavy Bronze Mace",
+   "writTier": "journeyman",
+   "writRep": 75,
+   "countMade": 1,
+   "writGuideSkill": 135,
+   "craftSpellId": 3296,
+   "reagents": [
+    {
+     "itemId": 2841,
+     "name": "Bronze Bar",
+     "qty": 8,
+     "vendor": false
+    },
+    {
+     "itemId": 3466,
+     "name": "Strong Flux",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 1777,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 95
+    },
+    {
+     "itemId": 1206,
+     "name": "Moss Agate",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 1210,
+     "name": "Shadowgem",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 3478,
+     "name": "Coarse Grinding Stone",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 2319,
+     "name": "Medium Leather",
+     "qty": 2,
+     "vendor": true,
+     "vendorPriceCopper": 210,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    }
+   ],
+   "recipeSource": "trainer",
+   "trainerCostCopper": 1000,
+   "recipeItems": []
+  },
+  {
+   "itemId": 2865,
+   "name": "Rough Bronze Leggings",
+   "profession": "blacksmithing",
+   "skillRequired": 105,
+   "writItemId": 264025,
+   "writName": "Craftsman's Writ: Rough Bronze Leggings",
+   "writTier": "journeyman",
+   "writRep": 75,
+   "countMade": 1,
+   "writGuideSkill": 120,
+   "craftSpellId": 2668,
+   "reagents": [
+    {
+     "itemId": 2841,
+     "name": "Bronze Bar",
+     "qty": 6,
+     "vendor": false
+    }
+   ],
+   "recipeSource": "trainer",
+   "trainerCostCopper": 300,
+   "recipeItems": []
+  },
+  {
+   "itemId": 3485,
+   "name": "Green Iron Gauntlets",
+   "profession": "blacksmithing",
+   "skillRequired": 150,
+   "writItemId": 264026,
+   "writName": "Craftsman's Writ: Green Iron Gauntlets",
+   "writTier": "journeyman",
+   "writRep": 75,
+   "countMade": 1,
+   "writGuideSkill": 155,
+   "craftSpellId": 3336,
+   "reagents": [
+    {
+     "itemId": 3575,
+     "name": "Iron Bar",
+     "qty": 4,
+     "vendor": false
+    },
+    {
+     "itemId": 5498,
+     "name": "Small Lustrous Pearl",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 3478,
+     "name": "Coarse Grinding Stone",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 2605,
+     "name": "Green Dye",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 88,
+     "vendorNpc": "Alexandra Bolero",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 64
+    }
+   ],
+   "recipeSource": "drop",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 3612,
+     "name": "Plans: Green Iron Gauntlets",
+     "source": [
+      "drop",
+      16
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": []
+    }
+   ]
+  },
+  {
+   "itemId": 3848,
+   "name": "Big Bronze Knife",
+   "profession": "blacksmithing",
+   "skillRequired": 105,
+   "writItemId": 264027,
+   "writName": "Craftsman's Writ: Big Bronze Knife",
+   "writTier": "journeyman",
+   "writRep": 75,
+   "countMade": 1,
+   "writGuideSkill": 110,
+   "craftSpellId": 3491,
+   "reagents": [
+    {
+     "itemId": 2841,
+     "name": "Bronze Bar",
+     "qty": 6,
+     "vendor": false
+    },
+    {
+     "itemId": 2880,
+     "name": "Weak Flux",
+     "qty": 4,
+     "vendor": true,
+     "vendorPriceCopper": 88,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 111
+    },
+    {
+     "itemId": 3470,
+     "name": "Rough Grinding Stone",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 818,
+     "name": "Tigerseye",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 2319,
+     "name": "Medium Leather",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 210,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    }
+   ],
+   "recipeSource": "trainer",
+   "trainerCostCopper": 600,
+   "recipeItems": []
+  },
+  {
+   "itemId": 3484,
+   "name": "Green Iron Boots",
+   "profession": "blacksmithing",
+   "skillRequired": 145,
+   "writItemId": 264028,
+   "writName": "Craftsman's Writ: Green Iron Boots",
+   "writTier": "journeyman",
+   "writRep": 75,
+   "countMade": 1,
+   "writGuideSkill": 150,
+   "craftSpellId": 3334,
+   "reagents": [
+    {
+     "itemId": 3575,
+     "name": "Iron Bar",
+     "qty": 4,
+     "vendor": false
+    },
+    {
+     "itemId": 1705,
+     "name": "Lesser Moonstone",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 3478,
+     "name": "Coarse Grinding Stone",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 2605,
+     "name": "Green Dye",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 88,
+     "vendorNpc": "Alexandra Bolero",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 64
+    }
+   ],
+   "recipeSource": "drop",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 3611,
+     "name": "Plans: Green Iron Boots",
+     "source": [
+      "drop"
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": []
+    }
+   ]
+  },
+  {
+   "itemId": 5507,
+   "name": "Ornate Spyglass",
+   "profession": "engineering",
+   "skillRequired": 135,
+   "writItemId": 264029,
+   "writName": "Craftsman's Writ: Ornate Spyglass",
+   "writTier": "journeyman",
+   "writRep": 75,
+   "countMade": 1,
+   "writGuideSkill": 160,
+   "craftSpellId": 6458,
+   "reagents": [
+    {
+     "itemId": 4371,
+     "name": "Bronze Tube",
+     "qty": 2,
+     "vendor": true,
+     "vendorPriceCopper": 711,
+     "vendorNpc": "Billibub Cogspinner",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 24
+    },
+    {
+     "itemId": 4375,
+     "name": "Whirring Bronze Gizmo",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 4363,
+     "name": "Copper Modulator",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 177,
+     "vendorNpc": "Herble Baubbletump",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 24
+    },
+    {
+     "itemId": 1206,
+     "name": "Moss Agate",
+     "qty": 1,
+     "vendor": false
+    }
+   ],
+   "recipeSource": "trainer",
+   "trainerCostCopper": 400,
+   "recipeItems": []
+  },
+  {
+   "itemId": 4384,
+   "name": "Explosive Sheep",
+   "profession": "engineering",
+   "skillRequired": 150,
+   "writItemId": 264030,
+   "writName": "Craftsman's Writ: Explosive Sheep",
+   "writTier": "journeyman",
+   "writRep": 75,
+   "countMade": 1,
+   "writGuideSkill": 175,
+   "craftSpellId": 3955,
+   "reagents": [
+    {
+     "itemId": 4382,
+     "name": "Bronze Framework",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 2133,
+     "vendorNpc": "Elizabeth Van Talen",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 24
+    },
+    {
+     "itemId": 4375,
+     "name": "Whirring Bronze Gizmo",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 4377,
+     "name": "Heavy Blasting Powder",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 2592,
+     "name": "Wool Cloth",
+     "qty": 2,
+     "vendor": false
+    }
+   ],
+   "recipeSource": "trainer",
+   "trainerCostCopper": 750,
+   "recipeItems": []
+  },
+  {
+   "itemId": 4383,
+   "name": "Moonsight Rifle",
+   "profession": "engineering",
+   "skillRequired": 145,
+   "writItemId": 264031,
+   "writName": "Craftsman's Writ: Moonsight Rifle",
+   "writTier": "journeyman",
+   "writRep": 75,
+   "countMade": 1,
+   "writGuideSkill": 170,
+   "craftSpellId": 3954,
+   "reagents": [
+    {
+     "itemId": 4371,
+     "name": "Bronze Tube",
+     "qty": 3,
+     "vendor": true,
+     "vendorPriceCopper": 711,
+     "vendorNpc": "Billibub Cogspinner",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 24
+    },
+    {
+     "itemId": 4375,
+     "name": "Whirring Bronze Gizmo",
+     "qty": 3,
+     "vendor": false
+    },
+    {
+     "itemId": 4400,
+     "name": "Heavy Stock",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 1777,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 63
+    },
+    {
+     "itemId": 1705,
+     "name": "Lesser Moonstone",
+     "qty": 2,
+     "vendor": false
+    }
+   ],
+   "recipeSource": "drop",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 4412,
+     "name": "Schematic: Moonsight Rifle",
+     "source": [
+      "drop"
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": []
+    }
+   ]
+  },
+  {
+   "itemId": 4381,
+   "name": "Minor Recombobulator",
+   "profession": "engineering",
+   "skillRequired": 140,
+   "writItemId": 264032,
+   "writName": "Craftsman's Writ: Minor Recombobulator",
+   "writTier": "journeyman",
+   "writRep": 75,
+   "countMade": 1,
+   "writGuideSkill": 165,
+   "craftSpellId": 3952,
+   "reagents": [
+    {
+     "itemId": 4371,
+     "name": "Bronze Tube",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 711,
+     "vendorNpc": "Billibub Cogspinner",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 24
+    },
+    {
+     "itemId": 4375,
+     "name": "Whirring Bronze Gizmo",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 2319,
+     "name": "Medium Leather",
+     "qty": 2,
+     "vendor": true,
+     "vendorPriceCopper": 210,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    },
+    {
+     "itemId": 1206,
+     "name": "Moss Agate",
+     "qty": 1,
+     "vendor": false
+    }
+   ],
+   "recipeSource": "vendor",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 14639,
+     "name": "Schematic: Minor Recombobulator",
+     "source": [
+      "vendor"
+     ],
+     "buyPriceCopper": 1500,
+     "sourceDetail": [
+      {
+       "z": 11
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "itemId": 6712,
+   "name": "Practice Lock",
+   "profession": "engineering",
+   "skillRequired": 100,
+   "writItemId": 264033,
+   "writName": "Craftsman's Writ: Practice Lock",
+   "writTier": "journeyman",
+   "writRep": 75,
+   "countMade": 1,
+   "writGuideSkill": 115,
+   "craftSpellId": 8334,
+   "reagents": [
+    {
+     "itemId": 2841,
+     "name": "Bronze Bar",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 4359,
+     "name": "Handful of Copper Bolts",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 2880,
+     "name": "Weak Flux",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 88,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 111
+    }
+   ],
+   "recipeSource": "trainer",
+   "trainerCostCopper": 300,
+   "recipeItems": []
+  },
+  {
+   "itemId": 4373,
+   "name": "Shadow Goggles",
+   "profession": "engineering",
+   "skillRequired": 120,
+   "writItemId": 264034,
+   "writName": "Craftsman's Writ: Shadow Goggles",
+   "writTier": "journeyman",
+   "writRep": 75,
+   "countMade": 1,
+   "writGuideSkill": 145,
+   "craftSpellId": 3940,
+   "reagents": [
+    {
+     "itemId": 2319,
+     "name": "Medium Leather",
+     "qty": 4,
+     "vendor": true,
+     "vendorPriceCopper": 210,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    },
+    {
+     "itemId": 1210,
+     "name": "Shadowgem",
+     "qty": 2,
+     "vendor": false
+    }
+   ],
+   "recipeSource": "drop",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 4410,
+     "name": "Schematic: Shadow Goggles",
+     "source": [
+      "drop",
+      16
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": []
+    }
+   ]
+  },
+  {
+   "itemId": 7506,
+   "name": "Gnomish Universal Remote",
+   "profession": "engineering",
+   "skillRequired": 125,
+   "writItemId": 264035,
+   "writName": "Craftsman's Writ: Gnomish Universal Remote",
+   "writTier": "journeyman",
+   "writRep": 75,
+   "countMade": 1,
+   "writGuideSkill": 150,
+   "craftSpellId": 9269,
+   "reagents": [
+    {
+     "itemId": 2841,
+     "name": "Bronze Bar",
+     "qty": 6,
+     "vendor": false
+    },
+    {
+     "itemId": 4375,
+     "name": "Whirring Bronze Gizmo",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 814,
+     "name": "Flask of Oil",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 818,
+     "name": "Tigerseye",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 774,
+     "name": "Malachite",
+     "qty": 1,
+     "vendor": false
+    }
+   ],
+   "recipeSource": "drop",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 7560,
+     "name": "Schematic: Gnomish Universal Remote",
+     "source": [
+      "drop",
+      "vendor"
+     ],
+     "buyPriceCopper": 1200,
+     "sourceDetail": [
+      {
+       "z": 721
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "itemId": 4380,
+   "name": "Big Bronze Bomb",
+   "profession": "engineering",
+   "skillRequired": 140,
+   "writItemId": 264036,
+   "writName": "Craftsman's Writ: Big Bronze Bomb",
+   "writTier": "journeyman",
+   "writRep": 75,
+   "countMade": 1,
+   "craftSpellId": 3950,
+   "reagents": [
+    {
+     "itemId": 4377,
+     "name": "Heavy Blasting Powder",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 2841,
+     "name": "Bronze Bar",
+     "qty": 3,
+     "vendor": false
+    },
+    {
+     "itemId": 4404,
+     "name": "Silver Contact",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 100,
+     "vendorNpc": "Fradd Swiftgear",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 24
+    }
+   ],
+   "recipeSource": "trainer",
+   "trainerCostCopper": 600,
+   "recipeItems": []
+  },
+  {
+   "itemId": 8069,
+   "name": "Crafted Solid Shot",
+   "profession": "engineering",
+   "skillRequired": 125,
+   "writItemId": 264037,
+   "writName": "Craftsman's Writ: Crafted Solid Shot",
+   "writTier": "journeyman",
+   "writRep": 75,
+   "countMade": 199,
+   "craftSpellId": 3947,
+   "reagents": [
+    {
+     "itemId": 4377,
+     "name": "Heavy Blasting Powder",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 2841,
+     "name": "Bronze Bar",
+     "qty": 1,
+     "vendor": false
+    }
+   ],
+   "recipeSource": "trainer",
+   "trainerCostCopper": 300,
+   "recipeItems": []
+  },
+  {
+   "itemId": 18662,
+   "name": "Heavy Leather Ball",
+   "profession": "leatherworking",
+   "skillRequired": 125,
+   "writItemId": 264038,
+   "writName": "Craftsman's Writ: Heavy Leather Ball",
+   "writTier": "journeyman",
+   "writRep": 75,
+   "countMade": 1,
+   "notes": "Item has multiple creating spells; first spell used.",
+   "craftSpellId": 23135,
+   "reagents": [],
+   "recipeSource": "unknown",
+   "trainerCostCopper": null,
+   "recipeItems": [],
+   "uncertain": true,
+   "uncertainFields": [
+    "reagents",
+    "profession",
+    "skillRequired",
+    "recipeSource"
+   ]
+  },
+  {
+   "itemId": 5958,
+   "name": "Fine Leather Pants",
+   "profession": "leatherworking",
+   "skillRequired": 105,
+   "writItemId": 264039,
+   "writName": "Craftsman's Writ: Fine Leather Pants",
+   "writTier": "journeyman",
+   "writRep": 75,
+   "countMade": 1,
+   "craftSpellId": 7133,
+   "reagents": [
+    {
+     "itemId": 2319,
+     "name": "Medium Leather",
+     "qty": 8,
+     "vendor": true,
+     "vendorPriceCopper": 210,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    },
+    {
+     "itemId": 2997,
+     "name": "Bolt of Woolen Cloth",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 2321,
+     "name": "Fine Thread",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 88,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 94
+    }
+   ],
+   "recipeSource": "drop",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 5972,
+     "name": "Pattern: Fine Leather Pants",
+     "source": [
+      "drop"
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": []
+    }
+   ]
+  },
+  {
+   "itemId": 7349,
+   "name": "Herbalist's Gloves",
+   "profession": "leatherworking",
+   "skillRequired": 135,
+   "writItemId": 264040,
+   "writName": "Craftsman's Writ: Herbalist's Gloves",
+   "writTier": "journeyman",
+   "writRep": 75,
+   "countMade": 1,
+   "craftSpellId": 9146,
+   "reagents": [
+    {
+     "itemId": 2319,
+     "name": "Medium Leather",
+     "qty": 8,
+     "vendor": true,
+     "vendorPriceCopper": 210,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    },
+    {
+     "itemId": 3356,
+     "name": "Kingsblood",
+     "qty": 4,
+     "vendor": true,
+     "vendorPriceCopper": 112,
+     "vendorNpc": "Maria Lumere",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 7
+    },
+    {
+     "itemId": 2321,
+     "name": "Fine Thread",
+     "qty": 2,
+     "vendor": true,
+     "vendorPriceCopper": 88,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 94
+    }
+   ],
+   "recipeSource": "vendor",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 7361,
+     "name": "Pattern: Herbalist's Gloves",
+     "source": [
+      "vendor"
+     ],
+     "buyPriceCopper": 1800,
+     "sourceDetail": [
+      {
+       "n": "Harlown Darkweave",
+       "t": 1,
+       "ti": 6731,
+       "z": 331
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "itemId": 2317,
+   "name": "Dark Leather Tunic",
+   "profession": "leatherworking",
+   "skillRequired": 100,
+   "writItemId": 264041,
+   "writName": "Craftsman's Writ: Dark Leather Tunic",
+   "writTier": "journeyman",
+   "writRep": 75,
+   "countMade": 1,
+   "craftSpellId": 2169,
+   "reagents": [
+    {
+     "itemId": 2319,
+     "name": "Medium Leather",
+     "qty": 6,
+     "vendor": true,
+     "vendorPriceCopper": 210,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    },
+    {
+     "itemId": 2321,
+     "name": "Fine Thread",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 88,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 94
+    },
+    {
+     "itemId": 4340,
+     "name": "Gray Dye",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 311,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 78
+    }
+   ],
+   "recipeSource": "drop",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 2409,
+     "name": "Pattern: Dark Leather Tunic",
+     "source": [
+      "drop",
+      16
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": []
+    }
+   ]
+  },
+  {
+   "itemId": 7358,
+   "name": "Pilferer's Gloves",
+   "profession": "leatherworking",
+   "skillRequired": 140,
+   "writItemId": 264042,
+   "writName": "Craftsman's Writ: Pilferer's Gloves",
+   "writTier": "journeyman",
+   "writRep": 75,
+   "countMade": 1,
+   "craftSpellId": 9148,
+   "reagents": [
+    {
+     "itemId": 2319,
+     "name": "Medium Leather",
+     "qty": 10,
+     "vendor": true,
+     "vendorPriceCopper": 210,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    },
+    {
+     "itemId": 5373,
+     "name": "Lucky Charm",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 2321,
+     "name": "Fine Thread",
+     "qty": 2,
+     "vendor": true,
+     "vendorPriceCopper": 88,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 94
+    }
+   ],
+   "recipeSource": "drop",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 7363,
+     "name": "Pattern: Pilferer's Gloves",
+     "source": [
+      "drop"
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": []
+    }
+   ]
+  },
+  {
+   "itemId": 7371,
+   "name": "Heavy Quiver",
+   "profession": "leatherworking",
+   "skillRequired": 150,
+   "writItemId": 264043,
+   "writName": "Craftsman's Writ: Heavy Quiver",
+   "writTier": "journeyman",
+   "writRep": 75,
+   "countMade": 1,
+   "writGuideSkill": 145,
+   "craftSpellId": 9193,
+   "reagents": [
+    {
+     "itemId": 4234,
+     "name": "Heavy Leather",
+     "qty": 8,
+     "vendor": true,
+     "vendorPriceCopper": 631,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    },
+    {
+     "itemId": 2321,
+     "name": "Fine Thread",
+     "qty": 2,
+     "vendor": true,
+     "vendorPriceCopper": 88,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 94
+    }
+   ],
+   "recipeSource": "trainer",
+   "trainerCostCopper": 500,
+   "recipeItems": []
+  },
+  {
+   "itemId": 4252,
+   "name": "Dark Leather Shoulders",
+   "profession": "leatherworking",
+   "skillRequired": 140,
+   "writItemId": 264044,
+   "writName": "Craftsman's Writ: Dark Leather Shoulders",
+   "writTier": "journeyman",
+   "writRep": 75,
+   "countMade": 1,
+   "craftSpellId": 3769,
+   "reagents": [
+    {
+     "itemId": 2319,
+     "name": "Medium Leather",
+     "qty": 12,
+     "vendor": true,
+     "vendorPriceCopper": 210,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    },
+    {
+     "itemId": 3390,
+     "name": "Elixir of Lesser Agility",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 4340,
+     "name": "Gray Dye",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 311,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 78
+    },
+    {
+     "itemId": 2321,
+     "name": "Fine Thread",
+     "qty": 2,
+     "vendor": true,
+     "vendorPriceCopper": 88,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 94
+    }
+   ],
+   "recipeSource": "drop",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 4296,
+     "name": "Pattern: Dark Leather Shoulders",
+     "source": [
+      "drop"
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": []
+    }
+   ]
+  },
+  {
+   "itemId": 4254,
+   "name": "Barbaric Gloves",
+   "profession": "leatherworking",
+   "skillRequired": 150,
+   "writItemId": 264045,
+   "writName": "Craftsman's Writ: Barbaric Gloves",
+   "writTier": "journeyman",
+   "writRep": 75,
+   "countMade": 1,
+   "craftSpellId": 3771,
+   "reagents": [
+    {
+     "itemId": 4234,
+     "name": "Heavy Leather",
+     "qty": 6,
+     "vendor": true,
+     "vendorPriceCopper": 631,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    },
+    {
+     "itemId": 5637,
+     "name": "Large Fang",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 2321,
+     "name": "Fine Thread",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 88,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 94
+    }
+   ],
+   "recipeSource": "drop",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 4297,
+     "name": "Pattern: Barbaric Gloves",
+     "source": [
+      "drop"
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": []
+    }
+   ]
+  },
+  {
+   "itemId": 7284,
+   "name": "Red Whelp Gloves",
+   "profession": "leatherworking",
+   "skillRequired": 120,
+   "writItemId": 264046,
+   "writName": "Craftsman's Writ: Red Whelp Gloves",
+   "writTier": "journeyman",
+   "writRep": 75,
+   "countMade": 1,
+   "craftSpellId": 9072,
+   "reagents": [
+    {
+     "itemId": 7287,
+     "name": "Red Whelp Scale",
+     "qty": 6,
+     "vendor": false
+    },
+    {
+     "itemId": 2319,
+     "name": "Medium Leather",
+     "qty": 4,
+     "vendor": true,
+     "vendorPriceCopper": 210,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    },
+    {
+     "itemId": 2321,
+     "name": "Fine Thread",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 88,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 94
+    }
+   ],
+   "recipeSource": "vendor",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 7290,
+     "name": "Pattern: Red Whelp Gloves",
+     "source": [
+      "vendor"
+     ],
+     "buyPriceCopper": 1600,
+     "sourceDetail": [
+      {
+       "n": "Wenna Silkbeard",
+       "t": 1,
+       "ti": 2679,
+       "z": 11
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "itemId": 5766,
+   "name": "Lesser Wizard's Robe",
+   "profession": "tailoring",
+   "skillRequired": 135,
+   "writItemId": 264047,
+   "writName": "Craftsman's Writ: Lesser Wizard's Robe",
+   "writTier": "journeyman",
+   "writRep": 75,
+   "countMade": 1,
+   "writGuideSkill": 130,
+   "craftSpellId": 6690,
+   "reagents": [
+    {
+     "itemId": 4305,
+     "name": "Bolt of Silk Cloth",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 2321,
+     "name": "Fine Thread",
+     "qty": 2,
+     "vendor": true,
+     "vendorPriceCopper": 88,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 94
+    },
+    {
+     "itemId": 3182,
+     "name": "Spider's Silk",
+     "qty": 2,
+     "vendor": false
+    }
+   ],
+   "recipeSource": "trainer",
+   "trainerCostCopper": 1000,
+   "recipeItems": []
+  },
+  {
+   "itemId": 6263,
+   "name": "Blue Overalls",
+   "profession": "tailoring",
+   "skillRequired": 100,
+   "writItemId": 264048,
+   "writName": "Craftsman's Writ: Blue Overalls",
+   "writTier": "journeyman",
+   "writRep": 75,
+   "countMade": 1,
+   "craftSpellId": 7639,
+   "reagents": [
+    {
+     "itemId": 2997,
+     "name": "Bolt of Woolen Cloth",
+     "qty": 4,
+     "vendor": false
+    },
+    {
+     "itemId": 2321,
+     "name": "Fine Thread",
+     "qty": 2,
+     "vendor": true,
+     "vendorPriceCopper": 88,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 94
+    },
+    {
+     "itemId": 6260,
+     "name": "Blue Dye",
+     "qty": 2,
+     "vendor": true,
+     "vendorPriceCopper": 44,
+     "vendorNpc": "Alexandra Bolero",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 72
+    }
+   ],
+   "recipeSource": "vendor",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 6274,
+     "name": "Pattern: Blue Overalls",
+     "source": [
+      "vendor"
+     ],
+     "buyPriceCopper": 400,
+     "sourceDetail": []
+    }
+   ]
+  },
+  {
+   "itemId": 7048,
+   "name": "Azure Silk Hood",
+   "profession": "tailoring",
+   "skillRequired": 145,
+   "writItemId": 264049,
+   "writName": "Craftsman's Writ: Azure Silk Hood",
+   "writTier": "journeyman",
+   "writRep": 75,
+   "countMade": 1,
+   "writGuideSkill": 130,
+   "craftSpellId": 8760,
+   "reagents": [
+    {
+     "itemId": 4305,
+     "name": "Bolt of Silk Cloth",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 6260,
+     "name": "Blue Dye",
+     "qty": 2,
+     "vendor": true,
+     "vendorPriceCopper": 44,
+     "vendorNpc": "Alexandra Bolero",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 72
+    },
+    {
+     "itemId": 2321,
+     "name": "Fine Thread",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 88,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 94
+    }
+   ],
+   "recipeSource": "trainer",
+   "trainerCostCopper": 600,
+   "recipeItems": []
+  },
+  {
+   "itemId": 4245,
+   "name": "Small Silk Pack",
+   "profession": "tailoring",
+   "skillRequired": 150,
+   "writItemId": 264050,
+   "writName": "Craftsman's Writ: Small Silk Pack",
+   "writTier": "journeyman",
+   "writRep": 75,
+   "countMade": 1,
+   "writGuideSkill": 145,
+   "craftSpellId": 3813,
+   "reagents": [
+    {
+     "itemId": 4305,
+     "name": "Bolt of Silk Cloth",
+     "qty": 3,
+     "vendor": false
+    },
+    {
+     "itemId": 4234,
+     "name": "Heavy Leather",
+     "qty": 2,
+     "vendor": true,
+     "vendorPriceCopper": 631,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    },
+    {
+     "itemId": 2321,
+     "name": "Fine Thread",
+     "qty": 3,
+     "vendor": true,
+     "vendorPriceCopper": 88,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 94
+    }
+   ],
+   "recipeSource": "trainer",
+   "trainerCostCopper": 800,
+   "recipeItems": []
+  },
+  {
+   "itemId": 4317,
+   "name": "Phoenix Pants",
+   "profession": "tailoring",
+   "skillRequired": 125,
+   "writItemId": 264051,
+   "writName": "Craftsman's Writ: Phoenix Pants",
+   "writTier": "journeyman",
+   "writRep": 75,
+   "countMade": 1,
+   "craftSpellId": 3851,
+   "reagents": [
+    {
+     "itemId": 2997,
+     "name": "Bolt of Woolen Cloth",
+     "qty": 6,
+     "vendor": false
+    },
+    {
+     "itemId": 5500,
+     "name": "Iridescent Pearl",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 2321,
+     "name": "Fine Thread",
+     "qty": 3,
+     "vendor": true,
+     "vendorPriceCopper": 88,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 94
+    }
+   ],
+   "recipeSource": "drop",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 4349,
+     "name": "Pattern: Phoenix Pants",
+     "source": [
+      "drop",
+      16
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": []
+    }
+   ]
+  },
+  {
+   "itemId": 4313,
+   "name": "Red Woolen Boots",
+   "profession": "tailoring",
+   "skillRequired": 95,
+   "writItemId": 264052,
+   "writName": "Craftsman's Writ: Red Woolen Boots",
+   "writTier": "journeyman",
+   "writRep": 75,
+   "countMade": 1,
+   "writGuideSkill": 80,
+   "craftSpellId": 3847,
+   "reagents": [
+    {
+     "itemId": 2997,
+     "name": "Bolt of Woolen Cloth",
+     "qty": 4,
+     "vendor": false
+    },
+    {
+     "itemId": 2318,
+     "name": "Light Leather",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 2321,
+     "name": "Fine Thread",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 88,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 94
+    },
+    {
+     "itemId": 2604,
+     "name": "Red Dye",
+     "qty": 2,
+     "vendor": true,
+     "vendorPriceCopper": 44,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 91
+    }
+   ],
+   "recipeSource": "drop",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 4345,
+     "name": "Pattern: Red Woolen Boots",
+     "source": [
+      "drop",
+      16,
+      21
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": []
+    }
+   ]
+  },
+  {
+   "itemId": 10048,
+   "name": "Colorful Kilt",
+   "profession": "tailoring",
+   "skillRequired": 120,
+   "writItemId": 264053,
+   "writName": "Craftsman's Writ: Colorful Kilt",
+   "writTier": "journeyman",
+   "writRep": 75,
+   "countMade": 1,
+   "writGuideSkill": 95,
+   "craftSpellId": 12047,
+   "reagents": [
+    {
+     "itemId": 2997,
+     "name": "Bolt of Woolen Cloth",
+     "qty": 5,
+     "vendor": false
+    },
+    {
+     "itemId": 2604,
+     "name": "Red Dye",
+     "qty": 3,
+     "vendor": true,
+     "vendorPriceCopper": 44,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 91
+    },
+    {
+     "itemId": 2321,
+     "name": "Fine Thread",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 88,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 94
+    }
+   ],
+   "recipeSource": "drop",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 10316,
+     "name": "Pattern: Colorful Kilt",
+     "source": [
+      "drop"
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": []
+    }
+   ]
+  },
+  {
+   "itemId": 6264,
+   "name": "Greater Adept's Robe",
+   "profession": "tailoring",
+   "skillRequired": 115,
+   "writItemId": 264054,
+   "writName": "Craftsman's Writ: Greater Adept's Robe",
+   "writTier": "journeyman",
+   "writRep": 75,
+   "countMade": 1,
+   "craftSpellId": 7643,
+   "reagents": [
+    {
+     "itemId": 2997,
+     "name": "Bolt of Woolen Cloth",
+     "qty": 5,
+     "vendor": false
+    },
+    {
+     "itemId": 2321,
+     "name": "Fine Thread",
+     "qty": 3,
+     "vendor": true,
+     "vendorPriceCopper": 88,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 94
+    },
+    {
+     "itemId": 2604,
+     "name": "Red Dye",
+     "qty": 3,
+     "vendor": true,
+     "vendorPriceCopper": 44,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 91
+    }
+   ],
+   "recipeSource": "vendor",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 6275,
+     "name": "Pattern: Greater Adept's Robe",
+     "source": [
+      "vendor"
+     ],
+     "buyPriceCopper": 800,
+     "sourceDetail": []
+    }
+   ]
+  },
+  {
+   "itemId": 4321,
+   "name": "Spider Silk Slippers",
+   "profession": "tailoring",
+   "skillRequired": 140,
+   "writItemId": 264055,
+   "writName": "Craftsman's Writ: Spider Silk Slippers",
+   "writTier": "journeyman",
+   "writRep": 75,
+   "countMade": 1,
+   "writGuideSkill": 135,
+   "craftSpellId": 3856,
+   "reagents": [
+    {
+     "itemId": 4305,
+     "name": "Bolt of Silk Cloth",
+     "qty": 3,
+     "vendor": false
+    },
+    {
+     "itemId": 3182,
+     "name": "Spider's Silk",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 2321,
+     "name": "Fine Thread",
+     "qty": 2,
+     "vendor": true,
+     "vendorPriceCopper": 88,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 94
+    }
+   ],
+   "recipeSource": "drop",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 4350,
+     "name": "Pattern: Spider Silk Slippers",
+     "source": [
+      "drop",
+      16
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": []
+    }
+   ]
+  },
+  {
+   "itemId": 6050,
+   "name": "Frost Protection Potion",
+   "profession": "alchemy",
+   "skillRequired": 190,
+   "writItemId": 264056,
+   "writName": "Craftsman's Writ: Frost Protection Potion",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "writGuideSkill": 205,
+   "craftSpellId": 7258,
+   "reagents": [
+    {
+     "itemId": 3819,
+     "name": "Wintersbite",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 3821,
+     "name": "Goldthorn",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 3372,
+     "name": "Leaded Vial",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 177,
+     "vendorNpc": "Thultazor",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 94
+    }
+   ],
+   "recipeSource": "vendor",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 6056,
+     "name": "Recipe: Frost Protection Potion",
+     "source": [
+      "vendor"
+     ],
+     "buyPriceCopper": 2000,
+     "sourceDetail": []
+    }
+   ]
+  },
+  {
+   "itemId": 3823,
+   "name": "Lesser Invisibility Potion",
+   "profession": "alchemy",
+   "skillRequired": 165,
+   "writItemId": 264057,
+   "writName": "Craftsman's Writ: Lesser Invisibility Potion",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "writGuideSkill": 185,
+   "craftSpellId": 3448,
+   "reagents": [
+    {
+     "itemId": 3818,
+     "name": "Fadeleaf",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 3355,
+     "name": "Wild Steelbloom",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 200,
+     "vendorNpc": "Antonio Perelli",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 7
+    },
+    {
+     "itemId": 3372,
+     "name": "Leaded Vial",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 177,
+     "vendorNpc": "Thultazor",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 94
+    }
+   ],
+   "recipeSource": "trainer",
+   "trainerCostCopper": 4500,
+   "recipeItems": []
+  },
+  {
+   "itemId": 4623,
+   "name": "Lesser Stoneshield Potion",
+   "profession": "alchemy",
+   "skillRequired": 215,
+   "writItemId": 264058,
+   "writName": "Craftsman's Writ: Lesser Stoneshield Potion",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "writGuideSkill": 230,
+   "craftSpellId": 4942,
+   "reagents": [
+    {
+     "itemId": 3858,
+     "name": "Mithril Ore",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 3821,
+     "name": "Goldthorn",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 3372,
+     "name": "Leaded Vial",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 177,
+     "vendorNpc": "Thultazor",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 94
+    }
+   ],
+   "recipeSource": "quest",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 4624,
+     "name": "Recipe: Lesser Stoneshield Potion",
+     "source": [
+      "quest"
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": [
+      {
+       "n": "Liquid Stone",
+       "t": 5,
+       "ti": 715
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "itemId": 6052,
+   "name": "Nature Protection Potion",
+   "profession": "alchemy",
+   "skillRequired": 190,
+   "writItemId": 264059,
+   "writName": "Craftsman's Writ: Nature Protection Potion",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "writGuideSkill": 210,
+   "craftSpellId": 7259,
+   "reagents": [
+    {
+     "itemId": 3357,
+     "name": "Liferoot",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 300,
+     "vendorNpc": "Kixxle",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 7
+    },
+    {
+     "itemId": 3820,
+     "name": "Stranglekelp",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 3372,
+     "name": "Leaded Vial",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 177,
+     "vendorNpc": "Thultazor",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 94
+    }
+   ],
+   "recipeSource": "vendor",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 6057,
+     "name": "Recipe: Nature Protection Potion",
+     "source": [
+      "vendor"
+     ],
+     "buyPriceCopper": 2000,
+     "sourceDetail": []
+    }
+   ]
+  },
+  {
+   "itemId": 10592,
+   "name": "Catseye Draught",
+   "profession": "alchemy",
+   "skillRequired": 200,
+   "writItemId": 264060,
+   "writName": "Craftsman's Writ: Catseye Draught",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "writGuideSkill": 220,
+   "craftSpellId": 12609,
+   "reagents": [
+    {
+     "itemId": 3821,
+     "name": "Goldthorn",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 3818,
+     "name": "Fadeleaf",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 3372,
+     "name": "Leaded Vial",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 177,
+     "vendorNpc": "Thultazor",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 94
+    }
+   ],
+   "recipeSource": "trainer",
+   "trainerCostCopper": 7200,
+   "recipeItems": [],
+   "notes": "Writ name Catseye Draught = classic Catseye Elixir (10592); name per this dataset."
+  },
+  {
+   "itemId": 5633,
+   "name": "Great Rage Potion",
+   "profession": "alchemy",
+   "skillRequired": 175,
+   "writItemId": 264061,
+   "writName": "Craftsman's Writ: Great Rage Potion",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "notes": "Item has multiple creating spells; first spell used.",
+   "writGuideSkill": 195,
+   "craftSpellId": 6618,
+   "reagents": [
+    {
+     "itemId": 5637,
+     "name": "Large Fang",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 3356,
+     "name": "Kingsblood",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 112,
+     "vendorNpc": "Maria Lumere",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 7
+    },
+    {
+     "itemId": 3372,
+     "name": "Leaded Vial",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 177,
+     "vendorNpc": "Thultazor",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 94
+    }
+   ],
+   "recipeSource": "vendor",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 5643,
+     "name": "Recipe: Great Rage Potion",
+     "source": [
+      "vendor"
+     ],
+     "buyPriceCopper": 2000,
+     "sourceDetail": []
+    }
+   ],
+   "uncertain": true,
+   "uncertainFields": [
+    "reagents"
+   ]
+  },
+  {
+   "itemId": 3827,
+   "name": "Mana Potion",
+   "profession": "alchemy",
+   "skillRequired": 160,
+   "writItemId": 264062,
+   "writName": "Craftsman's Writ: Mana Potion",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "writGuideSkill": 180,
+   "craftSpellId": 3452,
+   "reagents": [
+    {
+     "itemId": 3820,
+     "name": "Stranglekelp",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 3356,
+     "name": "Kingsblood",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 112,
+     "vendorNpc": "Maria Lumere",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 7
+    },
+    {
+     "itemId": 3372,
+     "name": "Leaded Vial",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 177,
+     "vendorNpc": "Thultazor",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 94
+    }
+   ],
+   "recipeSource": "trainer",
+   "trainerCostCopper": 5000,
+   "recipeItems": []
+  },
+  {
+   "itemId": 6049,
+   "name": "Fire Protection Potion",
+   "profession": "alchemy",
+   "skillRequired": 165,
+   "writItemId": 264063,
+   "writName": "Craftsman's Writ: Fire Protection Potion",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "writGuideSkill": 210,
+   "craftSpellId": 7257,
+   "reagents": [
+    {
+     "itemId": 4402,
+     "name": "Small Flame Sac",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 6371,
+     "name": "Fire Oil",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 3372,
+     "name": "Leaded Vial",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 177,
+     "vendorNpc": "Thultazor",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 94
+    }
+   ],
+   "recipeSource": "vendor",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 6055,
+     "name": "Recipe: Fire Protection Potion",
+     "source": [
+      "vendor"
+     ],
+     "buyPriceCopper": 1500,
+     "sourceDetail": []
+    }
+   ]
+  },
+  {
+   "itemId": 3824,
+   "name": "Shadow Oil",
+   "profession": "alchemy",
+   "skillRequired": 165,
+   "writItemId": 264064,
+   "writName": "Craftsman's Writ: Shadow Oil",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "writGuideSkill": 190,
+   "craftSpellId": 3449,
+   "reagents": [
+    {
+     "itemId": 3818,
+     "name": "Fadeleaf",
+     "qty": 4,
+     "vendor": false
+    },
+    {
+     "itemId": 3369,
+     "name": "Grave Moss",
+     "qty": 4,
+     "vendor": false
+    },
+    {
+     "itemId": 3372,
+     "name": "Leaded Vial",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 177,
+     "vendorNpc": "Thultazor",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 94
+    }
+   ],
+   "recipeSource": "vendor",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 6068,
+     "name": "Recipe: Shadow Oil",
+     "source": [
+      "vendor"
+     ],
+     "buyPriceCopper": 1500,
+     "sourceDetail": []
+    }
+   ]
+  },
+  {
+   "itemId": 9061,
+   "name": "Goblin Rocket Fuel",
+   "profession": "alchemy",
+   "skillRequired": 210,
+   "writItemId": 264065,
+   "writName": "Craftsman's Writ: Goblin Rocket Fuel",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "writGuideSkill": 225,
+   "craftSpellId": 11456,
+   "reagents": [
+    {
+     "itemId": 4625,
+     "name": "Firebloom",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 9260,
+     "name": "Volatile Rum",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 1600,
+     "vendorNpc": "Stomper Kreeg",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    },
+    {
+     "itemId": 3372,
+     "name": "Leaded Vial",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 177,
+     "vendorNpc": "Thultazor",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 94
+    }
+   ],
+   "recipeSource": "quest",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 10644,
+     "name": "Recipe: Goblin Rocket Fuel",
+     "source": [
+      "crafted"
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": [
+      {
+       "n": "Goblin Rocket Fuel Recipe",
+       "t": 6,
+       "ti": 12715
+      }
+     ]
+    }
+   ],
+   "notes": "Recipe item is quest/event-style (Wowhead source \"crafted\"/NPC quest); verify.",
+   "uncertain": true,
+   "uncertainFields": [
+    "recipeSource"
+   ]
+  },
+  {
+   "itemId": 8949,
+   "name": "Elixir of Agility",
+   "profession": "alchemy",
+   "skillRequired": 185,
+   "writItemId": 264066,
+   "writName": "Craftsman's Writ: Elixir of Agility",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "writGuideSkill": 205,
+   "craftSpellId": 11449,
+   "reagents": [
+    {
+     "itemId": 3820,
+     "name": "Stranglekelp",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 3821,
+     "name": "Goldthorn",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 3372,
+     "name": "Leaded Vial",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 177,
+     "vendorNpc": "Thultazor",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 94
+    }
+   ],
+   "recipeSource": "trainer",
+   "trainerCostCopper": 5850,
+   "recipeItems": []
+  },
+  {
+   "itemId": 9144,
+   "name": "Wildvine Potion",
+   "profession": "alchemy",
+   "skillRequired": 225,
+   "writItemId": 264067,
+   "writName": "Craftsman's Writ: Wildvine Potion",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "craftSpellId": 11458,
+   "reagents": [
+    {
+     "itemId": 8153,
+     "name": "Wildvine",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 8831,
+     "name": "Purple Lotus",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 8925,
+     "name": "Crystal Vial",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 2222,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 90
+    }
+   ],
+   "recipeSource": "drop",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 9294,
+     "name": "Recipe: Wildvine Potion",
+     "source": [
+      "drop"
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": []
+    }
+   ]
+  },
+  {
+   "itemId": 7922,
+   "name": "Steel Plate Helm",
+   "profession": "blacksmithing",
+   "skillRequired": 215,
+   "writItemId": 264068,
+   "writName": "Craftsman's Writ: Steel Plate Helm",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "writGuideSkill": 210,
+   "craftSpellId": 9935,
+   "reagents": [
+    {
+     "itemId": 3859,
+     "name": "Steel Bar",
+     "qty": 14,
+     "vendor": false
+    },
+    {
+     "itemId": 7966,
+     "name": "Solid Grinding Stone",
+     "qty": 1,
+     "vendor": false
+    }
+   ],
+   "recipeSource": "trainer",
+   "trainerCostCopper": 5000,
+   "recipeItems": []
+  },
+  {
+   "itemId": 9060,
+   "name": "Inlaid Mithril Cylinder",
+   "profession": "blacksmithing",
+   "skillRequired": 200,
+   "writItemId": 264069,
+   "writName": "Craftsman's Writ: Inlaid Mithril Cylinder",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "craftSpellId": 11454,
+   "reagents": [
+    {
+     "itemId": 3860,
+     "name": "Mithril Bar",
+     "qty": 5,
+     "vendor": false
+    },
+    {
+     "itemId": 3577,
+     "name": "Gold Bar",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 6037,
+     "name": "Truesilver Bar",
+     "qty": 1,
+     "vendor": false
+    }
+   ],
+   "recipeSource": "quest",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 10713,
+     "name": "Plans: Inlaid Mithril Cylinder",
+     "source": [
+      "crafted"
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": [
+      {
+       "n": "Inlaid Mithril Cylinder Plans",
+       "t": 6,
+       "ti": 12895
+      }
+     ]
+    }
+   ],
+   "notes": "Recipe item is quest/event-style (Wowhead source \"crafted\"/NPC quest); verify.",
+   "uncertain": true,
+   "uncertainFields": [
+    "recipeSource"
+   ]
+  },
+  {
+   "itemId": 6041,
+   "name": "Steel Weapon Chain",
+   "profession": "blacksmithing",
+   "skillRequired": 190,
+   "writItemId": 264070,
+   "writName": "Craftsman's Writ: Steel Weapon Chain",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "craftSpellId": 7224,
+   "reagents": [
+    {
+     "itemId": 3859,
+     "name": "Steel Bar",
+     "qty": 8,
+     "vendor": false
+    },
+    {
+     "itemId": 3486,
+     "name": "Heavy Grinding Stone",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 4234,
+     "name": "Heavy Leather",
+     "qty": 4,
+     "vendor": true,
+     "vendorPriceCopper": 631,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    }
+   ],
+   "recipeSource": "drop",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 6046,
+     "name": "Plans: Steel Weapon Chain",
+     "source": [
+      "drop",
+      21
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": []
+    }
+   ]
+  },
+  {
+   "itemId": 7928,
+   "name": "Ornate Mithril Shoulders",
+   "profession": "blacksmithing",
+   "skillRequired": 225,
+   "writItemId": 264071,
+   "writName": "Craftsman's Writ: Ornate Mithril Shoulders",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "writGuideSkill": 220,
+   "craftSpellId": 9952,
+   "reagents": [
+    {
+     "itemId": 3860,
+     "name": "Mithril Bar",
+     "qty": 12,
+     "vendor": false
+    },
+    {
+     "itemId": 6037,
+     "name": "Truesilver Bar",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 4304,
+     "name": "Thick Leather",
+     "qty": 6,
+     "vendor": true,
+     "vendorPriceCopper": 1263,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    }
+   ],
+   "recipeSource": "quest",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 7985,
+     "name": "Plans: Ornate Mithril Shoulder",
+     "source": [
+      "quest"
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": [
+      {
+       "n": "The Art of the Imbue",
+       "t": 5,
+       "ti": 2763
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "itemId": 7942,
+   "name": "Blue Glittering Axe",
+   "profession": "blacksmithing",
+   "skillRequired": 220,
+   "writItemId": 264072,
+   "writName": "Craftsman's Writ: Blue Glittering Axe",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "craftSpellId": 9995,
+   "reagents": [
+    {
+     "itemId": 3860,
+     "name": "Mithril Bar",
+     "qty": 16,
+     "vendor": false
+    },
+    {
+     "itemId": 7909,
+     "name": "Aquamarine",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 7966,
+     "name": "Solid Grinding Stone",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 4304,
+     "name": "Thick Leather",
+     "qty": 4,
+     "vendor": true,
+     "vendorPriceCopper": 1263,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    }
+   ],
+   "recipeSource": "drop",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 7992,
+     "name": "Plans: Blue Glittering Axe",
+     "source": [
+      "drop",
+      16
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": []
+    }
+   ]
+  },
+  {
+   "itemId": 3853,
+   "name": "Moonsteel Broadsword",
+   "profession": "blacksmithing",
+   "skillRequired": 180,
+   "writItemId": 264073,
+   "writName": "Craftsman's Writ: Moonsteel Broadsword",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "craftSpellId": 3496,
+   "reagents": [
+    {
+     "itemId": 3859,
+     "name": "Steel Bar",
+     "qty": 8,
+     "vendor": false
+    },
+    {
+     "itemId": 3466,
+     "name": "Strong Flux",
+     "qty": 2,
+     "vendor": true,
+     "vendorPriceCopper": 1777,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 95
+    },
+    {
+     "itemId": 3486,
+     "name": "Heavy Grinding Stone",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 1705,
+     "name": "Lesser Moonstone",
+     "qty": 3,
+     "vendor": false
+    },
+    {
+     "itemId": 4234,
+     "name": "Heavy Leather",
+     "qty": 3,
+     "vendor": true,
+     "vendorPriceCopper": 631,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    }
+   ],
+   "recipeSource": "vendor",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 12163,
+     "name": "Plans: Moonsteel Broadsword",
+     "source": [
+      "vendor"
+     ],
+     "buyPriceCopper": 4400,
+     "sourceDetail": [
+      {
+       "n": "Zarena Cromwind",
+       "t": 1,
+       "ti": 2482,
+       "z": 33
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "itemId": 3837,
+   "name": "Golden Scale Coif",
+   "profession": "blacksmithing",
+   "skillRequired": 190,
+   "writItemId": 264074,
+   "writName": "Craftsman's Writ: Golden Scale Coif",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "craftSpellId": 3503,
+   "reagents": [
+    {
+     "itemId": 3859,
+     "name": "Steel Bar",
+     "qty": 8,
+     "vendor": false
+    },
+    {
+     "itemId": 3577,
+     "name": "Gold Bar",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 3486,
+     "name": "Heavy Grinding Stone",
+     "qty": 2,
+     "vendor": false
+    }
+   ],
+   "recipeSource": "vendor",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 6047,
+     "name": "Plans: Golden Scale Coif",
+     "source": [
+      "vendor"
+     ],
+     "buyPriceCopper": 4400,
+     "sourceDetail": [
+      {
+       "n": "Krinkle Goodsteel",
+       "t": 1,
+       "ti": 5411,
+       "z": 440
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "itemId": 7964,
+   "name": "Solid Sharpening Stone",
+   "profession": "blacksmithing",
+   "skillRequired": 200,
+   "writItemId": 264075,
+   "writName": "Craftsman's Writ: Solid Sharpening Stone",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "writGuideSkill": 175,
+   "craftSpellId": 9918,
+   "reagents": [
+    {
+     "itemId": 7912,
+     "name": "Solid Stone",
+     "qty": 1,
+     "vendor": false
+    }
+   ],
+   "recipeSource": "trainer",
+   "trainerCostCopper": 2500,
+   "recipeItems": []
+  },
+  {
+   "itemId": 7943,
+   "name": "Wicked Mithril Blade",
+   "profession": "blacksmithing",
+   "skillRequired": 225,
+   "writItemId": 264076,
+   "writName": "Craftsman's Writ: Wicked Mithril Blade",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "craftSpellId": 9997,
+   "reagents": [
+    {
+     "itemId": 3860,
+     "name": "Mithril Bar",
+     "qty": 14,
+     "vendor": false
+    },
+    {
+     "itemId": 6037,
+     "name": "Truesilver Bar",
+     "qty": 4,
+     "vendor": false
+    },
+    {
+     "itemId": 7966,
+     "name": "Solid Grinding Stone",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 4304,
+     "name": "Thick Leather",
+     "qty": 2,
+     "vendor": true,
+     "vendorPriceCopper": 1263,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    }
+   ],
+   "recipeSource": "drop",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 8029,
+     "name": "Plans: Wicked Mithril Blade",
+     "source": [
+      "drop"
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": []
+    }
+   ]
+  },
+  {
+   "itemId": 11144,
+   "name": "Truesilver Rod",
+   "profession": "blacksmithing",
+   "skillRequired": 200,
+   "writItemId": 264077,
+   "writName": "Craftsman's Writ: Truesilver Rod",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "writGuideSkill": 180,
+   "craftSpellId": 14380,
+   "reagents": [
+    {
+     "itemId": 6037,
+     "name": "Truesilver Bar",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 3486,
+     "name": "Heavy Grinding Stone",
+     "qty": 1,
+     "vendor": false
+    }
+   ],
+   "recipeSource": "trainer",
+   "trainerCostCopper": 2500,
+   "recipeItems": []
+  },
+  {
+   "itemId": 9366,
+   "name": "Golden Scale Gauntlets",
+   "profession": "blacksmithing",
+   "skillRequired": 205,
+   "writItemId": 264078,
+   "writName": "Craftsman's Writ: Golden Scale Gauntlets",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "craftSpellId": 11643,
+   "reagents": [
+    {
+     "itemId": 3859,
+     "name": "Steel Bar",
+     "qty": 10,
+     "vendor": false
+    },
+    {
+     "itemId": 3577,
+     "name": "Gold Bar",
+     "qty": 4,
+     "vendor": false
+    },
+    {
+     "itemId": 3486,
+     "name": "Heavy Grinding Stone",
+     "qty": 4,
+     "vendor": false
+    },
+    {
+     "itemId": 3864,
+     "name": "Citrine",
+     "qty": 1,
+     "vendor": false
+    }
+   ],
+   "recipeSource": "quest",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 9367,
+     "name": "Plans: Golden Scale Gauntlets",
+     "source": [
+      "quest"
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": [
+      {
+       "n": "The Origins of Smithing",
+       "t": 5,
+       "ti": 2758
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "itemId": 7941,
+   "name": "Heavy Mithril Axe",
+   "profession": "blacksmithing",
+   "skillRequired": 210,
+   "writItemId": 264079,
+   "writName": "Craftsman's Writ: Heavy Mithril Axe",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "craftSpellId": 9993,
+   "reagents": [
+    {
+     "itemId": 3860,
+     "name": "Mithril Bar",
+     "qty": 12,
+     "vendor": false
+    },
+    {
+     "itemId": 3864,
+     "name": "Citrine",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 7966,
+     "name": "Solid Grinding Stone",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 4234,
+     "name": "Heavy Leather",
+     "qty": 4,
+     "vendor": true,
+     "vendorPriceCopper": 631,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    }
+   ],
+   "recipeSource": "trainer",
+   "trainerCostCopper": 10000,
+   "recipeItems": []
+  },
+  {
+   "itemId": 4396,
+   "name": "Mechanical Dragonling",
+   "profession": "engineering",
+   "skillRequired": 200,
+   "writItemId": 264080,
+   "writName": "Craftsman's Writ: Mechanical Dragonling",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "craftSpellId": 3969,
+   "reagents": [
+    {
+     "itemId": 4382,
+     "name": "Bronze Framework",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 2133,
+     "vendorNpc": "Elizabeth Van Talen",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 24
+    },
+    {
+     "itemId": 4387,
+     "name": "Iron Strut",
+     "qty": 4,
+     "vendor": false
+    },
+    {
+     "itemId": 4389,
+     "name": "Gyrochronatom",
+     "qty": 4,
+     "vendor": true,
+     "vendorPriceCopper": 3000,
+     "vendorNpc": "Rizz Loosebolt",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 24
+    },
+    {
+     "itemId": 3864,
+     "name": "Citrine",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 7191,
+     "name": "Fused Wiring",
+     "qty": 1,
+     "vendor": false
+    }
+   ],
+   "recipeSource": "vendor",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 13311,
+     "name": "Schematic: Mechanical Dragonling",
+     "source": [
+      "vendor"
+     ],
+     "buyPriceCopper": 10000,
+     "sourceDetail": [
+      {
+       "n": "Gnaz Blunderflame",
+       "t": 1,
+       "ti": 2687,
+       "z": 33
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "itemId": 4392,
+   "name": "Advanced Target Dummy",
+   "profession": "engineering",
+   "skillRequired": 185,
+   "writItemId": 264081,
+   "writName": "Craftsman's Writ: Advanced Target Dummy",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "craftSpellId": 3965,
+   "reagents": [
+    {
+     "itemId": 4387,
+     "name": "Iron Strut",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 4382,
+     "name": "Bronze Framework",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 2133,
+     "vendorNpc": "Elizabeth Van Talen",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 24
+    },
+    {
+     "itemId": 4389,
+     "name": "Gyrochronatom",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 3000,
+     "vendorNpc": "Rizz Loosebolt",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 24
+    },
+    {
+     "itemId": 4234,
+     "name": "Heavy Leather",
+     "qty": 4,
+     "vendor": true,
+     "vendorPriceCopper": 631,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    }
+   ],
+   "recipeSource": "trainer",
+   "trainerCostCopper": 1200,
+   "recipeItems": []
+  },
+  {
+   "itemId": 4393,
+   "name": "Craftsman's Monocle",
+   "profession": "engineering",
+   "skillRequired": 185,
+   "writItemId": 264082,
+   "writName": "Craftsman's Writ: Craftsman's Monocle",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "writGuideSkill": 205,
+   "craftSpellId": 3966,
+   "reagents": [
+    {
+     "itemId": 4234,
+     "name": "Heavy Leather",
+     "qty": 6,
+     "vendor": true,
+     "vendorPriceCopper": 631,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    },
+    {
+     "itemId": 3864,
+     "name": "Citrine",
+     "qty": 2,
+     "vendor": false
+    }
+   ],
+   "recipeSource": "drop",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 4415,
+     "name": "Schematic: Craftsman's Monocle",
+     "source": [
+      "drop",
+      21
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": []
+    }
+   ]
+  },
+  {
+   "itemId": 4395,
+   "name": "Goblin Land Mine",
+   "profession": "engineering",
+   "skillRequired": 195,
+   "writItemId": 264083,
+   "writName": "Craftsman's Writ: Goblin Land Mine",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "writGuideSkill": 215,
+   "craftSpellId": 3968,
+   "reagents": [
+    {
+     "itemId": 4377,
+     "name": "Heavy Blasting Powder",
+     "qty": 3,
+     "vendor": false
+    },
+    {
+     "itemId": 3575,
+     "name": "Iron Bar",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 4389,
+     "name": "Gyrochronatom",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 3000,
+     "vendorNpc": "Rizz Loosebolt",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 24
+    }
+   ],
+   "recipeSource": "drop",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 4416,
+     "name": "Schematic: Goblin Land Mine",
+     "source": [
+      "drop"
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": []
+    }
+   ]
+  },
+  {
+   "itemId": 10501,
+   "name": "Catseye Ultra Goggles",
+   "profession": "engineering",
+   "skillRequired": 220,
+   "writItemId": 264084,
+   "writName": "Craftsman's Writ: Catseye Ultra Goggles",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "writGuideSkill": 240,
+   "craftSpellId": 12607,
+   "reagents": [
+    {
+     "itemId": 4304,
+     "name": "Thick Leather",
+     "qty": 4,
+     "vendor": true,
+     "vendorPriceCopper": 1263,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    },
+    {
+     "itemId": 7909,
+     "name": "Aquamarine",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 10592,
+     "name": "Catseye Elixir",
+     "qty": 1,
+     "vendor": false
+    }
+   ],
+   "recipeSource": "drop",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 10603,
+     "name": "Schematic: Catseye Ultra Goggles",
+     "source": [
+      "drop"
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": []
+    }
+   ]
+  },
+  {
+   "itemId": 10560,
+   "name": "Unstable Trigger",
+   "profession": "engineering",
+   "skillRequired": 200,
+   "writItemId": 264085,
+   "writName": "Craftsman's Writ: Unstable Trigger",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "craftSpellId": 12591,
+   "reagents": [
+    {
+     "itemId": 3860,
+     "name": "Mithril Bar",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 4338,
+     "name": "Mageweave Cloth",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 10505,
+     "name": "Solid Blasting Powder",
+     "qty": 1,
+     "vendor": false
+    }
+   ],
+   "recipeSource": "trainer",
+   "trainerCostCopper": 1500,
+   "recipeItems": []
+  },
+  {
+   "itemId": 4852,
+   "name": "Flash Bomb",
+   "profession": "engineering",
+   "skillRequired": 185,
+   "writItemId": 264086,
+   "writName": "Craftsman's Writ: Flash Bomb",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "craftSpellId": 8243,
+   "reagents": [
+    {
+     "itemId": 4611,
+     "name": "Blue Pearl",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 4377,
+     "name": "Heavy Blasting Powder",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 4306,
+     "name": "Silk Cloth",
+     "qty": 1,
+     "vendor": false
+    }
+   ],
+   "recipeSource": "drop",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 6672,
+     "name": "Schematic: Flash Bomb",
+     "source": [
+      "drop",
+      "quest"
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": [
+      {
+       "z": 721
+      },
+      {
+       "n": "Flash Bomb Recipe",
+       "t": 5,
+       "ti": 1559
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "itemId": 10500,
+   "name": "Fire Goggles",
+   "profession": "engineering",
+   "skillRequired": 205,
+   "writItemId": 264087,
+   "writName": "Craftsman's Writ: Fire Goggles",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "writGuideSkill": 225,
+   "craftSpellId": 12594,
+   "reagents": [
+    {
+     "itemId": 4385,
+     "name": "Green Tinted Goggles",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 3864,
+     "name": "Citrine",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 7068,
+     "name": "Elemental Fire",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 4234,
+     "name": "Heavy Leather",
+     "qty": 4,
+     "vendor": true,
+     "vendorPriceCopper": 631,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    }
+   ],
+   "recipeSource": "trainer",
+   "trainerCostCopper": 1600,
+   "recipeItems": []
+  },
+  {
+   "itemId": 10514,
+   "name": "Mithril Frag Bomb",
+   "profession": "engineering",
+   "skillRequired": 215,
+   "writItemId": 264088,
+   "writName": "Craftsman's Writ: Mithril Frag Bomb",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 2,
+   "craftSpellId": 12603,
+   "reagents": [
+    {
+     "itemId": 10561,
+     "name": "Mithril Casing",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 10560,
+     "name": "Unstable Trigger",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 10505,
+     "name": "Solid Blasting Powder",
+     "qty": 1,
+     "vendor": false
+    }
+   ],
+   "recipeSource": "trainer",
+   "trainerCostCopper": 1800,
+   "recipeItems": []
+  },
+  {
+   "itemId": 10498,
+   "name": "Gyromatic Micro-Adjuster",
+   "profession": "engineering",
+   "skillRequired": 175,
+   "writItemId": 264089,
+   "writName": "Craftsman's Writ: Gyromatic Micro-Adjuster",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "craftSpellId": 12590,
+   "reagents": [
+    {
+     "itemId": 3859,
+     "name": "Steel Bar",
+     "qty": 4,
+     "vendor": false
+    }
+   ],
+   "recipeSource": "trainer",
+   "trainerCostCopper": 1000,
+   "recipeItems": []
+  },
+  {
+   "itemId": 11590,
+   "name": "Mechanical Repair Kit",
+   "profession": "engineering",
+   "skillRequired": 200,
+   "writItemId": 264090,
+   "writName": "Craftsman's Writ: Mechanical Repair Kit",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "craftSpellId": 15255,
+   "reagents": [
+    {
+     "itemId": 3860,
+     "name": "Mithril Bar",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 4338,
+     "name": "Mageweave Cloth",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 10505,
+     "name": "Solid Blasting Powder",
+     "qty": 1,
+     "vendor": false
+    }
+   ],
+   "recipeSource": "trainer",
+   "trainerCostCopper": 1500,
+   "recipeItems": []
+  },
+  {
+   "itemId": 16005,
+   "name": "Dark Iron Bomb",
+   "profession": "engineering",
+   "skillRequired": 285,
+   "writItemId": 264091,
+   "writName": "Craftsman's Writ: Dark Iron Bomb",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 2,
+   "craftSpellId": 19799,
+   "reagents": [
+    {
+     "itemId": 15994,
+     "name": "Thorium Widget",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 11371,
+     "name": "Dark Iron Bar",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 15992,
+     "name": "Dense Blasting Powder",
+     "qty": 3,
+     "vendor": false
+    },
+    {
+     "itemId": 14047,
+     "name": "Runecloth",
+     "qty": 3,
+     "vendor": false
+    }
+   ],
+   "recipeSource": "drop",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 16049,
+     "name": "Schematic: Dark Iron Bomb",
+     "source": [
+      "drop"
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": [
+      {
+       "n": "Weapon Technician",
+       "t": 1,
+       "ti": 8920,
+       "z": 1584
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "itemId": 8174,
+   "name": "Comfortable Leather Hat",
+   "profession": "leatherworking",
+   "skillRequired": 200,
+   "writItemId": 264092,
+   "writName": "Craftsman's Writ: Comfortable Leather Hat",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "writGuideSkill": 195,
+   "craftSpellId": 10490,
+   "reagents": [
+    {
+     "itemId": 4234,
+     "name": "Heavy Leather",
+     "qty": 12,
+     "vendor": true,
+     "vendorPriceCopper": 631,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    },
+    {
+     "itemId": 4236,
+     "name": "Cured Heavy Hide",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 4291,
+     "name": "Silken Thread",
+     "qty": 2,
+     "vendor": true,
+     "vendorPriceCopper": 444,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 86
+    }
+   ],
+   "recipeSource": "drop",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 8384,
+     "name": "Pattern: Comfortable Leather Hat",
+     "source": [
+      "drop"
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": []
+    }
+   ]
+  },
+  {
+   "itemId": 5965,
+   "name": "Guardian Cloak",
+   "profession": "leatherworking",
+   "skillRequired": 185,
+   "writItemId": 264093,
+   "writName": "Craftsman's Writ: Guardian Cloak",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "writGuideSkill": 180,
+   "craftSpellId": 7153,
+   "reagents": [
+    {
+     "itemId": 4234,
+     "name": "Heavy Leather",
+     "qty": 14,
+     "vendor": true,
+     "vendorPriceCopper": 631,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    },
+    {
+     "itemId": 4305,
+     "name": "Bolt of Silk Cloth",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 4291,
+     "name": "Silken Thread",
+     "qty": 2,
+     "vendor": true,
+     "vendorPriceCopper": 444,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 86
+    }
+   ],
+   "recipeSource": "drop",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 5974,
+     "name": "Pattern: Guardian Cloak",
+     "source": [
+      "drop"
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": []
+    }
+   ],
+   "uncertain": true,
+   "uncertainFields": [
+    "recipeSource"
+   ]
+  },
+  {
+   "itemId": 7378,
+   "name": "Dusky Bracers",
+   "profession": "leatherworking",
+   "skillRequired": 185,
+   "writItemId": 264094,
+   "writName": "Craftsman's Writ: Dusky Bracers",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "writGuideSkill": 180,
+   "craftSpellId": 9201,
+   "reagents": [
+    {
+     "itemId": 4234,
+     "name": "Heavy Leather",
+     "qty": 16,
+     "vendor": true,
+     "vendorPriceCopper": 631,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    },
+    {
+     "itemId": 2325,
+     "name": "Black Dye",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 888,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 78
+    },
+    {
+     "itemId": 4291,
+     "name": "Silken Thread",
+     "qty": 2,
+     "vendor": true,
+     "vendorPriceCopper": 444,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 86
+    }
+   ],
+   "recipeSource": "trainer",
+   "trainerCostCopper": 1800,
+   "recipeItems": []
+  },
+  {
+   "itemId": 8214,
+   "name": "Wild Leather Helmet",
+   "profession": "leatherworking",
+   "skillRequired": 225,
+   "writItemId": 264095,
+   "writName": "Craftsman's Writ: Wild Leather Helmet",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "writGuideSkill": 220,
+   "craftSpellId": 10546,
+   "reagents": [
+    {
+     "itemId": 4304,
+     "name": "Thick Leather",
+     "qty": 10,
+     "vendor": true,
+     "vendorPriceCopper": 1263,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    },
+    {
+     "itemId": 8153,
+     "name": "Wildvine",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 8172,
+     "name": "Cured Thick Hide",
+     "qty": 1,
+     "vendor": false
+    }
+   ],
+   "recipeSource": "quest",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 8405,
+     "name": "Pattern: Wild Leather Helmet",
+     "source": [
+      "quest"
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": []
+    }
+   ]
+  },
+  {
+   "itemId": 8210,
+   "name": "Wild Leather Shoulders",
+   "profession": "leatherworking",
+   "skillRequired": 220,
+   "writItemId": 264096,
+   "writName": "Craftsman's Writ: Wild Leather Shoulders",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "craftSpellId": 10529,
+   "reagents": [
+    {
+     "itemId": 4304,
+     "name": "Thick Leather",
+     "qty": 10,
+     "vendor": true,
+     "vendorPriceCopper": 1263,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    },
+    {
+     "itemId": 8153,
+     "name": "Wildvine",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 8172,
+     "name": "Cured Thick Hide",
+     "qty": 1,
+     "vendor": false
+    }
+   ],
+   "recipeSource": "quest",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 8403,
+     "name": "Pattern: Wild Leather Shoulders",
+     "source": [
+      "quest"
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": []
+    }
+   ]
+  },
+  {
+   "itemId": 8217,
+   "name": "Quickdraw Quiver",
+   "profession": "leatherworking",
+   "skillRequired": 225,
+   "writItemId": 264097,
+   "writName": "Craftsman's Writ: Quickdraw Quiver",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "writGuideSkill": 220,
+   "craftSpellId": 14930,
+   "reagents": [
+    {
+     "itemId": 4304,
+     "name": "Thick Leather",
+     "qty": 12,
+     "vendor": true,
+     "vendorPriceCopper": 1263,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    },
+    {
+     "itemId": 8172,
+     "name": "Cured Thick Hide",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 8949,
+     "name": "Elixir of Agility",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 4291,
+     "name": "Silken Thread",
+     "qty": 4,
+     "vendor": true,
+     "vendorPriceCopper": 444,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 86
+    }
+   ],
+   "recipeSource": "trainer",
+   "trainerCostCopper": 3240,
+   "recipeItems": []
+  },
+  {
+   "itemId": 7391,
+   "name": "Swift Boots",
+   "profession": "leatherworking",
+   "skillRequired": 200,
+   "writItemId": 264098,
+   "writName": "Craftsman's Writ: Swift Boots",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "writGuideSkill": 195,
+   "craftSpellId": 9208,
+   "reagents": [
+    {
+     "itemId": 4234,
+     "name": "Heavy Leather",
+     "qty": 10,
+     "vendor": true,
+     "vendorPriceCopper": 631,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    },
+    {
+     "itemId": 2459,
+     "name": "Swiftness Potion",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 4337,
+     "name": "Thick Spider's Silk",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 4291,
+     "name": "Silken Thread",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 444,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 86
+    }
+   ],
+   "recipeSource": "drop",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 7453,
+     "name": "Pattern: Swift Boots",
+     "source": [
+      "drop"
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": []
+    }
+   ]
+  },
+  {
+   "itemId": 8192,
+   "name": "Nightscape Shoulders",
+   "profession": "leatherworking",
+   "skillRequired": 210,
+   "writItemId": 264099,
+   "writName": "Craftsman's Writ: Nightscape Shoulders",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "writGuideSkill": 205,
+   "craftSpellId": 10516,
+   "reagents": [
+    {
+     "itemId": 4304,
+     "name": "Thick Leather",
+     "qty": 8,
+     "vendor": true,
+     "vendorPriceCopper": 1263,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    },
+    {
+     "itemId": 4338,
+     "name": "Mageweave Cloth",
+     "qty": 6,
+     "vendor": false
+    },
+    {
+     "itemId": 4291,
+     "name": "Silken Thread",
+     "qty": 3,
+     "vendor": true,
+     "vendorPriceCopper": 444,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 86
+    }
+   ],
+   "recipeSource": "vendor",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 8409,
+     "name": "Pattern: Nightscape Shoulders",
+     "source": [
+      "vendor"
+     ],
+     "buyPriceCopper": 4000,
+     "sourceDetail": []
+    }
+   ]
+  },
+  {
+   "itemId": 8201,
+   "name": "Big Voodoo Mask",
+   "profession": "leatherworking",
+   "skillRequired": 220,
+   "writItemId": 264100,
+   "writName": "Craftsman's Writ: Big Voodoo Mask",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "writGuideSkill": 215,
+   "craftSpellId": 10531,
+   "reagents": [
+    {
+     "itemId": 4304,
+     "name": "Thick Leather",
+     "qty": 8,
+     "vendor": true,
+     "vendorPriceCopper": 1263,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    },
+    {
+     "itemId": 8151,
+     "name": "Flask of Mojo",
+     "qty": 6,
+     "vendor": false
+    },
+    {
+     "itemId": 8343,
+     "name": "Heavy Silken Thread",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 1777,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 78
+    }
+   ],
+   "recipeSource": "drop",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 8387,
+     "name": "Pattern: Big Voodoo Mask",
+     "source": [
+      "drop"
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": []
+    }
+   ]
+  },
+  {
+   "itemId": 8200,
+   "name": "Big Voodoo Robe",
+   "profession": "leatherworking",
+   "skillRequired": 215,
+   "writItemId": 264101,
+   "writName": "Craftsman's Writ: Big Voodoo Robe",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "writGuideSkill": 210,
+   "craftSpellId": 10520,
+   "reagents": [
+    {
+     "itemId": 4304,
+     "name": "Thick Leather",
+     "qty": 10,
+     "vendor": true,
+     "vendorPriceCopper": 1263,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    },
+    {
+     "itemId": 8151,
+     "name": "Flask of Mojo",
+     "qty": 4,
+     "vendor": false
+    },
+    {
+     "itemId": 8343,
+     "name": "Heavy Silken Thread",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 1777,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 78
+    }
+   ],
+   "recipeSource": "drop",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 8386,
+     "name": "Pattern: Big Voodoo Robe",
+     "source": [
+      "drop"
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": []
+    }
+   ]
+  },
+  {
+   "itemId": 8189,
+   "name": "Turtle Scale Breastplate",
+   "profession": "leatherworking",
+   "skillRequired": 210,
+   "writItemId": 264102,
+   "writName": "Craftsman's Writ: Turtle Scale Breastplate",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "writGuideSkill": 205,
+   "craftSpellId": 10511,
+   "reagents": [
+    {
+     "itemId": 4304,
+     "name": "Thick Leather",
+     "qty": 6,
+     "vendor": true,
+     "vendorPriceCopper": 1263,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    },
+    {
+     "itemId": 8167,
+     "name": "Turtle Scale",
+     "qty": 12,
+     "vendor": false
+    },
+    {
+     "itemId": 8343,
+     "name": "Heavy Silken Thread",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 1777,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 78
+    }
+   ],
+   "recipeSource": "trainer",
+   "trainerCostCopper": 3000,
+   "recipeItems": []
+  },
+  {
+   "itemId": 8218,
+   "name": "Thick Leather Ammo Pouch",
+   "profession": "leatherworking",
+   "skillRequired": 225,
+   "writItemId": 264103,
+   "writName": "Craftsman's Writ: Thick Leather Ammo Pouch",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "writGuideSkill": 220,
+   "craftSpellId": 14932,
+   "reagents": [
+    {
+     "itemId": 4304,
+     "name": "Thick Leather",
+     "qty": 10,
+     "vendor": true,
+     "vendorPriceCopper": 1263,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    },
+    {
+     "itemId": 8172,
+     "name": "Cured Thick Hide",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 8951,
+     "name": "Elixir of Greater Defense",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 4291,
+     "name": "Silken Thread",
+     "qty": 6,
+     "vendor": true,
+     "vendorPriceCopper": 444,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 86
+    }
+   ],
+   "recipeSource": "trainer",
+   "trainerCostCopper": 3240,
+   "recipeItems": []
+  },
+  {
+   "itemId": 10050,
+   "name": "Mageweave Bag",
+   "profession": "tailoring",
+   "skillRequired": 225,
+   "writItemId": 264104,
+   "writName": "Craftsman's Writ: Mageweave Bag",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "writGuideSkill": 205,
+   "craftSpellId": 12065,
+   "reagents": [
+    {
+     "itemId": 4339,
+     "name": "Bolt of Mageweave",
+     "qty": 4,
+     "vendor": false
+    },
+    {
+     "itemId": 4291,
+     "name": "Silken Thread",
+     "qty": 2,
+     "vendor": true,
+     "vendorPriceCopper": 444,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 86
+    }
+   ],
+   "recipeSource": "trainer",
+   "trainerCostCopper": 4500,
+   "recipeItems": []
+  },
+  {
+   "itemId": 10023,
+   "name": "Shadoweave Gloves",
+   "profession": "tailoring",
+   "skillRequired": 225,
+   "writItemId": 264105,
+   "writName": "Craftsman's Writ: Shadoweave Gloves",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "writGuideSkill": 205,
+   "craftSpellId": 12071,
+   "reagents": [
+    {
+     "itemId": 4339,
+     "name": "Bolt of Mageweave",
+     "qty": 5,
+     "vendor": false
+    },
+    {
+     "itemId": 10285,
+     "name": "Shadow Silk",
+     "qty": 5,
+     "vendor": false
+    },
+    {
+     "itemId": 8343,
+     "name": "Heavy Silken Thread",
+     "qty": 2,
+     "vendor": true,
+     "vendorPriceCopper": 1777,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 78
+    }
+   ],
+   "recipeSource": "trainer",
+   "trainerCostCopper": 5400,
+   "recipeItems": []
+  },
+  {
+   "itemId": 7063,
+   "name": "Crimson Silk Robe",
+   "profession": "tailoring",
+   "skillRequired": 205,
+   "writItemId": 264106,
+   "writName": "Craftsman's Writ: Crimson Silk Robe",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "writGuideSkill": 185,
+   "craftSpellId": 8802,
+   "reagents": [
+    {
+     "itemId": 4305,
+     "name": "Bolt of Silk Cloth",
+     "qty": 8,
+     "vendor": false
+    },
+    {
+     "itemId": 7068,
+     "name": "Elemental Fire",
+     "qty": 4,
+     "vendor": false
+    },
+    {
+     "itemId": 3827,
+     "name": "Mana Potion",
+     "qty": 2,
+     "vendor": true,
+     "vendorPriceCopper": 480,
+     "vendorNpc": "Drovnar Strongbrew",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 6
+    },
+    {
+     "itemId": 2604,
+     "name": "Red Dye",
+     "qty": 4,
+     "vendor": true,
+     "vendorPriceCopper": 44,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 91
+    },
+    {
+     "itemId": 4291,
+     "name": "Silken Thread",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 444,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 86
+    }
+   ],
+   "recipeSource": "vendor",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 7088,
+     "name": "Pattern: Crimson Silk Robe",
+     "source": [
+      "vendor"
+     ],
+     "buyPriceCopper": 5000,
+     "sourceDetail": [
+      {
+       "n": "Vizzklick",
+       "t": 1,
+       "ti": 6568,
+       "z": 440
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "itemId": 10004,
+   "name": "Shadoweave Robe",
+   "profession": "tailoring",
+   "skillRequired": 215,
+   "writItemId": 264107,
+   "writName": "Craftsman's Writ: Shadoweave Robe",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "writGuideSkill": 195,
+   "craftSpellId": 12055,
+   "reagents": [
+    {
+     "itemId": 4339,
+     "name": "Bolt of Mageweave",
+     "qty": 3,
+     "vendor": false
+    },
+    {
+     "itemId": 10285,
+     "name": "Shadow Silk",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 8343,
+     "name": "Heavy Silken Thread",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 1777,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 78
+    }
+   ],
+   "recipeSource": "trainer",
+   "trainerCostCopper": 4950,
+   "recipeItems": []
+  },
+  {
+   "itemId": 22246,
+   "name": "Enchanted Mageweave Pouch",
+   "profession": "tailoring",
+   "skillRequired": 225,
+   "writItemId": 264108,
+   "writName": "Craftsman's Writ: Enchanted Mageweave Pouch",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "craftSpellId": 27658,
+   "reagents": [
+    {
+     "itemId": 4339,
+     "name": "Bolt of Mageweave",
+     "qty": 4,
+     "vendor": false
+    },
+    {
+     "itemId": 11137,
+     "name": "Vision Dust",
+     "qty": 4,
+     "vendor": false
+    },
+    {
+     "itemId": 8343,
+     "name": "Heavy Silken Thread",
+     "qty": 2,
+     "vendor": true,
+     "vendorPriceCopper": 1777,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 78
+    }
+   ],
+   "recipeSource": "vendor",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 22307,
+     "name": "Pattern: Enchanted Mageweave Pouch",
+     "source": [
+      "vendor"
+     ],
+     "buyPriceCopper": 6000,
+     "sourceDetail": []
+    }
+   ]
+  },
+  {
+   "itemId": 4329,
+   "name": "Star Belt",
+   "profession": "tailoring",
+   "skillRequired": 200,
+   "writItemId": 264109,
+   "writName": "Craftsman's Writ: Star Belt",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "writGuideSkill": 185,
+   "craftSpellId": 3864,
+   "reagents": [
+    {
+     "itemId": 4339,
+     "name": "Bolt of Mageweave",
+     "qty": 4,
+     "vendor": false
+    },
+    {
+     "itemId": 4234,
+     "name": "Heavy Leather",
+     "qty": 4,
+     "vendor": true,
+     "vendorPriceCopper": 631,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    },
+    {
+     "itemId": 3864,
+     "name": "Citrine",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 7071,
+     "name": "Iron Buckle",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 4291,
+     "name": "Silken Thread",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 444,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 86
+    }
+   ],
+   "recipeSource": "drop",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 4356,
+     "name": "Pattern: Star Belt",
+     "source": [
+      "drop"
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": []
+    }
+   ]
+  },
+  {
+   "itemId": 9998,
+   "name": "Black Mageweave Vest",
+   "profession": "tailoring",
+   "skillRequired": 205,
+   "writItemId": 264110,
+   "writName": "Craftsman's Writ: Black Mageweave Vest",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "writGuideSkill": 185,
+   "craftSpellId": 12048,
+   "reagents": [
+    {
+     "itemId": 4339,
+     "name": "Bolt of Mageweave",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 4291,
+     "name": "Silken Thread",
+     "qty": 3,
+     "vendor": true,
+     "vendorPriceCopper": 444,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 86
+    }
+   ],
+   "recipeSource": "trainer",
+   "trainerCostCopper": 3600,
+   "recipeItems": []
+  },
+  {
+   "itemId": 10009,
+   "name": "Red Mageweave Pants",
+   "profession": "tailoring",
+   "skillRequired": 215,
+   "writItemId": 264111,
+   "writName": "Craftsman's Writ: Red Mageweave Pants",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "writGuideSkill": 195,
+   "craftSpellId": 12060,
+   "reagents": [
+    {
+     "itemId": 4339,
+     "name": "Bolt of Mageweave",
+     "qty": 3,
+     "vendor": false
+    },
+    {
+     "itemId": 2604,
+     "name": "Red Dye",
+     "qty": 2,
+     "vendor": true,
+     "vendorPriceCopper": 44,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 91
+    },
+    {
+     "itemId": 8343,
+     "name": "Heavy Silken Thread",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 1777,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 78
+    }
+   ],
+   "recipeSource": "drop",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 10302,
+     "name": "Pattern: Red Mageweave Pants",
+     "source": [
+      "drop"
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": []
+    }
+   ]
+  },
+  {
+   "itemId": 10052,
+   "name": "Orange Martial Shirt",
+   "profession": "tailoring",
+   "skillRequired": 220,
+   "writItemId": 264112,
+   "writName": "Craftsman's Writ: Orange Martial Shirt",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "writGuideSkill": 190,
+   "craftSpellId": 12064,
+   "reagents": [
+    {
+     "itemId": 4339,
+     "name": "Bolt of Mageweave",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 6261,
+     "name": "Orange Dye",
+     "qty": 2,
+     "vendor": true,
+     "vendorPriceCopper": 888,
+     "vendorNpc": "Alexandra Bolero",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 49
+    },
+    {
+     "itemId": 8343,
+     "name": "Heavy Silken Thread",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 1777,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 78
+    }
+   ],
+   "recipeSource": "vendor",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 10311,
+     "name": "Pattern: Orange Martial Shirt",
+     "source": [
+      "vendor"
+     ],
+     "buyPriceCopper": 3000,
+     "sourceDetail": []
+    }
+   ]
+  },
+  {
+   "itemId": 10008,
+   "name": "White Bandit Mask",
+   "profession": "tailoring",
+   "skillRequired": 215,
+   "writItemId": 264113,
+   "writName": "Craftsman's Writ: White Bandit Mask",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "writGuideSkill": 185,
+   "craftSpellId": 12059,
+   "reagents": [
+    {
+     "itemId": 4339,
+     "name": "Bolt of Mageweave",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 2324,
+     "name": "Bleach",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 22,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 67
+    },
+    {
+     "itemId": 8343,
+     "name": "Heavy Silken Thread",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 1777,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 78
+    }
+   ],
+   "recipeSource": "drop",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 10301,
+     "name": "Pattern: White Bandit Mask",
+     "source": [
+      "drop"
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": []
+    }
+   ]
+  },
+  {
+   "itemId": 10042,
+   "name": "Cindercloth Robe",
+   "profession": "tailoring",
+   "skillRequired": 225,
+   "writItemId": 264114,
+   "writName": "Craftsman's Writ: Cindercloth Robe",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "writGuideSkill": 205,
+   "craftSpellId": 12069,
+   "reagents": [
+    {
+     "itemId": 4339,
+     "name": "Bolt of Mageweave",
+     "qty": 5,
+     "vendor": false
+    },
+    {
+     "itemId": 7077,
+     "name": "Heart of Fire",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 8343,
+     "name": "Heavy Silken Thread",
+     "qty": 2,
+     "vendor": true,
+     "vendorPriceCopper": 1777,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 78
+    }
+   ],
+   "recipeSource": "trainer",
+   "trainerCostCopper": 4500,
+   "recipeItems": []
+  },
+  {
+   "itemId": 7061,
+   "name": "Earthen Silk Belt",
+   "profession": "tailoring",
+   "skillRequired": 195,
+   "writItemId": 264115,
+   "writName": "Craftsman's Writ: Earthen Silk Belt",
+   "writTier": "expert",
+   "writRep": 125,
+   "countMade": 1,
+   "writGuideSkill": 180,
+   "craftSpellId": 8797,
+   "reagents": [
+    {
+     "itemId": 4305,
+     "name": "Bolt of Silk Cloth",
+     "qty": 5,
+     "vendor": false
+    },
+    {
+     "itemId": 7067,
+     "name": "Elemental Earth",
+     "qty": 4,
+     "vendor": false
+    },
+    {
+     "itemId": 4234,
+     "name": "Heavy Leather",
+     "qty": 4,
+     "vendor": true,
+     "vendorPriceCopper": 631,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    },
+    {
+     "itemId": 7071,
+     "name": "Iron Buckle",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 4291,
+     "name": "Silken Thread",
+     "qty": 2,
+     "vendor": true,
+     "vendorPriceCopper": 444,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 86
+    }
+   ],
+   "recipeSource": "drop",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 7086,
+     "name": "Pattern: Earthen Silk Belt",
+     "source": [
+      "drop"
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": []
+    }
+   ]
+  },
+  {
+   "itemId": 9224,
+   "name": "Potion of Demonslaying",
+   "profession": "alchemy",
+   "skillRequired": 250,
+   "writItemId": 264116,
+   "writName": "Craftsman's Writ: Potion of Demonslaying",
+   "writTier": "artisan",
+   "writRep": 200,
+   "countMade": 1,
+   "writGuideSkill": 265,
+   "craftSpellId": 11477,
+   "reagents": [
+    {
+     "itemId": 8846,
+     "name": "Gromsblood",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 1000,
+     "vendorNpc": "Vi'el",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    },
+    {
+     "itemId": 8845,
+     "name": "Ghost Mushroom",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 1500,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    },
+    {
+     "itemId": 8925,
+     "name": "Crystal Vial",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 2222,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 90
+    }
+   ],
+   "recipeSource": "vendor",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 9300,
+     "name": "Recipe: Elixir of Demonslaying",
+     "source": [
+      "vendor"
+     ],
+     "buyPriceCopper": 10000,
+     "sourceDetail": []
+    }
+   ],
+   "writItemName": "Potion of Demonslaying",
+   "notes": "Writ says Potion of Demonslaying; mapped to classic Elixir of Demonslaying (9224).",
+   "uncertain": true,
+   "uncertainFields": [
+    "itemId"
+   ]
+  },
+  {
+   "itemId": 12190,
+   "name": "Dreamless Sleep Potion",
+   "profession": "alchemy",
+   "skillRequired": 230,
+   "writItemId": 264117,
+   "writName": "Craftsman's Writ: Dreamless Sleep Potion",
+   "writTier": "artisan",
+   "writRep": 200,
+   "countMade": 1,
+   "writGuideSkill": 245,
+   "craftSpellId": 15833,
+   "reagents": [
+    {
+     "itemId": 8831,
+     "name": "Purple Lotus",
+     "qty": 3,
+     "vendor": false
+    },
+    {
+     "itemId": 8925,
+     "name": "Crystal Vial",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 2222,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 90
+    }
+   ],
+   "recipeSource": "trainer",
+   "trainerCostCopper": 9000,
+   "recipeItems": []
+  },
+  {
+   "itemId": 13457,
+   "name": "Greater Fire Protection Potion",
+   "profession": "alchemy",
+   "skillRequired": 290,
+   "writItemId": 264118,
+   "writName": "Craftsman's Writ: Greater Fire Protection Potion",
+   "writTier": "artisan",
+   "writRep": 200,
+   "countMade": 1,
+   "craftSpellId": 17574,
+   "reagents": [
+    {
+     "itemId": 7068,
+     "name": "Elemental Fire",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 13463,
+     "name": "Dreamfoil",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 421,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    },
+    {
+     "itemId": 8925,
+     "name": "Crystal Vial",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 2222,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 90
+    }
+   ],
+   "recipeSource": "drop",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 13494,
+     "name": "Recipe: Greater Fire Protection Potion",
+     "source": [
+      "drop"
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": [
+      {
+       "z": 1583
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "itemId": 9233,
+   "name": "Draught of Detect Demon",
+   "profession": "alchemy",
+   "skillRequired": 250,
+   "writItemId": 264119,
+   "writName": "Craftsman's Writ: Draught of Detect Demon",
+   "writTier": "artisan",
+   "writRep": 200,
+   "countMade": 1,
+   "writGuideSkill": 265,
+   "craftSpellId": 11478,
+   "reagents": [
+    {
+     "itemId": 8846,
+     "name": "Gromsblood",
+     "qty": 2,
+     "vendor": true,
+     "vendorPriceCopper": 1000,
+     "vendorNpc": "Vi'el",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    },
+    {
+     "itemId": 8925,
+     "name": "Crystal Vial",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 2222,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 90
+    }
+   ],
+   "recipeSource": "trainer",
+   "trainerCostCopper": 12600,
+   "recipeItems": []
+  },
+  {
+   "itemId": 9088,
+   "name": "Gift of Arthas",
+   "profession": "alchemy",
+   "skillRequired": 240,
+   "writItemId": 264120,
+   "writName": "Craftsman's Writ: Gift of Arthas",
+   "writTier": "artisan",
+   "writRep": 200,
+   "countMade": 1,
+   "writGuideSkill": 255,
+   "craftSpellId": 11466,
+   "reagents": [
+    {
+     "itemId": 8836,
+     "name": "Arthas' Tears",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 8839,
+     "name": "Blindweed",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 8925,
+     "name": "Crystal Vial",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 2222,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 90
+    }
+   ],
+   "recipeSource": "drop",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 9296,
+     "name": "Recipe: Gift of Arthas",
+     "source": [
+      "drop"
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": [
+      {
+       "z": 28
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "itemId": 13513,
+   "name": "Flask of Chromatic Resistance",
+   "profession": "alchemy",
+   "skillRequired": 300,
+   "writItemId": 264121,
+   "writName": "Craftsman's Writ: Flask of Chromatic Resistance",
+   "writTier": "artisan",
+   "writRep": 200,
+   "countMade": 1,
+   "craftSpellId": 17638,
+   "reagents": [
+    {
+     "itemId": 13467,
+     "name": "Icecap",
+     "qty": 30,
+     "vendor": false
+    },
+    {
+     "itemId": 13465,
+     "name": "Mountain Silversage",
+     "qty": 10,
+     "vendor": false
+    },
+    {
+     "itemId": 13468,
+     "name": "Black Lotus",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 8925,
+     "name": "Crystal Vial",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 2222,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 90
+    }
+   ],
+   "recipeSource": "drop",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 13522,
+     "name": "Recipe: Flask of Chromatic Resistance",
+     "source": [
+      "drop",
+      "vendor"
+     ],
+     "buyPriceCopper": 40000,
+     "sourceDetail": [
+      {
+       "n": "Gyth",
+       "t": 1,
+       "ti": 10339,
+       "z": 1583
+      },
+      {
+       "n": "Pix Xizzix",
+       "t": 1,
+       "ti": 227853,
+       "z": 33
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "itemId": 3387,
+   "name": "Limited Invulnerability Potion",
+   "profession": "alchemy",
+   "skillRequired": 250,
+   "writItemId": 264122,
+   "writName": "Craftsman's Writ: Limited Invulnerability Potion",
+   "writTier": "artisan",
+   "writRep": 200,
+   "countMade": 1,
+   "craftSpellId": 3175,
+   "reagents": [
+    {
+     "itemId": 8839,
+     "name": "Blindweed",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 8845,
+     "name": "Ghost Mushroom",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 1500,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    },
+    {
+     "itemId": 8925,
+     "name": "Crystal Vial",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 2222,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 90
+    }
+   ],
+   "recipeSource": "drop",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 3395,
+     "name": "Recipe: Limited Invulnerability Potion",
+     "source": [
+      "drop",
+      16
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": []
+    }
+   ]
+  },
+  {
+   "itemId": 18253,
+   "name": "Major Rejuvenation Potion",
+   "profession": "alchemy",
+   "skillRequired": 300,
+   "writItemId": 264123,
+   "writName": "Craftsman's Writ: Major Rejuvenation Potion",
+   "writTier": "artisan",
+   "writRep": 200,
+   "countMade": 1,
+   "craftSpellId": 22732,
+   "reagents": [
+    {
+     "itemId": 10286,
+     "name": "Heart of the Wild",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 13464,
+     "name": "Golden Sansam",
+     "qty": 4,
+     "vendor": true,
+     "vendorPriceCopper": 421,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    },
+    {
+     "itemId": 13463,
+     "name": "Dreamfoil",
+     "qty": 4,
+     "vendor": true,
+     "vendorPriceCopper": 421,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    },
+    {
+     "itemId": 18256,
+     "name": "Imbued Vial",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 26666,
+     "vendorNpc": "Thultazor",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 28
+    }
+   ],
+   "recipeSource": "drop",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 18257,
+     "name": "Recipe: Major Rejuvenation Potion",
+     "source": [
+      "drop"
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": [
+      {
+       "z": 2717
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "itemId": null,
+   "name": "Distilled Firewater",
+   "profession": "alchemy",
+   "skillRequired": 250,
+   "writItemId": 264124,
+   "writName": "Craftsman's Writ: Distilled Firewater",
+   "writTier": "artisan",
+   "writRep": 200,
+   "countMade": 1,
+   "reagents": [
+    {
+     "itemId": 3819,
+     "name": "Wintersbite",
+     "qty": 4,
+     "uncertain": true
+    }
+   ],
+   "recipeSource": "unknown",
+   "recipe": null,
+   "uncertainFields": [
+    "itemId",
+    "reagents",
+    "recipeSource"
+   ],
+   "notes": "Forever-only item, not on Wowhead classic. Skill 250 per metaforge; reagents (Wintersbite x4) from a single beta guide (mobalytics).",
+   "uncertain": true
+  },
+  {
+   "itemId": 12417,
+   "name": "Radiant Circlet",
+   "profession": "blacksmithing",
+   "skillRequired": 295,
+   "writItemId": 264125,
+   "writName": "Craftsman's Writ: Radiant Circlet",
+   "writTier": "artisan",
+   "writRep": 200,
+   "countMade": 1,
+   "craftSpellId": 16659,
+   "reagents": [
+    {
+     "itemId": 12359,
+     "name": "Thorium Bar",
+     "qty": 18,
+     "vendor": false
+    },
+    {
+     "itemId": 7077,
+     "name": "Heart of Fire",
+     "qty": 4,
+     "vendor": false
+    }
+   ],
+   "recipeSource": "drop",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 12702,
+     "name": "Plans: Radiant Circlet",
+     "source": [
+      "drop"
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": []
+    }
+   ]
+  },
+  {
+   "itemId": 12416,
+   "name": "Radiant Belt",
+   "profession": "blacksmithing",
+   "skillRequired": 260,
+   "writItemId": 264126,
+   "writName": "Craftsman's Writ: Radiant Belt",
+   "writTier": "artisan",
+   "writRep": 200,
+   "countMade": 1,
+   "writGuideSkill": 255,
+   "craftSpellId": 16645,
+   "reagents": [
+    {
+     "itemId": 12359,
+     "name": "Thorium Bar",
+     "qty": 10,
+     "vendor": false
+    },
+    {
+     "itemId": 7077,
+     "name": "Heart of Fire",
+     "qty": 2,
+     "vendor": false
+    }
+   ],
+   "recipeSource": "drop",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 12685,
+     "name": "Plans: Radiant Belt",
+     "source": [
+      "drop"
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": []
+    }
+   ]
+  },
+  {
+   "itemId": 7929,
+   "name": "Orcish War Leggings",
+   "profession": "blacksmithing",
+   "skillRequired": 230,
+   "writItemId": 264127,
+   "writName": "Craftsman's Writ: Orcish War Leggings",
+   "writTier": "artisan",
+   "writRep": 200,
+   "countMade": 1,
+   "craftSpellId": 9957,
+   "reagents": [
+    {
+     "itemId": 3860,
+     "name": "Mithril Bar",
+     "qty": 12,
+     "vendor": false
+    },
+    {
+     "itemId": 7067,
+     "name": "Elemental Earth",
+     "qty": 1,
+     "vendor": false
+    }
+   ],
+   "recipeSource": "unknown",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 7994,
+     "name": "Plans: Orcish War Leggings",
+     "source": [],
+     "buyPriceCopper": null,
+     "sourceDetail": []
+    }
+   ],
+   "uncertain": true,
+   "uncertainFields": [
+    "recipeSource"
+   ]
+  },
+  {
+   "itemId": 7969,
+   "name": "Mithril Spurs",
+   "profession": "blacksmithing",
+   "skillRequired": 235,
+   "writItemId": 264128,
+   "writName": "Craftsman's Writ: Mithril Spurs",
+   "writTier": "artisan",
+   "writRep": 200,
+   "countMade": 1,
+   "craftSpellId": 9964,
+   "reagents": [
+    {
+     "itemId": 3860,
+     "name": "Mithril Bar",
+     "qty": 4,
+     "vendor": false
+    },
+    {
+     "itemId": 7966,
+     "name": "Solid Grinding Stone",
+     "qty": 3,
+     "vendor": false
+    }
+   ],
+   "recipeSource": "drop",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 7989,
+     "name": "Plans: Mithril Spurs",
+     "source": [
+      "drop"
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": []
+    }
+   ]
+  },
+  {
+   "itemId": 12422,
+   "name": "Imperial Plate Chest",
+   "profession": "blacksmithing",
+   "skillRequired": 300,
+   "writItemId": 264129,
+   "writName": "Craftsman's Writ: Imperial Plate Chest",
+   "writTier": "artisan",
+   "writRep": 200,
+   "countMade": 1,
+   "craftSpellId": 16663,
+   "reagents": [
+    {
+     "itemId": 12359,
+     "name": "Thorium Bar",
+     "qty": 40,
+     "vendor": false
+    },
+    {
+     "itemId": 7910,
+     "name": "Star Ruby",
+     "qty": 2,
+     "vendor": false
+    }
+   ],
+   "recipeSource": "quest",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 12705,
+     "name": "Plans: Imperial Plate Chest",
+     "source": [
+      "quest"
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": [
+      {
+       "n": "Imperial Plate Chest",
+       "t": 5,
+       "ti": 7656
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "itemId": 20549,
+   "name": "Darkrune Gauntlets",
+   "profession": "blacksmithing",
+   "skillRequired": 300,
+   "writItemId": 264130,
+   "writName": "Craftsman's Writ: Darkrune Gauntlets",
+   "writTier": "artisan",
+   "writRep": 200,
+   "countMade": 1,
+   "craftSpellId": 24912,
+   "reagents": [
+    {
+     "itemId": 12359,
+     "name": "Thorium Bar",
+     "qty": 12,
+     "vendor": false
+    },
+    {
+     "itemId": 20520,
+     "name": "Dark Rune",
+     "qty": 6,
+     "vendor": false
+    },
+    {
+     "itemId": 6037,
+     "name": "Truesilver Bar",
+     "qty": 6,
+     "vendor": false
+    },
+    {
+     "itemId": 12810,
+     "name": "Enchanted Leather",
+     "qty": 2,
+     "vendor": true,
+     "vendorPriceCopper": 2000,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    }
+   ],
+   "recipeSource": "drop",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 20553,
+     "name": "Plans: Darkrune Gauntlets",
+     "source": [
+      "drop"
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": [
+      {
+       "n": "Decoded True Believer Clippings",
+       "t": 3,
+       "ti": 20469
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "itemId": 12775,
+   "name": "Huge Thorium Battleaxe",
+   "profession": "blacksmithing",
+   "skillRequired": 280,
+   "writItemId": 264131,
+   "writName": "Craftsman's Writ: Huge Thorium Battleaxe",
+   "writTier": "artisan",
+   "writRep": 200,
+   "countMade": 1,
+   "craftSpellId": 16971,
+   "reagents": [
+    {
+     "itemId": 12359,
+     "name": "Thorium Bar",
+     "qty": 40,
+     "vendor": false
+    },
+    {
+     "itemId": 12644,
+     "name": "Dense Grinding Stone",
+     "qty": 6,
+     "vendor": false
+    },
+    {
+     "itemId": 8170,
+     "name": "Rugged Leather",
+     "qty": 6,
+     "vendor": true,
+     "vendorPriceCopper": 2000,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    }
+   ],
+   "recipeSource": "vendor",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 12823,
+     "name": "Plans: Huge Thorium Battleaxe",
+     "source": [
+      "vendor"
+     ],
+     "buyPriceCopper": 20000,
+     "sourceDetail": [
+      {
+       "n": "Magnus Frostwake",
+       "t": 1,
+       "ti": 11278,
+       "z": 28
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "itemId": 15872,
+   "name": "Arcanite Skeleton Key",
+   "profession": "blacksmithing",
+   "skillRequired": 275,
+   "writItemId": 264132,
+   "writName": "Craftsman's Writ: Arcanite Skeleton Key",
+   "writTier": "artisan",
+   "writRep": 200,
+   "countMade": 1,
+   "craftSpellId": 19669,
+   "reagents": [
+    {
+     "itemId": 12360,
+     "name": "Arcanite Bar",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 12644,
+     "name": "Dense Grinding Stone",
+     "qty": 1,
+     "vendor": false
+    }
+   ],
+   "recipeSource": "trainer",
+   "trainerCostCopper": 10000,
+   "recipeItems": []
+  },
+  {
+   "itemId": 7947,
+   "name": "Ebon Shiv",
+   "profession": "blacksmithing",
+   "skillRequired": 255,
+   "writItemId": 264133,
+   "writName": "Craftsman's Writ: Ebon Shiv",
+   "writTier": "artisan",
+   "writRep": 200,
+   "countMade": 1,
+   "craftSpellId": 10013,
+   "reagents": [
+    {
+     "itemId": 3860,
+     "name": "Mithril Bar",
+     "qty": 12,
+     "vendor": false
+    },
+    {
+     "itemId": 6037,
+     "name": "Truesilver Bar",
+     "qty": 6,
+     "vendor": false
+    },
+    {
+     "itemId": 7910,
+     "name": "Star Ruby",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 7966,
+     "name": "Solid Grinding Stone",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 4304,
+     "name": "Thick Leather",
+     "qty": 2,
+     "vendor": true,
+     "vendorPriceCopper": 1263,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    }
+   ],
+   "recipeSource": "vendor",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 8030,
+     "name": "Plans: Ebon Shiv",
+     "source": [
+      "vendor"
+     ],
+     "buyPriceCopper": 10000,
+     "sourceDetail": [
+      {
+       "n": "Magnus Frostwake",
+       "t": 1,
+       "ti": 11278,
+       "z": 28
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "itemId": 16023,
+   "name": "Masterwork Target Dummy",
+   "profession": "engineering",
+   "skillRequired": 275,
+   "writItemId": 264134,
+   "writName": "Craftsman's Writ: Masterwork Target Dummy",
+   "writTier": "artisan",
+   "writRep": 200,
+   "countMade": 1,
+   "craftSpellId": 19814,
+   "reagents": [
+    {
+     "itemId": 10561,
+     "name": "Mithril Casing",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 16000,
+     "name": "Thorium Tube",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 15994,
+     "name": "Thorium Widget",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 6037,
+     "name": "Truesilver Bar",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 8170,
+     "name": "Rugged Leather",
+     "qty": 2,
+     "vendor": true,
+     "vendorPriceCopper": 2000,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    },
+    {
+     "itemId": 14047,
+     "name": "Runecloth",
+     "qty": 4,
+     "vendor": false
+    }
+   ],
+   "recipeSource": "vendor",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 16046,
+     "name": "Schematic: Masterwork Target Dummy",
+     "source": [
+      "vendor"
+     ],
+     "buyPriceCopper": 16000,
+     "sourceDetail": [
+      {
+       "n": "Xizzer Fizzbolt",
+       "t": 1,
+       "ti": 11185,
+       "z": 618
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "itemId": 10504,
+   "name": "Green Lens",
+   "profession": "engineering",
+   "skillRequired": 245,
+   "writItemId": 264135,
+   "writName": "Craftsman's Writ: Green Lens",
+   "writTier": "artisan",
+   "writRep": 200,
+   "countMade": 1,
+   "craftSpellId": 12622,
+   "reagents": [
+    {
+     "itemId": 4304,
+     "name": "Thick Leather",
+     "qty": 8,
+     "vendor": true,
+     "vendorPriceCopper": 1263,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    },
+    {
+     "itemId": 1529,
+     "name": "Jade",
+     "qty": 3,
+     "vendor": false
+    },
+    {
+     "itemId": 7909,
+     "name": "Aquamarine",
+     "qty": 3,
+     "vendor": false
+    },
+    {
+     "itemId": 10286,
+     "name": "Heart of the Wild",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 8153,
+     "name": "Wildvine",
+     "qty": 2,
+     "vendor": false
+    }
+   ],
+   "recipeSource": "trainer",
+   "trainerCostCopper": 2800,
+   "recipeItems": []
+  },
+  {
+   "itemId": 15996,
+   "name": "Lifelike Mechanical Toad",
+   "profession": "engineering",
+   "skillRequired": 265,
+   "writItemId": 264136,
+   "writName": "Craftsman's Writ: Lifelike Mechanical Toad",
+   "writTier": "artisan",
+   "writRep": 200,
+   "countMade": 1,
+   "craftSpellId": 19793,
+   "reagents": [
+    {
+     "itemId": 12803,
+     "name": "Living Essence",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 15994,
+     "name": "Thorium Widget",
+     "qty": 4,
+     "vendor": false
+    },
+    {
+     "itemId": 10558,
+     "name": "Gold Power Core",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 8170,
+     "name": "Rugged Leather",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 2000,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    }
+   ],
+   "recipeSource": "drop",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 16044,
+     "name": "Schematic: Lifelike Mechanical Toad",
+     "source": [
+      "drop"
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": []
+    }
+   ]
+  },
+  {
+   "itemId": 18645,
+   "name": "Gnomish Alarm-O-Bot",
+   "profession": "engineering",
+   "skillRequired": 265,
+   "writItemId": 264137,
+   "writName": "Craftsman's Writ: Gnomish Alarm-O-Bot",
+   "writTier": "artisan",
+   "writRep": 200,
+   "countMade": 1,
+   "craftSpellId": 23096,
+   "reagents": [
+    {
+     "itemId": 12359,
+     "name": "Thorium Bar",
+     "qty": 4,
+     "vendor": false
+    },
+    {
+     "itemId": 15994,
+     "name": "Thorium Widget",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 8170,
+     "name": "Rugged Leather",
+     "qty": 4,
+     "vendor": true,
+     "vendorPriceCopper": 2000,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    },
+    {
+     "itemId": 7910,
+     "name": "Star Ruby",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 7191,
+     "name": "Fused Wiring",
+     "qty": 1,
+     "vendor": false
+    }
+   ],
+   "recipeSource": "drop",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 18654,
+     "name": "Schematic: Gnomish Alarm-O-Bot",
+     "source": [
+      "drop"
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": [
+      {
+       "n": "Weapon Technician",
+       "t": 1,
+       "ti": 8920,
+       "z": 1584
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "itemId": 18587,
+   "name": "Goblin Jumper Cables XL",
+   "profession": "engineering",
+   "skillRequired": 265,
+   "writItemId": 264138,
+   "writName": "Craftsman's Writ: Goblin Jumper Cables XL",
+   "writTier": "artisan",
+   "writRep": 200,
+   "countMade": 1,
+   "craftSpellId": 23078,
+   "reagents": [
+    {
+     "itemId": 15994,
+     "name": "Thorium Widget",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 18631,
+     "name": "Truesilver Transformer",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 7191,
+     "name": "Fused Wiring",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 14227,
+     "name": "Ironweb Spider Silk",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 7910,
+     "name": "Star Ruby",
+     "qty": 2,
+     "vendor": false
+    }
+   ],
+   "recipeSource": "drop",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 18653,
+     "name": "Schematic: Goblin Jumper Cables XL",
+     "source": [
+      "drop"
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": [
+      {
+       "n": "Plugger Spazzring",
+       "t": 1,
+       "ti": 9499,
+       "z": 1584
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "itemId": 18232,
+   "name": "Field Repair Bot 74A",
+   "profession": "engineering",
+   "skillRequired": 300,
+   "writItemId": 264139,
+   "writName": "Craftsman's Writ: Field Repair Bot 74A",
+   "writTier": "artisan",
+   "writRep": 200,
+   "countMade": 1,
+   "craftSpellId": 22704,
+   "reagents": [
+    {
+     "itemId": 12359,
+     "name": "Thorium Bar",
+     "qty": 12,
+     "vendor": false
+    },
+    {
+     "itemId": 8170,
+     "name": "Rugged Leather",
+     "qty": 4,
+     "vendor": true,
+     "vendorPriceCopper": 2000,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    },
+    {
+     "itemId": 7191,
+     "name": "Fused Wiring",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 7067,
+     "name": "Elemental Earth",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 7068,
+     "name": "Elemental Fire",
+     "qty": 1,
+     "vendor": false
+    }
+   ],
+   "recipeSource": "unknown",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 18235,
+     "name": "Schematic: Field Repair Bot 74A",
+     "source": [],
+     "buyPriceCopper": null,
+     "sourceDetail": []
+    }
+   ],
+   "uncertain": true,
+   "uncertainFields": [
+    "recipeSource"
+   ]
+  },
+  {
+   "itemId": 18631,
+   "name": "Truesilver Transformer",
+   "profession": "engineering",
+   "skillRequired": 260,
+   "writItemId": 264140,
+   "writName": "Craftsman's Writ: Truesilver Transformer",
+   "writTier": "artisan",
+   "writRep": 200,
+   "countMade": 1,
+   "writGuideSkill": 270,
+   "craftSpellId": 23071,
+   "reagents": [
+    {
+     "itemId": 6037,
+     "name": "Truesilver Bar",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 7067,
+     "name": "Elemental Earth",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 7069,
+     "name": "Elemental Air",
+     "qty": 1,
+     "vendor": false
+    }
+   ],
+   "recipeSource": "vendor",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 18651,
+     "name": "Schematic: Truesilver Transformer",
+     "source": [
+      "vendor"
+     ],
+     "buyPriceCopper": 12000,
+     "sourceDetail": [
+      {
+       "n": "Mazk Snipeshot",
+       "t": 1,
+       "ti": 2685,
+       "z": 33
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "itemId": 10548,
+   "name": "Sniper Scope",
+   "profession": "engineering",
+   "skillRequired": 240,
+   "writItemId": 264141,
+   "writName": "Craftsman's Writ: Sniper Scope",
+   "writTier": "artisan",
+   "writRep": 200,
+   "countMade": 1,
+   "craftSpellId": 12620,
+   "reagents": [
+    {
+     "itemId": 10559,
+     "name": "Mithril Tube",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 7910,
+     "name": "Star Ruby",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 6037,
+     "name": "Truesilver Bar",
+     "qty": 2,
+     "vendor": false
+    }
+   ],
+   "recipeSource": "drop",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 10608,
+     "name": "Schematic: Sniper Scope",
+     "source": [
+      "drop"
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": []
+    }
+   ]
+  },
+  {
+   "itemId": 21277,
+   "name": "Tranquil Mechanical Yeti",
+   "profession": "engineering",
+   "skillRequired": 250,
+   "writItemId": 264142,
+   "writName": "Craftsman's Writ: Tranquil Mechanical Yeti",
+   "writTier": "artisan",
+   "writRep": 200,
+   "countMade": 1,
+   "craftSpellId": 26011,
+   "reagents": [
+    {
+     "itemId": 15407,
+     "name": "Cured Rugged Hide",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 15994,
+     "name": "Thorium Widget",
+     "qty": 4,
+     "vendor": false
+    },
+    {
+     "itemId": 7079,
+     "name": "Globe of Water",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 18631,
+     "name": "Truesilver Transformer",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 10558,
+     "name": "Gold Power Core",
+     "qty": 1,
+     "vendor": false
+    }
+   ],
+   "recipeSource": "unknown",
+   "trainerCostCopper": null,
+   "recipeItems": [],
+   "uncertain": true,
+   "uncertainFields": [
+    "recipeSource"
+   ]
+  },
+  {
+   "itemId": 15087,
+   "name": "Wicked Leather Pants",
+   "profession": "leatherworking",
+   "skillRequired": 290,
+   "writItemId": 264143,
+   "writName": "Craftsman's Writ: Wicked Leather Pants",
+   "writTier": "artisan",
+   "writRep": 200,
+   "countMade": 1,
+   "craftSpellId": 19083,
+   "reagents": [
+    {
+     "itemId": 8170,
+     "name": "Rugged Leather",
+     "qty": 16,
+     "vendor": true,
+     "vendorPriceCopper": 2000,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    },
+    {
+     "itemId": 15407,
+     "name": "Cured Rugged Hide",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 2325,
+     "name": "Black Dye",
+     "qty": 3,
+     "vendor": true,
+     "vendorPriceCopper": 888,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 78
+    },
+    {
+     "itemId": 14341,
+     "name": "Rune Thread",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 4444,
+     "vendorNpc": "Alexandra Bolero",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 49
+    }
+   ],
+   "recipeSource": "drop",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 15757,
+     "name": "Pattern: Wicked Leather Pants",
+     "source": [
+      "drop"
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": []
+    }
+   ]
+  },
+  {
+   "itemId": 18258,
+   "name": "Gordok Ogre Suit",
+   "profession": "leatherworking",
+   "skillRequired": 275,
+   "writItemId": 264144,
+   "writName": "Craftsman's Writ: Gordok Ogre Suit",
+   "writTier": "artisan",
+   "writRep": 200,
+   "countMade": 1,
+   "notes": "Skill 275 and leatherworking inferred from classic knowledge (Wowhead spell page empty); pattern is Dire Maul drop.",
+   "craftSpellId": 22813,
+   "reagents": [
+    {
+     "itemId": 14048,
+     "name": "Bolt of Runecloth",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 8170,
+     "name": "Rugged Leather",
+     "qty": 4,
+     "vendor": true,
+     "vendorPriceCopper": 2000,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    },
+    {
+     "itemId": 18240,
+     "name": "Ogre Tannin",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 14341,
+     "name": "Rune Thread",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 4444,
+     "vendorNpc": "Alexandra Bolero",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 49
+    }
+   ],
+   "recipeSource": "unknown",
+   "trainerCostCopper": null,
+   "recipeItems": [],
+   "uncertain": true,
+   "uncertainFields": [
+    "reagents",
+    "profession",
+    "skillRequired",
+    "recipeSource"
+   ]
+  },
+  {
+   "itemId": 15053,
+   "name": "Volcanic Breastplate",
+   "profession": "leatherworking",
+   "skillRequired": 285,
+   "writItemId": 264145,
+   "writName": "Craftsman's Writ: Volcanic Breastplate",
+   "writTier": "artisan",
+   "writRep": 200,
+   "countMade": 1,
+   "craftSpellId": 19076,
+   "reagents": [
+    {
+     "itemId": 8170,
+     "name": "Rugged Leather",
+     "qty": 8,
+     "vendor": true,
+     "vendorPriceCopper": 2000,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    },
+    {
+     "itemId": 7078,
+     "name": "Essence of Fire",
+     "qty": 1
+    },
+    {
+     "itemId": 7076,
+     "name": "Essence of Earth",
+     "qty": 1
+    },
+    {
+     "itemId": 14341,
+     "name": "Rune Thread",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 4444,
+     "vendorNpc": "Alexandra Bolero",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 49
+    }
+   ],
+   "recipeSource": "drop",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 15749,
+     "name": "Pattern: Volcanic Breastplate",
+     "source": [
+      "drop"
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": [
+      {
+       "n": "Firebrand Grunt",
+       "t": 1,
+       "ti": 9259,
+       "z": 1583
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "itemId": 15094,
+   "name": "Runic Leather Headband",
+   "profession": "leatherworking",
+   "skillRequired": 290,
+   "writItemId": 264146,
+   "writName": "Craftsman's Writ: Runic Leather Headband",
+   "writTier": "artisan",
+   "writRep": 200,
+   "countMade": 1,
+   "writGuideSkill": 285,
+   "craftSpellId": 19082,
+   "reagents": [
+    {
+     "itemId": 8170,
+     "name": "Rugged Leather",
+     "qty": 14,
+     "vendor": true,
+     "vendorPriceCopper": 2000,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    },
+    {
+     "itemId": 14047,
+     "name": "Runecloth",
+     "qty": 10,
+     "vendor": false
+    },
+    {
+     "itemId": 14341,
+     "name": "Rune Thread",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 4444,
+     "vendorNpc": "Alexandra Bolero",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 49
+    }
+   ],
+   "recipeSource": "vendor",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 15756,
+     "name": "Pattern: Runic Leather Headband",
+     "source": [
+      "vendor"
+     ],
+     "buyPriceCopper": 22000,
+     "sourceDetail": [
+      {
+       "n": "Jase Farlane",
+       "t": 1,
+       "ti": 12941,
+       "z": 139
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "itemId": 15084,
+   "name": "Wicked Leather Bracers",
+   "profession": "leatherworking",
+   "skillRequired": 265,
+   "writItemId": 264147,
+   "writName": "Craftsman's Writ: Wicked Leather Bracers",
+   "writTier": "artisan",
+   "writRep": 200,
+   "countMade": 1,
+   "writGuideSkill": 260,
+   "craftSpellId": 19052,
+   "reagents": [
+    {
+     "itemId": 8170,
+     "name": "Rugged Leather",
+     "qty": 8,
+     "vendor": true,
+     "vendorPriceCopper": 2000,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    },
+    {
+     "itemId": 2325,
+     "name": "Black Dye",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 888,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 78
+    },
+    {
+     "itemId": 14341,
+     "name": "Rune Thread",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 4444,
+     "vendorNpc": "Alexandra Bolero",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 49
+    }
+   ],
+   "recipeSource": "drop",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 15728,
+     "name": "Pattern: Wicked Leather Bracers",
+     "source": [
+      "drop"
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": [
+      {
+       "n": "Legashi Rogue",
+       "t": 1,
+       "ti": 6201,
+       "z": 16
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "itemId": 15075,
+   "name": "Chimeric Vest",
+   "profession": "leatherworking",
+   "skillRequired": 290,
+   "writItemId": 264148,
+   "writName": "Craftsman's Writ: Chimeric Vest",
+   "writTier": "artisan",
+   "writRep": 200,
+   "countMade": 1,
+   "craftSpellId": 19081,
+   "reagents": [
+    {
+     "itemId": 8170,
+     "name": "Rugged Leather",
+     "qty": 10,
+     "vendor": true,
+     "vendorPriceCopper": 2000,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    },
+    {
+     "itemId": 15423,
+     "name": "Chimera Leather",
+     "qty": 10,
+     "vendor": false
+    },
+    {
+     "itemId": 14341,
+     "name": "Rune Thread",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 4444,
+     "vendorNpc": "Alexandra Bolero",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 49
+    }
+   ],
+   "recipeSource": "drop",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 15755,
+     "name": "Pattern: Chimeric Vest",
+     "source": [
+      "drop"
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": []
+    }
+   ]
+  },
+  {
+   "itemId": 15080,
+   "name": "Heavy Scorpid Helm",
+   "profession": "leatherworking",
+   "skillRequired": 295,
+   "writItemId": 264149,
+   "writName": "Craftsman's Writ: Heavy Scorpid Helm",
+   "writTier": "artisan",
+   "writRep": 200,
+   "countMade": 1,
+   "craftSpellId": 19088,
+   "reagents": [
+    {
+     "itemId": 8170,
+     "name": "Rugged Leather",
+     "qty": 8,
+     "vendor": true,
+     "vendorPriceCopper": 2000,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    },
+    {
+     "itemId": 15408,
+     "name": "Heavy Scorpid Scale",
+     "qty": 12,
+     "vendor": false
+    },
+    {
+     "itemId": 15407,
+     "name": "Cured Rugged Hide",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 14341,
+     "name": "Rune Thread",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 4444,
+     "vendorNpc": "Alexandra Bolero",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 49
+    }
+   ],
+   "recipeSource": "vendor",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 15762,
+     "name": "Pattern: Heavy Scorpid Helm",
+     "source": [
+      "vendor"
+     ],
+     "buyPriceCopper": 25000,
+     "sourceDetail": [
+      {
+       "n": "Zannok Hidepiercer",
+       "t": 1,
+       "ti": 12956,
+       "z": 1377
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "itemId": 15092,
+   "name": "Runic Leather Bracers",
+   "profession": "leatherworking",
+   "skillRequired": 275,
+   "writItemId": 264150,
+   "writName": "Craftsman's Writ: Runic Leather Bracers",
+   "writTier": "artisan",
+   "writRep": 200,
+   "countMade": 1,
+   "writGuideSkill": 270,
+   "craftSpellId": 19065,
+   "reagents": [
+    {
+     "itemId": 8170,
+     "name": "Rugged Leather",
+     "qty": 6,
+     "vendor": true,
+     "vendorPriceCopper": 2000,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    },
+    {
+     "itemId": 7971,
+     "name": "Black Pearl",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 14047,
+     "name": "Runecloth",
+     "qty": 6,
+     "vendor": false
+    },
+    {
+     "itemId": 14341,
+     "name": "Rune Thread",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 4444,
+     "vendorNpc": "Alexandra Bolero",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 49
+    }
+   ],
+   "recipeSource": "drop",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 15739,
+     "name": "Pattern: Runic Leather Bracers",
+     "source": [
+      "drop"
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": [
+      {
+       "n": "Jaedenar Cultist",
+       "t": 1,
+       "ti": 7112,
+       "z": 361
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "itemId": 15071,
+   "name": "Frostsaber Boots",
+   "profession": "leatherworking",
+   "skillRequired": 275,
+   "writItemId": 264151,
+   "writName": "Craftsman's Writ: Frostsaber Boots",
+   "writTier": "artisan",
+   "writRep": 200,
+   "countMade": 1,
+   "craftSpellId": 19066,
+   "reagents": [
+    {
+     "itemId": 8170,
+     "name": "Rugged Leather",
+     "qty": 4,
+     "vendor": true,
+     "vendorPriceCopper": 2000,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    },
+    {
+     "itemId": 15422,
+     "name": "Frostsaber Leather",
+     "qty": 6,
+     "vendor": false
+    },
+    {
+     "itemId": 14341,
+     "name": "Rune Thread",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 4444,
+     "vendorNpc": "Alexandra Bolero",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 49
+    }
+   ],
+   "recipeSource": "vendor",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 15740,
+     "name": "Pattern: Frostsaber Boots",
+     "source": [
+      "vendor"
+     ],
+     "buyPriceCopper": 16000,
+     "sourceDetail": [
+      {
+       "n": "Qia",
+       "t": 1,
+       "ti": 11189,
+       "z": 618
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "itemId": 14130,
+   "name": "Wizardweave Turban",
+   "profession": "tailoring",
+   "skillRequired": 300,
+   "writItemId": 264152,
+   "writName": "Craftsman's Writ: Wizardweave Turban",
+   "writTier": "artisan",
+   "writRep": 200,
+   "countMade": 1,
+   "craftSpellId": 18450,
+   "reagents": [
+    {
+     "itemId": 14048,
+     "name": "Bolt of Runecloth",
+     "qty": 6,
+     "vendor": false
+    },
+    {
+     "itemId": 11176,
+     "name": "Dream Dust",
+     "qty": 4,
+     "vendor": false
+    },
+    {
+     "itemId": 7910,
+     "name": "Star Ruby",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 14341,
+     "name": "Rune Thread",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 4444,
+     "vendorNpc": "Alexandra Bolero",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 49
+    }
+   ],
+   "recipeSource": "drop",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 14505,
+     "name": "Pattern: Wizardweave Turban",
+     "source": [
+      "drop"
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": [
+      {
+       "n": "Dark Caster",
+       "t": 1,
+       "ti": 8526,
+       "z": 139
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "itemId": 14046,
+   "name": "Runecloth Bag",
+   "profession": "tailoring",
+   "skillRequired": 260,
+   "writItemId": 264153,
+   "writName": "Craftsman's Writ: Runecloth Bag",
+   "writTier": "artisan",
+   "writRep": 200,
+   "countMade": 1,
+   "writGuideSkill": 230,
+   "craftSpellId": 18405,
+   "reagents": [
+    {
+     "itemId": 14048,
+     "name": "Bolt of Runecloth",
+     "qty": 5,
+     "vendor": false
+    },
+    {
+     "itemId": 8170,
+     "name": "Rugged Leather",
+     "qty": 2,
+     "vendor": true,
+     "vendorPriceCopper": 2000,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    },
+    {
+     "itemId": 14341,
+     "name": "Rune Thread",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 4444,
+     "vendorNpc": "Alexandra Bolero",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 49
+    }
+   ],
+   "recipeSource": "vendor",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 14468,
+     "name": "Pattern: Runecloth Bag",
+     "source": [
+      "vendor"
+     ],
+     "buyPriceCopper": 12000,
+     "sourceDetail": [
+      {
+       "n": "Qia",
+       "t": 1,
+       "ti": 11189,
+       "z": 618
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "itemId": 13864,
+   "name": "Runecloth Boots",
+   "profession": "tailoring",
+   "skillRequired": 280,
+   "writItemId": 264154,
+   "writName": "Craftsman's Writ: Runecloth Boots",
+   "writTier": "artisan",
+   "writRep": 200,
+   "countMade": 1,
+   "writGuideSkill": 250,
+   "craftSpellId": 18423,
+   "reagents": [
+    {
+     "itemId": 14048,
+     "name": "Bolt of Runecloth",
+     "qty": 4,
+     "vendor": false
+    },
+    {
+     "itemId": 14227,
+     "name": "Ironweb Spider Silk",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 8170,
+     "name": "Rugged Leather",
+     "qty": 4,
+     "vendor": true,
+     "vendorPriceCopper": 2000,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    },
+    {
+     "itemId": 14341,
+     "name": "Rune Thread",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 4444,
+     "vendorNpc": "Alexandra Bolero",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 49
+    }
+   ],
+   "recipeSource": "vendor",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 14488,
+     "name": "Pattern: Runecloth Boots",
+     "source": [
+      "vendor"
+     ],
+     "buyPriceCopper": 20000,
+     "sourceDetail": [
+      {
+       "n": "Darnall",
+       "t": 1,
+       "ti": 7940,
+       "z": 493
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "itemId": 10036,
+   "name": "Tuxedo Jacket",
+   "profession": "tailoring",
+   "skillRequired": 250,
+   "writItemId": 264155,
+   "writName": "Craftsman's Writ: Tuxedo Jacket",
+   "writTier": "artisan",
+   "writRep": 200,
+   "countMade": 1,
+   "writGuideSkill": 155,
+   "craftSpellId": 12093,
+   "reagents": [
+    {
+     "itemId": 4339,
+     "name": "Bolt of Mageweave",
+     "qty": 5,
+     "vendor": false
+    },
+    {
+     "itemId": 8343,
+     "name": "Heavy Silken Thread",
+     "qty": 3,
+     "vendor": true,
+     "vendorPriceCopper": 1777,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 78
+    }
+   ],
+   "recipeSource": "vendor",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 10326,
+     "name": "Pattern: Tuxedo Jacket",
+     "source": [
+      "vendor"
+     ],
+     "buyPriceCopper": 5000,
+     "sourceDetail": []
+    }
+   ]
+  },
+  {
+   "itemId": 14108,
+   "name": "Felcloth Boots",
+   "profession": "tailoring",
+   "skillRequired": 285,
+   "writItemId": 264156,
+   "writName": "Craftsman's Writ: Felcloth Boots",
+   "writTier": "artisan",
+   "writRep": 200,
+   "countMade": 1,
+   "craftSpellId": 18437,
+   "reagents": [
+    {
+     "itemId": 14048,
+     "name": "Bolt of Runecloth",
+     "qty": 6,
+     "vendor": false
+    },
+    {
+     "itemId": 14256,
+     "name": "Felcloth",
+     "qty": 4,
+     "vendor": true,
+     "vendorPriceCopper": 8000,
+     "vendorNpc": "Vi'el",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    },
+    {
+     "itemId": 8170,
+     "name": "Rugged Leather",
+     "qty": 4,
+     "vendor": true,
+     "vendorPriceCopper": 2000,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    },
+    {
+     "itemId": 14341,
+     "name": "Rune Thread",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 4444,
+     "vendorNpc": "Alexandra Bolero",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 49
+    }
+   ],
+   "recipeSource": "drop",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 14492,
+     "name": "Pattern: Felcloth Boots",
+     "source": [
+      "drop",
+      16
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": []
+    }
+   ]
+  },
+  {
+   "itemId": 22251,
+   "name": "Cenarion Herb Bag",
+   "profession": "tailoring",
+   "skillRequired": 275,
+   "writItemId": 264157,
+   "writName": "Craftsman's Writ: Cenarion Herb Bag",
+   "writTier": "artisan",
+   "writRep": 200,
+   "countMade": 1,
+   "craftSpellId": 27724,
+   "reagents": [
+    {
+     "itemId": 14048,
+     "name": "Bolt of Runecloth",
+     "qty": 5,
+     "vendor": false
+    },
+    {
+     "itemId": 8831,
+     "name": "Purple Lotus",
+     "qty": 10,
+     "vendor": false
+    },
+    {
+     "itemId": 11040,
+     "name": "Morrowgrain",
+     "qty": 8,
+     "vendor": false
+    },
+    {
+     "itemId": 14341,
+     "name": "Rune Thread",
+     "qty": 2,
+     "vendor": true,
+     "vendorPriceCopper": 4444,
+     "vendorNpc": "Alexandra Bolero",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 49
+    }
+   ],
+   "recipeSource": "vendor",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 22310,
+     "name": "Pattern: Cenarion Herb Bag",
+     "source": [
+      "vendor"
+     ],
+     "buyPriceCopper": 20000,
+     "sourceDetail": [
+      {
+       "n": "Mishta",
+       "t": 1,
+       "ti": 15179,
+       "z": 1377
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "itemId": 10025,
+   "name": "Shadoweave Mask",
+   "profession": "tailoring",
+   "skillRequired": 245,
+   "writItemId": 264158,
+   "writName": "Craftsman's Writ: Shadoweave Mask",
+   "writTier": "artisan",
+   "writRep": 200,
+   "countMade": 1,
+   "writGuideSkill": 215,
+   "craftSpellId": 12086,
+   "reagents": [
+    {
+     "itemId": 4339,
+     "name": "Bolt of Mageweave",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 10285,
+     "name": "Shadow Silk",
+     "qty": 8,
+     "vendor": false
+    },
+    {
+     "itemId": 8343,
+     "name": "Heavy Silken Thread",
+     "qty": 2,
+     "vendor": true,
+     "vendorPriceCopper": 1777,
+     "vendorNpc": "Banalash",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 78
+    }
+   ],
+   "recipeSource": "quest",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 10463,
+     "name": "Pattern: Shadoweave Mask",
+     "source": [
+      "quest"
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": [
+      {
+       "n": "The Undermarket",
+       "t": 5,
+       "ti": 3402
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "itemId": 14141,
+   "name": "Ghostweave Vest",
+   "profession": "tailoring",
+   "skillRequired": 275,
+   "writItemId": 264159,
+   "writName": "Craftsman's Writ: Ghostweave Vest",
+   "writTier": "artisan",
+   "writRep": 200,
+   "countMade": 1,
+   "craftSpellId": 18416,
+   "reagents": [
+    {
+     "itemId": 14048,
+     "name": "Bolt of Runecloth",
+     "qty": 6,
+     "vendor": false
+    },
+    {
+     "itemId": 9210,
+     "name": "Ghost Dye",
+     "qty": 4,
+     "vendor": false
+    },
+    {
+     "itemId": 14227,
+     "name": "Ironweb Spider Silk",
+     "qty": 1,
+     "vendor": false
+    },
+    {
+     "itemId": 14341,
+     "name": "Rune Thread",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 4444,
+     "vendorNpc": "Alexandra Bolero",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 49
+    }
+   ],
+   "recipeSource": "drop",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 14480,
+     "name": "Pattern: Ghostweave Vest",
+     "source": [
+      "drop"
+     ],
+     "buyPriceCopper": null,
+     "sourceDetail": [
+      {
+       "n": "Unseen Servant",
+       "t": 1,
+       "ti": 8538,
+       "z": 139
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "itemId": 21340,
+   "name": "Soul Pouch",
+   "profession": "tailoring",
+   "skillRequired": 260,
+   "writItemId": 264160,
+   "writName": "Craftsman's Writ: Soul Pouch",
+   "writTier": "artisan",
+   "writRep": 200,
+   "countMade": 1,
+   "craftSpellId": 26085,
+   "reagents": [
+    {
+     "itemId": 14048,
+     "name": "Bolt of Runecloth",
+     "qty": 6,
+     "vendor": false
+    },
+    {
+     "itemId": 8170,
+     "name": "Rugged Leather",
+     "qty": 4,
+     "vendor": true,
+     "vendorPriceCopper": 2000,
+     "vendorNpc": "Lhara",
+     "vendorUnlimitedStock": false,
+     "vendorCount": 1
+    },
+    {
+     "itemId": 7972,
+     "name": "Ichor of Undeath",
+     "qty": 2,
+     "vendor": false
+    },
+    {
+     "itemId": 14341,
+     "name": "Rune Thread",
+     "qty": 1,
+     "vendor": true,
+     "vendorPriceCopper": 4444,
+     "vendorNpc": "Alexandra Bolero",
+     "vendorUnlimitedStock": true,
+     "vendorCount": 49
+    }
+   ],
+   "recipeSource": "vendor",
+   "trainerCostCopper": null,
+   "recipeItems": [
+    {
+     "itemId": 21358,
+     "name": "Pattern: Soul Pouch",
+     "source": [
+      "vendor"
+     ],
+     "buyPriceCopper": 12000,
+     "sourceDetail": [
+      {
+       "n": "Vizzklick",
+       "t": 1,
+       "ti": 6568,
+       "z": 440
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

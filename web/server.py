@@ -310,6 +310,42 @@ def ah_book() -> dict:
     return {"latest": m.now, "items": rows}
 
 
+def crafting() -> dict:
+    """Craftsman's Writ items and Commerce Authority crates with live prices.
+
+    prices[id] = [cheapest now, listings, units, 7-day median cheapest, region sold/day, vendor sell]
+    for every crafted item, reagent, writ and crate the calculators touch.
+    """
+    m = open_market()
+    research = ROOT / "data" / "research"
+    writs = json.loads((research / "writs.json").read_text())["items"]
+    waylaid = json.loads((research / "waylaid.json").read_text())
+    ids = set()
+    for w in writs:
+        ids |= {str(w["itemId"]), str(w.get("writItemId"))} | {str(r["itemId"]) for r in w["reagents"]}
+        ids |= {str(r["itemId"]) for r in w.get("recipeItems") or []}
+    for c in waylaid.get("crates", []):
+        ids |= {str(c["crateId"])} | {str(r["itemId"]) for r in c.get("inputs", [])}
+    ids |= {str(g["itemId"]) for g in waylaid.get("genericCrates", [])}
+    series: dict[str, list[int]] = {}
+    for i, b in m.db.execute(
+            "SELECT item, minBuyout FROM auctiondb_non_commodity_data WHERE scope=? AND ts>=? AND minBuyout>0",
+            (SCOPE, time.time() - RESET_MEDIAN_DAYS * 86400)):
+        if i in ids:
+            series.setdefault(i, []).append(b)
+    snaps = [t for (t,) in m.db.execute("SELECT ts FROM files WHERE tag='BLIZZARD' ORDER BY ts DESC LIMIT 1")]
+    now = {i: (b, n, u) for i, b, n, u in m.db.execute(
+        "SELECT item, minBuyout, numAuctions, numUnits FROM auctiondb_non_commodity_data WHERE scope=? AND ts=?",
+        (SCOPE, snaps[0] if snaps else m.now)) if i in ids}
+    prices = {}
+    for i in ids:
+        v = series.get(i, [])
+        cur = now.get(i, (None, 0, None))
+        prices[i] = [cur[0], cur[1], cur[2], sorted(v)[len(v) // 2] if v else None,
+                     round(m.sold.get(i, 0), 1), m.vendor(i)]
+    return {"latest": m.now, "writs": writs, "waylaid": waylaid, "prices": prices}
+
+
 class Handler(BaseHTTPRequestHandler):
     def _send(self, code: int, body: bytes, ctype: str) -> None:
         self.send_response(code)
@@ -331,6 +367,8 @@ class Handler(BaseHTTPRequestHandler):
                 self._send(200, json.dumps(market_map(w)).encode(), "application/json")
             elif url.path == "/api/resets":
                 self._send(200, json.dumps(resets()).encode(), "application/json")
+            elif url.path == "/api/crafting":
+                self._send(200, json.dumps(crafting()).encode(), "application/json")
             elif url.path == "/api/token":
                 self._send(200, json.dumps(blizzard_token()).encode(), "application/json")
             elif url.path == "/api/names":

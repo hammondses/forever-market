@@ -123,8 +123,9 @@ svg text { font: 12px var(--ui); fill: var(--dim); }
 
 .tabs { display: inline-flex; gap: 0; align-self: flex-end; margin-bottom: -12px; }
 .tabs .btn { border-radius: 4px 4px 0 0; padding: 6px 16px 7px; font: 16px var(--serif); border-bottom: 0; }
-body.tab-ah #app, body.tab-rs #app { grid-template-rows: auto 1fr; }
-body.tab-ah .mk, body.tab-rs .mk, body:not(.tab-ah) #ahv, body:not(.tab-rs) #rsv { display: none !important; }
+body.tab-ah #app, body.tab-rs #app, body.tab-cr #app, body.tab-mc #app { grid-template-rows: auto 1fr; }
+body.tab-ah .mk, body.tab-rs .mk, body.tab-cr .mk, body.tab-mc .mk, body:not(.tab-ah) #ahv, body:not(.tab-rs) #rsv,
+body:not(.tab-cr) #crv, body:not(.tab-mc) #mcv { display: none !important; }
 #ahv { display: grid; grid-template-columns: 220px 1fr 360px; grid-template-rows: auto 1fr; min-height: 0; }
 .filters { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: center; padding: 8px 16px;
   border-bottom: 1px solid var(--line); color: var(--dim); font-size: 14px; background: #24211d; }
@@ -187,6 +188,26 @@ body.tab-ah .mk, body.tab-rs .mk, body:not(.tab-ah) #ahv, body:not(.tab-rs) #rsv
 .rsTable td, .rsTable th { padding-left: 8px !important; padding-right: 8px !important; }
 .badge.ripe { background: #2f6b2a; color: #e6f5d0; }
 .ladder rect.buy { fill: #6b8f3a; }
+#crv { display: grid; grid-template-columns: 1fr 400px; grid-template-rows: auto auto 1fr; min-height: 0; }
+#crProfs { grid-column: 1 / -1; display: flex; border-bottom: 1px solid var(--line); background: var(--panel); }
+#crProfs button { flex: 1; padding: 8px 10px; background: none; border: 0; border-right: 1px solid var(--line); color: var(--dim);
+  font: 16px var(--serif); cursor: pointer; text-align: left; }
+#crProfs button:last-child { border-right: 0; } #crProfs button:hover { background: var(--panel2); }
+#crProfs button.on { background: #3d3320; color: #e9c86a; } #crProfs small { display: block; font: 12px var(--sans, inherit); color: var(--dim); }
+#crWrap, #mcMain { overflow: auto; min-height: 0; }
+#crDetail, #mcSide { border-left: 1px solid var(--line); background: var(--panel); overflow-y: auto; min-height: 0; }
+#crDetail { grid-row: 3; grid-column: 2; }
+.tier { display: inline-block; font-size: 11px; padding: 0 5px; border-radius: 3px; margin-left: 6px; vertical-align: 1px; }
+.tier.journeyman { background: #2d4a5e; color: #cfe6f5; } .tier.expert { background: #5e4a2d; color: #f5e3c8; } .tier.artisan { background: #5a2d5e; color: #f0d0f5; }
+.src-drop, .src-quest, .src-rep { color: #e9a84a; } .src-vendor { color: #a8c8e8; }
+#mcv { display: grid; grid-template-columns: 1fr 380px; min-height: 0; }
+#mcMain { padding: 4px 16px 24px; }
+#mcMain h2 { font: 20px var(--serif); color: #e9c86a; margin: 18px 0 6px; font-weight: normal; }
+.mcPlan { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 8px; }
+.mcPlan div { background: var(--panel); padding: 10px 12px; } .mcPlan .v { display: block; font: 22px var(--serif); color: #fff; white-space: nowrap; }
+.mcPlan small { font-size: 13px; color: var(--dim); }
+#mcMain .rsTable { width: 100%; } #mcMain .tier { white-space: nowrap; }
+.mcInputs { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; color: var(--dim); font-size: 14px; }
 .rsList { max-height: 260px; overflow-y: auto; border: 1px solid var(--line); margin-top: 6px; }
 .rsList table { width: 100%; border-collapse: collapse; font-size: 14px; }
 .rsList th { position: sticky; top: 0; background: var(--panel2); color: var(--dim); font-weight: 600; text-align: right; padding: 4px 8px; }
@@ -231,7 +252,7 @@ body.tab-ah .mk, body.tab-rs .mk, body:not(.tab-ah) #ahv, body:not(.tab-rs) #rsv
 <div id="app">
   <header>
     <div class="logo">Azeroth Exchange<small>The Horde auction house on Forever</small></div>
-    <nav class="tabs"><button class="btn on" data-tab="market">Market</button><button class="btn" data-tab="ah">Auction house</button><button class="btn" data-tab="rs">Resets</button></nav>
+    <nav class="tabs"><button class="btn on" data-tab="market">Market</button><button class="btn" data-tab="ah">Auction house</button><button class="btn" data-tab="rs">Resets</button><button class="btn" data-tab="cr">Crafting</button><button class="btn" data-tab="mc">Merchant</button></nav>
     <div class="live" id="live"><i></i><span id="ago">connecting…</span></div>
     <div class="spacer"></div>
     <div class="sbox"><input id="search" placeholder="Find an item  ( / )" autocomplete="off">
@@ -285,6 +306,23 @@ body.tab-ah .mk, body.tab-rs .mk, body:not(.tab-ah) #ahv, body:not(.tab-rs) #rsv
     <div id="rsBands"></div>
     <div id="rsWrap"><div class="note pad">Loading…</div></div>
     <div id="rsDetail"><div class="box"><h3>How this works</h3><div class="note" id="rsHow"></div></div></div>
+  </section>
+  <section id="crv">
+    <div class="filters">
+      <input id="crq" placeholder="Item name" autocomplete="off">
+      <label>my skill <input type="number" id="crSkill" min="0" max="300" placeholder="any"></label>
+      <label>materials at <select id="crMats"><option value="now">cheapest now</option><option value="median">7-day median</option></select></label>
+      <label>sell at <select id="crSell"><option value="now">cheapest now</option><option value="median">7-day median</option></select></label>
+      <label><input type="checkbox" id="crPos"> profitable only</label>
+      <span id="crCount"></span>
+    </div>
+    <div id="crProfs"></div>
+    <div id="crWrap"><div class="note pad">Loading…</div></div>
+    <div id="crDetail"><div class="box"><h3>How this works</h3><div class="note" id="crHow"></div></div></div>
+  </section>
+  <section id="mcv">
+    <div id="mcMain"><div class="note pad">Loading…</div></div>
+    <div id="mcSide"></div>
   </section>
 </div>
 <div id="tip"></div>
@@ -764,9 +802,11 @@ addEventListener("keydown", (e) => {
 function setTab(t) {
   document.body.classList.toggle("tab-ah", t === "ah");
   document.body.classList.toggle("tab-rs", t === "rs");
+  document.body.classList.toggle("tab-cr", t === "cr");
+  document.body.classList.toggle("tab-mc", t === "mc");
   for (const b of document.querySelectorAll("[data-tab]")) b.classList.toggle("on", b.dataset.tab === t);
   localStorage.tab = t;
-  if (t === "ah") openAh(); else if (t === "rs") openResets(); else render();
+  if (t === "ah") openAh(); else if (t === "rs") openResets(); else if (t === "cr") openCrafting(); else if (t === "mc") openMerchant(); else render();
 }
 for (const b of document.querySelectorAll("[data-tab]")) b.onclick = () => setTab(b.dataset.tab);
 
@@ -1107,7 +1147,231 @@ let rt; addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(ren
 setInterval(updateAgo, 30000);
 setInterval(() => (window.STATIC ? checkVersion() : refresh()), 2 * 60000);
 load();
-if (localStorage.tab === "ah" || localStorage.tab === "rs") setTab(localStorage.tab);
+// ---- crafting: Craftsman's Writ gear. Players turn one of each in per day for Commerce Authority rep, so it sells steadily ----
+const cr = { data: null, prof: localStorage.crProf || "tailoring", sort: "profit", dir: -1, sel: null };
+const PROFS = [["tailoring", "Tailoring"], ["leatherworking", "Leatherworking"], ["blacksmithing", "Blacksmithing"], ["engineering", "Engineering"], ["alchemy", "Alchemy"]];
+const SRC = { trainer: "Trainer", vendor: "Vendor recipe", drop: "Drop recipe", quest: "Quest recipe", rep: "Reputation recipe" };
+const AH_CUT = 0.95;
+const cp = (id) => cr.data.prices[String(id)] || [];
+// [cheapest now, listings, units, 7-day median, region sold/day, vendor sell]
+const ahPrice = (id, mode) => { const p = cp(id); return mode === "median" ? (p[3] ?? p[0]) : (p[0] ?? p[3]); };
+const signed = (c) => c == null ? "–" : `${c < 0 ? "−" : ""}${money(Math.abs(Math.round(c)))}`;
+
+async function loadCrafting() {
+  if (cr.data && Date.now() - cr.at < 5 * 60e3) return true;
+  try {
+    const [d, icons] = await Promise.all([
+      fetch(window.STATIC ? "data/crafting.json" : "/api/crafting", { cache: "no-cache" }).then((r) => r.json()),
+      Object.keys(ah.icons).length ? ah.icons : fetch(window.STATIC ? "data/icons.json" : "/api/icons").then((r) => r.json())]);
+    cr.data = d; cr.at = Date.now(); ah.icons = icons;
+    return true;
+  } catch { return false; }
+}
+
+// a reagent's cheapest source: the AH, or a vendor that never runs out
+function reagentEach(rg, mode) {
+  const a = ahPrice(rg.itemId, mode), v = rg.vendor && rg.vendorUnlimitedStock ? rg.vendorPriceCopper : null;
+  if (v != null && (a == null || v <= a)) return { each: v, src: "vendor" };
+  if (a != null) return { each: a, src: "AH" };
+  if (rg.vendor && rg.vendorPriceCopper) return { each: rg.vendorPriceCopper, src: "vendor (limited)" };
+  return { each: null, src: "none listed" };
+}
+
+// what one craft costs and earns
+function craftCost(w, matMode = $("crMats").value, sellMode = $("crSell").value) {
+  let mats = 0, missing = false;
+  for (const rg of w.reagents) { const e = reagentEach(rg, matMode); e.each == null ? (missing = true) : (mats += e.each * rg.qty); }
+  if (!w.reagents.length) missing = true;
+  mats /= w.countMade || 1;
+  const sell = ahPrice(w.itemId, sellMode), p = cp(w.itemId);
+  return { mats, missing, sell, profit: sell == null || missing ? null : sell * AH_CUT - mats, listings: p[1] || 0, sold: p[4] || 0,
+    scroll: cp(w.writItemId)[0] };
+}
+
+async function openCrafting() {
+  if (!await loadCrafting()) { $("crWrap").innerHTML = `<div class="note pad">Couldn't load crafting prices. Try again in a moment.</div>`; return; }
+  $("crHow").innerHTML = `<p>Each Craftsman's Writ asks for one crafted item, and every writ can be turned in once a day. People chasing Commerce Authority
+    reputation buy these daily at every level, so the gear keeps selling.</p>
+    <p>Profit is the sell price less the 5% auction house cut, less materials. Materials come from the cheapest source: the auction house, or a vendor that never runs out (thread, dye, vials).</p>
+    <p>Recipes from drops, quests or out-of-the-way vendors are rarer, so their margins hold up better than trainer ones.</p>
+    <p>Materials like Scorpid Scale and Elemental Earth swing a lot. Switch materials to the 7-day median to see the margin on a normal day, and stock up when they're cheap.</p>
+    <p>Click a row for materials and live listings.</p>`;
+  renderCrafting();
+}
+
+function renderCrafting() {
+  const d = cr.data, q = $("crq").value.trim().toLowerCase(), skill = +$("crSkill").value || 999, pos = $("crPos").checked;
+  const all = d.writs.map((w) => ({ w, c: craftCost(w) }));
+  $("crProfs").innerHTML = PROFS.map(([k, l]) => {
+    const xs = all.filter((r) => r.w.profession === k), good = xs.filter((r) => r.c.profit > 0 && !r.c.missing).length;
+    return `<button data-p="${k}" class="${cr.prof === k ? "on" : ""}">${l}<small>${good} of ${xs.length} profitable now</small></button>`;
+  }).join("");
+  for (const b of $("crProfs").children) b.onclick = () => { cr.prof = localStorage.crProf = b.dataset.p; cr.sel = null; renderCrafting(); };
+  let rows = all.filter(({ w, c }) => w.profession === cr.prof && (w.skillRequired ?? 0) <= skill && (!pos || c.profit > 0)
+    && (!q || w.name.toLowerCase().includes(q)));
+  const key = { name: (r) => r.w.name, skill: (r) => r.w.skillRequired ?? 0, sell: (r) => r.c.sell ?? -1, mats: (r) => r.c.mats,
+    profit: (r) => r.c.profit ?? -1e12, margin: (r) => r.c.mats && r.c.profit != null ? r.c.profit / r.c.mats : -1e9,
+    listings: (r) => r.c.listings, sold: (r) => r.c.sold, scroll: (r) => r.c.scroll ?? -1 }[cr.sort];
+  rows.sort((a, b) => { const x = key(a), y = key(b); return (x < y ? -1 : x > y ? 1 : 0) * cr.dir; });
+  $("crCount").textContent = `${rows.length} writ items`;
+  const C = [["name", "Item"], ["skill", "Skill", "hm"], ["sell", "Sells for"], ["mats", "Materials"], ["profit", "Profit"],
+    ["margin", "Margin", "hm"], ["listings", "Listed", "hm"], ["sold", "Sold a day", "hm"], ["scroll", "Writ scroll", "hm"]];
+  $("crWrap").innerHTML = rows.length ? `<table id="ahTable" class="rsTable"><thead><tr>${C.map(([c, l, m]) =>
+    `<th data-s="${c}" class="${cr.sort === c ? "on" : ""} ${m || ""}">${l}${cr.sort === c ? (cr.dir > 0 ? " ▲" : " ▼") : ""}</th>`).join("")}</tr></thead><tbody>${
+    rows.map(({ w, c }) => `<tr data-id="${w.itemId}"${String(w.itemId) === cr.sel ? ' class="on"' : ""}><td><div class="it">${img(String(w.itemId))}<div style="min-width:0">
+      <div class="nm">${esc(w.name)}<span class="tier ${w.writTier}">${w.writTier} · ${w.writRep} rep</span></div>
+      <small class="src-${w.recipeSource}">${SRC[w.recipeSource] || "Recipe source unknown"}</small></div></div></td>
+      <td class="hm">${w.skillRequired ?? "?"}</td>
+      <td>${c.sell == null ? `<span class="flat">none listed</span>` : money(c.sell)}</td>
+      <td>${c.missing ? `<span class="flat">–</span><small>materials not listed</small>` : money(Math.round(c.mats))}</td>
+      <td class="${c.profit > 0 ? "up" : "down"}">${signed(c.profit)}</td>
+      <td class="hm">${c.mats && c.profit != null ? Math.round(c.profit / c.mats * 100) + "%" : "–"}</td>
+      <td class="hm">${c.listings}</td><td class="hm">${c.sold}</td><td class="hm">${c.scroll ? money(c.scroll) : "–"}</td></tr>`).join("")}</tbody></table>`
+    : `<div class="note pad">Nothing matches. Raise your skill or untick profitable only.</div>`;
+  for (const th of $("crWrap").querySelectorAll("th")) th.onclick = () => {
+    cr.dir = cr.sort === th.dataset.s ? -cr.dir : (th.dataset.s === "name" || th.dataset.s === "skill" ? 1 : -1);
+    cr.sort = th.dataset.s; renderCrafting(); };
+  for (const tr of $("crWrap").querySelectorAll("tbody tr")) tr.onclick = () => { cr.sel = tr.dataset.id; renderCrafting(); crSelect(cr.sel); };
+}
+
+function crSelect(id) {
+  const w = cr.data.writs.find((x) => String(x.itemId) === id); if (!w) return;
+  const c = craftCost(w), mode = $("crMats").value;
+  const mats = w.reagents.map((rg) => { const e = reagentEach(rg, mode);
+    return `<tr><td><div class="it">${img(String(rg.itemId))}<span>${esc(rg.name)}</span></div></td><td>${rg.qty}</td>
+      <td>${e.each == null ? "–" : money(e.each)}</td><td class="note">${e.src}</td><td>${e.each == null ? "–" : money(e.each * rg.qty)}</td></tr>`; }).join("");
+  const recipes = (w.recipeItems || []).map((r) => { const p = cp(r.itemId)[0];
+    return `${esc(r.name)}${p ? `, on the auction house for ${money(p)}` : ""}`; }).join("; ");
+  $("crDetail").innerHTML = `<div class="box"><div class="dhead">${img(id, 'class="ico"')}<div>
+      <div class="name">${esc(w.name)}</div><div class="note">${w.profession} ${w.skillRequired ?? "?"}<span class="tier ${w.writTier}">${w.writTier} · ${w.writRep} rep</span></div></div></div>
+    <div class="note" style="margin-top:8px"><span class="src-${w.recipeSource}">${SRC[w.recipeSource] || "Recipe source unknown"}</span>${
+      w.trainerCostCopper ? ` (${money(w.trainerCostCopper)} to train)` : ""}${recipes ? `. ${recipes}` : ""}.
+      ${w.countMade > 1 ? `Each craft makes ${w.countMade}.` : ""}${w.uncertain ? ` Some details for this one are unconfirmed: check in game.` : ""}</div>
+    <table class="kv" style="width:100%;margin-top:8px"><tr><td>Sells for</td><td>${c.sell == null ? "none listed" : money(c.sell)}</td></tr>
+      <tr><td>After the 5% cut</td><td>${c.sell == null ? "–" : money(Math.round(c.sell * AH_CUT))}</td></tr>
+      <tr><td>Materials</td><td>${c.missing ? "not all listed" : money(Math.round(c.mats))}</td></tr>
+      <tr><td>Profit</td><td class="${c.profit > 0 ? "up" : "down"}">${signed(c.profit)}</td></tr>
+      <tr><td>Writ scroll</td><td>${c.scroll ? money(c.scroll) : "none listed"}</td></tr></table>
+    <h3 style="margin-top:14px">Materials</h3>
+    <div class="rsList"><table><thead><tr><th>Item</th><th>Qty</th><th>Each</th><th>From</th><th>Total</th></tr></thead><tbody>${mats}</tbody></table></div>
+    <h3 style="margin-top:14px">On the auction house</h3><div id="crListings">${live.book ? listings(id) : `<div class="note">loading…</div>`}</div></div>`;
+  if (!live.book) liveHouse().then(() => { if (cr.sel === id) $("crListings").innerHTML = listings(id); }).catch(() => {});
+}
+for (const i of ["crq", "crSkill", "crMats", "crSell", "crPos"]) $(i).addEventListener("input", () => { if (cr.data) { renderCrafting(); if (cr.sel) crSelect(cr.sel); } });
+
+// ---- merchant: the cheapest way to Commerce Authority reputation, from writs, crates and receipts ----
+const mc = { have: localStorage.mcHave === "1" };
+const TIER_CRATE = { Apprentice: 248765, Journeyman: 248766 };
+
+// an empty crate to put a Forged Delivery Receipt on: the cheapest one listed
+function cheapestCrate(w) {
+  const ids = [...w.genericCrates.map((g) => g.itemId), ...w.crates.map((c) => c.crateId).filter(Boolean)];
+  let best = null; for (const id of ids) { const p = cp(id)[0]; if (p && (!best || p < best.p)) best = { id, p }; }
+  return best;
+}
+
+function crateRoutes(w) {
+  return w.crates.filter((c) => c.favor).map((c) => {
+    const opts = c.inputs.map((i) => ({ ...i, p: ahPrice(i.itemId, "now") })).filter((i) => i.p != null).map((i) => ({ ...i, cost: i.p * i.qty }));
+    opts.sort((a, b) => a.cost - b.cost);
+    const fill = opts[0], crateId = c.crateId || TIER_CRATE[c.tier] || 248549, crate = cp(crateId)[0];
+    if (!fill) return null;
+    const net = fill.cost - (c.gold || 0) * 10000;
+    return { c, fill, net, crate, perFavor: net / c.favor, perFavorBought: crate ? (net + crate) / c.favor : null };
+  }).filter(Boolean).sort((a, b) => a.perFavor - b.perFavor);
+}
+
+async function openMerchant() {
+  if (!await loadCrafting()) { $("mcMain").innerHTML = `<div class="note pad">Couldn't load prices. Try again in a moment.</div>`; return; }
+  renderMerchant();
+}
+
+function renderMerchant() {
+  const W = cr.data.waylaid, ST = W.standings, routes = crateRoutes(W);
+  const favorG = routes.length ? Math.max(0, routes[0].perFavor) : null, crate = cheapestCrate(W);
+  const stand = localStorage.mcStand || "Neutral", into = +localStorage.mcInto || 0, target = localStorage.mcTarget || "Exalted";
+  const label = localStorage.mcLabel === "1", buyCrates = localStorage.mcBuyCrates !== "0";
+  const at = (ST.find((s) => s.name === stand)?.points ?? 0) + into, goal = ST.find((s) => s.name === target)?.points ?? 42000;
+  const friendly = ST.find((s) => s.name === "Friendly").points;
+  // each writ, done the cheapest way: buy the item or craft it
+  const writs = cr.data.writs.map((w) => { const c = craftCost(w, "now", "now"), buy = cp(w.itemId)[0];
+    const craft = c.missing ? null : c.mats, item = [buy, craft].filter((x) => x != null).sort((a, b) => a - b)[0];
+    const scroll = mc.have ? 0 : cp(w.writItemId)[0];
+    return { w, buy, craft, item, scroll, total: item == null || scroll == null ? null : item + scroll, how: item === craft ? "craft" : "buy" };
+  }).filter((r) => r.total != null).map((r) => ({ ...r, perRep: r.total / r.w.writRep })).sort((a, b) => a.perRep - b.perRep);
+  // a receipt: 15 Favor (valued at the cheapest crate fill) on the cheapest empty crate, ~1s back
+  const receipt = favorG != null && crate ? { cost: 15 * favorG + (buyCrates ? crate.p : 0) - 100, rep: 50 } : null;
+  if (receipt) receipt.perRep = receipt.cost / receipt.rep;
+
+  // plan: Shipping Label first, writs to Friendly, then whichever is cheaper per rep: writs once each, else receipts
+  let need = Math.max(0, goal - at), pos = at, gold = 0, nWrit = 0, nRec = 0, days = 0, favor = 0;
+  if (!label && need > 0) { const g = Math.min(2000, need); need -= g; pos += g; }
+  let pool = [];
+  while (need > 0 && days < 400) {
+    days++; pool = writs.slice();
+    for (const r of pool) {
+      if (need <= 0) break;
+      if (pos >= friendly && receipt && r.perRep > receipt.perRep) break;
+      gold += r.total; nWrit++; need -= r.w.writRep; pos += r.w.writRep;
+    }
+    if (need > 0 && pos >= friendly && receipt) { const n = Math.ceil(need / 50); nRec += n; gold += n * receipt.cost; favor += n * 15; need = 0; }
+    if (!receipt && pos >= friendly && writs.length === 0) break;
+  }
+  const opt = (v, cur) => ST.map((s) => `<option${s.name === cur ? " selected" : ""}>${s.name}</option>`).join("");
+  const g = (c) => c == null ? "–" : money(Math.round(c));
+  $("mcMain").innerHTML = `
+    <h2>Plan your reputation</h2>
+    <div class="mcInputs">
+      <label>I'm <select id="mcStand">${opt(0, stand)}</select></label>
+      <label>with <input type="number" id="mcInto" min="0" step="50" value="${into}" style="width:80px"> into it</label>
+      <label>aiming for <select id="mcTarget">${opt(0, target)}</select></label>
+      <label><input type="checkbox" id="mcLabel"${label ? " checked" : ""}> already used my Shipping Label</label>
+      <label><input type="checkbox" id="mcHave"${mc.have ? " checked" : ""}> I have the writ scrolls</label>
+      <label><input type="checkbox" id="mcBuyCrates"${buyCrates ? " checked" : ""}> buy empty crates</label>
+    </div>
+    <div class="mcPlan">
+      <div><span class="v">${(Math.max(0, goal - at)).toLocaleString()}</span><small>reputation to go</small></div>
+      <div><span class="v">${g(gold)}</span><small>cheapest cost at today's prices</small></div>
+      <div><span class="v">${nWrit.toLocaleString()}</span><small>writ turn-ins, over ${days} day${days === 1 ? "" : "s"}</small></div>
+      <div><span class="v">${nRec.toLocaleString()}</span><small>receipts on empty crates (${favor.toLocaleString()} Favor)</small></div>
+    </div>
+    <p class="note">Writs need the scroll plus the item and each counts once a day. Receipts need Friendly, cost 15 Merchant's Favor plus an empty crate, and have no limit.
+      ${receipt ? `A receipt works out at ${g(receipt.perRep * 1000)} per 1,000 rep, so only writs cheaper than that are worth doing past Friendly.` : "There aren't enough crate prices yet to value a receipt."}</p>
+
+    <h2>Rep for your gold</h2>
+    <table class="rsTable"><thead><tr><th>Turn in</th><th>Rep</th><th class="hm">Scroll</th><th>Item</th><th>Total</th><th>Per 1,000 rep</th></tr></thead><tbody>
+      ${receipt ? `<tr class="on"><td><div class="nm">Forged Delivery Receipt on an empty crate</div><small>no daily limit, needs Friendly</small></td><td>50</td>
+        <td class="hm">15 Favor</td><td>${buyCrates ? `${g(crate.p)} crate` : "your own crate"}</td><td>${g(receipt.cost)}</td><td>${g(receipt.perRep * 1000)}</td></tr>` : ""}
+      ${writs.map((r) => `<tr><td><div class="it">${img(String(r.w.itemId))}<div style="min-width:0"><div class="nm">${esc(r.w.name)}<span class="tier ${r.w.writTier}">${r.w.writTier}</span></div>
+        <small>${r.w.profession}, ${r.how === "craft" ? `craft for ${g(r.craft)}` : `buy for ${g(r.buy)}`}${r.how === "craft" && r.buy ? `, listed ${g(r.buy)}` : ""}</small></div></div></td>
+        <td>${r.w.writRep}</td><td class="hm">${mc.have ? "have it" : g(r.scroll)}</td><td>${g(r.item)}</td><td>${g(r.total)}</td><td>${g(r.perRep * 1000)}</td></tr>`).join("")}
+    </tbody></table>
+
+    <h2>Merchant's Favor from crates</h2>
+    <p class="note">Fill a Waylaid Crate with the cheapest option it accepts. The coin it pays back is taken off. Artisan crates are left out because their payouts aren't known yet.</p>
+    <table class="rsTable"><thead><tr><th>Crate</th><th>Cheapest fill</th><th>Fill cost</th><th class="hm">Coin back</th><th>Favor</th><th>Per Favor</th><th class="hm">With a bought crate</th></tr></thead><tbody>
+      ${routes.map((r) => `<tr><td><div class="nm">${esc(r.c.crateName.replace("Waylaid Crate: ", ""))}</div><small>level ${r.c.requiredLevel ?? "?"}</small></td>
+        <td><div class="it">${img(String(r.fill.itemId))}<span>${r.fill.qty} × ${esc(r.fill.name)}</span></div></td><td>${g(r.fill.cost)}</td>
+        <td class="hm">${g((r.c.gold || 0) * 10000)}</td><td>${r.c.favor}</td><td>${r.perFavor <= 0 ? `<span class="up">free, pays ${g(-r.net)}</span>` : g(r.perFavor)}</td><td class="hm">${g(r.perFavorBought)}</td></tr>`).join("")}
+    </tbody></table>`;
+  const W2 = W.rewards.filter((r) => r.cost && (r.currency === "Merchant's Favor" || r.standing || r.name.startsWith("Profession")));
+  $("mcSide").innerHTML = `<div class="box"><h3>How this works</h3><div class="note">
+      <p>Reputation comes from Craftsman's Writs (75, 125 or 200 rep, each once a day), the one-time Shipping Label (2,000), and Forged Delivery Receipts
+      on empty crates (50 each, from Friendly, no limit).</p>
+      <p>Merchant's Favor comes from filling Waylaid Crates. It buys receipts and the rewards below.</p>
+      <p>Prices are the cheapest listing now. Writ items use whichever is cheaper: buying it or crafting it.</p>
+      ${favorG != null ? `<p>Favor is valued at ${money(Math.round(favorG))} each, from the cheapest crate fill.</p>` : ""}</div></div>
+    <div class="box"><h3>Favor shop</h3><table class="kv" style="width:100%">${W2.map((r) =>
+      `<tr><td>${esc(r.name)}<div class="note">${r.standing || "any standing"}</div></td><td>${r.cost.toLocaleString()} Favor${favorG != null ? `<div class="note">${money(Math.round(r.cost * favorG))}</div>` : ""}</td></tr>`).join("")}</table></div>
+    <div class="box"><h3>Standings</h3><table class="kv" style="width:100%">${ST.map((s) => `<tr><td>${s.name}</td><td>${s.points.toLocaleString()}</td></tr>`).join("")}</table></div>`;
+  const save = { mcStand: "value", mcInto: "value", mcTarget: "value" };
+  for (const [k, p] of Object.entries(save)) $(k).onchange = () => { localStorage[k] = $(k)[p]; renderMerchant(); };
+  $("mcLabel").onchange = () => { localStorage.mcLabel = $("mcLabel").checked ? "1" : "0"; renderMerchant(); };
+  $("mcHave").onchange = () => { mc.have = $("mcHave").checked; localStorage.mcHave = mc.have ? "1" : "0"; renderMerchant(); };
+  $("mcBuyCrates").onchange = () => { localStorage.mcBuyCrates = $("mcBuyCrates").checked ? "1" : "0"; renderMerchant(); };
+}
+
+if (["ah", "rs", "cr", "mc"].includes(localStorage.tab)) setTab(localStorage.tab);
 </script>
 </body>
 </html>
