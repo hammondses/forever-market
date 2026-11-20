@@ -331,6 +331,9 @@ def crafting() -> dict:
     recipes = [r for r in rdata["recipes"] if r["out"]]
     for r in recipes:
         ids |= {str(r["out"][0])} | {str(i) for i, _ in r["reagents"]} | ({str(r["scroll"])} if r["scroll"] else set())
+    quests = json.loads((research / "quest-recipes.json").read_text())
+    for qs in quests.values():
+        ids |= {str(t["id"]) for q in qs for t in q["turnins"]}
     series: dict[str, list[int]] = {}
     for i, b in m.db.execute(
             "SELECT item, minBuyout FROM auctiondb_non_commodity_data WHERE scope=? AND ts>=? AND minBuyout>0",
@@ -348,7 +351,7 @@ def crafting() -> dict:
         prices[i] = [cur[0], cur[1], cur[2], sorted(v)[len(v) // 2] if v else None,
                      round(m.sold.get(i, 0), 1), m.vendor(i)]
     return {"latest": m.now, "writs": writs, "waylaid": waylaid, "prices": prices, "recipes": recipes,
-            "vendorPrices": rdata["vendorPrices"], "names": {i: rdata["names"].get(i) or m.name(i) for i in ids}}
+            "vendorPrices": rdata["vendorPrices"], "quests": quests, "names": {i: rdata["names"].get(i) or m.name(i) for i in ids}}
 
 
 class Handler(BaseHTTPRequestHandler):

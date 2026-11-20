@@ -1295,16 +1295,42 @@ function matEach(id, mode) {
   if (v != null && (a == null || v <= a)) return { each: v, src: "vendor" };
   return a != null ? { each: a, src: "AH" } : { each: null, src: "none listed" };
 }
+// cheapest way to get a quest turn-in: buy it, or craft it from bought materials
+function turninEach(id, mode) {
+  const e = matEach(id, mode);
+  cr.byOut ??= Object.fromEntries(cr.data.recipes.map((x) => [String(x.out[0]), x]));
+  const x = cr.byOut[String(id)];
+  if (x) {
+    let m = 0;
+    for (const [rid, q] of x.reagents) { const f = matEach(rid, mode); if (f.each == null) { m = null; break; } m += f.each * q; }
+    if (m != null && (e.each == null || m / (x.out[1] || 1) < e.each)) return { each: m / (x.out[1] || 1), src: "craft it" };
+  }
+  return e;
+}
+// a recipe item that's a quest reward: price each quest by its turn-ins, keep the cheapest
+function questCalc(r, mode) {
+  const qs = r.scroll && cr.data.quests?.[String(r.scroll)];
+  if (!qs) return null;
+  const opts = qs.map((q) => {
+    let cost = 0;
+    const items = q.turnins.map((t) => { const e = turninEach(t.id, mode);
+      if (cost != null) cost = t.qty == null || e.each == null ? null : cost + e.each * t.qty; return { ...t, ...e }; });
+    return { q, items, cost: q.turnins.length ? cost : null };
+  });
+  return opts.sort((a, b) => (a.cost ?? 1e15) - (b.cost ?? 1e15))[0];
+}
 function recipeCalc(r, matMode = $("crMats").value, sellMode = $("crSell").value) {
   let mats = 0, missing = false;
   for (const [id, q] of r.reagents) { const e = matEach(id, matMode); e.each == null ? (missing = true) : (mats += e.each * q); }
   const made = r.out[1] || 1, sell = ahPrice(r.out[0], sellMode), p = cp(r.out[0]);
   const each = mats / made, profit = sell == null || missing || r.bop ? null : sell * AH_CUT - each;
   const sp = r.scroll ? cp(r.scroll) : [];
-  const recipe = sp[0] ?? r.scrollPrice ?? null, recipeFrom = sp[0] != null ? "AH" : r.scrollPrice != null ? "vendor" : null;
+  const quest = sp[0] == null && r.scrollPrice == null ? questCalc(r, matMode) : null;
+  const recipe = sp[0] ?? r.scrollPrice ?? quest?.cost ?? null,
+    recipeFrom = sp[0] != null ? "AH" : r.scrollPrice != null ? "vendor" : quest ? "quest" : null;
   const payback = profit > 0 && recipe != null ? Math.ceil(recipe / profit) : null;
   return { mats: each, missing, sell, profit, listings: p[1] || 0, sold: p[4] || 0, recipe, recipeFrom, recipeListed: sp[1] || 0,
-    payback, days: payback && p[4] ? payback / p[4] : null };
+    payback, days: payback && p[4] ? payback / p[4] : null, quest };
 }
 const SCROLL = { blacksmithing: "Plans", leatherworking: "Pattern", tailoring: "Pattern", engineering: "Schematic", alchemy: "Recipe",
   enchanting: "Formula", cooking: "Recipe", "first aid": "Manual" };
@@ -1316,6 +1342,8 @@ function verdict(r, c = recipeCalc(r)) {
   if (r.bop) return { cls: "vd-na", t: "BoP", s: "can't sell what it makes", score: 3e9 };
   if (c.missing || c.sell == null) return { cls: "vd-na", t: "No price", s: c.sell == null ? "product not listed" : "materials not listed", score: 2e9 };
   if (!(c.profit > 0)) return { cls: "vd-no", t: "Skip", s: "loses money each craft", score: 1e9 };
+  if (c.recipeFrom === "quest" && c.recipe == null)
+    return c.sold ? { cls: "vd-yes", t: "Quest", s: "turn-ins not all priced", score: 50 } : { cls: "vd-meh", t: "Quest", s: "barely sells", score: 1e8 };
   if (c.recipe == null || !n) return { cls: "vd-yes", t: "Yes", s: "recipe costs nothing", score: -1 };
   if (!c.sold) return { cls: "vd-meh", t: "Slow", s: `${crafts}, barely sells`, score: 1e8 + n };
   return d <= 7 ? { cls: "vd-yes", t: "Buy", s: `${crafts}, ${when}`, score: d }
@@ -1330,12 +1358,12 @@ function renderRecipes() {
   if (!RPROFS.some(([k]) => k === cr.prof)) cr.prof = "blacksmithing";
   const all = cr.data.recipes.filter((r) => r.scroll).map((r) => ({ r, c: recipeCalc(r) }));
   $("crProfs").innerHTML = RPROFS.map(([k, l]) => {
-    const xs = all.filter((x) => x.r.profession === k && x.c.recipe != null), good = xs.filter((x) => x.c.profit > 0).length;
+    const xs = all.filter((x) => x.r.profession === k && (x.c.recipe != null || x.c.quest)), good = xs.filter((x) => x.c.profit > 0).length;
     return `<button data-p="${k}" class="${cr.prof === k ? "on" : ""}">${l}<small>${good} of ${xs.length} buyable recipes pay</small></button>`;
   }).join("");
   for (const b of $("crProfs").children) b.onclick = () => { cr.prof = localStorage.crProf = b.dataset.p; cr.sel = null; renderCrafting(); };
   const rows = all.filter(({ r, c }) => r.profession === cr.prof && (r.train ?? 0) <= skill && (!pos || c.profit > 0)
-    && (!listed || c.recipe != null) && (bop || !r.bop) && (!q || r.name.toLowerCase().includes(q)));
+    && (!listed || c.recipe != null || c.quest) && (bop || !r.bop) && (!q || r.name.toLowerCase().includes(q)));
   const key = { name: (x) => x.r.name, skill: (x) => x.r.train ?? 0, recipe: (x) => x.c.recipe ?? 1e12, sell: (x) => x.c.sell ?? -1,
     mats: (x) => x.c.mats, profit: (x) => x.c.profit ?? -1e12, payback: (x) => x.c.payback ?? 1e9, days: (x) => x.c.days ?? (x.c.payback ? 1e8 + x.c.payback : 1e9),
     sold: (x) => x.c.sold, worth: (x) => verdict(x.r, x.c).score }[rc.sort];
@@ -1350,7 +1378,7 @@ function renderRecipes() {
       <div class="nm">${esc(r.name)}${r.out[1] > 1 ? ` ×${r.out[1]}` : ""}</div>
       <small>${esc(scrollName(r))}${r.bop ? ` · <span class="down">binds on pickup</span>` : ""}${r.faction ? ` · ${r.faction}` : ""}</small></div></div></td>
       <td>${vdCell(verdict(r, c))}</td><td class="${c.profit > 0 ? "up" : "down"}">${signed(c.profit)}</td><td class="hm">${r.train ?? "?"}</td>
-      <td>${c.recipe == null ? `<span class="flat">not for sale</span>` : money(c.recipe)}<small>${c.recipeFrom === "AH" ? `${c.recipeListed} on the AH` : c.recipeFrom === "vendor" ? "from a vendor" : learnTxt(r)}</small></td>
+      <td>${c.recipe == null ? `<span class="flat">${c.quest ? "quest" : "not for sale"}</span>` : money(c.recipe)}<small>${c.quest ? `quest: ${esc(c.quest.q.name)}` : c.recipeFrom === "AH" ? `${c.recipeListed} on the AH` : c.recipeFrom === "vendor" ? "from a vendor" : learnTxt(r)}</small></td>
       <td>${c.sell == null ? `<span class="flat">none listed</span>` : money(c.sell)}<small>${c.listings} listed</small></td>
       <td>${c.missing ? `<span class="flat">–</span><small>not all listed</small>` : money(Math.round(c.mats))}</td>
       <td>${c.payback ? `${c.payback.toLocaleString()} craft${c.payback === 1 ? "" : "s"}` : c.profit > 0 ? "free recipe" : "never"}</td>
@@ -1370,14 +1398,25 @@ function recipeBlock(r) {
     return `<tr><td><div class="it">${img(String(id))}<div>${esc(nm(id))}<div class="note">${e.src}</div></div></div></td><td>${q}</td>
       <td>${e.each == null ? "–" : money(e.each)}</td><td>${e.each == null ? "–" : money(e.each * q)}</td></tr>`; }).join("");
   return `<table class="kv" style="width:100%;margin-top:8px">
-      <tr><td>Recipe</td><td>${c.recipe == null ? learnTxt(r) : `${money(c.recipe)} ${c.recipeFrom === "AH" ? "on the AH" : "from a vendor"}`}</td></tr>
+      <tr><td>Recipe</td><td>${c.quest ? `quest reward${c.recipe != null ? `, turn-ins cost ${money(Math.round(c.recipe))}` : ""}` : c.recipe == null ? learnTxt(r) : `${money(c.recipe)} ${c.recipeFrom === "AH" ? "on the AH" : "from a vendor"}`}</td></tr>
       <tr><td>Learn at</td><td>${r.train ?? "?"} ${r.profession}${r.rep ? `, needs ${["", "", "", "", "", "Friendly", "Honored", "Revered", "Exalted"][r.rep[1]]}` : ""}</td></tr>
       <tr><td>Makes</td><td>${esc(nm(r.out[0]))}${r.out[1] > 1 ? ` ×${r.out[1]}` : ""}</td></tr>
       <tr><td>Sells for</td><td>${r.bop ? "binds on pickup" : c.sell == null ? "none listed" : `${money(c.sell)} (${c.listings} listed, ${c.sold} sold a day)`}</td></tr>
       <tr><td>Materials each</td><td>${c.missing ? "not all listed" : money(Math.round(c.mats))}</td></tr>
       <tr><td>Profit each</td><td class="${c.profit > 0 ? "up" : "down"}">${signed(c.profit)}</td></tr>
       <tr><td>Pays back after</td><td>${c.payback ? `${c.payback.toLocaleString()} craft${c.payback === 1 ? "" : "s"}${c.days != null ? `, about ${c.days < 1 ? "under a day" : Math.round(c.days) + " days"} of region sales` : ""}` : c.profit > 0 ? "free recipe" : "never at today's prices"}</td></tr></table>
+    ${c.quest ? questBlock(c.quest) : ""}
     <div class="rsList"><table><thead><tr><th>Material</th><th>Qty</th><th>Each</th><th>Total</th></tr></thead><tbody>${mats}</tbody></table></div>`;
+}
+
+function questBlock({ q, items, cost }) {
+  return `<div class="box" style="margin:8px 0;padding:8px 10px"><b>Quest: ${esc(q.name)}</b> <span class="note">(level ${q.reqlevel})</span>
+    ${q.text ? `<div class="note" style="margin:4px 0">${esc(q.text)}</div>` : ""}
+    ${q.prereq.length ? `<div class="note">Part of a chain: earlier quests come first, and may need their own turn-ins.</div>` : ""}
+    ${items.length ? `<div class="rsList"><table><thead><tr><th>Turn in</th><th>Qty</th><th>Each</th><th>Total</th></tr></thead><tbody>${items.map((t) =>
+      `<tr><td><div class="it">${img(String(t.id))}<div>${esc(t.name || nm(t.id))}<div class="note">${t.src}</div></div></div></td>
+       <td>${t.qty ?? "?"}</td><td>${t.each == null ? "–" : money(Math.round(t.each))}</td><td>${t.each == null || t.qty == null ? "–" : money(Math.round(t.each * t.qty))}</td></tr>`).join("")}</tbody></table></div>` : ""}
+    ${cost == null && items.length ? `<div class="note">${items.some((t) => t.qty == null) ? "The quest data doesn't say how many to hand in. " : ""}${items.some((t) => t.each == null) ? "Some turn-ins aren't on the AH (dungeon or mob drops)." : ""}</div>` : ""}</div>`;
 }
 
 function rcSelect(spell) {

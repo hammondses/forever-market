@@ -1,0 +1,1491 @@
+{
+ "4624": [
+  {
+   "id": 715,
+   "name": "Liquid Stone",
+   "reqlevel": 35,
+   "text": "Bring a Healing Potion and a Lesser Invisibility Potion to Lucien Tosselwrench in the Badlands.",
+   "turnins": [
+    {
+     "id": 929,
+     "name": "Healing Potion",
+     "qty": 1
+    },
+    {
+     "id": 3823,
+     "name": "Lesser Invisibility Potion",
+     "qty": 1
+    }
+   ],
+   "prereq": [
+    714
+   ],
+   "next": null
+  }
+ ],
+ "7981": [
+  {
+   "id": 2753,
+   "name": "Trampled Under Foot",
+   "reqlevel": 32,
+   "text": "Bring four Green Iron Helms, four Green Iron Bracers, and two Green Iron Leggings to Orokk Omosh in Orgrimmar.",
+   "turnins": [
+    {
+     "id": 3836,
+     "name": "Green Iron Helm",
+     "qty": 4
+    },
+    {
+     "id": 3835,
+     "name": "Green Iron Bracers",
+     "qty": 4
+    },
+    {
+     "id": 3842,
+     "name": "Green Iron Leggings",
+     "qty": 2
+    }
+   ],
+   "prereq": [
+    2752
+   ],
+   "next": 2754
+  }
+ ],
+ "7979": [
+  {
+   "id": 2751,
+   "name": "Barbaric Battlements",
+   "reqlevel": 32,
+   "text": "Bring two Patterned Bronze Bracers, two Bronze Greatswords, and two Sharp Claws to Orokk Omosh in Orgrimmar.",
+   "turnins": [
+    {
+     "id": 2868,
+     "name": "Patterned Bronze Bracers",
+     "qty": 2
+    },
+    {
+     "id": 7957,
+     "name": "Bronze Greatsword",
+     "qty": 2
+    },
+    {
+     "id": 5635,
+     "name": "Sharp Claw",
+     "qty": 2
+    }
+   ],
+   "prereq": [],
+   "next": 2752
+  }
+ ],
+ "7982": [
+  {
+   "id": 2755,
+   "name": "Joys of Omosh",
+   "reqlevel": 32,
+   "text": "Watch and learn the Omosh Dance of Joy.",
+   "turnins": [],
+   "prereq": [
+    2754
+   ],
+   "next": null
+  }
+ ],
+ "7980": [
+  {
+   "id": 2754,
+   "name": "Horns of Frenzy",
+   "reqlevel": 32,
+   "text": "Bring two Solid Iron Mauls, two Silvered Bronze Boots, and two Silvered Bronze Gauntlets to Orokk Omosh in Orgrimmar.",
+   "turnins": [
+    {
+     "id": 3851,
+     "name": "Solid Iron Maul",
+     "qty": 2
+    },
+    {
+     "id": 3482,
+     "name": "Silvered Bronze Boots",
+     "qty": 2
+    },
+    {
+     "id": 3483,
+     "name": "Silvered Bronze Gauntlets",
+     "qty": 2
+    }
+   ],
+   "prereq": [
+    2753
+   ],
+   "next": 2755
+  }
+ ],
+ "12825": [
+  {
+   "id": 5307,
+   "name": "Corruption",
+   "reqlevel": 50,
+   "text": "Find the Black Guard Swordsmith in Stratholme and destroy him. Recover the Insignia of the Black Guard and return to Seril Scourgebane.",
+   "turnins": [
+    {
+     "id": 13350,
+     "name": null,
+     "qty": null
+    }
+   ],
+   "prereq": [],
+   "next": null
+  }
+ ],
+ "3609": [
+  {
+   "id": 1578,
+   "name": "Supplying the Front",
+   "reqlevel": 1,
+   "text": "Bring 6 Copper Axes and 6 Copper Chain Belts to Thorvald in the southern guard tower of Loch Modan.",
+   "turnins": [
+    {
+     "id": 2845,
+     "name": "Copper Axe",
+     "qty": 6
+    },
+    {
+     "id": 2851,
+     "name": "Copper Chain Belt",
+     "qty": 6
+    }
+   ],
+   "prereq": [],
+   "next": null
+  }
+ ],
+ "12821": [
+  {
+   "id": 5306,
+   "name": "Snakestone of the Shadow Huntress",
+   "reqlevel": 50,
+   "text": "Travel to Blackrock Spire and slay Shadow Hunter Vosh'gajin. Recover Vosh'gajin's Snakestone and return to Kilram.",
+   "turnins": [
+    {
+     "id": 13352,
+     "name": null,
+     "qty": null
+    }
+   ],
+   "prereq": [],
+   "next": null
+  }
+ ],
+ "12696": [
+  {
+   "id": 5127,
+   "name": "The Demon Forge",
+   "reqlevel": 55,
+   "text": "Travel to Blackrock Spire and find Goraluk Anvilcrack. Slay him and then use the Blood Stained Pike upon his corpse. After his soul has been siphoned, the pike will be Soul Stained. You must also find the Unforged Rune Covered Breastplate. Return both the Soul Stained Pike and the Unforged Rune Covered Breastplate to Lorax in Winterspring.",
+   "turnins": [
+    {
+     "id": 12847,
+     "name": null,
+     "qty": null
+    },
+    {
+     "id": 12806,
+     "name": null,
+     "qty": null
+    }
+   ],
+   "prereq": [
+    5126
+   ],
+   "next": null
+  }
+ ],
+ "12824": [
+  {
+   "id": 5305,
+   "name": "Sweet Serenity",
+   "reqlevel": 50,
+   "text": "Travel to Stratholme and kill the Crimson Hammersmith. Recover the Crimson Hammersmith's Apron and return to Lilith.",
+   "turnins": [
+    {
+     "id": 13351,
+     "name": null,
+     "qty": null
+    }
+   ],
+   "prereq": [],
+   "next": null
+  },
+  {
+   "id": 8869,
+   "name": "Sweet Serenity",
+   "reqlevel": 50,
+   "text": "Travel to Stratholme and kill the Crimson Hammersmith. Recover the Crimson Hammersmith's Apron and return to Lilith.",
+   "turnins": [
+    {
+     "id": 13351,
+     "name": null,
+     "qty": null
+    }
+   ],
+   "prereq": [],
+   "next": null
+  }
+ ],
+ "12727": [
+  {
+   "id": 7649,
+   "name": "Enchanted Thorium Platemail: Volume I",
+   "reqlevel": 60,
+   "text": "Return the book to its rightful owners.",
+   "turnins": [],
+   "prereq": [],
+   "next": null
+  }
+ ],
+ "12725": [
+  {
+   "id": 7651,
+   "name": "Enchanted Thorium Platemail: Volume III",
+   "reqlevel": 55,
+   "text": "Return the book to its rightful owners.",
+   "turnins": [],
+   "prereq": [],
+   "next": null
+  }
+ ],
+ "12726": [
+  {
+   "id": 7650,
+   "name": "Enchanted Thorium Platemail: Volume II",
+   "reqlevel": 60,
+   "text": "Return the book to its rightful owners.",
+   "turnins": [],
+   "prereq": [],
+   "next": null
+  }
+ ],
+ "12699": [
+  {
+   "id": 5124,
+   "name": "Fiery Plate Gauntlets",
+   "reqlevel": 55,
+   "text": "Bring Malyfous Darkhammer 6 Enchanted Thorium Bars, 2 Essence of Fire, and 4 Star Rubies. You will also need to turn in your Unfired Plate Gauntlets.",
+   "turnins": [
+    {
+     "id": 12812,
+     "name": null,
+     "qty": null
+    },
+    {
+     "id": 12655,
+     "name": "Enchanted Thorium Bar",
+     "qty": 6
+    },
+    {
+     "id": 7078,
+     "name": "Essence of Fire",
+     "qty": 2
+    },
+    {
+     "id": 7910,
+     "name": "Star Ruby",
+     "qty": null
+    }
+   ],
+   "prereq": [
+    5103
+   ],
+   "next": null
+  }
+ ],
+ "9367": [
+  {
+   "id": 2758,
+   "name": "The Origins of Smithing",
+   "reqlevel": 40,
+   "text": "Bring six Golden Scale Bracers to Hank the Hammer in Stormwind.",
+   "turnins": [
+    {
+     "id": 6040,
+     "name": "Golden Scale Bracers",
+     "qty": 6
+    }
+   ],
+   "prereq": [],
+   "next": 2759
+  }
+ ],
+ "12688": [
+  {
+   "id": 7653,
+   "name": "Imperial Plate Belt",
+   "reqlevel": 50,
+   "text": null,
+   "turnins": [
+    {
+     "id": 12359,
+     "name": "Thorium Bar",
+     "qty": null
+    }
+   ],
+   "prereq": [
+    7652
+   ],
+   "next": null
+  }
+ ],
+ "12700": [
+  {
+   "id": 7654,
+   "name": "Imperial Plate Boots",
+   "reqlevel": 50,
+   "text": null,
+   "turnins": [
+    {
+     "id": 12359,
+     "name": "Thorium Bar",
+     "qty": null
+    }
+   ],
+   "prereq": [
+    7652
+   ],
+   "next": null
+  }
+ ],
+ "12690": [
+  {
+   "id": 7655,
+   "name": "Imperial Plate Bracer",
+   "reqlevel": 50,
+   "text": null,
+   "turnins": [
+    {
+     "id": 12359,
+     "name": "Thorium Bar",
+     "qty": null
+    }
+   ],
+   "prereq": [
+    7652
+   ],
+   "next": null
+  }
+ ],
+ "12705": [
+  {
+   "id": 7656,
+   "name": "Imperial Plate Chest",
+   "reqlevel": 50,
+   "text": null,
+   "turnins": [
+    {
+     "id": 12359,
+     "name": "Thorium Bar",
+     "qty": null
+    }
+   ],
+   "prereq": [
+    7652
+   ],
+   "next": null
+  }
+ ],
+ "12701": [
+  {
+   "id": 7657,
+   "name": "Imperial Plate Helm",
+   "reqlevel": 50,
+   "text": null,
+   "turnins": [
+    {
+     "id": 12359,
+     "name": "Thorium Bar",
+     "qty": null
+    }
+   ],
+   "prereq": [
+    7652
+   ],
+   "next": null
+  }
+ ],
+ "12715": [
+  {
+   "id": 7658,
+   "name": "Imperial Plate Leggings",
+   "reqlevel": 50,
+   "text": null,
+   "turnins": [
+    {
+     "id": 12359,
+     "name": "Thorium Bar",
+     "qty": null
+    }
+   ],
+   "prereq": [
+    7652
+   ],
+   "next": null
+  }
+ ],
+ "12687": [
+  {
+   "id": 7659,
+   "name": "Imperial Plate Shoulders",
+   "reqlevel": 50,
+   "text": null,
+   "turnins": [
+    {
+     "id": 12359,
+     "name": "Thorium Bar",
+     "qty": null
+    }
+   ],
+   "prereq": [
+    7652
+   ],
+   "next": null
+  }
+ ],
+ "7984": [
+  {
+   "id": 2762,
+   "name": "The Great Silver Deceiver",
+   "reqlevel": 40,
+   "text": "Bring forty Mithril Bars and five Truesilver Bars to Galvan the Ancient in Stranglethorn.",
+   "turnins": [
+    {
+     "id": 3860,
+     "name": "Mithril Bar",
+     "qty": 40
+    },
+    {
+     "id": 6037,
+     "name": "Truesilver Bar",
+     "qty": 5
+    }
+   ],
+   "prereq": [
+    2760
+   ],
+   "next": null
+  }
+ ],
+ "7983": [
+  {
+   "id": 2761,
+   "name": "Smelt On, Smelt Off",
+   "reqlevel": 40,
+   "text": "Bring forty Mithril Bars and forty Iron Bars to Galvan the Ancient in Stranglethorn.",
+   "turnins": [
+    {
+     "id": 3575,
+     "name": "Iron Bar",
+     "qty": 40
+    },
+    {
+     "id": 3860,
+     "name": "Mithril Bar",
+     "qty": 40
+    }
+   ],
+   "prereq": [
+    2760
+   ],
+   "next": 2764
+  }
+ ],
+ "7985": [
+  {
+   "id": 2763,
+   "name": "The Art of the Imbue",
+   "reqlevel": 40,
+   "text": "Bring forty Mithril Bars and four Citrines to Galvan the Ancient in Stranglethorn.",
+   "turnins": [
+    {
+     "id": 3860,
+     "name": "Mithril Bar",
+     "qty": 40
+    },
+    {
+     "id": 3864,
+     "name": "Citrine",
+     "qty": 4
+    }
+   ],
+   "prereq": [
+    2760
+   ],
+   "next": null
+  }
+ ],
+ "277673": [
+  {
+   "id": 95217,
+   "name": "The Quarry's Smith",
+   "reqlevel": 7,
+   "text": "Collect 12 Copper Bars and 4 Toughened Boar Hides and deliver them to Frast Dokner.",
+   "turnins": [
+    {
+     "id": 2840,
+     "name": "Copper Bar",
+     "qty": 12
+    },
+    {
+     "id": 267416,
+     "name": null,
+     "qty": null
+    }
+   ],
+   "prereq": [],
+   "next": null
+  },
+  {
+   "id": 96874,
+   "name": "This Is Spinal Axe",
+   "reqlevel": 6,
+   "text": "Ug'thok in Orgrimmar wants you to collect 5 Weathered Spines from beasts in Thunder Ridge, along with 5 Rough Grinding Stones.",
+   "turnins": [
+    {
+     "id": 275719,
+     "name": null,
+     "qty": null
+    },
+    {
+     "id": 3470,
+     "name": "Rough Grinding Stone",
+     "qty": 5
+    }
+   ],
+   "prereq": [],
+   "next": null
+  }
+ ],
+ "18592": [
+  {
+   "id": 7604,
+   "name": "A Binding Contract",
+   "reqlevel": 60,
+   "text": "Turn the Thorium Brotherhood Contract in to Lokhtos Darkbargainer if you would like to receive the plans for Sulfuron.",
+   "turnins": [
+    {
+     "id": 17203,
+     "name": "Sulfuron Ingot",
+     "qty": null
+    }
+   ],
+   "prereq": [],
+   "next": null
+  }
+ ],
+ "2889": [
+  {
+   "id": 384,
+   "name": "Beer Basted Boar Ribs",
+   "reqlevel": 5,
+   "text": "Ragnar Thunderbrew in Kharanos wants 6 Crag Boar Ribs and a mug of Rhapsody Malt.",
+   "turnins": [
+    {
+     "id": 2886,
+     "name": "Crag Boar Rib",
+     "qty": 6
+    },
+    {
+     "id": 2894,
+     "name": "Rhapsody Malt",
+     "qty": 1
+    }
+   ],
+   "prereq": [],
+   "next": null
+  }
+ ],
+ "3734": [
+  {
+   "id": 498,
+   "name": "The Rescue",
+   "reqlevel": 17,
+   "text": "Krusk in Tarren Mill needs you to free Drull and Tog'thar from Durnholde Keep.",
+   "turnins": [],
+   "prereq": [],
+   "next": 533
+  }
+ ],
+ "3679": [
+  {
+   "id": 418,
+   "name": "Thelsamar Blood Sausages",
+   "reqlevel": 7,
+   "text": "Bring 3 pieces of Bear Meat, 3 Boar Intestines, and 3 Spider Ichor to Vidra Hearthstove in Thelsamar.",
+   "turnins": [
+    {
+     "id": 3172,
+     "name": "Boar Intestines",
+     "qty": 3
+    },
+    {
+     "id": 3173,
+     "name": "Bear Meat",
+     "qty": 3
+    },
+    {
+     "id": 3174,
+     "name": "Spider Ichor",
+     "qty": 3
+    }
+   ],
+   "prereq": [],
+   "next": null
+  }
+ ],
+ "3681": [
+  {
+   "id": 471,
+   "name": "Apprentice's Duties",
+   "reqlevel": 18,
+   "text": "Collect 6 Giant Crocolisk Skins and bring them to James Halloran in Menethil Harbor.",
+   "turnins": [
+    {
+     "id": 3348,
+     "name": null,
+     "qty": null
+    }
+   ],
+   "prereq": [
+    484
+   ],
+   "next": null
+  }
+ ],
+ "3678": [
+  {
+   "id": 385,
+   "name": "Crocolisk Hunting",
+   "reqlevel": 10,
+   "text": "Get 5 pieces of Crocolisk Meat and 6 Crocolisk Skins for Marek Ironheart at the Farstrider Lodge.",
+   "turnins": [
+    {
+     "id": 2924,
+     "name": "Crocolisk Meat",
+     "qty": 5
+    },
+    {
+     "id": 2925,
+     "name": null,
+     "qty": null
+    }
+   ],
+   "prereq": [],
+   "next": null
+  }
+ ],
+ "3682": [
+  {
+   "id": 296,
+   "name": "Ormer's Revenge",
+   "reqlevel": 22,
+   "text": "Ormer Ironbraid at the Whelgar Excavation Site wants you to kill Sarltooth and return to him with one of his talons once the task is fulfilled.",
+   "turnins": [
+    {
+     "id": 3638,
+     "name": null,
+     "qty": null
+    }
+   ],
+   "prereq": [
+    295
+   ],
+   "next": null
+  }
+ ],
+ "5487": [
+  {
+   "id": 862,
+   "name": "Dig Rat Stew",
+   "reqlevel": 15,
+   "text": "Bring 8 Dig Rats to Grub east of the Crossroads.",
+   "turnins": [
+    {
+     "id": 5051,
+     "name": "Dig Rat",
+     "qty": 8
+    }
+   ],
+   "prereq": [],
+   "next": null
+  }
+ ],
+ "21025": [
+  {
+   "id": 8586,
+   "name": "Dirge's Kickin' Chimaerok Chops",
+   "reqlevel": 60,
+   "text": "Dirge Quikcleave in Gadgetzan wants you to bring him 20 Goblin Rocket Fuel and 20 Deeprock Salt.",
+   "turnins": [
+    {
+     "id": 9061,
+     "name": "Goblin Rocket Fuel",
+     "qty": 20
+    },
+    {
+     "id": 8150,
+     "name": "Deeprock Salt",
+     "qty": 20
+    }
+   ],
+   "prereq": [
+    8585
+   ],
+   "next": 8587
+  }
+ ],
+ "3735": [
+  {
+   "id": 501,
+   "name": "Elixir of Pain",
+   "reqlevel": 21,
+   "text": "Bring 10 vials of Mountain Lion Blood to Apothecary Lydon in Tarren Mill.",
+   "turnins": [
+    {
+     "id": 3496,
+     "name": null,
+     "qty": null
+    }
+   ],
+   "prereq": [],
+   "next": 502
+  }
+ ],
+ "3680": [
+  {
+   "id": 127,
+   "name": "Selling Fish",
+   "reqlevel": 16,
+   "text": "Bring 10 Spotted Sunfish to Dockmaster Baren in Lakeshire.",
+   "turnins": [
+    {
+     "id": 1467,
+     "name": null,
+     "qty": null
+    }
+   ],
+   "prereq": [],
+   "next": null
+  }
+ ],
+ "263513": [
+  {
+   "id": 93317,
+   "name": "Crab Season",
+   "reqlevel": 4,
+   "text": "Collect 6 pieces of Windsong Crawler Meat.",
+   "turnins": [
+    {
+     "id": 257941,
+     "name": null,
+     "qty": null
+    }
+   ],
+   "prereq": [],
+   "next": null
+  }
+ ],
+ "2701": [
+  {
+   "id": 90,
+   "name": "Seasoned Wolf Kabobs",
+   "reqlevel": 18,
+   "text": "Gather 10 Lean Wolf Flanks and Stormwind Seasoning Herbs and return to Chef Grual in Darkshire.",
+   "turnins": [
+    {
+     "id": 1015,
+     "name": "Lean Wolf Flank",
+     "qty": 10
+    },
+    {
+     "id": 2665,
+     "name": null,
+     "qty": null
+    }
+   ],
+   "prereq": [],
+   "next": null
+  }
+ ],
+ "263511": [
+  {
+   "id": 92553,
+   "name": "Restocking the Larders",
+   "reqlevel": 4,
+   "text": "Collect 3 Small Eggs and 8 Strider Meat from creatures found throughout the Shen'dar Highlands.",
+   "turnins": [
+    {
+     "id": 6889,
+     "name": "Small Egg",
+     "qty": 3
+    },
+    {
+     "id": 5469,
+     "name": "Strider Meat",
+     "qty": 8
+    }
+   ],
+   "prereq": [
+    92514,
+    93461
+   ],
+   "next": null
+  }
+ ],
+ "3737": [
+  {
+   "id": 555,
+   "name": "Soothing Turtle Bisque",
+   "reqlevel": 28,
+   "text": "Bring 10 pieces of Turtle Meat and some Soothing Spices to Chef Jessen in Southshore.",
+   "turnins": [
+    {
+     "id": 3712,
+     "name": "Turtle Meat",
+     "qty": 10
+    },
+    {
+     "id": 3713,
+     "name": "Soothing Spices",
+     "qty": 1
+    }
+   ],
+   "prereq": [],
+   "next": null
+  },
+  {
+   "id": 7321,
+   "name": "Soothing Turtle Bisque",
+   "reqlevel": 28,
+   "text": "Bring 10 pieces of Turtle Meat and some Soothing Spices to Christoph Jeffcoat in Tarren Mill.",
+   "turnins": [
+    {
+     "id": 3712,
+     "name": "Turtle Meat",
+     "qty": 10
+    },
+    {
+     "id": 3713,
+     "name": "Soothing Spices",
+     "qty": 1
+    }
+   ],
+   "prereq": [],
+   "next": null
+  }
+ ],
+ "5486": [
+  {
+   "id": 2178,
+   "name": "Easy Strider Living",
+   "reqlevel": 9,
+   "text": "Bring back 5 Strider Meat to Alanndarian Nightsong in Auberdine.",
+   "turnins": [
+    {
+     "id": 5469,
+     "name": "Strider Meat",
+     "qty": 5
+    }
+   ],
+   "prereq": [],
+   "next": null
+  }
+ ],
+ "3736": [
+  {
+   "id": 564,
+   "name": "Costly Menace",
+   "reqlevel": 30,
+   "text": "Darren Malvew of Southshore wants you to kill 8 Mountain Lions and 10 Hulking Mountain Lions.",
+   "turnins": [],
+   "prereq": [],
+   "next": null
+  }
+ ],
+ "18160": [
+  {
+   "id": 2359,
+   "name": "Klaven's Tower",
+   "reqlevel": 20,
+   "text": "Steal the Defias Tower Key, break into the Defias Tower and uncover the contents of the Duskwood Chest. Take whatever information you find back to Mathias Shaw in Stormwind. Read Kearnen's Journal to gain insight about the tower.",
+   "turnins": [
+    {
+     "id": 7908,
+     "name": null,
+     "qty": null
+    },
+    {
+     "id": 7923,
+     "name": null,
+     "qty": null
+    }
+   ],
+   "prereq": [
+    2360
+   ],
+   "next": 2607
+  },
+  {
+   "id": 2478,
+   "name": "Mission: Possible But Not Probable",
+   "reqlevel": 20,
+   "text": "Steal Silixiz's Tower Key from Foreman Silixiz, then kill two Mutated Venture Co. Drones, two Venture Co. Patrollers, and two Venture Co. Lookouts. Assassinate Grand Foreman Gallywix and take his head, then pick the lock on Gallywix's lockbox and steal the Cache of Zanzil's Altered Mixture. Take the Cache and Gallywix's Head back to Shenthul in Orgrimmar for further instruction.",
+   "turnins": [],
+   "prereq": [
+    2458
+   ],
+   "next": 2479
+  }
+ ],
+ "728": [
+  {
+   "id": 38,
+   "name": "Westfall Stew",
+   "reqlevel": 9,
+   "text": "Salma Saldean wants 3 Stringy Vulture Meat, 3 Goretusk Snouts, 3 Murloc Eyes, 3 Okra.",
+   "turnins": [
+    {
+     "id": 729,
+     "name": "Stringy Vulture Meat",
+     "qty": 3
+    },
+    {
+     "id": 730,
+     "name": "Murloc Eye",
+     "qty": 3
+    },
+    {
+     "id": 731,
+     "name": "Goretusk Snout",
+     "qty": 3
+    },
+    {
+     "id": 732,
+     "name": null,
+     "qty": null
+    }
+   ],
+   "prereq": [
+    36
+   ],
+   "next": null
+  }
+ ],
+ "249489": [
+  {
+   "id": 92755,
+   "name": "Mysterious Mysticism",
+   "reqlevel": 30,
+   "text": "Maintain your reputation with the Gelkis, and bring 3 Greater Mystic Essences to Halea in the Gelkis Village in Desolace.",
+   "turnins": [],
+   "prereq": [
+    1370
+   ],
+   "next": null
+  }
+ ],
+ "21737": [
+  {
+   "id": 8882,
+   "name": "Cluster Launcher",
+   "reqlevel": 55,
+   "text": null,
+   "turnins": [
+    {
+     "id": 21100,
+     "name": null,
+     "qty": null
+    }
+   ],
+   "prereq": [],
+   "next": null
+  }
+ ],
+ "21738": [
+  {
+   "id": 8877,
+   "name": "Firework Launcher",
+   "reqlevel": 45,
+   "text": null,
+   "turnins": [
+    {
+     "id": 21100,
+     "name": null,
+     "qty": null
+    }
+   ],
+   "prereq": [],
+   "next": null
+  }
+ ],
+ "6672": [
+  {
+   "id": 1559,
+   "name": "Flash Bomb Recipe",
+   "reqlevel": 30,
+   "text": null,
+   "turnins": [],
+   "prereq": [
+    705
+   ],
+   "next": null
+  }
+ ],
+ "277470": [
+  {
+   "id": 92911,
+   "name": "Harvesting the Harvesters",
+   "reqlevel": 8,
+   "text": "Ozwin Ironsprocket at Saldean's Farm wants you to bring him 8 Golem Isosprings, 4 Copper Modulators, and a Crude Scope.",
+   "turnins": [
+    {
+     "id": 255007,
+     "name": "Golem Isospring",
+     "qty": 8
+    },
+    {
+     "id": 4363,
+     "name": "Copper Modulator",
+     "qty": 4
+    },
+    {
+     "id": 4405,
+     "name": "Crude Scope",
+     "qty": 1
+    }
+   ],
+   "prereq": [
+    92910
+   ],
+   "next": null
+  }
+ ],
+ "6476": [
+  {
+   "id": 1487,
+   "name": "Deviate Eradication",
+   "reqlevel": 15,
+   "text": "Ebru in the Wailing Caverns wants you to kill 7 Deviate Ravagers, 7 Deviate Vipers, 7 Deviate Shamblers and 7 Deviate Dreadfangs.",
+   "turnins": [],
+   "prereq": [],
+   "next": null
+  }
+ ],
+ "5083": [
+  {
+   "id": 769,
+   "name": "Kodo Hide Bag",
+   "reqlevel": 4,
+   "text": "Bring 4 Light Leather and 4 Coarse Thread to Veren Tallstrider in Thunder Bluff.",
+   "turnins": [
+    {
+     "id": 2318,
+     "name": "Light Leather",
+     "qty": 4
+    },
+    {
+     "id": 2320,
+     "name": "Coarse Thread",
+     "qty": 4
+    }
+   ],
+   "prereq": [],
+   "next": null
+  }
+ ],
+ "277716": [
+  {
+   "id": 96875,
+   "name": "Beasts of Thunder Ridge",
+   "reqlevel": 6,
+   "text": "Kamari in Orgrimmar wants you to collect 5 Rough Lizard Hide from beasts in Thunder Ridge, along with 2 Cured Light Hides.",
+   "turnins": [
+    {
+     "id": 275720,
+     "name": null,
+     "qty": null
+    },
+    {
+     "id": 4231,
+     "name": "Cured Light Hide",
+     "qty": 2
+    }
+   ],
+   "prereq": [],
+   "next": null
+  }
+ ],
+ "6710": [
+  {
+   "id": 1582,
+   "name": "Moonglow Vest",
+   "reqlevel": 8,
+   "text": "Bring 1 Embossed Leather Gloves, 5 Embossed Leather Boots and 5 Embossed Leather Cloaks to Lotherias in Darnassus.",
+   "turnins": [
+    {
+     "id": 4239,
+     "name": "Embossed Leather Gloves",
+     "qty": 1
+    },
+    {
+     "id": 2309,
+     "name": "Embossed Leather Boots",
+     "qty": 5
+    },
+    {
+     "id": 2310,
+     "name": "Embossed Leather Cloak",
+     "qty": 5
+    }
+   ],
+   "prereq": [],
+   "next": null
+  }
+ ],
+ "8406": [
+  {
+   "id": 2851,
+   "name": "Wild Leather Boots",
+   "reqlevel": 30,
+   "text": "Bring 2 Nightscape Pants, 2 Nightscape Boots, and 2 Wildvines to Pratt McGrubben in Feathermoon Stronghold.",
+   "turnins": [
+    {
+     "id": 8193,
+     "name": "Nightscape Pants",
+     "qty": 2
+    },
+    {
+     "id": 8197,
+     "name": "Nightscape Boots",
+     "qty": 2
+    },
+    {
+     "id": 8153,
+     "name": "Wildvine",
+     "qty": 2
+    }
+   ],
+   "prereq": [
+    2848,
+    2849,
+    2850
+   ],
+   "next": null
+  },
+  {
+   "id": 2858,
+   "name": "Wild Leather Boots",
+   "reqlevel": 30,
+   "text": "Bring 2 Nightscape Pants, 2 Nightscape Boots, and 2 Wildvines to Jangdor Swiftstrider in Camp Mojache.",
+   "turnins": [
+    {
+     "id": 8193,
+     "name": "Nightscape Pants",
+     "qty": 2
+    },
+    {
+     "id": 8197,
+     "name": "Nightscape Boots",
+     "qty": 2
+    },
+    {
+     "id": 8153,
+     "name": "Wildvine",
+     "qty": 2
+    }
+   ],
+   "prereq": [
+    2855,
+    2856,
+    2857
+   ],
+   "next": null
+  }
+ ],
+ "8408": [
+  {
+   "id": 2853,
+   "name": "Master of the Wild Leather",
+   "reqlevel": 30,
+   "text": "Give Pratt's Letter to Telonis, the master leatherworker of Darnassus.",
+   "turnins": [],
+   "prereq": [
+    2851,
+    2852
+   ],
+   "next": 5143
+  },
+  {
+   "id": 2860,
+   "name": "Master of the Wild Leather",
+   "reqlevel": 30,
+   "text": "Give Jangdor's Letter to Una, the master leatherworker of Thunder Bluff.",
+   "turnins": [],
+   "prereq": [
+    2858,
+    2859
+   ],
+   "next": 5148
+  }
+ ],
+ "8405": [
+  {
+   "id": 2850,
+   "name": "Wild Leather Helmet",
+   "reqlevel": 30,
+   "text": "Bring 2 Nightscape Tunics, 2 Nightscape Headbands, and a Wildvine to Pratt McGrubben in Feathermoon Stronghold.",
+   "turnins": [
+    {
+     "id": 8175,
+     "name": "Nightscape Tunic",
+     "qty": 2
+    },
+    {
+     "id": 8176,
+     "name": "Nightscape Headband",
+     "qty": 2
+    },
+    {
+     "id": 8153,
+     "name": "Wildvine",
+     "qty": 1
+    }
+   ],
+   "prereq": [
+    2847
+   ],
+   "next": null
+  },
+  {
+   "id": 2857,
+   "name": "Wild Leather Helmet",
+   "reqlevel": 30,
+   "text": "Bring 2 Nightscape Tunics, 2 Nightscape Headbands, and a Wildvine to Jangdor Swiftstrider in Camp Mojache.",
+   "turnins": [
+    {
+     "id": 8175,
+     "name": "Nightscape Tunic",
+     "qty": 2
+    },
+    {
+     "id": 8176,
+     "name": "Nightscape Headband",
+     "qty": 2
+    },
+    {
+     "id": 8153,
+     "name": "Wildvine",
+     "qty": 1
+    }
+   ],
+   "prereq": [
+    2854
+   ],
+   "next": null
+  }
+ ],
+ "8407": [
+  {
+   "id": 2852,
+   "name": "Wild Leather Leggings",
+   "reqlevel": 30,
+   "text": "Bring 2 Turtle Scale Helms, 2 Turtle Scale Bracers, and 2 Wildvines to Pratt McGrubben in Feathermoon Stronghold.",
+   "turnins": [
+    {
+     "id": 8191,
+     "name": "Turtle Scale Helm",
+     "qty": 2
+    },
+    {
+     "id": 8198,
+     "name": "Turtle Scale Bracers",
+     "qty": 2
+    },
+    {
+     "id": 8153,
+     "name": "Wildvine",
+     "qty": 2
+    }
+   ],
+   "prereq": [
+    2848,
+    2849,
+    2850
+   ],
+   "next": null
+  },
+  {
+   "id": 2859,
+   "name": "Wild Leather Leggings",
+   "reqlevel": 30,
+   "text": "Bring 2 Turtle Scale Helms, 2 Turtle Scale Bracers, and 2 Wildvines to Jangdor Swiftstrider in Camp Mojache.",
+   "turnins": [
+    {
+     "id": 8191,
+     "name": "Turtle Scale Helm",
+     "qty": 2
+    },
+    {
+     "id": 8198,
+     "name": "Turtle Scale Bracers",
+     "qty": 2
+    },
+    {
+     "id": 8153,
+     "name": "Wildvine",
+     "qty": 2
+    }
+   ],
+   "prereq": [
+    2855,
+    2856,
+    2857
+   ],
+   "next": null
+  }
+ ],
+ "8403": [
+  {
+   "id": 2848,
+   "name": "Wild Leather Shoulders",
+   "reqlevel": 30,
+   "text": "Bring 6 Thick Armor Kits and a Wildvine to Pratt McGrubben in Feathermoon Stronghold.",
+   "turnins": [
+    {
+     "id": 8173,
+     "name": "Thick Armor Kit",
+     "qty": 6
+    },
+    {
+     "id": 8153,
+     "name": "Wildvine",
+     "qty": 1
+    }
+   ],
+   "prereq": [
+    2847
+   ],
+   "next": null
+  },
+  {
+   "id": 2855,
+   "name": "Wild Leather Shoulders",
+   "reqlevel": 30,
+   "text": "Bring 6 Thick Armor Kits and a Wildvine to Jangdor Swiftstrider in Camp Mojache.",
+   "turnins": [
+    {
+     "id": 8173,
+     "name": "Thick Armor Kit",
+     "qty": 6
+    },
+    {
+     "id": 8153,
+     "name": "Wildvine",
+     "qty": 1
+    }
+   ],
+   "prereq": [
+    2854
+   ],
+   "next": null
+  }
+ ],
+ "8404": [
+  {
+   "id": 2849,
+   "name": "Wild Leather Vest",
+   "reqlevel": 30,
+   "text": "Bring 2 Turtle Scale Breastplates, 2 Turtle Scale Gloves, and a Wildvine to Pratt McGrubben in Feathermoon Stronghold.",
+   "turnins": [
+    {
+     "id": 8189,
+     "name": "Turtle Scale Breastplate",
+     "qty": 2
+    },
+    {
+     "id": 8187,
+     "name": "Turtle Scale Gloves",
+     "qty": 2
+    },
+    {
+     "id": 8153,
+     "name": "Wildvine",
+     "qty": 1
+    }
+   ],
+   "prereq": [
+    2847
+   ],
+   "next": null
+  },
+  {
+   "id": 2856,
+   "name": "Wild Leather Vest",
+   "reqlevel": 30,
+   "text": "Bring 2 Turtle Scale Breastplates, 2 Turtle Scale Gloves, and a Wildvine to Jangdor Swiftstrider in Camp Mojache.",
+   "turnins": [
+    {
+     "id": 8189,
+     "name": "Turtle Scale Breastplate",
+     "qty": 2
+    },
+    {
+     "id": 8187,
+     "name": "Turtle Scale Gloves",
+     "qty": 2
+    },
+    {
+     "id": 8153,
+     "name": "Wildvine",
+     "qty": 1
+    }
+   ],
+   "prereq": [
+    2854
+   ],
+   "next": null
+  }
+ ],
+ "21722": [
+  {
+   "id": 8878,
+   "name": "Festive Recipes",
+   "reqlevel": 50,
+   "text": null,
+   "turnins": [
+    {
+     "id": 21100,
+     "name": null,
+     "qty": null
+    }
+   ],
+   "prereq": [],
+   "next": null
+  }
+ ],
+ "21723": [
+  {
+   "id": 8878,
+   "name": "Festive Recipes",
+   "reqlevel": 50,
+   "text": null,
+   "turnins": [
+    {
+     "id": 21100,
+     "name": null,
+     "qty": null
+    }
+   ],
+   "prereq": [],
+   "next": null
+  }
+ ]
+}
