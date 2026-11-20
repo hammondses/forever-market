@@ -247,6 +247,10 @@ body:not(.tab-cr) #crv, body:not(.tab-mc) #mcv { display: none !important; }
   #rsWrap { max-height: 75vh; } #rsDetail { border-left: 0; border-top: 1px solid var(--line); }
   .rsTable .hm, .band .hm { display: none; } .band .mo { display: inline; } .band b span { font: inherit; color: inherit; }
 }
+.vd { display: inline-block; padding: 1px 7px; border-radius: 3px; font-weight: 700; font-size: 12px; }
+.vd + small { display: block; }
+.vd-yes { background: #1f5f2a; color: #b9f5b0; } .vd-meh { background: #6a5012; color: #ffe08a; }
+.vd-no { background: #5e1d1d; color: #ffb3a8; } .vd-na { background: #333; color: #aaa; }
 </style>
 </head>
 <body>
@@ -925,10 +929,20 @@ function renderAh() {
   rows.sort((a, b) => { const x = a[key] ?? -1, y = b[key] ?? -1; return (typeof x === "string" ? x.localeCompare(y) : x - y) * d || a.price - b.price; });
   const PER = 50, pages = Math.max(1, Math.ceil(rows.length / PER));
   ah.page = Math.min(ah.page, pages - 1);
+  // recipe items get a "Worth it?" verdict from the crafting data
+  const byScroll = {};
+  if (cr.data) { for (const x of cr.data.recipes) if (x.scroll) (byScroll[x.scroll] ??= []).push(x); }
+  else if (ah.path[0] === "Recipes" || rows.some((r) => /^(Plans|Pattern|Schematic|Recipe|Formula|Manual):/.test(r.name)))
+    loadCrafting().then((ok) => ok && cr.data && renderAh());
+  const worth = (r) => { const xs = byScroll[r.id]; if (!xs) return null;
+    return xs.map((x) => verdict(x)).sort((a, b) => a.score - b.score)[0]; };
+  for (const r of rows) { const v = worth(r); r.worth = v ? v.score : 4e9; r._v = v; }
+  if (ah.sort === "worth") rows.sort((a, b) => (a.worth - b.worth) * ah.dir || a.price - b.price);
   const shown = rows.slice(ah.page * PER, ah.page * PER + PER), C = cols();
+  if (rows.some((r) => r._v)) C.splice(1, 0, ["worth", "Worth it?"]);
   $("ahCount").textContent = `${rows.length.toLocaleString()} result${rows.length === 1 ? "" : "s"}${ah.path.length ? " in " + ah.path.join(" › ") : ""}`;
   const cell = (r, c) => c === "dps" ? r.dps ?? "" : c === "speed" ? (r.speed ? r.speed.toFixed(2) : "") : c === "armor" ? r.armor ?? "" :
-    c === "ilvl" ? r.ilvl ?? "" : c === "req" ? r.req || "" : c === "price" ? money(r.price) : r.units.toLocaleString();
+    c === "ilvl" ? r.ilvl ?? "" : c === "req" ? r.req || "" : c === "price" ? money(r.price) : c === "worth" ? (r._v ? vdCell(r._v) : "") : r.units.toLocaleString();
   $("ahWrap").innerHTML = rows.length ? `<table id="ahTable"><thead><tr>${C.map(([c, l, m]) =>
       `<th data-c="${c}" class="${m ?? ""}${c === key ? " on" : ""}">${l}${c === key ? (d > 0 ? " ▲" : " ▼") : ""}</th>`).join("")}</tr></thead><tbody>` +
     shown.map((r) => `<tr data-id="${r.id}"${r.id === ah.sel ? ' class="on"' : ""}><td><div class="it">${img(r.id)}<div style="min-width:0">
@@ -942,7 +956,7 @@ function renderAh() {
     $("pgNext").onclick = () => { ah.page++; renderAh(); $("ahWrap").scrollTop = 0; };
   }
   for (const th of $("ahWrap").querySelectorAll("th")) th.onclick = () => {
-    const c = th.dataset.c; ah.dir = ah.sort === c ? -ah.dir : (c === "name" || c === "price" ? 1 : -1); ah.sort = c; renderAh(); };
+    const c = th.dataset.c; ah.dir = ah.sort === c ? -ah.dir : (c === "name" || c === "price" || c === "worth" ? 1 : -1); ah.sort = c; renderAh(); };
   for (const tr of $("ahWrap").querySelectorAll("tbody tr")) tr.onclick = () => {
     ah.sel = tr.dataset.id; $("ahWrap").querySelectorAll("tr.on").forEach((x) => x.classList.remove("on")); tr.classList.add("on");
     ahSelect(tr.dataset.id, true); };
@@ -1295,6 +1309,19 @@ function recipeCalc(r, matMode = $("crMats").value, sellMode = $("crSell").value
 const SCROLL = { blacksmithing: "Plans", leatherworking: "Pattern", tailoring: "Pattern", engineering: "Schematic", alchemy: "Recipe",
   enchanting: "Formula", cooking: "Recipe", "first aid": "Manual" };
 const scrollName = (r) => { const n = cr.data.names[String(r.scroll)]; return n && !/^\d+$/.test(n) && !n.startsWith("item ") ? n : `${SCROLL[r.profession]}: ${r.name}`; };
+// at-a-glance "is this recipe worth buying" verdict; score sorts best first
+function verdict(r, c = recipeCalc(r)) {
+  const d = c.days, n = c.payback, crafts = n ? `${n.toLocaleString()} craft${n === 1 ? "" : "s"}` : "";
+  const when = d == null ? "" : d < 1 ? "under a day" : `~${Math.round(d).toLocaleString()} day${Math.round(d) === 1 ? "" : "s"}`;
+  if (r.bop) return { cls: "vd-na", t: "BoP", s: "can't sell what it makes", score: 3e9 };
+  if (c.missing || c.sell == null) return { cls: "vd-na", t: "No price", s: c.sell == null ? "product not listed" : "materials not listed", score: 2e9 };
+  if (!(c.profit > 0)) return { cls: "vd-no", t: "Skip", s: "loses money each craft", score: 1e9 };
+  if (c.recipe == null || !n) return { cls: "vd-yes", t: "Yes", s: "recipe costs nothing", score: -1 };
+  if (!c.sold) return { cls: "vd-meh", t: "Slow", s: `${crafts}, barely sells`, score: 1e8 + n };
+  return d <= 7 ? { cls: "vd-yes", t: "Buy", s: `${crafts}, ${when}`, score: d }
+    : d <= 30 ? { cls: "vd-meh", t: "Maybe", s: `${crafts}, ${when}`, score: d } : { cls: "vd-no", t: "Slow", s: `${crafts}, ${when}`, score: d };
+}
+const vdCell = (v) => `<span class="vd ${v.cls}">${v.t}</span><small>${v.s}</small>`;
 const learnTxt = (r) => r.favor ? `${r.favor} Merchant's Favor` : r.fee != null ? "trainer" : r.basic ? "known from the start" : r.scroll ? "recipe item" : "trainer";
 
 function renderRecipes() {
@@ -1311,10 +1338,10 @@ function renderRecipes() {
     && (!listed || c.recipe != null) && (bop || !r.bop) && (!q || r.name.toLowerCase().includes(q)));
   const key = { name: (x) => x.r.name, skill: (x) => x.r.train ?? 0, recipe: (x) => x.c.recipe ?? 1e12, sell: (x) => x.c.sell ?? -1,
     mats: (x) => x.c.mats, profit: (x) => x.c.profit ?? -1e12, payback: (x) => x.c.payback ?? 1e9, days: (x) => x.c.days ?? (x.c.payback ? 1e8 + x.c.payback : 1e9),
-    sold: (x) => x.c.sold }[rc.sort];
+    sold: (x) => x.c.sold, worth: (x) => verdict(x.r, x.c).score }[rc.sort];
   rows.sort((a, b) => { const x = key(a), y = key(b); return (x < y ? -1 : x > y ? 1 : 0) * rc.dir; });
   $("crCount").textContent = `${rows.length} recipes`;
-  const C = [["name", "Recipe"], ["skill", "Skill", "hm"], ["recipe", "Recipe costs"], ["sell", "Product sells"], ["mats", "Materials"],
+  const C = [["name", "Recipe"], ["worth", "Worth it?"], ["skill", "Skill", "hm"], ["recipe", "Recipe costs"], ["sell", "Product sells"], ["mats", "Materials"],
     ["profit", "Profit each"], ["payback", "Pays back after"], ["sold", "Sold a day", "hm"], ["days", "Days to pay back", "hm"]];
   const shown = rows.slice(0, 300);
   $("crWrap").innerHTML = rows.length ? `<table id="ahTable" class="rsTable"><thead><tr>${C.map(([c, l, m]) =>
@@ -1322,7 +1349,7 @@ function renderRecipes() {
     shown.map(({ r, c }) => `<tr data-id="${r.spell}"${String(r.spell) === cr.sel ? ' class="on"' : ""}><td><div class="it">${img(String(r.out[0]))}<div style="min-width:0">
       <div class="nm">${esc(r.name)}${r.out[1] > 1 ? ` ×${r.out[1]}` : ""}</div>
       <small>${esc(scrollName(r))}${r.bop ? ` · <span class="down">binds on pickup</span>` : ""}${r.faction ? ` · ${r.faction}` : ""}</small></div></div></td>
-      <td class="hm">${r.train ?? "?"}</td>
+      <td>${vdCell(verdict(r, c))}</td><td class="hm">${r.train ?? "?"}</td>
       <td>${c.recipe == null ? `<span class="flat">not for sale</span>` : money(c.recipe)}<small>${c.recipeFrom === "AH" ? `${c.recipeListed} on the AH` : c.recipeFrom === "vendor" ? "from a vendor" : learnTxt(r)}</small></td>
       <td>${c.sell == null ? `<span class="flat">none listed</span>` : money(c.sell)}<small>${c.listings} listed</small></td>
       <td>${c.missing ? `<span class="flat">–</span><small>not all listed</small>` : money(Math.round(c.mats))}</td>
@@ -1332,7 +1359,7 @@ function renderRecipes() {
     ${rows.length > shown.length ? `<div class="pager">Showing the first 300. Narrow it with the filters.</div>` : ""}`
     : `<div class="note pad">Nothing matches. Untick "recipe for sale" or "profitable only".</div>`;
   for (const th of $("crWrap").querySelectorAll("th")) th.onclick = () => {
-    rc.dir = rc.sort === th.dataset.s ? -rc.dir : (["name", "skill", "recipe", "payback", "days"].includes(th.dataset.s) ? 1 : -1);
+    rc.dir = rc.sort === th.dataset.s ? -rc.dir : (["name", "worth", "skill", "recipe", "payback", "days"].includes(th.dataset.s) ? 1 : -1);
     rc.sort = th.dataset.s; renderCrafting(); };
   for (const tr of $("crWrap").querySelectorAll("tbody tr")) tr.onclick = () => { cr.sel = tr.dataset.id; renderCrafting(); rcSelect(cr.sel); };
 }
