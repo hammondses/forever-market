@@ -1381,7 +1381,7 @@ function renderRecipes() {
       <td>${c.recipe == null ? `<span class="flat">${c.quest ? "quest" : "not for sale"}</span>` : money(c.recipe)}<small>${c.quest ? `quest: ${esc(c.quest.q.name)}` : c.recipeFrom === "AH" ? `${c.recipeListed} on the AH` : c.recipeFrom === "vendor" ? "from a vendor" : learnTxt(r)}</small></td>
       <td>${c.sell == null ? `<span class="flat">none listed</span>` : money(c.sell)}<small>${c.listings} listed</small></td>
       <td>${c.missing ? `<span class="flat">–</span><small>not all listed</small>` : money(Math.round(c.mats))}</td>
-      <td>${c.payback ? `${c.payback.toLocaleString()} craft${c.payback === 1 ? "" : "s"}` : c.profit > 0 ? "free recipe" : "never"}</td>
+      <td>${c.payback ? `${c.payback.toLocaleString()} craft${c.payback === 1 ? "" : "s"}` : c.profit > 0 ? (c.quest ? "just do the quest" : "free recipe") : "never"}</td>
       <td class="hm">${c.sold}</td><td class="hm">${c.days == null ? "–" : c.days < 1 ? "under a day" : Math.round(c.days).toLocaleString()}</td></tr>`).join("")}</tbody></table>
     ${rows.length > shown.length ? `<div class="pager">Showing the first 300. Narrow it with the filters.</div>` : ""}`
     : `<div class="note pad">Nothing matches. Untick "recipe for sale" or "profitable only".</div>`;
@@ -1404,7 +1404,7 @@ function recipeBlock(r) {
       <tr><td>Sells for</td><td>${r.bop ? "binds on pickup" : c.sell == null ? "none listed" : `${money(c.sell)} (${c.listings} listed, ${c.sold} sold a day)`}</td></tr>
       <tr><td>Materials each</td><td>${c.missing ? "not all listed" : money(Math.round(c.mats))}</td></tr>
       <tr><td>Profit each</td><td class="${c.profit > 0 ? "up" : "down"}">${signed(c.profit)}</td></tr>
-      <tr><td>Pays back after</td><td>${c.payback ? `${c.payback.toLocaleString()} craft${c.payback === 1 ? "" : "s"}${c.days != null ? `, about ${c.days < 1 ? "under a day" : Math.round(c.days) + " days"} of region sales` : ""}` : c.profit > 0 ? "free recipe" : "never at today's prices"}</td></tr></table>
+      <tr><td>Pays back after</td><td>${c.payback ? `${c.payback.toLocaleString()} craft${c.payback === 1 ? "" : "s"}${c.days != null ? `, about ${c.days < 1 ? "under a day" : Math.round(c.days) + " days"} of region sales` : ""}` : c.profit > 0 ? (c.quest ? "nothing beyond the quest" : "free recipe") : "never at today's prices"}</td></tr></table>
     ${c.quest ? questBlock(c.quest) : ""}
     <div class="rsList"><table><thead><tr><th>Material</th><th>Qty</th><th>Each</th><th>Total</th></tr></thead><tbody>${mats}</tbody></table></div>`;
 }
