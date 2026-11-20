@@ -421,7 +421,7 @@ function squarify(nodes, x, y, w, h) {
 // sectors as tidy rows of equal height: balance total weight across rows, then
 // split each row's width by weight (items inside still use squarify)
 function stripRows(secs, W, H) {
-  if (!secs.length) return;
+  if (!secs.length || !(W > 0) || !(H > 0)) return;  // map hidden (another tab open): nothing to lay out
   const n = Math.max(1, Math.min(secs.length, Math.round(Math.sqrt(secs.length * H / W))));
   const rows = Array.from({ length: n }, () => ({ secs: [], weight: 0 }));
   for (const s of [...secs].sort((a, b) => b.weight - a.weight)) {
