@@ -935,14 +935,14 @@ function renderAh() {
   else if (ah.path[0] === "Recipes" || rows.some((r) => /^(Plans|Pattern|Schematic|Recipe|Formula|Manual):/.test(r.name)))
     loadCrafting().then((ok) => ok && cr.data && renderAh());
   const worth = (r) => { const xs = byScroll[r.id]; if (!xs) return null;
-    return xs.map((x) => verdict(x)).sort((a, b) => a.score - b.score)[0]; };
-  for (const r of rows) { const v = worth(r); r.worth = v ? v.score : 4e9; r._v = v; }
-  if (ah.sort === "worth") rows.sort((a, b) => (a.worth - b.worth) * ah.dir || a.price - b.price);
+    return xs.map((x) => { const c = recipeCalc(x); return { ...verdict(x, c), profit: c.profit }; }).sort((a, b) => a.score - b.score)[0]; };
+  for (const r of rows) { const v = worth(r); r.worth = v ? v.score : 4e9; r.profit = v?.profit ?? -1e12; r._v = v; }
+  if (ah.sort === "worth" || ah.sort === "profit") rows.sort((a, b) => (a[ah.sort] - b[ah.sort]) * ah.dir || a.price - b.price);
   const shown = rows.slice(ah.page * PER, ah.page * PER + PER), C = cols();
-  if (rows.some((r) => r._v)) C.splice(1, 0, ["worth", "Worth it?"]);
+  if (rows.some((r) => r._v)) C.splice(1, 0, ["worth", "Worth it?"], ["profit", "Profit per craft"]);
   $("ahCount").textContent = `${rows.length.toLocaleString()} result${rows.length === 1 ? "" : "s"}${ah.path.length ? " in " + ah.path.join(" › ") : ""}`;
   const cell = (r, c) => c === "dps" ? r.dps ?? "" : c === "speed" ? (r.speed ? r.speed.toFixed(2) : "") : c === "armor" ? r.armor ?? "" :
-    c === "ilvl" ? r.ilvl ?? "" : c === "req" ? r.req || "" : c === "price" ? money(r.price) : c === "worth" ? (r._v ? vdCell(r._v) : "") : r.units.toLocaleString();
+    c === "ilvl" ? r.ilvl ?? "" : c === "req" ? r.req || "" : c === "price" ? money(r.price) : c === "worth" ? (r._v ? vdCell(r._v) : "") : c === "profit" ? (r._v?.profit != null ? `<span class="${r._v.profit > 0 ? "up" : "down"}">${signed(r._v.profit)}</span>` : "") : r.units.toLocaleString();
   $("ahWrap").innerHTML = rows.length ? `<table id="ahTable"><thead><tr>${C.map(([c, l, m]) =>
       `<th data-c="${c}" class="${m ?? ""}${c === key ? " on" : ""}">${l}${c === key ? (d > 0 ? " ▲" : " ▼") : ""}</th>`).join("")}</tr></thead><tbody>` +
     shown.map((r) => `<tr data-id="${r.id}"${r.id === ah.sel ? ' class="on"' : ""}><td><div class="it">${img(r.id)}<div style="min-width:0">
@@ -1341,19 +1341,18 @@ function renderRecipes() {
     sold: (x) => x.c.sold, worth: (x) => verdict(x.r, x.c).score }[rc.sort];
   rows.sort((a, b) => { const x = key(a), y = key(b); return (x < y ? -1 : x > y ? 1 : 0) * rc.dir; });
   $("crCount").textContent = `${rows.length} recipes`;
-  const C = [["name", "Recipe"], ["worth", "Worth it?"], ["skill", "Skill", "hm"], ["recipe", "Recipe costs"], ["sell", "Product sells"], ["mats", "Materials"],
-    ["profit", "Profit each"], ["payback", "Pays back after"], ["sold", "Sold a day", "hm"], ["days", "Days to pay back", "hm"]];
+  const C = [["name", "Recipe"], ["worth", "Worth it?"], ["profit", "Profit per craft"], ["skill", "Skill", "hm"], ["recipe", "Recipe costs"], ["sell", "Product sells"], ["mats", "Materials"],
+    ["payback", "Pays back after"], ["sold", "Sold a day", "hm"], ["days", "Days to pay back", "hm"]];
   const shown = rows.slice(0, 300);
   $("crWrap").innerHTML = rows.length ? `<table id="ahTable" class="rsTable"><thead><tr>${C.map(([c, l, m]) =>
     `<th data-s="${c}" class="${rc.sort === c ? "on" : ""} ${m || ""}">${l}${rc.sort === c ? (rc.dir > 0 ? " ▲" : " ▼") : ""}</th>`).join("")}</tr></thead><tbody>${
     shown.map(({ r, c }) => `<tr data-id="${r.spell}"${String(r.spell) === cr.sel ? ' class="on"' : ""}><td><div class="it">${img(String(r.out[0]))}<div style="min-width:0">
       <div class="nm">${esc(r.name)}${r.out[1] > 1 ? ` ×${r.out[1]}` : ""}</div>
       <small>${esc(scrollName(r))}${r.bop ? ` · <span class="down">binds on pickup</span>` : ""}${r.faction ? ` · ${r.faction}` : ""}</small></div></div></td>
-      <td>${vdCell(verdict(r, c))}</td><td class="hm">${r.train ?? "?"}</td>
+      <td>${vdCell(verdict(r, c))}</td><td class="${c.profit > 0 ? "up" : "down"}">${signed(c.profit)}</td><td class="hm">${r.train ?? "?"}</td>
       <td>${c.recipe == null ? `<span class="flat">not for sale</span>` : money(c.recipe)}<small>${c.recipeFrom === "AH" ? `${c.recipeListed} on the AH` : c.recipeFrom === "vendor" ? "from a vendor" : learnTxt(r)}</small></td>
       <td>${c.sell == null ? `<span class="flat">none listed</span>` : money(c.sell)}<small>${c.listings} listed</small></td>
       <td>${c.missing ? `<span class="flat">–</span><small>not all listed</small>` : money(Math.round(c.mats))}</td>
-      <td class="${c.profit > 0 ? "up" : "down"}">${signed(c.profit)}</td>
       <td>${c.payback ? `${c.payback.toLocaleString()} craft${c.payback === 1 ? "" : "s"}` : c.profit > 0 ? "free recipe" : "never"}</td>
       <td class="hm">${c.sold}</td><td class="hm">${c.days == null ? "–" : c.days < 1 ? "under a day" : Math.round(c.days).toLocaleString()}</td></tr>`).join("")}</tbody></table>
     ${rows.length > shown.length ? `<div class="pager">Showing the first 300. Narrow it with the filters.</div>` : ""}`
