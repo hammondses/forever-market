@@ -30,5 +30,12 @@ for line in (R / "quest-reward-recipes.md").read_text().splitlines():
 for qs in out.values():
     for q in qs:
         for t in q["turnins"]: t["qty"] = qty(q["text"], t["name"])
+# turn-in counts the quest data leaves out, from the owner (2026-11-21): Thorium Brotherhood Imperial Plate quests
+TH, SR, AQ, RL, CI = (12359, "Thorium Bar"), (7910, "Star Ruby"), (7909, "Aquamarine"), (8170, "Rugged Leather"), (3864, "Citrine")
+OVERRIDE = {"12705": [(TH, 40), (SR, 2)], "12715": [(TH, 44), (SR, 2)], "12700": [(TH, 34), (SR, 1), (AQ, 1)],
+            "12701": [(TH, 34), (SR, 2)], "12690": [(TH, 20), (SR, 1)], "12688": [(TH, 22), (RL, 6), (AQ, 1)],
+            "12687": [(TH, 24), (RL, 6), (CI, 2)]}
+for rid, items in OVERRIDE.items():
+    for q in out[rid]: q["turnins"] = [{"id": i, "name": n, "qty": k} for (i, n), k in items]
 (R / "quest-recipes.json").write_text(json.dumps(out, indent=1))
 print(len(out), "recipe items,", sum(map(len, out.values())), "quests")

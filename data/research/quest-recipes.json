@@ -327,7 +327,17 @@
     {
      "id": 12359,
      "name": "Thorium Bar",
-     "qty": null
+     "qty": 22
+    },
+    {
+     "id": 8170,
+     "name": "Rugged Leather",
+     "qty": 6
+    },
+    {
+     "id": 7909,
+     "name": "Aquamarine",
+     "qty": 1
     }
    ],
    "prereq": [
@@ -346,7 +356,17 @@
     {
      "id": 12359,
      "name": "Thorium Bar",
-     "qty": null
+     "qty": 34
+    },
+    {
+     "id": 7910,
+     "name": "Star Ruby",
+     "qty": 1
+    },
+    {
+     "id": 7909,
+     "name": "Aquamarine",
+     "qty": 1
     }
    ],
    "prereq": [
@@ -365,7 +385,12 @@
     {
      "id": 12359,
      "name": "Thorium Bar",
-     "qty": null
+     "qty": 20
+    },
+    {
+     "id": 7910,
+     "name": "Star Ruby",
+     "qty": 1
     }
    ],
    "prereq": [
@@ -384,7 +409,12 @@
     {
      "id": 12359,
      "name": "Thorium Bar",
-     "qty": null
+     "qty": 40
+    },
+    {
+     "id": 7910,
+     "name": "Star Ruby",
+     "qty": 2
     }
    ],
    "prereq": [
@@ -403,7 +433,12 @@
     {
      "id": 12359,
      "name": "Thorium Bar",
-     "qty": null
+     "qty": 34
+    },
+    {
+     "id": 7910,
+     "name": "Star Ruby",
+     "qty": 2
     }
    ],
    "prereq": [
@@ -422,7 +457,12 @@
     {
      "id": 12359,
      "name": "Thorium Bar",
-     "qty": null
+     "qty": 44
+    },
+    {
+     "id": 7910,
+     "name": "Star Ruby",
+     "qty": 2
     }
    ],
    "prereq": [
@@ -441,7 +481,17 @@
     {
      "id": 12359,
      "name": "Thorium Bar",
-     "qty": null
+     "qty": 24
+    },
+    {
+     "id": 8170,
+     "name": "Rugged Leather",
+     "qty": 6
+    },
+    {
+     "id": 3864,
+     "name": "Citrine",
+     "qty": 2
     }
    ],
    "prereq": [
